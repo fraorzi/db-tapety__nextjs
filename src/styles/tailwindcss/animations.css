@@ -1,0 +1,16 @@
+@theme {
+  --default-transition-duration: 0.2s;
+}
+
+@theme {
+  --animate-shimmer: shimmer 1.3s linear infinite;
+
+  @keyframes shimmer {
+    0% {
+      background-position: -700px 0;
+    }
+    100% {
+      background-position: 700px 0;
+    }
+  }
+}

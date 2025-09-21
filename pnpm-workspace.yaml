@@ -1,0 +1,5 @@
+hoistPattern:
+  - '*eslint*'
+onlyBuiltDependencies:
+  - sharp
+  - unrs-resolver

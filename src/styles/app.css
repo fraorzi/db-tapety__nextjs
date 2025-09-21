@@ -1,0 +1,12 @@
+@import './tailwind.css';
+
+@layer base {
+  ::selection {
+    background-color: var(--color-primary-500);
+    color: var(--color-white);
+  }
+
+  body {
+    color: var(--color-dark);
+  }
+}

@@ -1,0 +1,39 @@
+@import './checkbox.css';
+
+@layer base {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+  }
+
+  input[readonly]:-webkit-autofill,
+  input[readonly]:-webkit-autofill:hover,
+  input[readonly]:-webkit-autofill:focus,
+  textarea[readonly]:-webkit-autofill,
+  textarea[readonly]:-webkit-autofill:hover,
+  textarea[readonly]:-webkit-autofill:focus,
+  select[readonly]:-webkit-autofill,
+  select[readonly]:-webkit-autofill:hover,
+  select[readonly]:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px theme('colors.gray.100') inset;
+  }
+
+  input[disabled]:-webkit-autofill,
+  input[disabled]:-webkit-autofill:hover,
+  input[disabled]:-webkit-autofill:focus,
+  textarea[disabled]:-webkit-autofill,
+  textarea[disabled]:-webkit-autofill:hover,
+  textarea[disabled]:-webkit-autofill:focus,
+  select[disabled]:-webkit-autofill,
+  select[disabled]:-webkit-autofill:hover,
+  select[disabled]:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px theme('colors.gray.100') inset;
+  }
+}

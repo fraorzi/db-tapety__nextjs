@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+@import './tailwindcss/plugins.css';
+@import './tailwindcss/animations.css';
+@import './tailwindcss/colors.css';
+@import './tailwindcss/fonts.css';
+
+/* Custom theme configuration */
+@theme {
+  --color-beige: #f5f1e6;
+  --color-cream: #faf7f0;
+  --color-soft-gold: #c5a572;
+  --color-dark-green: #1b3a2b;
+
+  --font-family-sans: Inter, sans-serif;
+  --font-family-serif: 'Playfair Display', serif;
+
+  --background-image-texture-1: url('https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+  --background-image-texture-2: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+  --background-image-texture-3: url('https://images.unsplash.com/photo-1618221381711-42a14b6e2ee7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+}
+
+/* Global styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Custom utility classes */
+.curved-divider {
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+}
+
+.curved-divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.curved-divider-top::before {
+  top: 0;
+  transform: translateY(-50%);
+}
+
+.curved-divider-bottom::before {
+  bottom: 0;
+  transform: translateY(50%);
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px theme(colors.soft-gold);
+  color: transparent;
+}
+
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 10px;
+  grid-gap: 20px;
+}
+
+.masonry-item {
+  grid-row-end: span calc(var(--height) / 10);
+}
