@@ -7,6 +7,8 @@ import { toast } from 'sonner';
 
 import Button from '@/components/UI/buttons/Button';
 import Container from '@/components/UI/grid/Container';
+import Heading from '@/components/UI/typography/Heading';
+import Paragraph from '@/components/UI/typography/Paragraph';
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,10 +32,10 @@ const ContactSection = () => {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      toast.success("Thank you for your message! We'll get back to you soon.");
+      toast.success('Dziękujemy za wiadomość! Wkrótce się odezwiemy.');
       setFormData({ name: '', email: '', phone: '', message: '' });
     } catch {
-      toast.error('Failed to send message. Please try again.');
+      toast.error('Nie udało się wysłać wiadomości. Spróbuj ponownie.');
     } finally {
       setIsSubmitting(false);
     }
@@ -42,17 +44,17 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: <HiPhone size={24} />,
-      title: 'Phone',
+      title: 'Telefon',
       details: '(555) 123-4567',
     },
     {
       icon: <HiMail size={24} />,
-      title: 'Email',
-      details: 'info@wallpaperpro.com',
+      title: 'E-mail',
+      details: 'info@nazwa-firmy.pl',
     },
     {
       icon: <HiLocationMarker size={24} />,
-      title: 'Address',
+      title: 'Adres',
       details: '123 Design Street, New York, NY 10001',
     },
   ];
@@ -64,17 +66,20 @@ const ContactSection = () => {
 
       <Container className='relative'>
         <div className='mb-16 text-center'>
-          <h2 className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'>
+          <Heading
+            level={2}
+            className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'
+          >
             <span className='text-stroke absolute -top-10 left-1/2 -translate-x-1/2 transform text-6xl opacity-20'>
-              Contact
+              Kontakt
             </span>
-            Contact Us
-          </h2>
+            Skontaktuj się z nami
+          </Heading>
           <div className='bg-secondary mx-auto mb-8 h-1 w-24'></div>
-          <p className='mx-auto max-w-2xl text-lg leading-relaxed text-gray-700'>
-            Ready to transform your space? Get in touch with our team for a consultation or free
-            quote.
-          </p>
+          <Paragraph size='lg' className='mx-auto max-w-2xl text-gray-700'>
+            Chcesz odmienić swoją przestrzeń? Skontaktuj się z nami, umów konsultację lub poproś o
+            darmową wycenę.
+          </Paragraph>
         </div>
 
         <div className='grid grid-cols-1 gap-16 lg:grid-cols-2'>
@@ -87,7 +92,7 @@ const ContactSection = () => {
               <div className='relative z-10 space-y-6'>
                 <div>
                   <label htmlFor='name' className='text-primary mb-2 block font-serif font-medium'>
-                    Full Name
+                    Imię i nazwisko
                   </label>
                   <input
                     type='text'
@@ -96,7 +101,7 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     className='focus:ring-secondary bg-cream w-full rounded-md border-0 px-4 py-3 transition-all duration-300 focus:ring-2 focus:outline-none'
-                    placeholder='Enter your full name'
+                    placeholder='Wpisz imię i nazwisko'
                     required
                   />
                 </div>
@@ -107,7 +112,7 @@ const ContactSection = () => {
                       htmlFor='email'
                       className='text-primary mb-2 block font-serif font-medium'
                     >
-                      Email Address
+                      Adres e-mail
                     </label>
                     <input
                       type='email'
@@ -116,7 +121,7 @@ const ContactSection = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       className='focus:ring-secondary bg-cream w-full rounded-md border-0 px-4 py-3 transition-all duration-300 focus:ring-2 focus:outline-none'
-                      placeholder='Enter your email'
+                      placeholder='Wpisz adres e-mail'
                       required
                     />
                   </div>
@@ -126,7 +131,7 @@ const ContactSection = () => {
                       htmlFor='phone'
                       className='text-primary mb-2 block font-serif font-medium'
                     >
-                      Phone Number
+                      Numer telefonu
                     </label>
                     <input
                       type='tel'
@@ -135,7 +140,7 @@ const ContactSection = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className='focus:ring-secondary bg-cream w-full rounded-md border-0 px-4 py-3 transition-all duration-300 focus:ring-2 focus:outline-none'
-                      placeholder='Enter your phone number'
+                      placeholder='Wpisz numer telefonu'
                     />
                   </div>
                 </div>
@@ -145,7 +150,7 @@ const ContactSection = () => {
                     htmlFor='message'
                     className='text-primary mb-2 block font-serif font-medium'
                   >
-                    Message
+                    Wiadomość
                   </label>
                   <textarea
                     id='message'
@@ -154,7 +159,7 @@ const ContactSection = () => {
                     onChange={handleInputChange}
                     rows={5}
                     className='focus:ring-secondary bg-cream w-full rounded-md border-0 px-4 py-3 transition-all duration-300 focus:ring-2 focus:outline-none'
-                    placeholder='Tell us about your project'
+                    placeholder='Opisz swój projekt'
                     required
                   />
                 </div>
@@ -166,7 +171,7 @@ const ContactSection = () => {
                   isLoading={isSubmitting}
                   className='w-full'
                 >
-                  Send Message
+                  Wyślij wiadomość
                 </Button>
               </div>
             </form>
@@ -194,10 +199,12 @@ const ContactSection = () => {
                     <div className='text-primary'>{item.icon}</div>
                   </div>
                   <div>
-                    <h3 className='text-primary mb-1 font-serif text-xl font-medium'>
+                    <Heading level={3} className='text-primary mb-1 font-serif text-xl font-medium'>
                       {item.title}
-                    </h3>
-                    <p className='text-lg text-gray-700'>{item.details}</p>
+                    </Heading>
+                    <Paragraph size='lg' className='text-gray-700'>
+                      {item.details}
+                    </Paragraph>
                   </div>
                 </div>
               ))}

@@ -5,6 +5,8 @@ import { HiStar } from 'react-icons/hi';
 
 import Container from '@/components/UI/grid/Container';
 import NextImage from '@/components/UI/Image/NextImage';
+import Heading from '@/components/UI/typography/Heading';
+import Paragraph from '@/components/UI/typography/Paragraph';
 
 interface Testimonial {
   id: number;
@@ -23,9 +25,9 @@ const TestimonialsSection = () => {
     {
       id: 1,
       name: 'Sarah Johnson',
-      role: 'Homeowner',
+      role: 'Właścicielka domu',
       content:
-        'WallpaperPro transformed our living room completely. The team was professional, efficient, and the quality of work exceeded our expectations. The wallpaper they recommended perfectly complements our furniture.',
+        'nazwa firmy całkowicie odmieniła nasz salon. Zespół był profesjonalny, sprawny, a jakość prac przerosła nasze oczekiwania. Polecona tapeta idealnie komponuje się z meblami.',
       rating: 5,
       image:
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80',
@@ -33,9 +35,9 @@ const TestimonialsSection = () => {
     {
       id: 2,
       name: 'Michael Chen',
-      role: 'Interior Designer',
+      role: 'Projektant wnętrz',
       content:
-        "As an interior designer, I've worked with many wallpaper installers, but WallpaperPro stands out for their attention to detail and commitment to perfection. They're my go-to recommendation for all my clients.",
+        'Jako projektant wnętrz współpracowałem z wieloma ekipami montującymi tapety, ale nazwa firmy wyróżnia się dbałością o detale i dążeniem do perfekcji. To moja pierwsza rekomendacja dla klientów.',
       rating: 5,
       image:
         'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80',
@@ -43,9 +45,9 @@ const TestimonialsSection = () => {
     {
       id: 3,
       name: 'Emma Rodriguez',
-      role: 'Business Owner',
+      role: 'Właścicielka firmy',
       content:
-        'The team at WallpaperPro helped us create a stunning accent wall for our boutique. The installation was quick, and the result has received countless compliments from our customers. Highly recommended!',
+        'Zespół nazwa firmy pomógł nam stworzyć zachwycającą ścianę akcentową w butiku. Montaż był szybki, a efekt zebrał mnóstwo pochwał od klientów. Gorąco polecam!',
       rating: 4,
       image:
         'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80',
@@ -67,12 +69,15 @@ const TestimonialsSection = () => {
 
       <Container className='relative'>
         <div className='mb-16 text-center'>
-          <h2 className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'>
+          <Heading
+            level={2}
+            className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'
+          >
             <span className='text-stroke absolute -top-10 left-1/2 -translate-x-1/2 transform text-6xl opacity-20'>
-              Testimonials
+              Opinie
             </span>
-            What Our Clients Say
-          </h2>
+            Co mówią nasi klienci
+          </Heading>
           <div className='bg-secondary mx-auto mb-8 h-1 w-24'></div>
         </div>
 
@@ -119,10 +124,12 @@ const TestimonialsSection = () => {
                         ))}
                       </div>
                       <div className='text-center md:text-left'>
-                        <p className='text-primary font-serif text-xl font-semibold'>
+                        <Paragraph className='text-primary font-serif text-xl font-semibold'>
                           {testimonial.name}
-                        </p>
-                        <p className='text-sm text-gray-600 italic'>{testimonial.role}</p>
+                        </Paragraph>
+                        <Paragraph className='text-sm text-gray-600 italic'>
+                          {testimonial.role}
+                        </Paragraph>
                       </div>
                     </div>
                     <div className='md:w-2/3'>

@@ -3,6 +3,8 @@ import { HiClock, HiStar, HiUsers } from 'react-icons/hi';
 import clsxm from '@/lib/clsxm';
 
 import Container from '@/components/UI/grid/Container';
+import Heading from '@/components/UI/typography/Heading';
+import Paragraph from '@/components/UI/typography/Paragraph';
 
 interface FeatureCardProps {
   icon: React.ReactNode;
@@ -30,21 +32,21 @@ const AboutSection = () => {
   const features = [
     {
       icon: <HiUsers size={36} />,
-      title: 'Professional Team',
+      title: 'Profesjonalny zespół',
       description:
-        'Our certified installers bring years of expertise to every project, ensuring flawless results.',
+        'Nasi certyfikowani monterzy mają wieloletnie doświadczenie i dbają o perfekcyjny efekt każdej realizacji.',
     },
     {
       icon: <HiStar size={36} />,
-      title: 'High Quality',
+      title: 'Wysoka jakość',
       description:
-        'We source only premium wallpapers from renowned manufacturers for lasting beauty and durability.',
+        'Korzystamy wyłącznie z tapet premium od renomowanych producentów, aby zapewnić trwałość i piękny efekt.',
     },
     {
       icon: <HiClock size={36} />,
-      title: 'Fast Installation',
+      title: 'Szybki montaż',
       description:
-        'Efficient service that respects your time without compromising on quality and attention to detail.',
+        'Sprawna realizacja z poszanowaniem Twojego czasu, bez kompromisów w kwestii jakości i detali.',
     },
   ];
 
@@ -56,23 +58,26 @@ const AboutSection = () => {
       <Container className='relative'>
         <div className='mb-20 flex flex-col items-start gap-12 md:flex-row md:gap-24'>
           <div className='md:sticky md:top-32 md:w-1/3'>
-            <h2 className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'>
+            <Heading
+              level={2}
+              className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'
+            >
               <span className='text-stroke absolute -top-10 -left-4 text-6xl opacity-20'>
-                About
+                O nas
               </span>
-              About Us
-            </h2>
+              O nas
+            </Heading>
             <div className='bg-secondary mb-8 h-1 w-24'></div>
-            <p className='mb-6 text-lg leading-relaxed text-gray-700'>
-              With over 15 years of experience, WallpaperPro has been transforming homes and
-              businesses with exquisite wallpaper solutions. Our passion for design and commitment
-              to quality installation has made us the trusted choice for discerning clients.
-            </p>
-            <p className='text-lg leading-relaxed text-gray-700'>
-              We believe that wallpaper is not just a wall covering—it&apos;s an artistic statement
-              that defines your space. Our team works with interior designers and homeowners to
-              create environments that tell your unique story.
-            </p>
+            <Paragraph size='lg' className='mb-6 text-gray-700'>
+              Z ponad 15-letnim doświadczeniem, nazwa firmy odmienia wnętrza domów i firm dzięki
+              wyjątkowym rozwiązaniom tapetowym. Pasja do designu i dbałość o perfekcyjny montaż
+              sprawiają, że jesteśmy zaufanym wyborem wymagających klientów.
+            </Paragraph>
+            <Paragraph size='lg' className='text-gray-700'>
+              Wierzymy, że tapeta to nie tylko okładzina ścienna — to artystyczny akcent definiujący
+              przestrzeń. Współpracujemy z projektantami wnętrz i właścicielami domów, aby tworzyć
+              miejsca opowiadające Twoją historię.
+            </Paragraph>
           </div>
 
           <div className='md:w-2/3'>

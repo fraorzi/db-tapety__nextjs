@@ -7,6 +7,8 @@ import clsxm from '@/lib/clsxm';
 
 import Container from '@/components/UI/grid/Container';
 import NextImage from '@/components/UI/Image/NextImage';
+import Heading from '@/components/UI/typography/Heading';
+import Paragraph from '@/components/UI/typography/Paragraph';
 
 interface GalleryImage {
   id: number;
@@ -107,17 +109,20 @@ const GallerySection = () => {
 
       <Container className='relative'>
         <div className='mb-16 text-center'>
-          <h2 className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'>
+          <Heading
+            level={2}
+            className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'
+          >
             <span className='text-stroke absolute -top-10 left-1/2 -translate-x-1/2 transform text-6xl opacity-20'>
-              Gallery
+              Galeria
             </span>
-            Our Gallery
-          </h2>
+            Nasza galeria
+          </Heading>
           <div className='bg-secondary mx-auto mb-8 h-1 w-24'></div>
-          <p className='mx-auto max-w-2xl text-lg leading-relaxed text-gray-700'>
-            Explore our portfolio of before and after transformations. Click on any image to see the
-            dramatic difference our wallpaper solutions can make.
-          </p>
+          <Paragraph size='lg' className='mx-auto max-w-2xl text-gray-700'>
+            Zobacz nasze realizacje przed i po. Kliknij dowolne zdjęcie, aby zobaczyć, jak bardzo
+            zmienia się przestrzeń dzięki naszym tapetom.
+          </Paragraph>
         </div>
 
         <div ref={galleryRef} className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
@@ -148,8 +153,12 @@ const GallerySection = () => {
                 <div className='to-primary/60 absolute inset-0 bg-gradient-to-b from-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100'></div>
                 <div className='border-secondary/0 group-hover:border-secondary/30 absolute inset-0 border-4 transition-all duration-500'></div>
                 <div className='absolute right-0 bottom-0 left-0 translate-y-full transform p-6 transition-transform duration-500 group-hover:translate-y-0'>
-                  <h3 className='mb-2 font-serif text-xl font-medium text-white'>{image.title}</h3>
-                  <p className='text-sm text-white/80'>Click to view before & after</p>
+                  <Heading level={3} className='mb-2 font-serif text-xl font-medium text-white'>
+                    {image.title}
+                  </Heading>
+                  <Paragraph className='text-sm text-white/80'>
+                    Kliknij, aby zobaczyć przed i po
+                  </Paragraph>
                 </div>
               </div>
             </div>
@@ -171,7 +180,7 @@ const GallerySection = () => {
               <div className='relative h-[60vh]'>
                 <NextImage
                   src={isBeforeImage ? selectedImage.before : selectedImage.after}
-                  alt={`${selectedImage.title} - ${isBeforeImage ? 'Before' : 'After'}`}
+                  alt={`${selectedImage.title} - ${isBeforeImage ? 'Przed' : 'Po'}`}
                   fill
                   className='object-cover'
                 />
@@ -180,16 +189,16 @@ const GallerySection = () => {
                   onClick={toggleBeforeAfter}
                   className='bg-primary hover:bg-secondary absolute right-6 bottom-6 rounded-md px-6 py-3 font-medium text-white transition-colors'
                 >
-                  Show {isBeforeImage ? 'After' : 'Before'}
+                  Pokaż {isBeforeImage ? 'Po' : 'Przed'}
                 </button>
               </div>
               <div className='p-6'>
-                <h3 className='text-primary font-serif text-2xl font-medium'>
+                <Heading level={3} className='text-primary font-serif text-2xl font-medium'>
                   {selectedImage.title}
-                </h3>
-                <p className='mt-2 text-gray-600'>
-                  {isBeforeImage ? 'Before' : 'After'} transformation
-                </p>
+                </Heading>
+                <Paragraph className='mt-2 text-gray-600'>
+                  {isBeforeImage ? 'Przed' : 'Po'} — transformacja
+                </Paragraph>
               </div>
             </div>
           </div>

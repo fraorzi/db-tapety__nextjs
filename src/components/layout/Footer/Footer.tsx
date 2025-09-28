@@ -8,14 +8,20 @@ import Container from '@/components/UI/grid/Container';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = ['Home', 'About Us', 'Services', 'Gallery', 'Contact'];
+  const quickLinks = [
+    { label: 'Strona główna', id: 'home' },
+    { label: 'O nas', id: 'about-us' },
+    { label: 'Usługi', id: 'services' },
+    { label: 'Galeria', id: 'gallery' },
+    { label: 'Kontakt', id: 'contact' },
+  ];
   const services = [
-    'Wallpaper Sales',
-    'Professional Installation',
-    'Custom Design',
-    'Consultation',
-    'Commercial Projects',
-    'Residential Projects',
+    'Sprzedaż tapet',
+    'Profesjonalny montaż',
+    'Projekt na zamówienie',
+    'Konsultacje',
+    'Projekty komercyjne',
+    'Projekty prywatne',
   ];
 
   const socialLinks = [
@@ -32,12 +38,10 @@ const Footer = () => {
       <Container className='relative pt-32 pb-12'>
         <div className='grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4'>
           <div>
-            <h3 className='text-secondary mb-6 font-serif text-2xl font-bold italic'>
-              WallpaperPro
-            </h3>
+            <h3 className='text-secondary mb-6 font-serif text-2xl font-bold italic'>Logo</h3>
             <p className='mb-8 leading-relaxed text-gray-300'>
-              Transforming spaces with premium wallpaper solutions and expert installation services
-              since 2008.
+              Odmieniamy przestrzenie dzięki premiumowym tapetom i fachowemu montażowi — od 2008
+              roku.
             </p>
             <div className='flex space-x-5'>
               {socialLinks.map(({ icon: Icon, href, label }) => (
@@ -54,15 +58,15 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className='mb-6 font-serif text-xl font-medium'>Quick Links</h3>
+            <h3 className='mb-6 font-serif text-xl font-medium'>Szybkie linki</h3>
             <ul className='space-y-4'>
-              {quickLinks.map((item) => (
-                <li key={item}>
+              {quickLinks.map(({ label, id }) => (
+                <li key={id}>
                   <a
-                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={`#${id}`}
                     className='group hover:text-secondary relative inline-block text-gray-300 transition-colors'
                   >
-                    <span className='relative z-10'>{item}</span>
+                    <span className='relative z-10'>{label}</span>
                     <span className='bg-secondary/50 absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
                   </a>
                 </li>
@@ -71,7 +75,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className='mb-6 font-serif text-xl font-medium'>Our Services</h3>
+            <h3 className='mb-6 font-serif text-xl font-medium'>Nasze usługi</h3>
             <ul className='space-y-4'>
               {services.map((item) => (
                 <li key={item}>
@@ -88,7 +92,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className='mb-6 font-serif text-xl font-medium'>Contact Us</h3>
+            <h3 className='mb-6 font-serif text-xl font-medium'>Kontakt</h3>
             <address className='space-y-4 text-gray-300 not-italic'>
               <div className='flex items-center'>
                 <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
@@ -111,16 +115,16 @@ const Footer = () => {
                 <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
                   <HiMail size={12} className='text-secondary' />
                 </span>
-                <p>info@wallpaperpro.com</p>
+                <p>info@nazwa-firmy.pl</p>
               </div>
 
-              <p className='ml-9'>Hours: Mon-Fri 9am-6pm</p>
+              <p className='ml-9'>Godziny: Pon–Pt 9:00–18:00</p>
             </address>
           </div>
         </div>
 
         <div className='mt-16 border-t border-gray-700/50 pt-8 text-center text-gray-400'>
-          <p>© {currentYear} WallpaperPro. All rights reserved.</p>
+          <p>© {currentYear} nazwa firmy. Wszelkie prawa zastrzeżone.</p>
         </div>
       </Container>
     </footer>

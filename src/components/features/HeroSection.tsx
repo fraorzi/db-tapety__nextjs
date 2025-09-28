@@ -1,6 +1,8 @@
 import Button from '@/components/UI/buttons/Button';
 import Container from '@/components/UI/grid/Container';
 import NextImage from '@/components/UI/Image/NextImage';
+import Heading from '@/components/UI/typography/Heading';
+import Paragraph from '@/components/UI/typography/Paragraph';
 
 const HeroSection = () => {
   return (
@@ -8,7 +10,7 @@ const HeroSection = () => {
       <div className='absolute inset-0 h-full w-full'>
         <NextImage
           src='https://images.unsplash.com/photo-1595514535215-8a5b0fad360b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80'
-          alt='Premium wallpaper interior design'
+          alt='Wnętrze z premium tapetą'
           fill
           className='object-cover'
           priority
@@ -20,25 +22,32 @@ const HeroSection = () => {
         <Container className='relative'>
           <div className='ml-0 max-w-3xl pt-24 md:ml-12 md:pt-0 lg:ml-24'>
             <div className='relative mb-6'>
-              <h2 className='text-secondary mb-4 font-serif text-xl italic md:text-2xl'>
-                Elevate Your Interior
-              </h2>
-              <h1 className='font-serif text-4xl leading-tight font-bold text-white md:text-6xl lg:text-7xl'>
-                Transform Your Space With <span className='text-secondary italic'>Artistry</span>
-              </h1>
+              <Heading
+                level={2}
+                className='text-secondary mb-4 font-serif text-xl italic md:text-2xl'
+              >
+                Wnieś swoje wnętrze na wyższy poziom
+              </Heading>
+              <Heading
+                level={1}
+                className='font-serif text-4xl leading-tight font-bold text-white md:text-6xl lg:text-7xl'
+              >
+                Odmień swoją przestrzeń dzięki{' '}
+                <span className='text-secondary italic'>kunsztowi</span>
+              </Heading>
               <div className='bg-secondary absolute top-1/2 -left-12 hidden h-1 w-8 -translate-y-1/2 transform md:block'></div>
             </div>
-            <p className='mb-12 max-w-xl text-lg leading-relaxed text-white/90 md:text-xl'>
-              Premium wallpaper solutions and professional installation services that elevate your
-              interior design. Our curated collection brings texture, depth, and personality to any
-              space.
-            </p>
+            <Paragraph className='mb-12 max-w-xl text-lg leading-relaxed text-white/90 md:text-xl'>
+              Premiumowe tapety i profesjonalny montaż, które wyniosą Twoje wnętrze na wyższy
+              poziom. Nasza starannie dobrana kolekcja dodaje strukturę, głębię i charakter każdej
+              przestrzeni.
+            </Paragraph>
             <div className='flex flex-col gap-6 sm:flex-row'>
               <Button variant='secondary' size='large'>
-                Get a Free Quote
+                Uzyskaj darmową wycenę
               </Button>
               <Button variant='outline' size='large'>
-                View Our Gallery
+                Zobacz galerię
               </Button>
             </div>
           </div>

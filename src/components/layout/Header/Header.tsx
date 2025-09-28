@@ -11,9 +11,9 @@ import Logo from '@/components/UI/icons/Logo';
 import { Routes } from '@/constant/routes';
 
 const links = [
-  { href: Routes.HOME, label: 'Home' },
-  { href: Routes.COMPONENTS, label: 'Components' },
-  { href: Routes.SANDBOX_FORMS, label: 'Forms' },
+  { href: Routes.HOME, label: 'Strona główna' },
+  { href: Routes.COMPONENTS, label: 'Komponenty' },
+  { href: Routes.SANDBOX_FORMS, label: 'Formularze' },
 ];
 
 export default function Header() {
@@ -23,7 +23,7 @@ export default function Header() {
     <header className='sticky top-0 z-50 bg-white py-6 shadow-sm'>
       <Container>
         <div className='flex items-center justify-between'>
-          <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
+          <UnstyledLink href='/public' className='font-bold hover:text-gray-600'>
             <Logo className='w-full max-w-[80px] md:max-w-[120px]' />
           </UnstyledLink>
           <nav>

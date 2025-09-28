@@ -6,7 +6,7 @@ describe('Homepage', () => {
   it('renders the Components', () => {
     render(<NotFoundPage />);
 
-    const heading = screen.getByText(/Page Not Found/i);
+    const heading = screen.getByText(/Nie znaleziono strony/i);
 
     expect(heading).toBeInTheDocument();
   });

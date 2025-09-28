@@ -4,6 +4,8 @@ import { HiWrenchScrewdriver } from 'react-icons/hi2';
 import clsxm from '@/lib/clsxm';
 
 import Container from '@/components/UI/grid/Container';
+import Heading from '@/components/UI/typography/Heading';
+import Paragraph from '@/components/UI/typography/Paragraph';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -21,10 +23,13 @@ const ServiceCard = ({ icon, title, description, className }: ServiceCardProps) 
           <div className='bg-cream group-hover:bg-secondary mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full transition-colors duration-500'>
             <div className='text-primary'>{icon}</div>
           </div>
-          <h3 className='text-primary mb-4 text-center font-serif text-xl font-semibold'>
+          <Heading
+            level={3}
+            className='text-primary mb-4 text-center font-serif text-xl font-semibold'
+          >
             {title}
-          </h3>
-          <p className='text-center text-gray-600'>{description}</p>
+          </Heading>
+          <Paragraph className='text-center text-gray-600'>{description}</Paragraph>
         </div>
         <div className='bg-secondary h-1 w-0 transition-all duration-700 group-hover:w-full'></div>
       </div>
@@ -36,27 +41,26 @@ const ServicesSection = () => {
   const services = [
     {
       icon: <HiShoppingBag size={32} />,
-      title: 'Wallpaper Sales',
-      description:
-        'Browse our extensive collection of premium wallpapers from leading manufacturers worldwide.',
+      title: 'Sprzedaż tapet',
+      description: 'Poznaj naszą szeroką kolekcję tapet premium od wiodących producentów.',
     },
     {
       icon: <HiWrenchScrewdriver size={32} />,
-      title: 'Wallpaper Installation',
+      title: 'Montaż tapet',
       description:
-        'Professional installation services ensuring perfect alignment and flawless finishes.',
+        'Profesjonalny montaż gwarantujący idealne spasowanie i perfekcyjne wykończenie.',
     },
     {
       icon: <HiColorSwatch size={32} />,
-      title: 'Custom Designs',
+      title: 'Projekty na zamówienie',
       description:
-        'Create unique, personalized wallpaper designs tailored to your specific vision and space.',
+        'Tworzymy unikalne, spersonalizowane wzory dopasowane do Twojej wizji i przestrzeni.',
     },
     {
       icon: <HiSupport size={32} />,
-      title: 'Consultation',
+      title: 'Konsultacje',
       description:
-        'Expert advice on pattern selection, material choices, and design coordination for your space.',
+        'Eksperckie doradztwo w doborze wzorów, materiałów i spójności projektu dla Twojego wnętrza.',
     },
   ];
 
@@ -66,17 +70,20 @@ const ServicesSection = () => {
 
       <Container className='relative'>
         <div className='mb-20 flex flex-col items-center'>
-          <h2 className='text-primary relative mb-6 text-center font-serif text-4xl font-bold md:text-5xl'>
+          <Heading
+            level={2}
+            className='text-primary relative mb-6 text-center font-serif text-4xl font-bold md:text-5xl'
+          >
             <span className='text-stroke absolute -top-10 left-1/2 -translate-x-1/2 transform text-6xl opacity-20'>
-              Services
+              Usługi
             </span>
-            Our Services
-          </h2>
+            Nasze usługi
+          </Heading>
           <div className='bg-secondary mb-8 h-1 w-24'></div>
-          <p className='mx-auto max-w-2xl text-center text-lg leading-relaxed text-gray-700'>
-            We offer comprehensive wallpaper solutions from selection to flawless installation,
-            ensuring your space is transformed with elegance and precision.
-          </p>
+          <Paragraph size='lg' className='mx-auto max-w-2xl text-center text-gray-700'>
+            Oferujemy kompleksowe rozwiązania — od wyboru tapety po perfekcyjny montaż — aby Twoja
+            przestrzeń zyskała elegancję i precyzję.
+          </Paragraph>
         </div>
 
         <div className='grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4'>
