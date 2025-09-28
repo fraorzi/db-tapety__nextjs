@@ -13,7 +13,7 @@ export const metadata = {
 export default function NotFoundPage() {
   return (
     <>
-      <div className='flex w-full flex-1 flex-col items-center justify-center pb-20'>
+      <div className='bg-secondary/40 flex w-full flex-1 flex-col items-center justify-center pt-48 pb-28'>
         <RiAlarmWarningLine size={60} className='drop-shadow-glow text-red-500' />
         <h1 className='mt-8 text-4xl md:text-6xl'>Page Not Found</h1>
 
