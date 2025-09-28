@@ -28,7 +28,6 @@ const FramerMotionExample = () => {
 
   return (
     <div className='space-y-6'>
-      {/* Basic Hover & Tap */}
       <div>
         <h5 className='mb-2 text-sm font-medium'>Basic Hover & Tap</h5>
         <motion.div
@@ -39,7 +38,6 @@ const FramerMotionExample = () => {
         />
       </div>
 
-      {/* Layout Animation */}
       <div>
         <h5 className='mb-2 text-sm font-medium'>Layout Animation</h5>
         <motion.div
@@ -67,7 +65,6 @@ const FramerMotionExample = () => {
         </AnimatePresence>
       </div>
 
-      {/* Stagger Animation */}
       <div>
         <h5 className='mb-2 text-sm font-medium'>Stagger Animation (click to trigger)</h5>
         <button
@@ -94,7 +91,6 @@ const FramerMotionExample = () => {
         </motion.div>
       </div>
 
-      {/* Tab Animation */}
       <div>
         <h5 className='mb-2 text-sm font-medium'>Animated Tabs</h5>
         <div className='relative'>
@@ -119,7 +115,6 @@ const FramerMotionExample = () => {
         </div>
       </div>
 
-      {/* Card with Complex Animation */}
       <div>
         <h5 className='mb-2 text-sm font-medium'>Complex Card Animation</h5>
         <motion.div
@@ -150,7 +145,6 @@ const FramerMotionExample = () => {
         </motion.div>
       </div>
 
-      {/* Drag Animation */}
       <div>
         <h5 className='mb-2 text-sm font-medium'>Draggable Element</h5>
         <div className='h-32 w-full rounded border-2 border-dashed border-gray-300 p-1'>

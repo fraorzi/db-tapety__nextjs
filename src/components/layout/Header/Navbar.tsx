@@ -44,9 +44,7 @@ const Navbar = ({ className }: NavbarProps) => {
     <nav
       className={clsxm(
         'fixed z-50 w-full transition-all duration-500',
-        scrolled
-          ? 'bg-primary-50 bg-opacity-95 py-6 shadow-lg backdrop-blur-sm'
-          : 'bg-transparent py-6',
+        scrolled ? 'bg-beige bg-opacity-95 py-6 shadow-lg backdrop-blur-sm' : 'bg-transparent py-6',
         className,
       )}
     >
@@ -56,16 +54,13 @@ const Navbar = ({ className }: NavbarProps) => {
             <h1
               className={clsxm(
                 'font-serif text-xl font-bold italic md:text-2xl',
-                scrolled
-                  ? 'text-primary-950'
-                  : 'text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_40%)]',
+                scrolled ? 'text-primary' : 'text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_40%)]',
               )}
             >
               WallpaperPro
             </h1>
           </div>
 
-          {/* Desktop Navigation */}
           <div className='hidden space-x-10 md:flex'>
             {navItems.map((item) => (
               <button
@@ -73,22 +68,21 @@ const Navbar = ({ className }: NavbarProps) => {
                 onClick={() => scrollToSection(item.toLowerCase().replace(/\s+/g, '-'))}
                 className={clsxm(
                   'group relative overflow-hidden font-medium transition-colors duration-300',
-                  scrolled ? 'text-primary-950' : 'text-white',
+                  scrolled ? 'text-primary' : 'text-white',
                 )}
               >
                 <span className='relative z-10'>{item}</span>
-                <span className='bg-primary-300 absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
+                <span className='bg-secondary absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
               </button>
             ))}
           </div>
 
-          {/* Mobile Navigation Toggle */}
           <div className='md:hidden'>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={clsxm(
                 'transition-colors focus:outline-none',
-                scrolled ? 'text-primary-950' : 'text-white',
+                scrolled ? 'text-primary' : 'text-white',
               )}
               aria-label='Toggle navigation menu'
             >
@@ -97,18 +91,17 @@ const Navbar = ({ className }: NavbarProps) => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
-          <div className='bg-primary-50 bg-opacity-95 absolute top-full right-0 left-0 mx-4 mt-4 rounded-lg p-6 shadow-lg backdrop-blur-sm md:hidden'>
+          <div className='bg-beige bg-opacity-95 absolute top-full right-0 left-0 mx-4 mt-4 rounded-lg p-6 shadow-lg backdrop-blur-sm md:hidden'>
             <div className='flex flex-col space-y-6'>
               {navItems.map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase().replace(/\s+/g, '-'))}
-                  className='group text-primary-950 hover:text-primary-300 relative py-2 font-medium transition-colors'
+                  className='group text-primary hover:text-secondary relative py-2 font-medium transition-colors'
                 >
                   <span>{item}</span>
-                  <span className='bg-primary-300 absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
+                  <span className='bg-secondary absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
                 </button>
               ))}
             </div>

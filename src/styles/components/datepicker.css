@@ -63,6 +63,6 @@
 .react-datepicker__quarter-text--keyboard-selected,
 .react-datepicker__year-text--keyboard-selected {
   color: var(--color-white) !important;
-  background-color: var(--color-primary-500) !important;
+  background-color: var(--color-primary) !important;
 }
 /* #endregion  /**======== Datepicker =========== */

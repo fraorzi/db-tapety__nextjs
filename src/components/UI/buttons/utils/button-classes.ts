@@ -15,30 +15,27 @@ export const buttonSizeClasses = (size: ButtonSize) => {
 export const buttonVariantClasses = (variant: keyof typeof ButtonVariant) => {
   return clsx([
     variant === 'primary' && [
-      'bg-primary-950 text-white',
-      'border-primary-950 border',
-      'hover:bg-primary-800 hover:text-white',
-      'active:bg-primary-900',
-      'disabled:bg-primary-400 disabled:hover:bg-primary-400',
+      'bg-primary text-white',
+      'border-primary border',
+      'hover:bg-primary/80 hover:text-white',
+      'active:bg-primary/90',
+      'disabled:bg-primary/40 disabled:hover:bg-primary/40',
     ],
     variant === 'secondary' && [
-      'bg-primary-300 text-primary-950',
-      'border-primary-300 border',
-      'hover:bg-primary-200 hover:text-primary-950',
-      'active:bg-primary-400',
-      'disabled:bg-primary-100 disabled:hover:bg-primary-100',
+      'bg-secondary text-primary',
+      'border-secondary border',
+      'hover:bg-secondary/80 hover:text-primary',
+      'active:bg-secondary',
+      'disabled:bg-secondary/40 disabled:hover:bg-secondary/40',
     ],
     variant === 'outline' && [
-      'text-primary-300 bg-transparent',
-      'border-primary-300 border-2',
-      'hover:bg-primary-300 hover:text-primary-950',
-      'active:bg-primary-200',
-      'disabled:border-primary-100 disabled:text-primary-100',
+      'text-secondary bg-transparent',
+      'border-secondary border-2',
+      'hover:bg-secondary hover:text-primary',
+      'active:bg-secondary/80',
+      'disabled:border-secondary/40 disabled:text-secondary/40',
     ],
-    variant === 'ghost' && [
-      'text-primary-500',
-      'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
-    ],
+    variant === 'ghost' && ['text-primary', 'hover:bg-beige active:bg-cream disabled:bg-cream'],
     variant === 'light' && [
       'text-dark bg-white',
       'border border-gray-300',
@@ -61,7 +58,7 @@ export const buttonClasses = (variant: keyof typeof ButtonVariant, size: ButtonS
     'cursor-pointer', // default cursor
 
     // focus classes
-    'focus-visible:ring-primary-500 focus:outline-hidden focus-visible:rounded-xl focus-visible:ring-2 focus-visible:ring-offset-2',
+    'focus-visible:ring-secondary focus:outline-hidden focus-visible:rounded-xl focus-visible:ring-2 focus-visible:ring-offset-2',
 
     // transitions
     'transition-colors',

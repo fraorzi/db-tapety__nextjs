@@ -22,12 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className='flex min-h-screen flex-col'>
         <Analytics />
 
-        <NextTopLoader
-          height={4}
-          color='var(--color-primary-500)'
-          showSpinner={false}
-          shadow='none'
-        />
+        <NextTopLoader height={4} color='var(--color-primary)' showSpinner={false} shadow='none' />
 
         <Navbar />
 

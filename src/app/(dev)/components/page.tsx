@@ -56,25 +56,16 @@ export default async function ComponentsPage() {
           </div>
         </div>
 
-        {/* Custom Utilities Test */}
         <div className='bg-beige mb-8 rounded-lg p-6'>
           <h2 className='text-dark-green mb-4 font-serif text-2xl font-semibold'>
             Custom Utilities & Textures
           </h2>
 
-          {/* Text Stroke Test */}
           <div className='mb-6'>
             <h3 className='text-dark-green mb-2 text-lg font-semibold'>Text Stroke</h3>
             <div className='text-stroke font-serif text-6xl font-bold'>DB TAPETY</div>
           </div>
 
-          {/* Curved Divider Test */}
-          <div className='mb-6'>
-            <h3 className='text-dark-green mb-2 text-lg font-semibold'>Curved Divider</h3>
-            <div className='curved-divider curved-divider-top bg-soft-gold'></div>
-          </div>
-
-          {/* Background Textures Test */}
           <div className='mb-6'>
             <h3 className='text-dark-green mb-4 text-lg font-semibold'>Background Textures</h3>
             <div className='grid grid-cols-1 gap-4 sm:grid-cols-3'>
@@ -96,7 +87,6 @@ export default async function ComponentsPage() {
             </div>
           </div>
 
-          {/* Typography Test */}
           <div className='mb-6'>
             <h3 className='text-dark-green mb-4 text-lg font-semibold'>Typography</h3>
             <div className='space-y-2'>

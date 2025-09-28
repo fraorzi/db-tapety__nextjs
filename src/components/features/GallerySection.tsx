@@ -101,26 +101,25 @@ const GallerySection = () => {
   }, []);
 
   return (
-    <section id='gallery' className='bg-primary-50 relative overflow-hidden py-24'>
-      <div className='bg-primary-300/10 absolute top-40 left-20 h-64 w-64 rounded-full blur-3xl'></div>
-      <div className='bg-primary-950/5 absolute right-10 bottom-20 h-80 w-80 rounded-full blur-3xl'></div>
+    <section id='gallery' className='bg-beige relative overflow-hidden py-24'>
+      <div className='bg-secondary/10 absolute top-40 left-20 h-64 w-64 rounded-full blur-3xl'></div>
+      <div className='bg-primary/5 absolute right-10 bottom-20 h-80 w-80 rounded-full blur-3xl'></div>
 
       <Container className='relative'>
         <div className='mb-16 text-center'>
-          <h2 className='text-primary-950 relative mb-6 font-serif text-4xl font-bold md:text-5xl'>
+          <h2 className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'>
             <span className='text-stroke absolute -top-10 left-1/2 -translate-x-1/2 transform text-6xl opacity-20'>
               Gallery
             </span>
             Our Gallery
           </h2>
-          <div className='bg-primary-300 mx-auto mb-8 h-1 w-24'></div>
+          <div className='bg-secondary mx-auto mb-8 h-1 w-24'></div>
           <p className='mx-auto max-w-2xl text-lg leading-relaxed text-gray-700'>
             Explore our portfolio of before and after transformations. Click on any image to see the
             dramatic difference our wallpaper solutions can make.
           </p>
         </div>
 
-        {/* Masonry Gallery */}
         <div ref={galleryRef} className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
           {galleryImages.map((image, index) => (
             <div
@@ -146,8 +145,8 @@ const GallerySection = () => {
                   fill
                   className='object-cover transition-transform duration-700 group-hover:scale-110'
                 />
-                <div className='to-primary-950/60 absolute inset-0 bg-gradient-to-b from-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100'></div>
-                <div className='border-primary-300/0 group-hover:border-primary-300/30 absolute inset-0 border-4 transition-all duration-500'></div>
+                <div className='to-primary/60 absolute inset-0 bg-gradient-to-b from-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100'></div>
+                <div className='border-secondary/0 group-hover:border-secondary/30 absolute inset-0 border-4 transition-all duration-500'></div>
                 <div className='absolute right-0 bottom-0 left-0 translate-y-full transform p-6 transition-transform duration-500 group-hover:translate-y-0'>
                   <h3 className='mb-2 font-serif text-xl font-medium text-white'>{image.title}</h3>
                   <p className='text-sm text-white/80'>Click to view before & after</p>
@@ -158,13 +157,12 @@ const GallerySection = () => {
         </div>
       </Container>
 
-      {/* Lightbox */}
       {selectedImage && (
         <div className='bg-opacity-90 fixed inset-0 z-50 flex items-center justify-center bg-black p-4'>
           <div className='relative w-full max-w-5xl'>
             <button
               onClick={closeLightbox}
-              className='hover:text-primary-300 absolute -top-16 right-0 text-white transition-colors'
+              className='hover:text-secondary absolute -top-16 right-0 text-white transition-colors'
               aria-label='Close lightbox'
             >
               <HiX size={24} />
@@ -177,16 +175,16 @@ const GallerySection = () => {
                   fill
                   className='object-cover'
                 />
-                <div className='border-primary-300/10 absolute inset-0 border-8'></div>
+                <div className='border-secondary/10 absolute inset-0 border-8'></div>
                 <button
                   onClick={toggleBeforeAfter}
-                  className='bg-primary-950 hover:bg-primary-300 absolute right-6 bottom-6 rounded-md px-6 py-3 font-medium text-white transition-colors'
+                  className='bg-primary hover:bg-secondary absolute right-6 bottom-6 rounded-md px-6 py-3 font-medium text-white transition-colors'
                 >
                   Show {isBeforeImage ? 'After' : 'Before'}
                 </button>
               </div>
               <div className='p-6'>
-                <h3 className='text-primary-950 font-serif text-2xl font-medium'>
+                <h3 className='text-primary font-serif text-2xl font-medium'>
                   {selectedImage.title}
                 </h3>
                 <p className='mt-2 text-gray-600'>
@@ -197,11 +195,6 @@ const GallerySection = () => {
           </div>
         </div>
       )}
-
-      {/* Curved divider */}
-      <div className='absolute right-0 bottom-0 left-0 h-24 rotate-180 transform overflow-hidden'>
-        <div className='bg-primary-100 absolute right-0 bottom-0 left-0 h-48 rounded-tl-[50%] rounded-tr-[50%]'></div>
-      </div>
     </section>
   );
 };

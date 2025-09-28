@@ -1,5 +1,4 @@
 @theme {
-  --font-sans:
-    var(--font-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-family-sans: Inter, sans-serif;
+  --font-family-serif: 'Playfair Display', serif;
 }

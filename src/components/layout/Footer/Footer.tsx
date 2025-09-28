@@ -26,19 +26,13 @@ const Footer = () => {
   ];
 
   return (
-    <footer className='bg-primary-950 relative overflow-hidden text-white'>
+    <footer className='bg-primary relative overflow-hidden text-white'>
       <div className='bg-texture-3 absolute top-0 left-0 h-full w-full bg-cover opacity-5'></div>
-
-      {/* Curved divider */}
-      <div className='absolute top-0 right-0 left-0 h-24 rotate-180 transform overflow-hidden'>
-        <div className='bg-primary-50 absolute top-0 right-0 left-0 h-48 rounded-br-[50%] rounded-bl-[50%]'></div>
-      </div>
 
       <Container className='relative pt-32 pb-12'>
         <div className='grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4'>
-          {/* Company Info */}
           <div>
-            <h3 className='text-primary-300 mb-6 font-serif text-2xl font-bold italic'>
+            <h3 className='text-secondary mb-6 font-serif text-2xl font-bold italic'>
               WallpaperPro
             </h3>
             <p className='mb-8 leading-relaxed text-gray-300'>
@@ -48,10 +42,10 @@ const Footer = () => {
             <div className='flex space-x-5'>
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a key={label} href={href} className='group'>
-                  <div className='border-primary-300/30 group-hover:border-primary-300 group-hover:bg-primary-300 flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300'>
+                  <div className='border-secondary/30 group-hover:border-secondary group-hover:bg-secondary flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300'>
                     <Icon
                       size={18}
-                      className='group-hover:text-primary-950 text-gray-300 transition-colors duration-300'
+                      className='group-hover:text-primary text-gray-300 transition-colors duration-300'
                     />
                   </div>
                 </a>
@@ -59,7 +53,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className='mb-6 font-serif text-xl font-medium'>Quick Links</h3>
             <ul className='space-y-4'>
@@ -67,17 +60,16 @@ const Footer = () => {
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                    className='group hover:text-primary-300 relative inline-block text-gray-300 transition-colors'
+                    className='group hover:text-secondary relative inline-block text-gray-300 transition-colors'
                   >
                     <span className='relative z-10'>{item}</span>
-                    <span className='bg-primary-300/50 absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
+                    <span className='bg-secondary/50 absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
           <div>
             <h3 className='mb-6 font-serif text-xl font-medium'>Our Services</h3>
             <ul className='space-y-4'>
@@ -85,23 +77,22 @@ const Footer = () => {
                 <li key={item}>
                   <a
                     href='#services'
-                    className='group hover:text-primary-300 relative inline-block text-gray-300 transition-colors'
+                    className='group hover:text-secondary relative inline-block text-gray-300 transition-colors'
                   >
                     <span className='relative z-10'>{item}</span>
-                    <span className='bg-primary-300/50 absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
+                    <span className='bg-secondary/50 absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className='mb-6 font-serif text-xl font-medium'>Contact Us</h3>
             <address className='space-y-4 text-gray-300 not-italic'>
               <div className='flex items-center'>
-                <span className='bg-primary-300/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
-                  <HiLocationMarker size={12} className='text-primary-300' />
+                <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
+                  <HiLocationMarker size={12} className='text-secondary' />
                 </span>
                 <div>
                   <p>123 Design Street</p>
@@ -110,15 +101,15 @@ const Footer = () => {
               </div>
 
               <div className='flex items-center'>
-                <span className='bg-primary-300/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
-                  <HiPhone size={12} className='text-primary-300' />
+                <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
+                  <HiPhone size={12} className='text-secondary' />
                 </span>
                 <p>(555) 123-4567</p>
               </div>
 
               <div className='flex items-center'>
-                <span className='bg-primary-300/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
-                  <HiMail size={12} className='text-primary-300' />
+                <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
+                  <HiMail size={12} className='text-secondary' />
                 </span>
                 <p>info@wallpaperpro.com</p>
               </div>

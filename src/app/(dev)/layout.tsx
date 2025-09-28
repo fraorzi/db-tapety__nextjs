@@ -1,7 +1,14 @@
+import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { Toaster } from 'sonner';
 
 export default function DevLayout({ children }: { children: ReactNode }) {
+  const isProd = process.env.VERCEL_ENV === 'production';
+  if (isProd) {
+    // Hide all routes under the (dev) group in production
+    notFound();
+  }
+
   return (
     <>
       {children}

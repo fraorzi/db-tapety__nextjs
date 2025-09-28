@@ -12,7 +12,7 @@ const FooterMenu = () => {
       {links.map((link) => (
         <li key={link.label}>
           <UnstyledLink
-            className='hover:text-primary-500 focus-visible:ring-offset-primary-950'
+            className='hover:text-secondary focus-visible:ring-offset-primary'
             href={link.href}
           >
             {link.label}

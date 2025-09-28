@@ -17,6 +17,7 @@ interface Testimonial {
 
 const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [resetKey, setResetKey] = useState(0);
 
   const testimonials: Testimonial[] = [
     {
@@ -52,27 +53,27 @@ const TestimonialsSection = () => {
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const id = setTimeout(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 5000);
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
+    return () => clearTimeout(id);
+  }, [activeIndex, testimonials.length, resetKey]);
 
   return (
-    <section className='bg-primary-100 relative overflow-hidden py-24'>
-      <div className='bg-texture-1 absolute top-0 left-0 h-full w-full bg-cover opacity-5'></div>
-      <div className='bg-primary-300/10 absolute top-20 right-20 h-64 w-64 rounded-full blur-3xl'></div>
-      <div className='bg-primary-950/5 absolute bottom-20 left-10 h-80 w-80 rounded-full blur-3xl'></div>
+    <section className='bg-cream relative overflow-hidden py-24'>
+      <div className='bg-texture-1 pointer-events-none absolute top-0 left-0 h-full w-full bg-cover opacity-5'></div>
+      <div className='bg-secondary/10 pointer-events-none absolute top-20 right-20 h-64 w-64 rounded-full blur-3xl'></div>
+      <div className='bg-primary/5 pointer-events-none absolute bottom-20 left-10 h-80 w-80 rounded-full blur-3xl'></div>
 
       <Container className='relative'>
         <div className='mb-16 text-center'>
-          <h2 className='text-primary-950 relative mb-6 font-serif text-4xl font-bold md:text-5xl'>
+          <h2 className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'>
             <span className='text-stroke absolute -top-10 left-1/2 -translate-x-1/2 transform text-6xl opacity-20'>
               Testimonials
             </span>
             What Our Clients Say
           </h2>
-          <div className='bg-primary-300 mx-auto mb-8 h-1 w-24'></div>
+          <div className='bg-secondary mx-auto mb-8 h-1 w-24'></div>
         </div>
 
         <div className='mx-auto max-w-5xl'>
@@ -89,13 +90,13 @@ const TestimonialsSection = () => {
                 }`}
               >
                 <div className='relative overflow-hidden rounded-lg bg-white p-10 shadow-xl'>
-                  <div className='bg-texture-2 absolute top-0 left-0 h-full w-full bg-cover opacity-5'></div>
-                  <div className='absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 transform'>
-                    <div className='text-primary-300/10 font-serif text-[200px] italic'>&quot;</div>
+                  <div className='bg-texture-2 pointer-events-none absolute top-0 left-0 h-full w-full bg-cover opacity-5'></div>
+                  <div className='pointer-events-none absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 transform'>
+                    <div className='text-secondary/10 font-serif text-[200px] italic'>&quot;</div>
                   </div>
                   <div className='relative z-10 flex flex-col gap-10 md:flex-row'>
                     <div className='flex flex-col items-center md:w-1/3 md:items-start'>
-                      <div className='border-primary-300/20 mb-6 h-32 w-32 overflow-hidden rounded-full border-4 shadow-lg'>
+                      <div className='border-secondary/20 mb-6 h-32 w-32 overflow-hidden rounded-full border-4 shadow-lg'>
                         <NextImage
                           src={testimonial.image}
                           alt={testimonial.name}
@@ -111,14 +112,14 @@ const TestimonialsSection = () => {
                             size={20}
                             className={`${
                               i < testimonial.rating
-                                ? 'text-primary-300 fill-primary-300'
+                                ? 'text-secondary fill-secondary'
                                 : 'text-gray-300'
                             }`}
                           />
                         ))}
                       </div>
                       <div className='text-center md:text-left'>
-                        <p className='text-primary-950 font-serif text-xl font-semibold'>
+                        <p className='text-primary font-serif text-xl font-semibold'>
                           {testimonial.name}
                         </p>
                         <p className='text-sm text-gray-600 italic'>{testimonial.role}</p>
@@ -126,11 +127,11 @@ const TestimonialsSection = () => {
                     </div>
                     <div className='md:w-2/3'>
                       <blockquote className='relative mb-6 font-serif text-lg leading-relaxed text-gray-700 italic'>
-                        <span className='text-primary-300 absolute -top-2 -left-4 text-2xl'>
+                        <span className='text-secondary absolute -top-2 -left-4 text-2xl'>
                           &quot;
                         </span>
                         {testimonial.content}
-                        <span className='text-primary-300 absolute text-2xl'>&quot;</span>
+                        <span className='text-secondary absolute text-2xl'>&quot;</span>
                       </blockquote>
                     </div>
                   </div>
@@ -139,40 +140,29 @@ const TestimonialsSection = () => {
             ))}
           </div>
 
-          <div className='mt-10 flex justify-center space-x-3'>
+          <div className='relative z-20 mt-10 flex justify-center space-x-3'>
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => {
+                  setActiveIndex(index);
+                  setResetKey((k) => k + 1);
+                }}
                 className={`group relative h-3 w-12 overflow-hidden rounded-full transition-all duration-300 ${
-                  index === activeIndex ? 'bg-primary-300' : 'bg-primary-300/30'
+                  index === activeIndex
+                    ? 'bg-secondary/20 ring-secondary ring-2'
+                    : 'bg-secondary/30'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               >
                 {index === activeIndex && (
-                  <span className='bg-primary-950 absolute inset-0 h-full w-full -translate-x-full animate-[testimonial-progress_5s_linear]'></span>
+                  <span className='bg-primary animate-testimonial-progress pointer-events-none absolute top-0 left-0 h-full w-0'></span>
                 )}
               </button>
             ))}
           </div>
         </div>
       </Container>
-
-      {/* Curved divider */}
-      <div className='absolute right-0 bottom-0 left-0 h-24 overflow-hidden'>
-        <div className='bg-primary-50 absolute right-0 bottom-0 left-0 h-48 rounded-tl-[50%] rounded-tr-[50%]'></div>
-      </div>
-
-      <style jsx>{`
-        @keyframes testimonial-progress {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </section>
   );
 };

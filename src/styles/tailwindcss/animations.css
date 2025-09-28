@@ -13,4 +13,15 @@
       background-position: 700px 0;
     }
   }
+
+  --animate-testimonial-progress: testimonial-progress 5s linear forwards;
+
+  @keyframes testimonial-progress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
 }
