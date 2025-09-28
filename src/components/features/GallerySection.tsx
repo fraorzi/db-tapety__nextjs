@@ -6,6 +6,7 @@ import { HiX } from 'react-icons/hi';
 import clsxm from '@/lib/clsxm';
 
 import Container from '@/components/UI/grid/Container';
+import Section from '@/components/UI/grid/Section';
 import NextImage from '@/components/UI/Image/NextImage';
 import Heading from '@/components/UI/typography/Heading';
 import Paragraph from '@/components/UI/typography/Paragraph';
@@ -103,7 +104,7 @@ const GallerySection = () => {
   }, []);
 
   return (
-    <section id='gallery' className='bg-beige relative overflow-hidden py-24'>
+    <Section id='gallery' className='bg-beige'>
       <div className='bg-secondary/10 absolute top-40 left-20 h-64 w-64 rounded-full blur-3xl'></div>
       <div className='bg-primary/5 absolute right-10 bottom-20 h-80 w-80 rounded-full blur-3xl'></div>
 
@@ -204,7 +205,7 @@ const GallerySection = () => {
           </div>
         </div>
       )}
-    </section>
+    </Section>
   );
 };
 

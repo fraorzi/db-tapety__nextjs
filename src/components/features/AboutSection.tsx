@@ -3,6 +3,7 @@ import { HiClock, HiStar, HiUsers } from 'react-icons/hi';
 import clsxm from '@/lib/clsxm';
 
 import Container from '@/components/UI/grid/Container';
+import Section from '@/components/UI/grid/Section';
 import Heading from '@/components/UI/typography/Heading';
 import Paragraph from '@/components/UI/typography/Paragraph';
 
@@ -51,7 +52,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id='about-us' className='bg-beige relative overflow-hidden py-24'>
+    <Section id='about-us' className='bg-beige'>
       <div className='bg-secondary/10 absolute top-40 right-20 h-64 w-64 rounded-full blur-3xl'></div>
       <div className='bg-primary/5 absolute bottom-20 left-10 h-80 w-80 rounded-full blur-3xl'></div>
 
@@ -106,7 +107,7 @@ const AboutSection = () => {
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 };
 

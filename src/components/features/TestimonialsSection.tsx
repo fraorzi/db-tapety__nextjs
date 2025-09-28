@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { HiStar } from 'react-icons/hi';
 
 import Container from '@/components/UI/grid/Container';
+import Section from '@/components/UI/grid/Section';
 import NextImage from '@/components/UI/Image/NextImage';
 import Heading from '@/components/UI/typography/Heading';
 import Paragraph from '@/components/UI/typography/Paragraph';
@@ -62,7 +63,7 @@ const TestimonialsSection = () => {
   }, [activeIndex, testimonials.length, resetKey]);
 
   return (
-    <section className='bg-cream relative overflow-hidden py-24'>
+    <Section id='opinie' className='bg-cream'>
       <div className='bg-texture-1 pointer-events-none absolute top-0 left-0 h-full w-full bg-cover opacity-5'></div>
       <div className='bg-secondary/10 pointer-events-none absolute top-20 right-20 h-64 w-64 rounded-full blur-3xl'></div>
       <div className='bg-primary/5 pointer-events-none absolute bottom-20 left-10 h-80 w-80 rounded-full blur-3xl'></div>
@@ -170,7 +171,7 @@ const TestimonialsSection = () => {
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 };
 

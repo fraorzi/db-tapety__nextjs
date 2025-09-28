@@ -1,12 +1,13 @@
 import Button from '@/components/UI/buttons/Button';
 import Container from '@/components/UI/grid/Container';
+import Section from '@/components/UI/grid/Section';
 import NextImage from '@/components/UI/Image/NextImage';
 import Heading from '@/components/UI/typography/Heading';
 import Paragraph from '@/components/UI/typography/Paragraph';
 
 const HeroSection = () => {
   return (
-    <section id='home' className='relative min-h-screen w-full overflow-hidden'>
+    <Section id='home' className=''>
       <div className='absolute inset-0 h-full w-full'>
         <NextImage
           src='https://images.unsplash.com/photo-1595514535215-8a5b0fad360b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80'
@@ -53,7 +54,7 @@ const HeroSection = () => {
           </div>
         </Container>
       </div>
-    </section>
+    </Section>
   );
 };
 

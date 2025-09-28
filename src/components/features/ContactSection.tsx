@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 
 import Button from '@/components/UI/buttons/Button';
 import Container from '@/components/UI/grid/Container';
+import Section from '@/components/UI/grid/Section';
 import Heading from '@/components/UI/typography/Heading';
 import Paragraph from '@/components/UI/typography/Paragraph';
 
@@ -60,10 +61,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id='contact' className='bg-beige relative overflow-hidden py-24'>
-      <div className='bg-secondary/10 absolute top-40 left-20 h-64 w-64 rounded-full blur-3xl'></div>
-      <div className='bg-primary/5 absolute right-10 bottom-20 h-80 w-80 rounded-full blur-3xl'></div>
-
+    <Section id='contact' className='bg-beige'>
       <Container className='relative'>
         <div className='mb-16 text-center'>
           <Heading
@@ -212,7 +210,7 @@ const ContactSection = () => {
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 };
 

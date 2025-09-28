@@ -1,18 +1,14 @@
+import clsx from 'clsx';
 import type { PropsWithChildren } from 'react';
 
-import clsxm from '@/lib/clsxm';
-
-import type { SectionTitleProps } from '@/components/UI/grid/SectionTitle';
-import SectionTitle from '@/components/UI/grid/SectionTitle';
-
-interface SectionProps extends SectionTitleProps {
-  accent?: boolean;
+interface SectionProps {
+  id?: string;
+  className?: string;
 }
 
-const Section = ({ title, subtitle, accent, children }: PropsWithChildren<SectionProps>) => {
+const Section = ({ id, className, children }: PropsWithChildren<SectionProps>) => {
   return (
-    <section className={clsxm('py-12', accent && 'bg-gray-100')}>
-      {title || subtitle ? <SectionTitle title={title} subtitle={subtitle} /> : null}
+    <section id={id} className={clsx('relative pt-24 pb-12', className)}>
       {children}
     </section>
   );

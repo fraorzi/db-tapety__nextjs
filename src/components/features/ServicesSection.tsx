@@ -4,6 +4,7 @@ import { HiWrenchScrewdriver } from 'react-icons/hi2';
 import clsxm from '@/lib/clsxm';
 
 import Container from '@/components/UI/grid/Container';
+import Section from '@/components/UI/grid/Section';
 import Heading from '@/components/UI/typography/Heading';
 import Paragraph from '@/components/UI/typography/Paragraph';
 
@@ -65,7 +66,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id='services' className='bg-cream relative overflow-hidden py-24'>
+    <Section id='services' className='bg-cream'>
       <div className='bg-texture-3 absolute top-0 left-0 h-full w-full bg-cover opacity-5'></div>
 
       <Container className='relative'>
@@ -117,7 +118,7 @@ const ServicesSection = () => {
           />
         </div>
       </Container>
-    </section>
+    </Section>
   );
 };
 
