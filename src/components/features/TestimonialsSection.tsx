@@ -157,9 +157,7 @@ const TestimonialsSection = () => {
                   setResetKey((k) => k + 1);
                 }}
                 className={`group relative h-3 w-12 overflow-hidden rounded-full transition-all duration-300 ${
-                  index === activeIndex
-                    ? 'bg-secondary/20 ring-secondary ring-2'
-                    : 'bg-secondary/30'
+                  index === activeIndex ? 'bg-secondary/20' : 'bg-secondary/30'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               >
