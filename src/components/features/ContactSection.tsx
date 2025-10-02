@@ -46,7 +46,7 @@ const ContactSection = () => {
     {
       icon: <HiPhone size={24} />,
       title: 'Telefon',
-      details: '(555) 123-4567',
+      details: '123-456-789',
     },
     {
       icon: <HiMail size={24} />,
@@ -56,7 +56,7 @@ const ContactSection = () => {
     {
       icon: <HiLocationMarker size={24} />,
       title: 'Adres',
-      details: '123 Design Street, New York, NY 10001',
+      details: 'Plac Konstytucji 5, 00-647 Warszawa',
     },
   ];
 
@@ -179,8 +179,8 @@ const ContactSection = () => {
             <div className='relative overflow-hidden rounded-lg bg-white shadow-xl'>
               <div className='border-secondary/20 pointer-events-none absolute inset-4 z-10 rounded-lg border'></div>
               <iframe
-                title='Office Location'
-                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059353029!2d-74.25986548248684!3d40.69714941512199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sca!4v1619756483692!5m2!1sen!2sca'
+                title='Lokalizacja Biura'
+                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.4474756798967!2d21.003404315706474!3d52.22967367975319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc8b71b4e877%3A0x7b5d9b1a7c5d4a2e!2sPlac%20Konstytucji%2C%20Warszawa!5e0!3m2!1spl!2spl!4v1696354800000!5m2!1spl!2spl'
                 width='100%'
                 height='400'
                 style={{ border: 0 }}
