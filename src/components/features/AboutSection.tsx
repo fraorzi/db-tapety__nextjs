@@ -40,7 +40,10 @@ const AboutSection = () => {
               level={2}
               className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'
             >
-              <span className='text-stroke absolute -top-10 -left-4 text-6xl opacity-20'>
+              <span
+                className='text-stroke absolute -top-10 -left-4 text-6xl opacity-20'
+                aria-hidden='true'
+              >
                 O nas
               </span>
               O nas

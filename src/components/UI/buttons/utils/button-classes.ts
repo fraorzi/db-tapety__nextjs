@@ -58,7 +58,7 @@ export const buttonClasses = (variant: keyof typeof ButtonVariant, size: ButtonS
     'cursor-pointer', // default cursor
 
     // focus classes
-    'focus-visible:ring-secondary focus:outline-hidden focus-visible:rounded-xl focus-visible:ring-2 focus-visible:ring-offset-2',
+    'focus-visible:ring-secondary focus:outline-none focus-visible:rounded-xl focus-visible:ring-2 focus-visible:ring-offset-2',
 
     // transitions
     'transition-colors',

@@ -14,7 +14,7 @@ export default function NotFoundPage() {
   return (
     <>
       <div className='bg-secondary/40 flex w-full flex-1 flex-col items-center justify-center pt-48 pb-28'>
-        <RiAlarmWarningLine size={60} className='drop-shadow-glow text-red-500' />
+        <RiAlarmWarningLine size={60} className='text-red-500 drop-shadow-lg' />
         <h1 className='mt-8 text-4xl md:text-6xl'>Nie znaleziono strony</h1>
 
         <UnderlineLink className='mt-8 md:text-lg' href={Routes.HOME}>

@@ -8,7 +8,7 @@ export const checkboxClasses = (readOnly = false, disabled = false, hasError = f
     'px-0 py-0',
     'inline-block',
     'h-6 w-6',
-    'focus:border-secondary focus:ring-secondary focus:outline-hidden',
+    'focus:border-secondary focus:ring-secondary focus:outline-none',
     'form-checkbox-check checked:border-secondary',
     'checked:bg-secondary checked:hover:bg-secondary/80 checked:focus:bg-secondary',
 

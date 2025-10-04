@@ -5,7 +5,7 @@ export const inputClassesBase = (hasError: boolean, readOnly?: boolean) => {
     'block h-full w-full appearance-none rounded-md px-3 py-3 text-xs transition-colors',
     'placeholder:text-gray-500',
     'border border-gray-300 bg-white',
-    'focus:border-secondary focus:ring-secondary focus:ring-1 focus:outline-hidden',
+    'focus:border-secondary focus:ring-secondary focus:ring-1 focus:outline-none',
     {
       'cursor-default border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0': readOnly,
       'border-red-500 focus:border-red-500 focus:ring-red-500': hasError,

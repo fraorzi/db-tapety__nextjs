@@ -8,7 +8,7 @@ import { fontSans, fontSerif } from '@/lib/fonts';
 
 import Analytics from '@/components/features/analytics/Analytics';
 import Footer from '@/components/layout/Footer/Footer';
-import Navbar from '@/components/layout/Header/Navbar';
+import Header from '@/components/layout/Header/Header';
 
 import siteMetadata, { siteViewport } from '@/constant/seo';
 
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         <NextTopLoader height={4} color='var(--color-primary)' showSpinner={false} shadow='none' />
 
-        <Navbar />
+        <Header />
 
         <main className='flex flex-1 flex-col'>{children}</main>
 

@@ -44,7 +44,10 @@ const ServicesSection = () => {
             level={2}
             className='text-primary relative mb-6 text-center font-serif text-4xl font-bold md:text-5xl'
           >
-            <span className='text-stroke absolute -top-10 left-1/2 -translate-x-1/2 transform text-6xl opacity-20'>
+            <span
+              className='text-stroke absolute -top-10 left-1/2 -translate-x-1/2 transform text-6xl opacity-20'
+              aria-hidden='true'
+            >
               Usługi
             </span>
             Nasze usługi

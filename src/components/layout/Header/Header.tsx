@@ -1,48 +1,131 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { HiMenu, HiX } from 'react-icons/hi';
 
-import UnderlineLink from '@/components/UI/buttons/UnderlineLink';
+import clsxm from '@/lib/clsxm';
+
 import UnstyledLink from '@/components/UI/buttons/UnstyledLink';
 import Container from '@/components/UI/grid/Container';
-import Logo from '@/components/UI/icons/Logo';
 
-import { Routes } from '@/constant/routes';
+interface NavbarProps {
+  className?: string;
+}
 
-const links = [
-  { href: Routes.HOME, label: 'Strona główna' },
-  { href: Routes.COMPONENTS, label: 'Komponenty' },
-  { href: Routes.SANDBOX_FORMS, label: 'Formularze' },
-];
+const Header = ({ className }: NavbarProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-export default function Header() {
-  const pathname = usePathname();
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = () => {
+    // Close mobile menu after navigating to hash section
+    setIsOpen(false);
+  };
+
+  const navItems = [
+    { label: 'Strona główna', id: 'home' },
+    { label: 'O nas', id: 'about-us' },
+    { label: 'Usługi', id: 'services' },
+    { label: 'Galeria', id: 'gallery' },
+    { label: 'Kontakt', id: 'contact' },
+  ];
 
   return (
-    <header className='sticky top-0 z-50 bg-white py-6 shadow-sm'>
+    <header
+      className={clsxm(
+        'fixed z-50 w-full transition-all duration-500',
+        scrolled ? 'bg-beige bg-opacity-95 py-6 shadow-lg backdrop-blur-sm' : 'bg-transparent py-6',
+        className,
+      )}
+    >
       <Container>
         <div className='flex items-center justify-between'>
-          <UnstyledLink href='/public' className='font-bold hover:text-gray-600'>
-            <Logo className='w-full max-w-[80px] md:max-w-[120px]' />
-          </UnstyledLink>
-          <nav>
-            <ul className='flex items-center justify-between space-x-4'>
-              {links.map(({ href, label }) => (
-                <li key={`${href}${label}`}>
-                  <UnderlineLink
-                    href={href}
-                    active={pathname === href}
-                    className='hover:text-gray-600'
+          <div className='flex items-center'>
+            <UnstyledLink
+              href='/'
+              className={clsxm(
+                'font-serif text-2xl font-bold italic md:text-4xl',
+                scrolled ? 'text-primary' : 'text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_40%)]',
+              )}
+              aria-label='Strona główna'
+            >
+              Logo
+            </UnstyledLink>
+          </div>
+
+          <nav className='hidden md:flex' aria-label='Główna nawigacja'>
+            <ul className='flex items-center space-x-10'>
+              {navItems.map(({ label, id }) => (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    onClick={handleNavClick}
+                    className={clsxm(
+                      'group relative overflow-hidden font-medium transition-colors duration-300',
+                      scrolled ? 'text-primary' : 'text-white',
+                    )}
                   >
-                    {label}
-                  </UnderlineLink>
+                    <span className='relative z-10'>{label}</span>
+                    <span className='bg-secondary absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
+                  </a>
                 </li>
               ))}
             </ul>
           </nav>
+
+          <div className='md:hidden'>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={clsxm(
+                'cursor-pointer transition-colors focus:outline-none',
+                scrolled ? 'text-primary' : 'text-white',
+              )}
+              aria-label='Toggle navigation menu'
+              aria-expanded={isOpen}
+              aria-controls='mobile-menu'
+            >
+              {isOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+            </button>
+          </div>
         </div>
+
+        {isOpen && (
+          <nav
+            id='mobile-menu'
+            aria-label='Menu mobilne'
+            className='bg-beige bg-opacity-95 absolute top-full right-0 left-0 mx-4 mt-4 rounded-lg p-6 shadow-lg backdrop-blur-sm md:hidden'
+          >
+            <ul className='flex flex-col space-y-6'>
+              {navItems.map(({ label, id }) => (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    onClick={handleNavClick}
+                    className='group text-primary hover:text-secondary relative inline-block py-2 font-medium transition-colors'
+                  >
+                    <span>{label}</span>
+                    <span className='bg-secondary absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       </Container>
     </header>
   );
-}
+};
+
+export default Header;

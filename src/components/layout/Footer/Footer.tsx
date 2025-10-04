@@ -45,7 +45,7 @@ const Footer = () => {
             </p>
             <div className='flex space-x-5'>
               {socialLinks.map(({ icon: Icon, href, label }) => (
-                <a key={label} href={href} className='group'>
+                <a key={label} href={href} className='group' aria-label={label}>
                   <div className='border-secondary/30 group-hover:border-secondary group-hover:bg-secondary flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300'>
                     <Icon
                       size={18}

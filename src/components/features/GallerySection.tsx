@@ -23,6 +23,7 @@ const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isBeforeImage, setIsBeforeImage] = useState(true);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   const galleryImages: GalleryImage[] = [
     {
@@ -103,6 +104,13 @@ const GallerySection = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (selectedImage) {
+      // focus the dialog for accessibility and ESC handling
+      overlayRef.current?.focus();
+    }
+  }, [selectedImage]);
+
   return (
     <Section id='gallery' className='bg-beige'>
       <div className='bg-secondary/10 absolute top-40 left-20 h-64 w-64 rounded-full blur-3xl'></div>
@@ -114,7 +122,10 @@ const GallerySection = () => {
             level={2}
             className='text-primary relative mb-6 font-serif text-4xl font-bold md:text-5xl'
           >
-            <span className='text-stroke absolute -top-10 left-1/2 -translate-x-1/2 transform text-6xl opacity-20'>
+            <span
+              className='text-stroke absolute -top-10 left-1/2 -translate-x-1/2 transform text-6xl opacity-20'
+              aria-hidden='true'
+            >
               Galeria
             </span>
             Nasza galeria
@@ -168,7 +179,17 @@ const GallerySection = () => {
       </Container>
 
       {selectedImage && (
-        <div className='bg-opacity-90 fixed inset-0 z-50 flex items-center justify-center bg-black p-4'>
+        <div
+          className='bg-opacity-90 fixed inset-0 z-50 flex items-center justify-center bg-black p-4'
+          role='dialog'
+          aria-modal='true'
+          aria-labelledby='lightbox-title'
+          tabIndex={-1}
+          ref={overlayRef}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') closeLightbox();
+          }}
+        >
           <div className='relative w-full max-w-5xl'>
             <button
               onClick={closeLightbox}
@@ -194,7 +215,11 @@ const GallerySection = () => {
                 </button>
               </div>
               <div className='p-6'>
-                <Heading level={3} className='text-primary font-serif text-2xl font-medium'>
+                <Heading
+                  id='lightbox-title'
+                  level={3}
+                  className='text-primary font-serif text-2xl font-medium'
+                >
                   {selectedImage.title}
                 </Heading>
                 <Paragraph className='mt-2 text-gray-600'>
