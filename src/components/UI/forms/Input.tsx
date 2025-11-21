@@ -60,6 +60,10 @@ export default function Input({
   } = useFormContext();
 
   const inputId = useId();
+  const hasError = !!errors[name];
+  const helperId = helperText ? `${inputId}-help` : undefined;
+  const errorId = hasError ? `${inputId}-error` : undefined;
+  const describedBy = [helperId, errorId].filter(Boolean).join(' ') || undefined;
 
   return (
     <InputContainer className={className}>
@@ -73,12 +77,18 @@ export default function Input({
           id={inputId}
           disabled={disabled}
           readOnly={readOnly}
-          className={clsxm(inputClassesBase(!!errors[name], readOnly || disabled), inputClassName)}
+          className={clsxm(inputClassesBase(hasError, readOnly || disabled), inputClassName)}
           placeholder={placeholder}
-          aria-describedby={inputId}
+          aria-describedby={describedBy}
+          aria-invalid={hasError}
         />
       </div>
-      <InputMessages helperText={helperText} error={errors[name]?.message as string} />
+      <InputMessages
+        helperText={helperText}
+        error={errors[name]?.message as string}
+        helperId={helperId}
+        errorId={errorId}
+      />
     </InputContainer>
   );
 }

@@ -52,6 +52,10 @@ export default function DatePicker({
   } = useFormContext();
 
   const inputId = useId();
+  const hasError = !!errors[name];
+  const helperId = helperText ? `${inputId}-help` : undefined;
+  const errorId = hasError ? `${inputId}-error` : undefined;
+  const describedBy = [helperId, errorId].filter(Boolean).join(' ') || undefined;
 
   // If there is a year default, then change the year to the props
   const defaultDate = new Date();
@@ -71,13 +75,14 @@ export default function DatePicker({
           <>
             <div className='relative flex-1'>
               <ReactDatePicker
-                name={inputId}
+                name={name}
                 onChange={onChange}
                 onBlur={onBlur}
                 selected={value ? new Date(value) : undefined}
-                className={clsx(inputClassesBase(!!errors[name], readOnly), inputClassName)}
+                className={clsx(inputClassesBase(hasError, readOnly), inputClassName)}
                 placeholderText={placeholder}
-                aria-describedby={inputId}
+                aria-describedby={describedBy}
+                aria-invalid={hasError}
                 showMonthDropdown={true}
                 showYearDropdown={true}
                 dropdownMode='select'
@@ -88,7 +93,12 @@ export default function DatePicker({
               />
               <HiOutlineCalendar className='pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 transform text-lg text-gray-500' />
             </div>
-            <InputMessages helperText={helperText} error={errors[name]?.message as string} />
+            <InputMessages
+              helperText={helperText}
+              error={errors[name]?.message as string}
+              helperId={helperId}
+              errorId={errorId}
+            />
           </>
         )}
       />

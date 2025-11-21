@@ -78,7 +78,15 @@ const SelectInput = ({
                   },
                   inputClassName,
                 )}
-                aria-describedby={inputId}
+                aria-describedby={
+                  [
+                    helperText ? `${inputId}-help` : undefined,
+                    invalid ? `${inputId}-error` : undefined,
+                  ]
+                    .filter(Boolean)
+                    .join(' ') || undefined
+                }
+                aria-invalid={invalid}
               >
                 {placeholder && (
                   <option value='' disabled>
@@ -88,7 +96,12 @@ const SelectInput = ({
                 {readOnly ? readOnlyChildren : children}
               </select>
             </div>
-            <InputMessages helperText={helperText} error={error?.message as string} />
+            <InputMessages
+              helperText={helperText}
+              error={error?.message as string}
+              helperId={helperText ? `${inputId}-help` : undefined}
+              errorId={invalid ? `${inputId}-error` : undefined}
+            />
           </>
         )}
       ></Controller>

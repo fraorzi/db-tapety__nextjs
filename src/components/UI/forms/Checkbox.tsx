@@ -40,6 +40,8 @@ const Checkbox = ({
   } = useFormContext();
 
   const inputId = useId();
+  const hasError = !!errors[name];
+  const errorId = hasError ? `${inputId}-error` : undefined;
 
   const { onChange: registerOnChange, ...registerFields } = register(name, validation);
 
@@ -59,7 +61,8 @@ const Checkbox = ({
           disabled={disabled}
           readOnly={readOnly}
           className={clsxm(checkboxClasses(readOnly, disabled, !!errors[name]))}
-          aria-describedby={inputId}
+          aria-describedby={errorId}
+          aria-invalid={hasError}
         />
         <label
           htmlFor={inputId}
@@ -70,7 +73,9 @@ const Checkbox = ({
         >
           <div>{children}</div>
 
-          {!hideError && <InputMessages error={errors[name]?.message as string} />}
+          {!hideError && (
+            <InputMessages error={errors[name]?.message as string} errorId={errorId} />
+          )}
         </label>
       </div>
     </div>
