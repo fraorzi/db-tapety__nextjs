@@ -139,10 +139,11 @@ const GallerySection = () => {
 
         <div ref={galleryRef} className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
           {galleryImages.map((image, index) => (
-            <div
+            <button
+              type='button'
               key={image.id}
               className={clsxm(
-                'group relative cursor-pointer overflow-hidden rounded-lg shadow-md',
+                'group focus-visible:ring-secondary relative overflow-hidden rounded-lg shadow-md focus:outline-none focus-visible:ring-2',
                 index % 3 === 0 && 'sm:col-span-1 lg:col-span-1',
                 index % 3 === 1 && 'sm:col-span-1 lg:col-span-1',
                 index % 3 === 2 && 'sm:col-span-2 lg:col-span-1',
@@ -154,12 +155,14 @@ const GallerySection = () => {
                 margin: index % 3 === 1 ? '30px 0 0 0' : '0',
               }}
               onClick={() => openLightbox(image)}
+              aria-label={`Otwórz podgląd: ${image.title}`}
             >
               <div className='relative h-full overflow-hidden'>
                 <NextImage
                   src={image.after}
                   alt={image.title}
                   fill
+                  sizes='(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'
                   className='object-cover transition-transform duration-700 group-hover:scale-110'
                 />
                 <div className='to-primary/60 absolute inset-0 bg-gradient-to-b from-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100'></div>
@@ -173,7 +176,7 @@ const GallerySection = () => {
                   </Paragraph>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </Container>
@@ -188,6 +191,32 @@ const GallerySection = () => {
           ref={overlayRef}
           onKeyDown={(e) => {
             if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'Tab') {
+              const container = overlayRef.current;
+              if (!container) return;
+              const focusable = Array.from(
+                container.querySelectorAll<HTMLElement>(
+                  'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
+                ),
+              ).filter((el) => !el.hasAttribute('disabled'));
+              if (focusable.length === 0) return;
+              const first = focusable[0];
+              const last = focusable[focusable.length - 1];
+              if (e.shiftKey) {
+                if (document.activeElement === first) {
+                  last.focus();
+                  e.preventDefault();
+                }
+              } else {
+                if (document.activeElement === last) {
+                  first.focus();
+                  e.preventDefault();
+                }
+              }
+            }
+          }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) closeLightbox();
           }}
         >
           <div className='relative w-full max-w-5xl'>
@@ -204,6 +233,7 @@ const GallerySection = () => {
                   src={isBeforeImage ? selectedImage.before : selectedImage.after}
                   alt={`${selectedImage.title} - ${isBeforeImage ? 'Przed' : 'Po'}`}
                   fill
+                  sizes='100vw'
                   className='object-cover'
                 />
                 <div className='border-secondary/10 absolute inset-0 border-8'></div>

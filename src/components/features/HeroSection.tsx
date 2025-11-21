@@ -13,13 +13,14 @@ const HeroSection = () => {
           src='https://images.unsplash.com/photo-1595514535215-8a5b0fad360b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80'
           alt='Wnętrze z premium tapetą'
           fill
+          sizes='100vw'
           className='object-cover'
           priority
         />
         <div className='from-primary/80 to-primary/40 absolute inset-0 bg-gradient-to-r'></div>
       </div>
 
-      <div className='relative flex h-screen items-center'>
+      <div className='relative flex min-h-[100svh] items-center'>
         <Container className='relative'>
           <div className='ml-0 max-w-3xl pt-24 md:ml-12 md:pt-0 lg:ml-24'>
             <div className='relative mb-6'>

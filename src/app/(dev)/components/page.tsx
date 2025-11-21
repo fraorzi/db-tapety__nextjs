@@ -33,23 +33,23 @@ export default async function ComponentsPage() {
     <section className='bg-cream min-h-screen'>
       <Container className='pt-8 pb-16'>
         <div className='bg-beige mb-8 rounded-lg p-6'>
-          <Heading level={1} className='text-dark-green font-serif'>
+          <Heading level={1} className='text-primary font-serif'>
             {title}
           </Heading>
           <div className='mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4'>
-            <div className='bg-beige border-soft-gold/20 rounded-lg border p-3 text-center'>
-              <div className='text-dark-green mb-1 text-sm font-medium'>Beige</div>
+            <div className='bg-beige border-secondary/20 rounded-lg border p-3 text-center'>
+              <div className='text-primary mb-1 text-sm font-medium'>Beige</div>
               <div className='text-xs text-gray-600'>#f5f1e6</div>
             </div>
-            <div className='bg-cream border-soft-gold/20 rounded-lg border p-3 text-center'>
-              <div className='text-dark-green mb-1 text-sm font-medium'>Cream</div>
+            <div className='bg-cream border-secondary/20 rounded-lg border p-3 text-center'>
+              <div className='text-primary mb-1 text-sm font-medium'>Cream</div>
               <div className='text-xs text-gray-600'>#faf7f0</div>
             </div>
-            <div className='bg-soft-gold rounded-lg p-3 text-center text-white'>
+            <div className='bg-secondary rounded-lg p-3 text-center text-white'>
               <div className='mb-1 text-sm font-medium'>Soft Gold</div>
               <div className='text-xs text-gray-100'>#c5a572</div>
             </div>
-            <div className='bg-dark-green rounded-lg p-3 text-center text-white'>
+            <div className='bg-primary rounded-lg p-3 text-center text-white'>
               <div className='mb-1 text-sm font-medium'>Dark Green</div>
               <div className='text-xs text-gray-100'>#1b3a2b</div>
             </div>
@@ -57,17 +57,17 @@ export default async function ComponentsPage() {
         </div>
 
         <div className='bg-beige mb-8 rounded-lg p-6'>
-          <h2 className='text-dark-green mb-4 font-serif text-2xl font-semibold'>
+          <h2 className='text-primary mb-4 font-serif text-2xl font-semibold'>
             Custom Utilities & Textures
           </h2>
 
           <div className='mb-6'>
-            <h3 className='text-dark-green mb-2 text-lg font-semibold'>Text Stroke</h3>
+            <h3 className='text-primary mb-2 text-lg font-semibold'>Text Stroke</h3>
             <div className='text-stroke font-serif text-6xl font-bold'>DB TAPETY</div>
           </div>
 
           <div className='mb-6'>
-            <h3 className='text-dark-green mb-4 text-lg font-semibold'>Background Textures</h3>
+            <h3 className='text-primary mb-4 text-lg font-semibold'>Background Textures</h3>
             <div className='grid grid-cols-1 gap-4 sm:grid-cols-3'>
               <div className='bg-texture-1 h-32 rounded-lg bg-cover bg-center'>
                 <div className='flex h-full items-center justify-center rounded-lg bg-black/30'>
@@ -88,9 +88,9 @@ export default async function ComponentsPage() {
           </div>
 
           <div className='mb-6'>
-            <h3 className='text-dark-green mb-4 text-lg font-semibold'>Typography</h3>
+            <h3 className='text-primary mb-4 text-lg font-semibold'>Typography</h3>
             <div className='space-y-2'>
-              <p className='text-dark-green font-serif text-2xl font-bold'>
+              <p className='text-primary font-serif text-2xl font-bold'>
                 Playfair Display - Elegant headings
               </p>
               <p className='font-sans text-lg text-gray-600'>

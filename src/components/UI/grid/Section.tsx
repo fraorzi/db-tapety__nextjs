@@ -8,7 +8,7 @@ interface SectionProps {
 
 const Section = ({ id, className, children }: PropsWithChildren<SectionProps>) => {
   return (
-    <section id={id} className={clsx('relative pt-24 pb-12', className)}>
+    <section id={id} className={clsx('relative scroll-mt-24 pt-24 pb-12', className)}>
       {children}
     </section>
   );
