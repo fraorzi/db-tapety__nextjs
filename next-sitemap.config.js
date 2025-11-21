@@ -4,7 +4,7 @@
  */
 module.exports = {
   siteUrl:
-    (process.env.NEXT_PUBLIC_SITE_DOMAIN || '') + (process.env.NEXT_PUBLIC_BASE_URL || '') ||
+    (process.env.NEXT_PUBLIC_SITE_DOMAIN || '') + (process.env.NEXT_PUBLIC_BASE_PATH || '') ||
     'https://www.example.com',
   generateRobotsTxt: true,
   robotsTxtOptions: {

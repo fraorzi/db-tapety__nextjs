@@ -29,20 +29,23 @@ const siteMetadata = (): Metadata => {
     metadataBase: new URL(siteUrl),
     title: title,
     description: defaultMeta.description,
+    alternates: {
+      canonical: siteUrl,
+    },
     openGraph: {
       title,
       url: siteUrl,
       type: 'website',
       siteName: defaultMeta.siteName,
       description: defaultMeta.description,
-      images: [defaultMeta.ogImage],
+      images: [`${siteUrl}${defaultMeta.ogImage}`],
     },
     twitter: {
       title,
       description: defaultMeta.description,
       card: 'summary_large_image',
       site: defaultMeta.twitter,
-      images: defaultMeta.ogImage,
+      images: [`${siteUrl}${defaultMeta.ogImage}`],
     },
     authors: defaultMeta.author
       ? {
