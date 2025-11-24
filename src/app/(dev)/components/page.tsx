@@ -17,7 +17,7 @@ import SwiperExample from './examples/SwiperExample';
 
 import FacebookIcon from '~/svg/facebook.svg';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Built-in Components',
   description: 'Pre-built components with awesome default',
 };
@@ -279,3 +279,4 @@ export default async function ComponentsPage() {
     </section>
   );
 }
+import type { Metadata } from 'next';

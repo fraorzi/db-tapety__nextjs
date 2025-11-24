@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import NextTopLoader from 'nextjs-toploader';
 import type { ReactNode } from 'react';
 import { Toaster } from 'sonner';
@@ -12,7 +13,7 @@ import Header from '@/components/layout/Header/Header';
 
 import siteMetadata, { siteViewport } from '@/constant/seo';
 
-export const metadata = siteMetadata();
+export const metadata: Metadata = siteMetadata();
 
 export const viewport = siteViewport;
 

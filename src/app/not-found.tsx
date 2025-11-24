@@ -5,7 +5,7 @@ import UnderlineLink from '@/components/UI/buttons/UnderlineLink';
 import { Routes } from '@/constant/routes';
 import { getPageTitle } from '@/constant/seo';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: getPageTitle('404'),
   description: 'Nie znaleziono strony',
 };
@@ -24,3 +24,4 @@ export default function NotFoundPage() {
     </>
   );
 }
+import type { Metadata } from 'next';
