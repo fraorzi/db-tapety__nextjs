@@ -92,6 +92,7 @@ const Header = ({ className }: NavbarProps) => {
 
           <div className='md:hidden'>
             <button
+              type='button'
               onClick={() => setIsOpen(!isOpen)}
               className={clsxm(
                 'cursor-pointer transition-colors focus:outline-none',

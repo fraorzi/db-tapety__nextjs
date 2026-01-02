@@ -222,6 +222,7 @@ const GallerySection = () => {
         >
           <div className='relative w-full max-w-5xl'>
             <button
+              type='button'
               onClick={closeLightbox}
               className='hover:text-secondary absolute -top-16 right-0 text-white transition-colors'
               aria-label='Close lightbox'
@@ -239,6 +240,7 @@ const GallerySection = () => {
                 />
                 <div className='border-secondary/10 absolute inset-0 border-8'></div>
                 <button
+                  type='button'
                   onClick={toggleBeforeAfter}
                   className='bg-primary hover:bg-secondary absolute right-6 bottom-6 rounded-md px-6 py-3 font-medium text-white transition-colors'
                 >

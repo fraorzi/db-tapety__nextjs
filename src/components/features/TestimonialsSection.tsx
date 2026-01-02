@@ -152,6 +152,7 @@ const TestimonialsSection = () => {
           <div className='relative z-20 mt-10 flex justify-center space-x-3'>
             {testimonials.map((_, index) => (
               <button
+                type='button'
                 key={index}
                 onClick={() => {
                   setActiveIndex(index);
