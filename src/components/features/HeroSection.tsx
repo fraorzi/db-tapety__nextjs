@@ -1,4 +1,4 @@
-import Button from '@/components/UI/buttons/Button';
+import ButtonLink from '@/components/UI/buttons/ButtonLink';
 import Container from '@/components/UI/grid/Container';
 import Section from '@/components/UI/grid/Section';
 import NextImage from '@/components/UI/Image/NextImage';
@@ -45,12 +45,12 @@ const HeroSection = () => {
               przestrzeni.
             </Paragraph>
             <div className='flex flex-col gap-6 sm:flex-row'>
-              <Button variant='secondary' size='large'>
+              <ButtonLink href='/#contact' variant='secondary' size='large'>
                 Uzyskaj darmową wycenę
-              </Button>
-              <Button variant='outline' size='large'>
+              </ButtonLink>
+              <ButtonLink href='/#gallery' variant='outline' size='large'>
                 Zobacz galerię
-              </Button>
+              </ButtonLink>
             </div>
           </div>
         </Container>

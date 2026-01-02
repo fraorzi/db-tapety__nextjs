@@ -22,7 +22,6 @@ interface GalleryImage {
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isBeforeImage, setIsBeforeImage] = useState(true);
-  const galleryRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const galleryImages: GalleryImage[] = [
@@ -125,7 +124,7 @@ const GallerySection = () => {
           </Paragraph>
         </div>
 
-        <div ref={galleryRef} className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+        <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
           {galleryImages.map((image, index) => (
             <button
               type='button'
@@ -156,12 +155,12 @@ const GallerySection = () => {
                 <div className='to-primary/60 absolute inset-0 bg-gradient-to-b from-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100'></div>
                 <div className='border-secondary/0 group-hover:border-secondary/30 absolute inset-0 border-4 transition-all duration-500'></div>
                 <div className='absolute right-0 bottom-0 left-0 translate-y-full transform p-6 transition-transform duration-500 group-hover:translate-y-0'>
-                  <Heading level={3} className='mb-2 font-serif text-xl font-medium text-white'>
+                  <span className='mb-2 block font-serif text-xl font-medium text-white'>
                     {image.title}
-                  </Heading>
-                  <Paragraph className='text-sm text-white/80'>
+                  </span>
+                  <span className='block text-sm text-white/80'>
                     Kliknij, aby zobaczyć przed i po
-                  </Paragraph>
+                  </span>
                 </div>
               </div>
             </button>

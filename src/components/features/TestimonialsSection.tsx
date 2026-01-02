@@ -111,7 +111,8 @@ const TestimonialsSection = () => {
                           className='h-full w-full object-cover'
                         />
                       </div>
-                      <div className='mb-2 flex'>
+                      <span className='sr-only'>Ocena: {testimonial.rating} na 5</span>
+                      <div className='mb-2 flex' aria-hidden='true'>
                         {Array.from({ length: 5 }).map((_, i) => (
                           <HiStar
                             key={i}

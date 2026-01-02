@@ -101,6 +101,7 @@ const ContactSection = () => {
                     name='name'
                     value={formData.name}
                     onChange={handleInputChange}
+                    autoComplete='name'
                     className='focus:ring-secondary bg-cream w-full rounded-md border-0 px-4 py-3 transition-all duration-300 focus:ring-2 focus:outline-none'
                     placeholder='Wpisz imię i nazwisko'
                     required
@@ -121,6 +122,7 @@ const ContactSection = () => {
                       name='email'
                       value={formData.email}
                       onChange={handleInputChange}
+                      autoComplete='email'
                       className='focus:ring-secondary bg-cream w-full rounded-md border-0 px-4 py-3 transition-all duration-300 focus:ring-2 focus:outline-none'
                       placeholder='Wpisz adres e-mail'
                       required
@@ -140,6 +142,8 @@ const ContactSection = () => {
                       name='phone'
                       value={formData.phone}
                       onChange={handleInputChange}
+                      autoComplete='tel'
+                      inputMode='tel'
                       className='focus:ring-secondary bg-cream w-full rounded-md border-0 px-4 py-3 transition-all duration-300 focus:ring-2 focus:outline-none'
                       placeholder='Wpisz numer telefonu'
                     />
@@ -158,6 +162,7 @@ const ContactSection = () => {
                     name='message'
                     value={formData.message}
                     onChange={handleInputChange}
+                    autoComplete='off'
                     rows={5}
                     className='focus:ring-secondary bg-cream w-full rounded-md border-0 px-4 py-3 transition-all duration-300 focus:ring-2 focus:outline-none'
                     placeholder='Opisz swój projekt'
