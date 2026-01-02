@@ -22,6 +22,7 @@ interface GalleryImage {
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isBeforeImage, setIsBeforeImage] = useState(true);
+  const bodyOverflowRef = useRef<string | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const galleryImages: GalleryImage[] = [
@@ -72,12 +73,20 @@ const GallerySection = () => {
   const openLightbox = (image: GalleryImage) => {
     setSelectedImage(image);
     setIsBeforeImage(true);
+    if (bodyOverflowRef.current === null) {
+      bodyOverflowRef.current = document.body.style.overflow || '';
+    }
     document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
     setSelectedImage(null);
-    document.body.style.overflow = 'auto';
+    if (bodyOverflowRef.current !== null) {
+      document.body.style.overflow = bodyOverflowRef.current;
+      bodyOverflowRef.current = null;
+    } else {
+      document.body.style.overflow = '';
+    }
   };
 
   const toggleBeforeAfter = () => {
@@ -87,7 +96,12 @@ const GallerySection = () => {
   // Clean up overflow on unmount
   useEffect(() => {
     return () => {
-      document.body.style.overflow = 'auto';
+      if (bodyOverflowRef.current !== null) {
+        document.body.style.overflow = bodyOverflowRef.current;
+        bodyOverflowRef.current = null;
+      } else {
+        document.body.style.overflow = '';
+      }
     };
   }, []);
 
