@@ -21,7 +21,7 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: 'Sarah Johnson',
+    name: 'Anna Kowalska',
     role: 'Właścicielka domu',
     content:
       'nazwa firmy całkowicie odmieniła nasz salon. Zespół był profesjonalny, sprawny, a jakość prac przerosła nasze oczekiwania. Polecona tapeta idealnie komponuje się z meblami.',
@@ -30,7 +30,7 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: 'Michael Chen',
+    name: 'Michał Nowak',
     role: 'Projektant wnętrz',
     content:
       'Jako projektant wnętrz współpracowałem z wieloma ekipami montującymi tapety, ale nazwa firmy wyróżnia się dbałością o detale i dążeniem do perfekcji. To moja pierwsza rekomendacja dla klientów.',
@@ -39,7 +39,7 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 3,
-    name: 'Emma Rodriguez',
+    name: 'Katarzyna Zielińska',
     role: 'Właścicielka firmy',
     content:
       'Zespół nazwa firmy pomógł nam stworzyć zachwycającą ścianę akcentową w butiku. Montaż był szybki, a efekt zebrał mnóstwo pochwał od klientów. Gorąco polecam!',
@@ -149,7 +149,7 @@ const TestimonialsSection = () => {
             ))}
           </div>
 
-          <div className='relative z-20 mt-10 flex justify-center space-x-3'>
+          <div className='relative z-20 mt-12 flex justify-center space-x-3 md:mt-10'>
             {testimonials.map((_, index) => (
               <button
                 type='button'
@@ -158,7 +158,7 @@ const TestimonialsSection = () => {
                   setActiveIndex(index);
                   setResetKey((k) => k + 1);
                 }}
-                className={`group relative h-3 w-12 overflow-hidden rounded-full transition-all duration-300 ${
+                className={`group relative h-3 w-12 cursor-pointer overflow-hidden rounded-full transition-all duration-300 ${
                   index === activeIndex ? 'bg-secondary/20' : 'bg-secondary/30'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
