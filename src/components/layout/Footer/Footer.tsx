@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import { HiLocationMarker, HiMail, HiPhone } from 'react-icons/hi';
 
 import Container from '@/components/UI/grid/Container';
@@ -6,13 +6,6 @@ import Container from '@/components/UI/grid/Container';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { label: 'Strona główna', id: 'home' },
-    { label: 'O nas', id: 'about-us' },
-    { label: 'Usługi', id: 'services' },
-    { label: 'Galeria', id: 'gallery' },
-    { label: 'Kontakt', id: 'contact' },
-  ];
   const services = [
     'Sprzedaż tapet',
     'Profesjonalny montaż',
@@ -25,8 +18,6 @@ const Footer = () => {
   const socialLinks = [
     { icon: FaFacebook, href: '#', label: 'Facebook' },
     { icon: FaInstagram, href: '#', label: 'Instagram' },
-    { icon: FaTwitter, href: '#', label: 'Twitter' },
-    { icon: FaLinkedin, href: '#', label: 'LinkedIn' },
   ];
 
   return (
@@ -34,7 +25,7 @@ const Footer = () => {
       <div className='bg-texture-3 absolute top-0 left-0 h-full w-full bg-cover opacity-5'></div>
 
       <Container className='relative pt-32 pb-12'>
-        <div className='grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4'>
+        <div className='grid grid-cols-1 gap-12 lg:grid-cols-3'>
           <div>
             <h3 className='text-secondary mb-6 font-serif text-2xl font-bold italic'>Logo</h3>
             <p className='mb-8 leading-relaxed text-gray-300'>
@@ -62,79 +53,64 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
-            <h3 className='mb-6 font-serif text-xl font-medium'>Szybkie linki</h3>
-            <ul className='space-y-4'>
-              {quickLinks.map(({ label, id }) => (
-                <li key={id}>
-                  <a
-                    href={`#${id}`}
-                    className='group hover:text-secondary relative inline-block text-gray-300 transition-colors'
-                  >
-                    <span className='relative z-10'>{label}</span>
-                    <span className='bg-secondary/50 absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className='grid grid-cols-2 gap-12 lg:col-span-2'>
+            <div>
+              <h3 className='mb-6 font-serif text-xl font-medium'>Nasze usługi</h3>
+              <ul className='space-y-4'>
+                {services.map((item) => (
+                  <li key={item}>
+                    <a
+                      href='#services'
+                      className='group hover:text-secondary relative inline-block text-gray-300 transition-colors'
+                    >
+                      <span className='relative z-10'>{item}</span>
+                      <span className='bg-secondary/50 absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <h3 className='mb-6 font-serif text-xl font-medium'>Nasze usługi</h3>
-            <ul className='space-y-4'>
-              {services.map((item) => (
-                <li key={item}>
-                  <a
-                    href='#services'
-                    className='group hover:text-secondary relative inline-block text-gray-300 transition-colors'
-                  >
-                    <span className='relative z-10'>{item}</span>
-                    <span className='bg-secondary/50 absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full'></span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className='mb-6 font-serif text-xl font-medium'>Kontakt</h3>
-            <address className='space-y-4 text-gray-300 not-italic'>
-              <div className='flex items-center'>
-                <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
-                  <HiLocationMarker size={12} className='text-secondary' />
-                </span>
-                <div>
-                  <p>123 Design Street</p>
-                  <p className='ml-9'>New York, NY 10001</p>
+            <div>
+              <h3 className='mb-6 font-serif text-xl font-medium'>Kontakt</h3>
+              <address className='space-y-4 text-gray-300 not-italic'>
+                <div className='flex items-center'>
+                  <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
+                    <HiLocationMarker size={12} className='text-secondary' />
+                  </span>
+                  <div>
+                    <p>ul. Kwiatowa 12</p>
+                    <p className='ml-9'>00-001 Warszawa</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className='flex items-center'>
-                <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
-                  <HiPhone size={12} className='text-secondary' />
-                </span>
-                <a
-                  href='tel:5551234567'
-                  className='hover:text-secondary text-gray-300 transition-colors'
-                >
-                  (555) 123-4567
-                </a>
-              </div>
+                <div className='flex items-center'>
+                  <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
+                    <HiPhone size={12} className='text-secondary' />
+                  </span>
+                  <a
+                    href='tel:+48512345678'
+                    className='hover:text-secondary text-gray-300 transition-colors'
+                  >
+                    +48 512 345 678
+                  </a>
+                </div>
 
-              <div className='flex items-center'>
-                <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
-                  <HiMail size={12} className='text-secondary' />
-                </span>
-                <a
-                  href='mailto:info@nazwa-firmy.pl'
-                  className='hover:text-secondary text-gray-300 transition-colors'
-                >
-                  info@nazwa-firmy.pl
-                </a>
-              </div>
+                <div className='flex items-center'>
+                  <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
+                    <HiMail size={12} className='text-secondary' />
+                  </span>
+                  <a
+                    href='mailto:info@nazwa-firmy.pl'
+                    className='hover:text-secondary text-gray-300 transition-colors'
+                  >
+                    info@nazwa-firmy.pl
+                  </a>
+                </div>
 
-              <p className='ml-9'>Godziny: Pon–Pt 9:00–18:00</p>
-            </address>
+                <p className='ml-9'>Godziny: Pon–Pt 9:00–18:00</p>
+              </address>
+            </div>
           </div>
         </div>
 
