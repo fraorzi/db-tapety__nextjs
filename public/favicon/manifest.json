@@ -1,5 +1,12 @@
 {
-  "name": "App",
+  "name": "Damian Bożyk - Tapety",
+  "short_name": "Damian Bożyk - Tapety",
+  "description": "Premium tapety i profesjonalny montaż dla domów, firm, hoteli i apartamentów.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#faf7f0",
+  "theme_color": "#1b3a2b",
   "icons": [
     {
       "src": "/favicon/android-icon-36x36.png",

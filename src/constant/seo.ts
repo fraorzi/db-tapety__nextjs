@@ -1,34 +1,50 @@
 import type { Metadata, Viewport } from 'next';
 import type { LinkHTMLAttributes } from 'react';
 
-import { basePath, siteUrl } from './env';
+import {
+  basePath,
+  robotsEnabled,
+  siteAuthor,
+  siteDescription,
+  siteLocale,
+  siteName,
+  siteThemeColor,
+  siteThemeColorDark,
+  siteUrl,
+} from './env';
 
 const defaultMeta = {
-  siteName: 'Your Project Name',
-  title: 'Your Project Title',
+  siteName,
+  title: siteName,
   divider: '|',
-  description: 'Your project description - update this in src/constant/seo.ts',
-  author: 'Your Name',
-  twitter: '@your-handle',
+  description: siteDescription,
+  author: siteAuthor,
+  locale: siteLocale,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#3b82f6' },
-    { media: '(prefers-color-scheme: dark)', color: '#172554' },
+    { media: '(prefers-color-scheme: light)', color: siteThemeColor },
+    { media: '(prefers-color-scheme: dark)', color: siteThemeColorDark },
   ],
   type: 'website',
   ogImage: '/images/og.png',
+  ogImageAlt: `${siteName} - Open Graph Image`,
 };
 
 export const getPageTitle = (title: string) => {
+  if (!title || title === defaultMeta.siteName) {
+    return defaultMeta.siteName;
+  }
   return `${title} ${defaultMeta.divider} ${defaultMeta.siteName}`;
 };
 
 const siteMetadata = (): Metadata => {
   const title = getPageTitle(defaultMeta.title);
+  const ogImageUrl = new URL(defaultMeta.ogImage, siteUrl).toString();
 
   return {
     metadataBase: new URL(siteUrl),
     title: title,
     description: defaultMeta.description,
+    applicationName: defaultMeta.siteName,
     alternates: {
       canonical: siteUrl,
     },
@@ -37,15 +53,22 @@ const siteMetadata = (): Metadata => {
       url: siteUrl,
       type: 'website',
       siteName: defaultMeta.siteName,
+      locale: defaultMeta.locale,
       description: defaultMeta.description,
-      images: [`${siteUrl}${defaultMeta.ogImage}`],
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: defaultMeta.ogImageAlt,
+        },
+      ],
     },
     twitter: {
       title,
       description: defaultMeta.description,
       card: 'summary_large_image',
-      site: defaultMeta.twitter,
-      images: [`${siteUrl}${defaultMeta.ogImage}`],
+      images: [ogImageUrl],
     },
     authors: defaultMeta.author
       ? {
@@ -53,8 +76,8 @@ const siteMetadata = (): Metadata => {
         }
       : null,
     robots: {
-      index: process.env.NEXT_PUBLIC_ROBOTS === 'true',
-      follow: process.env.NEXT_PUBLIC_ROBOTS === 'true',
+      index: robotsEnabled,
+      follow: robotsEnabled,
     },
     icons: favicons.map((favicon) => ({
       rel: favicon.rel,
