@@ -19,56 +19,56 @@ interface GalleryImage {
   height?: number;
 }
 
+const galleryImages: GalleryImage[] = [
+  {
+    id: 1,
+    before: '/images/gallery-1-before.jpg',
+    after: '/images/gallery-1-after.jpg',
+    title: 'Living Room Transformation',
+    height: 30,
+  },
+  {
+    id: 2,
+    before: '/images/gallery-2-before.jpg',
+    after: '/images/gallery-2-after.jpg',
+    title: 'Bedroom Makeover',
+    height: 40,
+  },
+  {
+    id: 3,
+    before: '/images/gallery-3-before.jpg',
+    after: '/images/gallery-3-after.jpg',
+    title: 'Office Space Redesign',
+    height: 25,
+  },
+  {
+    id: 4,
+    before: '/images/gallery-4-before.jpg',
+    after: '/images/gallery-4-after.jpg',
+    title: 'Dining Room Elegance',
+    height: 35,
+  },
+  {
+    id: 5,
+    before: '/images/gallery-5-before.jpg',
+    after: '/images/gallery-5-after.jpg',
+    title: 'Hallway Renovation',
+    height: 28,
+  },
+  {
+    id: 6,
+    before: '/images/gallery-6-before.jpg',
+    after: '/images/gallery-6-after.jpg',
+    title: "Children's Room Magic",
+    height: 32,
+  },
+];
+
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isBeforeImage, setIsBeforeImage] = useState(true);
   const bodyOverflowRef = useRef<string | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-
-  const galleryImages: GalleryImage[] = [
-    {
-      id: 1,
-      before: '/images/gallery-1-before.jpg',
-      after: '/images/gallery-1-after.jpg',
-      title: 'Living Room Transformation',
-      height: 30,
-    },
-    {
-      id: 2,
-      before: '/images/gallery-2-before.jpg',
-      after: '/images/gallery-2-after.jpg',
-      title: 'Bedroom Makeover',
-      height: 40,
-    },
-    {
-      id: 3,
-      before: '/images/gallery-3-before.jpg',
-      after: '/images/gallery-3-after.jpg',
-      title: 'Office Space Redesign',
-      height: 25,
-    },
-    {
-      id: 4,
-      before: '/images/gallery-4-before.jpg',
-      after: '/images/gallery-4-after.jpg',
-      title: 'Dining Room Elegance',
-      height: 35,
-    },
-    {
-      id: 5,
-      before: '/images/gallery-5-before.jpg',
-      after: '/images/gallery-5-after.jpg',
-      title: 'Hallway Renovation',
-      height: 28,
-    },
-    {
-      id: 6,
-      before: '/images/gallery-6-before.jpg',
-      after: '/images/gallery-6-after.jpg',
-      title: "Children's Room Magic",
-      height: 32,
-    },
-  ];
 
   const openLightbox = (image: GalleryImage) => {
     setSelectedImage(image);

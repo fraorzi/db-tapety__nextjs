@@ -18,46 +18,46 @@ interface Testimonial {
   image: string;
 }
 
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: 'Sarah Johnson',
+    role: 'Właścicielka domu',
+    content:
+      'nazwa firmy całkowicie odmieniła nasz salon. Zespół był profesjonalny, sprawny, a jakość prac przerosła nasze oczekiwania. Polecona tapeta idealnie komponuje się z meblami.',
+    rating: 5,
+    image: '/images/testimonial-1.jpg',
+  },
+  {
+    id: 2,
+    name: 'Michael Chen',
+    role: 'Projektant wnętrz',
+    content:
+      'Jako projektant wnętrz współpracowałem z wieloma ekipami montującymi tapety, ale nazwa firmy wyróżnia się dbałością o detale i dążeniem do perfekcji. To moja pierwsza rekomendacja dla klientów.',
+    rating: 5,
+    image: '/images/testimonial-2.jpg',
+  },
+  {
+    id: 3,
+    name: 'Emma Rodriguez',
+    role: 'Właścicielka firmy',
+    content:
+      'Zespół nazwa firmy pomógł nam stworzyć zachwycającą ścianę akcentową w butiku. Montaż był szybki, a efekt zebrał mnóstwo pochwał od klientów. Gorąco polecam!',
+    rating: 4,
+    image: '/images/testimonial-3.jpg',
+  },
+];
+
 const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [resetKey, setResetKey] = useState(0);
-
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      role: 'Właścicielka domu',
-      content:
-        'nazwa firmy całkowicie odmieniła nasz salon. Zespół był profesjonalny, sprawny, a jakość prac przerosła nasze oczekiwania. Polecona tapeta idealnie komponuje się z meblami.',
-      rating: 5,
-      image: '/images/testimonial-1.jpg',
-    },
-    {
-      id: 2,
-      name: 'Michael Chen',
-      role: 'Projektant wnętrz',
-      content:
-        'Jako projektant wnętrz współpracowałem z wieloma ekipami montującymi tapety, ale nazwa firmy wyróżnia się dbałością o detale i dążeniem do perfekcji. To moja pierwsza rekomendacja dla klientów.',
-      rating: 5,
-      image: '/images/testimonial-2.jpg',
-    },
-    {
-      id: 3,
-      name: 'Emma Rodriguez',
-      role: 'Właścicielka firmy',
-      content:
-        'Zespół nazwa firmy pomógł nam stworzyć zachwycającą ścianę akcentową w butiku. Montaż był szybki, a efekt zebrał mnóstwo pochwał od klientów. Gorąco polecam!',
-      rating: 4,
-      image: '/images/testimonial-3.jpg',
-    },
-  ];
 
   useEffect(() => {
     const id = setTimeout(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 5000);
     return () => clearTimeout(id);
-  }, [activeIndex, testimonials.length, resetKey]);
+  }, [activeIndex, resetKey]);
 
   return (
     <Section id='opinie' className='bg-cream'>
