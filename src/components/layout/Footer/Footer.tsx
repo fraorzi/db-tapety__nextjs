@@ -1,5 +1,3 @@
-'use client';
-
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { HiLocationMarker, HiMail, HiPhone } from 'react-icons/hi';
 
