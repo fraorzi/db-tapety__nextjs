@@ -11,13 +11,20 @@ const normalizedSiteDomain =
     ? rawSiteDomain
     : `https://${rawSiteDomain}`;
 const siteUrl = normalizedSiteDomain + basePath;
+const robotsEnabled = process.env.NEXT_PUBLIC_ROBOTS
+  ? process.env.NEXT_PUBLIC_ROBOTS === 'true'
+  : process.env.VERCEL_ENV
+    ? process.env.VERCEL_ENV === 'production'
+    : process.env.NODE_ENV === 'production';
 
 module.exports = {
   siteUrl,
   generateRobotsTxt: true,
   exclude: ['/components', '/sandbox/forms'],
   robotsTxtOptions: {
-    policies: [{ userAgent: '*', allow: '/' }],
+    policies: robotsEnabled
+      ? [{ userAgent: '*', allow: '/' }]
+      : [{ userAgent: '*', disallow: '/' }],
   },
   trailingSlash: true,
 };
