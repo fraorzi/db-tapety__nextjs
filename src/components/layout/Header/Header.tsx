@@ -51,7 +51,7 @@ const Header = ({ className }: NavbarProps) => {
     <header
       className={clsxm(
         'fixed z-50 w-full transition-all duration-500',
-        scrolled ? 'bg-beige bg-opacity-95 py-6 shadow-lg backdrop-blur-sm' : 'bg-transparent py-6',
+        scrolled ? 'bg-white/95 py-6 shadow-lg' : 'bg-transparent py-6',
         className,
       )}
     >
@@ -111,7 +111,7 @@ const Header = ({ className }: NavbarProps) => {
           <nav
             id='mobile-menu'
             aria-label='Menu mobilne'
-            className='bg-beige bg-opacity-95 absolute top-full right-0 left-0 mx-4 mt-4 rounded-lg p-6 shadow-lg backdrop-blur-sm md:hidden'
+            className='absolute top-full right-0 left-0 mx-4 mt-4 rounded-lg bg-white/95 p-6 shadow-lg md:hidden'
           >
             <ul className='flex flex-col space-y-6'>
               {navItems.map(({ label, id }) => (
