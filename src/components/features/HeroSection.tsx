@@ -10,7 +10,7 @@ const HeroSection = () => {
     <Section id='home' className=''>
       <div className='absolute inset-0 h-full w-full'>
         <NextImage
-          src='https://images.unsplash.com/photo-1595514535215-8a5b0fad360b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80'
+          src='/images/hero.jpg'
           alt='Wnętrze z premium tapetą'
           fill
           sizes='100vw'

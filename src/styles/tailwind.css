@@ -6,9 +6,9 @@
 @import './tailwindcss/fonts.css';
 
 @theme {
-  --background-image-texture-1: url('https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-  --background-image-texture-2: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-  --background-image-texture-3: url('https://images.unsplash.com/photo-1618221381711-42a14b6e2ee7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+  --background-image-texture-1: url('/images/texture-1.jpg');
+  --background-image-texture-2: url('/images/texture-2.jpg');
+  --background-image-texture-3: url('/images/texture-3.jpg');
 }
 
 .text-stroke {
