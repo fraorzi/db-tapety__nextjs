@@ -17,6 +17,7 @@ interface GalleryImage {
   after: string;
   title: string;
   height?: number;
+  offsetTop?: number;
 }
 
 const galleryImages: GalleryImage[] = [
@@ -24,43 +25,45 @@ const galleryImages: GalleryImage[] = [
     id: 1,
     before: '/images/gallery-1-before.jpg',
     after: '/images/gallery-1-after.jpg',
-    title: 'Living Room Transformation',
+    title: 'Metamorfoza salonu',
     height: 30,
   },
   {
     id: 2,
     before: '/images/gallery-2-before.jpg',
     after: '/images/gallery-2-after.jpg',
-    title: 'Bedroom Makeover',
+    title: 'Metamorfoza sypialni',
     height: 40,
   },
   {
     id: 3,
     before: '/images/gallery-3-before.jpg',
     after: '/images/gallery-3-after.jpg',
-    title: 'Office Space Redesign',
+    title: 'Nowa aranżacja biura',
     height: 25,
+    offsetTop: 60,
   },
   {
     id: 4,
     before: '/images/gallery-4-before.jpg',
     after: '/images/gallery-4-after.jpg',
-    title: 'Dining Room Elegance',
+    title: 'Elegancka jadalnia',
     height: 35,
   },
   {
     id: 5,
     before: '/images/gallery-5-before.jpg',
     after: '/images/gallery-5-after.jpg',
-    title: 'Hallway Renovation',
+    title: 'Remont korytarza',
     height: 28,
   },
   {
     id: 6,
     before: '/images/gallery-6-before.jpg',
     after: '/images/gallery-6-after.jpg',
-    title: "Children's Room Magic",
+    title: 'Magia pokoju dziecka',
     height: 32,
+    offsetTop: -80,
   },
 ];
 
@@ -123,7 +126,7 @@ const GallerySection = () => {
   }, [selectedImage]);
 
   return (
-    <Section id='gallery' className='bg-beige'>
+    <Section id='gallery' className='bg-beige overflow-hidden'>
       <div className='bg-secondary/10 absolute top-40 left-20 h-64 w-64 rounded-full blur-3xl'></div>
       <div className='bg-primary/5 absolute right-10 bottom-20 h-80 w-80 rounded-full blur-3xl'></div>
 
@@ -163,7 +166,7 @@ const GallerySection = () => {
               )}
               style={{
                 height: `${(image.height || 30) * 10}px`,
-                margin: index % 3 === 1 ? '30px 0 0 0' : '0',
+                marginTop: (index % 3 === 1 ? 30 : 0) + (image.offsetTop ?? 0),
               }}
               onClick={() => openLightbox(image)}
               aria-label={`Otwórz podgląd: ${image.title}`}
