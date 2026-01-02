@@ -50,9 +50,6 @@ const Footer = () => {
                   aria-label={label}
                   role='link'
                   aria-disabled='true'
-                  onClick={(e) => {
-                    if (href === '#') e.preventDefault();
-                  }}
                 >
                   <div className='border-secondary/30 group-hover:border-secondary group-hover:bg-secondary flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300'>
                     <Icon
