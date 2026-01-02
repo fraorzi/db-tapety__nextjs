@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { RiAlarmWarningLine } from 'react-icons/ri';
 
 import UnderlineLink from '@/components/UI/buttons/UnderlineLink';
@@ -24,4 +25,3 @@ export default function NotFoundPage() {
     </>
   );
 }
-import type { Metadata } from 'next';

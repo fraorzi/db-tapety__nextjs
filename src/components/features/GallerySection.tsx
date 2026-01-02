@@ -68,11 +68,14 @@ const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isBeforeImage, setIsBeforeImage] = useState(true);
   const bodyOverflowRef = useRef<string | null>(null);
+  const lastFocusedElementRef = useRef<HTMLElement | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const openLightbox = (image: GalleryImage) => {
     setSelectedImage(image);
     setIsBeforeImage(true);
+    lastFocusedElementRef.current =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
     if (bodyOverflowRef.current === null) {
       bodyOverflowRef.current = document.body.style.overflow || '';
     }
@@ -86,6 +89,13 @@ const GallerySection = () => {
       bodyOverflowRef.current = null;
     } else {
       document.body.style.overflow = '';
+    }
+    if (lastFocusedElementRef.current) {
+      const elementToFocus = lastFocusedElementRef.current;
+      lastFocusedElementRef.current = null;
+      window.requestAnimationFrame(() => {
+        elementToFocus.focus();
+      });
     }
   };
 

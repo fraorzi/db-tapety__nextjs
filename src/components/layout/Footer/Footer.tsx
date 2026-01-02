@@ -118,14 +118,24 @@ const Footer = () => {
                 <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
                   <HiPhone size={12} className='text-secondary' />
                 </span>
-                <p>(555) 123-4567</p>
+                <a
+                  href='tel:5551234567'
+                  className='hover:text-secondary text-gray-300 transition-colors'
+                >
+                  (555) 123-4567
+                </a>
               </div>
 
               <div className='flex items-center'>
                 <span className='bg-secondary/20 mr-3 flex h-6 w-6 items-center justify-center rounded-full'>
                   <HiMail size={12} className='text-secondary' />
                 </span>
-                <p>info@nazwa-firmy.pl</p>
+                <a
+                  href='mailto:info@nazwa-firmy.pl'
+                  className='hover:text-secondary text-gray-300 transition-colors'
+                >
+                  info@nazwa-firmy.pl
+                </a>
               </div>
 
               <p className='ml-9'>Godziny: Pon–Pt 9:00–18:00</p>

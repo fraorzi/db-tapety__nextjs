@@ -47,11 +47,13 @@ const ContactSection = () => {
       icon: <HiPhone size={24} />,
       title: 'Telefon',
       details: '123-456-789',
+      href: 'tel:123456789',
     },
     {
       icon: <HiMail size={24} />,
       title: 'E-mail',
       details: 'info@nazwa-firmy.pl',
+      href: 'mailto:info@nazwa-firmy.pl',
     },
     {
       icon: <HiLocationMarker size={24} />,
@@ -208,9 +210,18 @@ const ContactSection = () => {
                     <Heading level={3} className='text-primary mb-1 font-serif text-xl font-medium'>
                       {item.title}
                     </Heading>
-                    <Paragraph size='lg' className='text-gray-700'>
-                      {item.details}
-                    </Paragraph>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className='hover:text-secondary text-lg text-gray-700 transition-colors'
+                      >
+                        {item.details}
+                      </a>
+                    ) : (
+                      <Paragraph size='lg' className='text-gray-700'>
+                        {item.details}
+                      </Paragraph>
+                    )}
                   </div>
                 </div>
               ))}
