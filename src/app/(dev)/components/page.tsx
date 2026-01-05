@@ -231,13 +231,13 @@ export default async function ComponentsPage() {
 
             <FacebookIcon className='w-7' />
 
-            <NextImage src='/svg/facebook.svg' alt='SVG icon as an image' width={28} height={28} />
+            <NextImage src='/svg/facebook.svg' alt='Ikona SVG jako obraz' width={28} height={28} />
           </li>
           <li className='space-y-2'>
             <Heading level={3} as='h2'>
               Next Image
             </Heading>
-            <NextImage src='/favicon/apple-icon.png' width={180} height={180} alt='Icon' />
+            <NextImage src='/favicon/apple-icon.png' width={180} height={180} alt='Ikona' />
           </li>
           <li className='space-y-2'>
             <Heading level={3} as='h2'>
