@@ -40,8 +40,8 @@ const HeroSection = () => {
               <div className='bg-secondary absolute top-1/2 -left-12 hidden h-1 w-8 -translate-y-1/2 transform md:block'></div>
             </div>
             <Paragraph className='mb-12 max-w-xl text-lg leading-relaxed text-white/90 md:text-xl'>
-              Premiumowe tapety i profesjonalny montaż, które wyniosą Twoje wnętrze na wyższy
-              poziom. Nasza starannie dobrana kolekcja dodaje strukturę, głębię i charakter każdej
+              Premium tapety i profesjonalny montaż, które wyniosą Twoje wnętrze na wyższy poziom.
+              Nasza starannie dobrana kolekcja dodaje strukturę, głębię i charakter każdej
               przestrzeni.
             </Paragraph>
             <div className='flex flex-col gap-6 sm:flex-row'>

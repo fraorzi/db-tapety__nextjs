@@ -29,8 +29,7 @@ const Footer = () => {
           <div>
             <h3 className='text-secondary mb-6 font-serif text-2xl font-bold italic'>Logo</h3>
             <p className='mb-8 leading-relaxed text-gray-300'>
-              Odmieniamy przestrzenie dzięki premiumowym tapetom i fachowemu montażowi — od 2008
-              roku.
+              Odmieniamy przestrzenie dzięki premium tapetom i fachowemu montażowi — od 2008 roku.
             </p>
             <div className='flex space-x-5'>
               {socialLinks.map(({ icon: Icon, href, label }) => (
