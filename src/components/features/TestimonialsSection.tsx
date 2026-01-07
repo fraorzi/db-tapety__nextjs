@@ -63,7 +63,6 @@ const TestimonialsSection = () => {
     <Section id='opinie' className='bg-cream'>
       <div className='bg-texture-1 pointer-events-none absolute top-0 left-0 h-full w-full bg-cover opacity-5'></div>
       <div className='bg-secondary/10 pointer-events-none absolute top-20 right-20 h-64 w-64 rounded-full blur-3xl'></div>
-      <div className='bg-primary/5 pointer-events-none absolute bottom-20 left-10 h-80 w-80 rounded-full blur-3xl'></div>
 
       <Container className='relative'>
         <div className='mb-16 text-center'>
@@ -149,7 +148,7 @@ const TestimonialsSection = () => {
             ))}
           </div>
 
-          <div className='relative z-20 mt-12 flex justify-center space-x-3 md:mt-10'>
+          <div className='relative z-20 mt-52 flex justify-center space-x-3 sm:mt-30 md:mt-10'>
             {testimonials.map((_, index) => (
               <button
                 type='button'

@@ -59,7 +59,7 @@ const ServicesSection = () => {
           </Paragraph>
         </div>
 
-        <div className='grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4'>
+        <div className='mb-12 grid grid-cols-1 gap-8 md:mb-20 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4'>
           <ServiceCard
             key={0}
             icon={services[0].icon}

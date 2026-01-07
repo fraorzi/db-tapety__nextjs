@@ -31,7 +31,6 @@ const AboutSection = () => {
   return (
     <Section id='about-us' className='bg-beige'>
       <div className='bg-secondary/10 absolute top-40 right-20 h-64 w-64 rounded-full blur-3xl'></div>
-      <div className='bg-primary/5 absolute bottom-20 left-10 h-80 w-80 rounded-full blur-3xl'></div>
 
       <Container className='relative'>
         <div className='mb-20 flex flex-col items-start gap-12 md:flex-row md:gap-24'>
