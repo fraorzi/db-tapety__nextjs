@@ -20,9 +20,9 @@ const HeroSection = () => {
         <div className='from-primary/80 to-primary/40 absolute inset-0 bg-gradient-to-r'></div>
       </div>
 
-      <div className='relative flex min-h-[80svh] items-center md:min-h-[100svh]'>
+      <div className='relative flex min-h-[50svh] items-center md:min-h-[90svh]'>
         <Container className='relative'>
-          <div className='ml-0 max-w-3xl pt-24 md:ml-12 md:pt-0 lg:ml-24'>
+          <div className='ml-0 max-w-3xl md:ml-12 lg:ml-24'>
             <div className='relative mb-6'>
               <Heading
                 level={2}
