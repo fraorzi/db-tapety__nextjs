@@ -76,12 +76,12 @@ const ContactSection = () => {
             >
               Kontakt
             </span>
-            Skontaktuj się z nami
+            Skontaktuj się z&nbsp;nami
           </Heading>
           <div className='bg-secondary mx-auto mb-8 h-1 w-24'></div>
           <Paragraph size='lg' className='mx-auto max-w-2xl text-gray-700'>
-            Chcesz odmienić swoją przestrzeń? Skontaktuj się z nami, umów konsultację lub poproś o
-            darmową wycenę.
+            Chcesz odmienić swoją przestrzeń? Skontaktuj się z&nbsp;nami, umów konsultację lub
+            poproś o&nbsp;darmową wycenę.
           </Paragraph>
         </div>
 
