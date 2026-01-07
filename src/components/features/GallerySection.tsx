@@ -17,7 +17,6 @@ interface GalleryImage {
   after: string;
   title: string;
   height?: number;
-  offsetTop?: number;
 }
 
 const galleryImages: GalleryImage[] = [
@@ -26,7 +25,7 @@ const galleryImages: GalleryImage[] = [
     before: '/images/gallery-1-before.jpg',
     after: '/images/gallery-1-after.jpg',
     title: 'Metamorfoza salonu',
-    height: 30,
+    height: 36,
   },
   {
     id: 2,
@@ -41,21 +40,20 @@ const galleryImages: GalleryImage[] = [
     after: '/images/gallery-3-after.jpg',
     title: 'Nowa aranżacja biura',
     height: 25,
-    offsetTop: 60,
   },
   {
     id: 4,
-    before: '/images/gallery-4-before.jpg',
-    after: '/images/gallery-4-after.jpg',
-    title: 'Elegancka jadalnia',
-    height: 35,
-  },
-  {
-    id: 5,
     before: '/images/gallery-5-before.jpg',
     after: '/images/gallery-5-after.jpg',
     title: 'Remont korytarza',
     height: 28,
+  },
+  {
+    id: 5,
+    before: '/images/gallery-4-before.jpg',
+    after: '/images/gallery-4-after.jpg',
+    title: 'Elegancka jadalnia',
+    height: 35,
   },
   {
     id: 6,
@@ -63,7 +61,6 @@ const galleryImages: GalleryImage[] = [
     after: '/images/gallery-6-after.jpg',
     title: 'Magia pokoju dziecka',
     height: 32,
-    offsetTop: -80,
   },
 ];
 
@@ -126,7 +123,7 @@ const GallerySection = () => {
   }, [selectedImage]);
 
   return (
-    <Section id='gallery' className='bg-beige overflow-hidden'>
+    <Section id='gallery' className='bg-beige overflow-hidden pb-24'>
       <div className='bg-secondary/10 absolute top-40 left-20 h-64 w-64 rounded-full blur-3xl'></div>
       <div className='bg-primary/5 absolute right-10 bottom-20 h-80 w-80 rounded-full blur-3xl'></div>
 
@@ -161,17 +158,19 @@ const GallerySection = () => {
                 index % 3 === 0 && 'sm:col-span-1 lg:col-span-1',
                 index % 3 === 1 && 'sm:col-span-1 lg:col-span-1',
                 index % 3 === 2 && 'sm:col-span-2 lg:col-span-1',
-                index === 0 && 'lg:row-span-2',
-                index === 3 && 'lg:row-span-2',
+                index % 3 === 1 && 'lg:mt-8',
+                image.id === 1 && 'lg:mt-28',
+                image.id === 3 && 'lg:mt-30',
+                image.id === 5 && 'lg:-mt-8',
+                image.id === 6 && 'lg:-mt-20',
               )}
               style={{
                 height: `${(image.height || 30) * 10}px`,
-                marginTop: (index % 3 === 1 ? 30 : 0) + (image.offsetTop ?? 0),
               }}
               onClick={() => openLightbox(image)}
               aria-label={`Otwórz podgląd: ${image.title}`}
             >
-              <div className='relative h-full overflow-hidden'>
+              <div className='relative h-full overflow-hidden hover:cursor-pointer'>
                 <NextImage
                   src={image.after}
                   alt={image.title}
@@ -180,7 +179,7 @@ const GallerySection = () => {
                   className='object-cover transition-transform duration-700 group-hover:scale-110'
                 />
                 <div className='to-primary/60 absolute inset-0 bg-gradient-to-b from-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100'></div>
-                <div className='border-secondary/0 group-hover:border-secondary/30 absolute inset-0 border-4 transition-all duration-500'></div>
+                <div className='border-secondary/0 group-hover:border-secondary/30 absolute inset-0 rounded-lg border-4 transition-all duration-500'></div>
                 <div className='absolute right-0 bottom-0 left-0 translate-y-full transform p-6 transition-transform duration-500 group-hover:translate-y-0'>
                   <span className='mb-2 block font-serif text-xl font-medium text-white'>
                     {image.title}
@@ -237,7 +236,7 @@ const GallerySection = () => {
             <button
               type='button'
               onClick={closeLightbox}
-              className='hover:text-secondary absolute -top-16 right-0 text-white transition-colors'
+              className='hover:text-secondary absolute -top-16 right-0 text-white transition-colors hover:cursor-pointer'
               aria-label='Close lightbox'
             >
               <HiX size={24} />
@@ -255,7 +254,7 @@ const GallerySection = () => {
                 <button
                   type='button'
                   onClick={toggleBeforeAfter}
-                  className='bg-primary hover:bg-secondary absolute right-6 bottom-6 rounded-md px-6 py-3 font-medium text-white transition-colors'
+                  className='bg-primary hover:bg-secondary absolute right-6 bottom-6 rounded-md px-6 py-3 font-medium text-white transition-colors hover:cursor-pointer'
                 >
                   Pokaż {isBeforeImage ? 'Po' : 'Przed'}
                 </button>
