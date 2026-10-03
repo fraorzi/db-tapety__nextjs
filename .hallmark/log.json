@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2026-10-04",
+    "macrostructure": "Photographic + sticky stack (/) · Portfolio Grid (/realizacje) · Split Studio (/dla-firm) · Feature Stack (/jak-pracuje) · Long Document (/polityka-prywatnosci)",
+    "theme": "custom: stone paper · tape-blue accent · Bricolage Grotesque + Instrument Sans",
+    "enrichment": "Tier A stock photo/video (Unsplash, Pexels), squircle clip-path buttons",
+    "nav": "N10",
+    "footer": "Ft1",
+    "brief": "Damian Bożyk · tapetowanie · redesign v2 (Next.js), system w design.md"
+  },
+  {
+    "date": "2026-10-04",
+    "macrostructure": "bez zmian względem v2",
+    "theme": "custom: lavender-stone paper · wallpaper-violet accent (z wideo hero) · aubergine deep · Bricolage Grotesque + Instrument Sans",
+    "enrichment": "bez numeracji list i pasków postępu",
+    "nav": "bottom dock rozwijany w panel",
+    "footer": "Ft1",
+    "brief": "Damian Bożyk · tapetowanie · redesign v3"
+  }
+]

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bożyk — Ściana przed, ściana po</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/patterns.css">
+<style>
+/* Hallmark · genre: editorial · macrostructure: Split Studio · theme: Studio (viridian) · enrichment: Tier B hand-built SVG rooms, before/after · nav: N9 · footer: Ft1 · tone: utilitarian-warm · anchor hue: 158 */
+:root {
+  --color-paper:      oklch(95.5% 0.01 140);
+  --color-paper-2:    oklch(92% 0.014 145);
+  --color-rule:       oklch(82% 0.015 150);
+  --color-neutral:    oklch(53% 0.02 155);
+  --color-muted:      oklch(40% 0.02 160);
+  --color-ink:        oklch(21% 0.02 165);
+  --color-accent:     oklch(46% 0.1 158);
+  --color-accent-ink: oklch(97% 0.01 150);
+  --color-focus:      oklch(52% 0.13 158);
+  --color-handle:     oklch(98% 0.005 140);
+  --color-tag-bg:     oklch(21% 0.02 165 / 0.72);
+
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Geist", ui-sans-serif, system-ui, sans-serif;
+
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem; --text-md: 1.25rem; --text-lg: 1.5625rem; --text-xl: 1.9531rem;
+  --text-2xl: clamp(1.9rem, 2.4vw + 1rem, 3rem);
+  --text-display: clamp(2.25rem, 4.2vw + 0.5rem, 4.75rem);
+
+  --space-3xs: 0.125rem; --space-2xs: 0.25rem; --space-xs: 0.5rem; --space-sm: 0.75rem;
+  --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2.5rem; --space-2xl: 4rem; --space-3xl: 6rem; --space-4xl: 9rem;
+
+  --page-gutter: clamp(1rem, 4vw, 2.5rem);
+  --page-max: 80rem;
+  --rule-hair: 1px;
+  --radius-sm: 4px;
+  --radius-pill: 999px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --z-raised: 10;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; }
+a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); font-style: normal; margin: 0; line-height: 1.02; letter-spacing: -0.025em; overflow-wrap: anywhere; min-width: 0; }
+p { margin: 0; }
+.wrap { max-width: var(--page-max); margin-inline: auto; padding-inline: var(--page-gutter); }
+
+.nav-edge { display: flex; justify-content: space-between; align-items: center; gap: var(--space-md); padding-block: var(--space-lg); }
+.wordmark { text-decoration: none; display: flex; align-items: baseline; gap: var(--space-xs); white-space: nowrap; }
+.wordmark b { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); letter-spacing: -0.03em; }
+.wordmark span { font-size: var(--text-sm); color: var(--color-muted); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: var(--space-xs); white-space: nowrap; text-decoration: none;
+  font: inherit; font-size: var(--text-sm); font-weight: 500; cursor: pointer;
+  border: 1.5px solid var(--color-ink); border-radius: var(--radius-pill); padding: var(--space-xs) var(--space-lg); min-height: 2.75rem;
+  color: var(--color-ink); background: transparent;
+  transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+}
+.chip:hover { background: var(--color-ink); color: var(--color-paper); }
+.chip:active { transform: translateY(1px); }
+.chip--accent { border-color: var(--color-accent); background: var(--color-accent); color: var(--color-accent-ink); }
+.chip--accent:hover { background: var(--color-ink); border-color: var(--color-ink); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-2xl); align-items: center; padding-block: var(--space-xl) var(--space-3xl); }
+.hero h1 { font-size: var(--text-display); font-weight: 800; }
+.hero h1 span { display: block; }
+.hero h1 .po { color: var(--color-accent); }
+.hero__lede { margin-top: var(--space-lg); max-width: 40ch; font-size: var(--text-md); line-height: 1.5; color: var(--color-muted); }
+.hero__actions { margin-top: var(--space-xl); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md) var(--space-lg); }
+.hero__actions a:not(.chip) { white-space: nowrap; font-size: var(--text-sm); font-weight: 500; }
+
+.ba-fig { margin: 0; }
+.ba { position: relative; aspect-ratio: 3 / 2; border-radius: var(--radius-sm); overflow: hidden; --pos: 50%; touch-action: pan-y; }
+.ba__layer { position: absolute; inset: 0; }
+.ba__layer svg { display: block; width: 100%; height: 100%; }
+.ba__before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.ba__handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: var(--color-handle); pointer-events: none; z-index: var(--z-raised); }
+.ba__handle::after {
+  content: "‹ ›"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--color-handle); color: var(--color-ink);
+  display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); letter-spacing: 0.05em;
+  box-shadow: 0 0 0 1px var(--color-rule);
+}
+.ba:has(input:focus-visible) .ba__handle::after { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+.ba input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; z-index: var(--z-raised); }
+.ba__tag { position: absolute; top: var(--space-sm); padding: var(--space-3xs) var(--space-sm); border-radius: var(--radius-pill); background: var(--color-tag-bg); color: var(--color-handle); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.04em; pointer-events: none; }
+.ba__tag--l { left: var(--space-sm); }
+.ba__tag--r { right: var(--space-sm); }
+.ba-fig figcaption { display: flex; justify-content: space-between; gap: var(--space-md); margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--color-muted); }
+.ba-fig figcaption span:last-child { white-space: nowrap; color: var(--color-neutral); }
+
+.work { padding-block: var(--space-2xl) var(--space-3xl); border-top: var(--rule-hair) solid var(--color-rule); }
+.work__head h2 { font-size: var(--text-2xl); font-weight: 800; }
+.work__head p { margin-top: var(--space-sm); color: var(--color-neutral); font-size: var(--text-sm); max-width: 56ch; }
+.pairs { margin-top: var(--space-2xl); display: grid; gap: var(--space-3xl); }
+.pair { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-2xl); align-items: center; }
+.pair:nth-child(even) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.pair:nth-child(even) .ba-fig { order: -1; }
+.pair h3 { font-size: var(--text-xl); font-weight: 700; }
+.pair dl { margin: var(--space-lg) 0 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-lg); font-size: var(--text-sm); }
+.pair dt, .pair dd { margin: 0; padding-block: var(--space-xs); border-top: var(--rule-hair) solid var(--color-rule); }
+.pair dt { color: var(--color-neutral); }
+.pair p { margin-top: var(--space-lg); color: var(--color-muted); max-width: 46ch; }
+.pair .chip { margin-top: var(--space-lg); }
+
+.price { background: var(--color-paper-2); padding-block: var(--space-3xl); }
+.price__in { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); gap: var(--space-2xl); }
+.price h2 { font-size: var(--text-2xl); font-weight: 800; }
+.price__lede { margin-top: var(--space-md); color: var(--color-muted); max-width: 36ch; }
+.price ul { list-style: none; margin: 0; padding: 0; }
+.price li { display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: var(--space-lg); padding-block: var(--space-lg); border-top: var(--rule-hair) solid var(--color-rule); }
+.price li:last-child { border-bottom: var(--rule-hair) solid var(--color-rule); }
+.price li b { font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); letter-spacing: -0.01em; line-height: 1.2; }
+.price li span { color: var(--color-muted); }
+
+.contact { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-2xl); padding-block: var(--space-3xl); align-items: start; }
+.contact h2 { font-size: var(--text-display); font-weight: 800; max-width: 12ch; }
+.contact ol { margin: 0; padding: 0; list-style: none; counter-reset: c; }
+.contact ol li { counter-increment: c; display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); padding-block: var(--space-sm); border-top: var(--rule-hair) solid var(--color-rule); }
+.contact ol li::before { content: counter(c); font-family: var(--font-display); font-weight: 800; color: var(--color-accent); }
+.contact__lines { margin-top: var(--space-xl); display: grid; gap: var(--space-xs); font-size: var(--text-sm); }
+.tbd { display: inline-block; color: var(--color-neutral); border: 1px dashed var(--color-rule); padding: 0 var(--space-xs); border-radius: var(--radius-sm); }
+.contact .chip { margin-top: var(--space-xl); }
+
+.foot-mast { border-top: var(--rule-hair) solid var(--color-ink); padding-block: var(--space-xl) var(--space-2xl); display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-md) var(--space-xl); }
+.foot-mast .wordmark b { font-size: var(--text-xl); }
+.foot-mast__links { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-lg); font-size: var(--text-sm); color: var(--color-muted); }
+.foot-mast__links a { white-space: nowrap; }
+
+.reveal { opacity: 0; transform: translateY(10px); animation: reveal var(--dur-long) var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 80ms); }
+@keyframes reveal { to { opacity: 1; transform: none; } }
+
+@media (max-width: 60rem) {
+  .hero, .pair, .pair:nth-child(even), .price__in, .contact { grid-template-columns: minmax(0, 1fr); }
+  .pair:nth-child(even) .ba-fig { order: 0; }
+  .hero { gap: var(--space-xl); }
+  .pairs { gap: var(--space-2xl); }
+}
+@media (max-width: 40rem) {
+  .wordmark span { display: none; }
+  .price li { grid-template-columns: minmax(0, 1fr); gap: var(--space-2xs); }
+  .ba-fig figcaption { flex-direction: column; gap: var(--space-3xs); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 150ms !important; animation-delay: 0ms !important; transition-duration: 150ms !important; }
+  .reveal { transform: none; }
+}
+</style>
+</head>
+<body>
+<header class="wrap nav-edge">
+  <a class="wordmark" href="#"><b>Bożyk</b><span>tapetowanie wnętrz</span></a>
+  <a class="chip" href="#kontakt">Wycena →</a>
+</header>
+
+<main>
+  <section class="wrap hero" aria-labelledby="t-hero">
+    <div class="reveal" style="--i:0">
+      <h1 id="t-hero"><span>Ściana przed.</span><span class="po">Ściana po.</span></h1>
+      <p class="hero__lede">Kładę tapety, fototapety i okładziny ścienne. Przesuń suwak na zdjęciu — tak wygląda różnica między gołą ścianą a skończoną robotą.</p>
+      <div class="hero__actions">
+        <a class="chip chip--accent" href="#realizacje">Zobacz realizacje ↓</a>
+        <a href="#kontakt">Zapytaj o termin</a>
+      </div>
+    </div>
+    <figure class="ba-fig reveal" style="--i:1">
+      <div class="ba" data-p="p-damask-graphite" data-kind="salon" data-label="Salon"></div>
+      <figcaption><span>Salon · flizelina, damaszek grafitowy</span><span>← przeciągnij →</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap work" id="realizacje" aria-labelledby="t-work">
+    <div class="work__head">
+      <h2 id="t-work">Realizacje</h2>
+      <p>Makieta: pokoje narysowane, opisy przykładowe. Docelowo prawdziwe zdjęcia przed i po z każdego zlecenia.</p>
+    </div>
+    <div class="pairs">
+      <article class="pair">
+        <div>
+          <h3>Sypialnia w liściach</h3>
+          <dl><dt>Tapeta</dt><dd>Papierowa, botanika na różu</dd><dt>Ściana</dt><dd>Za łóżkiem, jedna ściana akcentowa</dd></dl>
+          <p>Stare łączenia płyt g-k i pęknięcie przy suficie. Najpierw taśma i szpachla, potem grunt — dopiero wtedy tapeta.</p>
+          <a class="chip" href="#kontakt">Podobna ściana? Zapytaj</a>
+        </div>
+        <figure class="ba-fig"><div class="ba" data-p="p-botanic-rose" data-kind="sypialnia" data-label="Sypialnia"></div><figcaption><span>Sypialnia · botanika na różu</span><span>← przeciągnij →</span></figcaption></figure>
+      </article>
+      <article class="pair">
+        <div>
+          <h3>Pokój dziecka z widokiem</h3>
+          <dl><dt>Tapeta</dt><dd>Fototapeta z jednej grafiki</dd><dt>Ściana</dt><dd>Cała ściana od podłogi do sufitu</dd></dl>
+          <p>Fototapeta przychodzi w panelach. Każdy trzeba skleić tak, żeby linia wzgórz nie przeskoczyła o milimetr na łączeniu.</p>
+          <a class="chip" href="#kontakt">Podobna ściana? Zapytaj</a>
+        </div>
+        <figure class="ba-fig"><div class="ba" data-p="p-mural-hills" data-kind="dziecko" data-label="Pokój dziecka"></div><figcaption><span>Pokój dziecka · fototapeta „Wzgórza”</span><span>← przeciągnij →</span></figcaption></figure>
+      </article>
+      <article class="pair">
+        <div>
+          <h3>Jadalnia art déco</h3>
+          <dl><dt>Tapeta</dt><dd>Flizelina, wachlarze granat i mosiądz</dd><dt>Ściana</dt><dd>Dwie ściany z narożnikiem</dd></dl>
+          <p>Duży raport wzoru: wachlarze muszą zejść się na każdym pasie i w narożniku. Część rolki idzie na dopasowanie — to wliczam w zamówienie.</p>
+          <a class="chip" href="#kontakt">Podobna ściana? Zapytaj</a>
+        </div>
+        <figure class="ba-fig"><div class="ba" data-p="p-deco-navy" data-kind="jadalnia" data-label="Jadalnia"></div><figcaption><span>Jadalnia · wachlarze art déco</span><span>← przeciągnij →</span></figcaption></figure>
+      </article>
+    </div>
+  </section>
+
+  <section class="price" aria-labelledby="t-price">
+    <div class="wrap price__in">
+      <div>
+        <h2 id="t-price">Od czego zależy cena</h2>
+        <p class="price__lede">Nie podam stawki za metr, zanim nie zobaczę ściany. Mogę za to powiedzieć, co na nią wpływa.</p>
+      </div>
+      <ul>
+        <li><b>Metraż i wysokość</b><span>Liczy się powierzchnia, ale też wysokość pomieszczenia — przy wysokich ścianach pracuje się z rusztowania.</span></li>
+        <li><b>Stan ścian</b><span>Gładka, zagruntowana ściana to szybka robota. Stara farba, pęknięcia i nierówności to dodatkowe dni.</span></li>
+        <li><b>Rodzaj tapety</b><span>Flizelina klei się inaczej niż papier czy tekstylia. Fototapeta wymaga składania paneli w jedną grafikę.</span></li>
+        <li><b>Raport wzoru</b><span>Im większy powtarzalny motyw, tym więcej materiału idzie na dopasowanie pasów.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap contact" id="kontakt" aria-labelledby="t-contact">
+    <h2 id="t-contact">Wycena zaczyna się od zdjęcia.</h2>
+    <div>
+      <ol>
+        <li>Zdjęcie ściany w dziennym świetle</li>
+        <li>Przybliżona szerokość i wysokość</li>
+        <li>Link do wzoru albo nazwa producenta</li>
+      </ol>
+      <div class="contact__lines">
+        <span>Telefon: <span class="tbd">do uzupełnienia</span></span>
+        <span>E-mail: <span class="tbd">do uzupełnienia</span></span>
+        <span>Obszar: <span class="tbd">miasto / region do potwierdzenia</span></span>
+      </div>
+      <a class="chip chip--accent" href="mailto:kontakt@example.pl">Wyślij zdjęcie ściany</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot-mast">
+  <a class="wordmark" href="#"><b>Bożyk</b><span>tapetowanie wnętrz</span></a>
+  <p class="foot-mast__links"><a href="#realizacje">Realizacje</a><a href="#kontakt">Wycena</a><span>© 2026 Damian Bożyk</span></p>
+</footer>
+
+<script src="shared/patterns.js"></script>
+<script>
+document.querySelectorAll(".ba").forEach((el) => {
+  const { p, kind, label } = el.dataset;
+  el.innerHTML = `
+    <div class="ba__layer">${Wall.room(p, kind)}</div>
+    <div class="ba__layer ba__before">${Wall.room(p, kind, { before: true })}</div>
+    <span class="ba__tag ba__tag--l">Przed</span><span class="ba__tag ba__tag--r">Po</span>
+    <span class="ba__handle" aria-hidden="true"></span>
+    <input type="range" min="0" max="100" value="50" aria-label="${label}: porównanie przed i po" aria-valuetext="50% przed">`;
+  const input = el.querySelector("input");
+  input.addEventListener("input", () => {
+    el.style.setProperty("--pos", input.value + "%");
+    input.setAttribute("aria-valuetext", input.value + "% przed");
+  });
+});
+</script>
+</body>
+</html>

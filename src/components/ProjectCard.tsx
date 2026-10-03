@@ -1,0 +1,22 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { Project } from "@/data/projects";
+
+type Props = { project: Project; className?: string; sizes?: string; priority?: boolean; detail?: boolean };
+
+export function ProjectCard({ project, className = "", sizes = "(max-width: 900px) 100vw, 50vw", priority, detail }: Props) {
+  return (
+    <Link href={`/realizacje/${project.slug}`} className={`proj ${className}`} data-reveal="clip">
+      <figure>
+        <div className="media">
+          <Image src={project.cover} alt={project.alt} fill sizes={sizes} priority={priority} />
+        </div>
+        <figcaption>
+          <span>{project.title}</span>
+          <span>{project.room}</span>
+          {detail && <small>{project.material} · {project.scope}</small>}
+        </figcaption>
+      </figure>
+    </Link>
+  );
+}

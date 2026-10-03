@@ -1,44 +1,42 @@
-import type { Metadata } from 'next';
-import NextTopLoader from 'nextjs-toploader';
-import type { ReactNode } from 'react';
-import { Toaster } from 'sonner';
+import type { Metadata } from "next";
+import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
+import "./globals.css";
+import { Header } from "@/components/Header";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { ScrollMotion } from "@/components/ScrollMotion";
+import { site } from "@/data/site";
 
-import '@/styles/app.css';
+const display = Bricolage_Grotesque({
+  subsets: ["latin", "latin-ext"],
+  axes: ["wdth", "opsz"],
+  variable: "--font-display",
+  display: "swap",
+});
 
-import { fontSans, fontSerif } from '@/lib/fonts';
+const body = Instrument_Sans({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500"],
+  variable: "--font-body",
+  display: "swap",
+});
 
-import Analytics from '@/components/features/analytics/Analytics';
-import Footer from '@/components/layout/Footer/Footer';
-import Header from '@/components/layout/Header/Header';
+export const metadata: Metadata = {
+  title: { default: `${site.name} — ${site.tagline}`, template: `%s — ${site.name}` },
+  description: "Tapetowanie i przygotowanie ścian w mieszkaniach, domach i lokalach. Pomiar, dobór tapety, montaż bez widocznych łączeń.",
+};
 
-import siteMetadata, { siteViewport } from '@/constant/seo';
-
-export const metadata: Metadata = siteMetadata();
-
-export const viewport = siteViewport;
-
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='pl' className={`${fontSans.variable} ${fontSerif.variable}`}>
-      <body className='flex min-h-screen flex-col'>
-        <a
-          href='#main'
-          className='focus:text-primary sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:shadow'
-        >
-          Przejdź do treści
-        </a>
-        <Analytics />
-
-        <NextTopLoader height={4} color='var(--color-primary)' showSpinner={false} shadow='none' />
-
+    <html lang="pl" className={`${display.variable} ${body.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://videos.pexels.com" />
+      </head>
+      <body>
+        <SmoothScroll />
+        <ScrollMotion />
         <Header />
-
-        <main id='main' className='flex flex-1 flex-col'>
-          {children}
-        </main>
-
-        <Footer />
-        <Toaster position='top-right' />
+        {children}
       </body>
     </html>
   );

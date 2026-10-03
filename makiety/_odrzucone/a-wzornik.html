@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damian Bożyk — Wzornik realizacji</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/patterns.css">
+<style>
+/* Hallmark · genre: editorial · macrostructure: Catalogue · theme: Atelier (oxblood) · enrichment: Tier B hand-built SVG swatches + CSS fan · nav: N6 · footer: Ft6 · tone: luxury-quiet · anchor hue: 25 */
+:root {
+  --color-paper:   oklch(95.5% 0.016 78);
+  --color-paper-2: oklch(92.5% 0.02 76);
+  --color-paper-3: oklch(89% 0.024 74);
+  --color-rule:    oklch(80% 0.02 70);
+  --color-neutral: oklch(52% 0.02 55);
+  --color-muted:   oklch(40% 0.02 45);
+  --color-ink:     oklch(22% 0.02 35);
+  --color-accent:  oklch(43% 0.13 25);
+  --color-focus:   oklch(50% 0.16 25);
+  --color-scrim:   oklch(22% 0.02 35 / 0.55);
+
+  --font-display: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --font-body:    "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-md:   1.25rem;
+  --text-lg:   1.5625rem;
+  --text-xl:   1.9531rem;
+  --text-3xl:  clamp(2.5rem, 3.6vw + 1rem, 4.25rem);
+  --text-mast: clamp(2.25rem, 5vw, 3.75rem);
+
+  --space-3xs: 0.125rem; --space-2xs: 0.25rem; --space-xs: 0.5rem; --space-sm: 0.75rem;
+  --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2.5rem; --space-2xl: 4rem; --space-3xl: 6rem; --space-4xl: 9rem;
+
+  --page-gutter: clamp(1rem, 4vw, 2.5rem);
+  --page-max: 78rem;
+  --rule-hair: 1px;
+  --radius-sm: 2px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+
+  --z-raised: 10; --z-sticky: 200; --z-modal: 400;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  font-variant-numeric: oldstyle-nums;
+}
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { color: var(--color-accent); }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; font-style: normal; margin: 0; line-height: 1.05; letter-spacing: -0.01em; overflow-wrap: anywhere; min-width: 0; }
+p { margin: 0; }
+.wrap { max-width: var(--page-max); margin-inline: auto; padding-inline: var(--page-gutter); }
+.tnum { font-variant-numeric: tabular-nums lining-nums; }
+
+.nav-mast { padding-top: var(--space-md); text-align: center; }
+.mast-line {
+  display: flex; justify-content: space-between; gap: var(--space-md);
+  font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted);
+}
+h1, h2, h3, .mast-name { font-family: var(--font-display); }
+.mast-name { font-size: var(--text-mast); font-weight: 600; letter-spacing: 0.02em; line-height: 0.95; margin-top: var(--space-md); }
+.mast-sub { font-family: var(--font-display); font-size: var(--text-md); color: var(--color-muted); margin-top: var(--space-2xs); }
+.mast-nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2xs) var(--space-lg); list-style: none; padding: 0; margin: var(--space-md) 0 0; }
+.mast-nav a { white-space: nowrap; text-decoration: none; font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.04em; padding-block: var(--space-xs); display: inline-block; }
+.mast-nav a:hover { text-decoration: underline; }
+.mast-rule { border: 0; border-top: var(--rule-hair) solid var(--color-ink); border-bottom: var(--rule-hair) solid var(--color-ink); height: 4px; margin: var(--space-sm) 0 0; }
+
+.intro {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--space-2xl); align-items: center;
+  padding-block: var(--space-2xl) var(--space-3xl);
+}
+.intro h1 { font-size: var(--text-3xl); }
+.intro__lede { margin-top: var(--space-lg); max-width: 44ch; font-size: var(--text-md); line-height: 1.5; color: var(--color-muted); }
+.intro__meta { margin-top: var(--space-xl); display: flex; gap: var(--space-lg); flex-wrap: wrap; font-size: var(--text-sm); }
+.intro__meta a { white-space: nowrap; font-weight: 500; }
+
+.fan { position: relative; height: clamp(20rem, 38vw, 33rem); isolation: isolate; --card-w: clamp(9rem, 17vw, 15rem); }
+.fan__card {
+  position: absolute; left: 50%; bottom: 0;
+  width: var(--card-w); aspect-ratio: 4 / 5.6;
+  margin-left: calc(var(--card-w) / -2);
+  background: var(--color-paper);
+  padding: var(--space-xs) var(--space-xs) 0;
+  box-shadow: 0 0 0 1px var(--color-rule);
+  transform-origin: 50% 130%;
+  transform: rotate(0deg);
+  animation: fan-open 900ms var(--ease-out) forwards;
+  animation-delay: calc(200ms + var(--i) * 60ms);
+  transition: transform var(--dur-long) var(--ease-out);
+}
+.fan__card svg { display: block; width: 100%; height: calc(100% - 2.1rem); }
+.fan__card span { display: block; font-family: var(--font-display); font-size: var(--text-sm); font-weight: 600; line-height: 2.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fan__card::before {
+  content: ""; position: absolute; top: var(--space-md); left: 50%; width: 10px; height: 10px; margin-left: -5px;
+  border-radius: 50%; background: var(--color-paper); box-shadow: inset 0 0 0 1px var(--color-rule); z-index: var(--z-raised);
+}
+@keyframes fan-open { to { transform: rotate(var(--a)); } }
+.fan.is-open .fan__card { animation: none; transform: rotate(var(--a)); }
+.fan.is-open:hover .fan__card { transform: rotate(calc(var(--a) * 1.4)) translateY(-6px); }
+
+.cat { padding-block: var(--space-2xl) var(--space-3xl); border-top: var(--rule-hair) solid var(--color-rule); }
+.cat__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-md) var(--space-xl); }
+.cat__head h2 { font-size: var(--text-xl); }
+.cat__count { color: var(--color-neutral); font-size: var(--text-sm); margin-left: var(--space-sm); font-family: var(--font-body); font-weight: 400; letter-spacing: 0; }
+.cat__note { margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--color-neutral); max-width: 60ch; }
+.filters { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.chip {
+  font: inherit; font-size: var(--text-sm); white-space: nowrap; cursor: pointer;
+  color: var(--color-ink); background: transparent;
+  border: var(--rule-hair) solid var(--color-rule); border-radius: 999px;
+  padding: var(--space-xs) var(--space-md); min-height: 2.5rem;
+  transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+}
+.chip:hover { border-color: var(--color-ink); }
+.chip:active { transform: translateY(1px); }
+.chip[aria-pressed="true"] { background: var(--color-ink); color: var(--color-paper); border-color: var(--color-ink); }
+
+.grid {
+  list-style: none; padding: 0; margin: var(--space-xl) 0 0;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--space-lg); row-gap: var(--space-xl);
+}
+.grid li { border-top: var(--rule-hair) solid var(--color-rule); padding-top: var(--space-md); }
+.grid li[hidden] { display: none; }
+.card { all: unset; display: block; width: 100%; cursor: pointer; }
+.card__swatch { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; box-shadow: 0 0 0 1px var(--color-rule); transition: transform var(--dur-short) var(--ease-out); }
+.card__swatch svg { display: block; width: 100%; height: 100%; }
+.card:hover .card__swatch { transform: translateY(-4px); }
+.card:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 6px; }
+.card__no { display: block; margin-top: var(--space-sm); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-accent); font-variant-numeric: tabular-nums lining-nums; }
+.card__name { display: block; font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; line-height: 1.15; margin-top: var(--space-3xs); }
+.card__meta { display: block; font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-2xs); }
+
+.steps { padding-block: var(--space-3xl); background: var(--color-paper-2); }
+.steps h2 { font-size: var(--text-3xl); max-width: 16ch; }
+.steps__intro { margin-top: var(--space-md); max-width: 52ch; color: var(--color-muted); }
+.steps ol { list-style: none; padding: 0; margin: var(--space-2xl) 0 0; counter-reset: s; }
+.steps li {
+  counter-increment: s;
+  display: grid; grid-template-columns: 5rem minmax(0, 18rem) minmax(0, 1fr); gap: var(--space-lg);
+  padding-block: var(--space-lg); border-top: var(--rule-hair) solid var(--color-rule);
+}
+.steps li:last-child { border-bottom: var(--rule-hair) solid var(--color-rule); }
+.steps li::before { content: counter(s, upper-roman) "."; font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-accent); line-height: 1; }
+.steps h3 { font-size: var(--text-lg); }
+.steps li p { color: var(--color-muted); max-width: 60ch; }
+
+.quote { padding-block: var(--space-3xl) var(--space-2xl); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr); gap: var(--space-2xl); align-items: start; }
+.quote h2 { font-size: var(--text-3xl); }
+.quote__lede { margin-top: var(--space-md); color: var(--color-muted); max-width: 40ch; }
+.quote dl { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-xl); }
+.quote dt, .quote dd { padding-block: var(--space-md); border-top: var(--rule-hair) solid var(--color-rule); margin: 0; }
+.quote dt { font-size: var(--text-sm); color: var(--color-neutral); }
+.quote dd { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; }
+.tbd { display: inline-block; font-family: var(--font-body); font-size: var(--text-sm); font-weight: 400; color: var(--color-neutral); background: var(--color-paper-2); border: 1px dashed var(--color-rule); padding: 0 var(--space-xs); }
+.cta-link { display: inline-block; margin-top: var(--space-xl); font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; color: var(--color-accent); white-space: nowrap; }
+
+.foot-letter { padding-block: var(--space-2xl) var(--space-3xl); border-top: var(--rule-hair) solid var(--color-ink); }
+.foot-letter__close { font-family: var(--font-display); font-size: var(--text-xl); line-height: 1.3; font-weight: 500; }
+.foot-letter__sign { font-weight: 700; }
+.foot-letter__ps { margin-top: var(--space-lg); font-size: var(--text-sm); color: var(--color-muted); max-width: 58ch; }
+.foot-letter__small { margin-top: var(--space-xl); font-size: var(--text-xs); color: var(--color-neutral); letter-spacing: 0.06em; }
+
+dialog {
+  width: min(64rem, calc(100% - 2 * var(--page-gutter))); max-height: calc(100svh - 2rem);
+  padding: 0; border: 0; background: var(--color-paper); color: var(--color-ink);
+  box-shadow: 0 0 0 1px var(--color-rule);
+}
+dialog[open] { animation: dlg-in var(--dur-long) var(--ease-out); }
+dialog::backdrop { background: var(--color-scrim); }
+@keyframes dlg-in { from { opacity: 0; transform: scale(0.97); } }
+.dlg { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.dlg__room svg { display: block; width: 100%; height: 100%; min-height: 18rem; }
+.dlg__body { padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-md); }
+.dlg__no { font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-accent); font-variant-numeric: tabular-nums lining-nums; }
+.dlg__body h2 { font-size: var(--text-xl); }
+.dlg__body dl { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-lg); font-size: var(--text-sm); }
+.dlg__body dt, .dlg__body dd { margin: 0; padding-block: var(--space-xs); border-top: var(--rule-hair) solid var(--color-rule); }
+.dlg__body dt { color: var(--color-neutral); }
+.dlg__close {
+  align-self: flex-start; margin-top: auto; font: inherit; font-size: var(--text-sm); white-space: nowrap; cursor: pointer;
+  background: transparent; color: var(--color-ink); border: var(--rule-hair) solid var(--color-ink); padding: var(--space-xs) var(--space-lg); min-height: 2.75rem;
+}
+.dlg__close:hover { background: var(--color-ink); color: var(--color-paper); }
+
+@media (max-width: 60rem) {
+  .intro, .quote { grid-template-columns: minmax(0, 1fr); }
+  .intro { padding-block: var(--space-2xl); gap: var(--space-xl); }
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .dlg { grid-template-columns: minmax(0, 1fr); }
+  .steps li { grid-template-columns: 3.5rem minmax(0, 1fr); }
+  .steps li p { grid-column: 2; }
+}
+@media (max-width: 40rem) {
+  .mast-line { flex-direction: column; align-items: center; gap: var(--space-3xs); }
+  .fan { height: 16rem; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-md); }
+  .card__name { font-size: var(--text-md); }
+  .steps li { grid-template-columns: minmax(0, 1fr); gap: var(--space-xs); }
+  .steps li p { grid-column: auto; }
+  .quote dl { grid-template-columns: minmax(0, 1fr); }
+  .quote dd { border-top: 0; padding-top: 0; }
+  .dlg__body { padding: var(--space-lg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 150ms !important; animation-delay: 0ms !important; transition-duration: 150ms !important; }
+}
+</style>
+</head>
+<body>
+<header class="wrap nav-mast">
+  <p class="mast-line"><span>Tapety · fototapety · okładziny ścienne</span><span class="tnum">Wzornik · jesień 2026</span></p>
+  <p class="mast-name">Damian Bożyk</p>
+  <p class="mast-sub">tapetowanie i dobór wzorów</p>
+  <nav class="mast-nav" aria-label="Główna">
+    <ul>
+      <li><a href="#realizacje">Realizacje</a></li>
+      <li><a href="#kolejnosc">Kolejność prac</a></li>
+      <li><a href="#wycena">Wycena</a></li>
+    </ul>
+  </nav>
+  <hr class="mast-rule" aria-hidden="true">
+</header>
+
+<main>
+  <section class="wrap intro" aria-labelledby="t-intro">
+    <div>
+      <h1 id="t-intro">Wzornik realizacji</h1>
+      <p class="intro__lede">Każda karta to jedna ściana: wzór, pomieszczenie, rodzaj tapety. Przeglądaj jak katalog w salonie — wybierz pokój, otwórz kartę, zobacz wzór na ścianie.</p>
+      <p class="intro__meta"><a href="#realizacje">Przejdź do kart ↓</a><a href="#wycena">Zapytaj o wycenę</a></p>
+    </div>
+    <div class="fan" id="fan" aria-hidden="true"></div>
+  </section>
+
+  <section class="wrap cat" id="realizacje" aria-labelledby="t-cat">
+    <div class="cat__head">
+      <h2 id="t-cat">Karty realizacji <span class="cat__count tnum" id="count"></span></h2>
+      <div class="filters" role="group" aria-label="Filtruj po pomieszczeniu" id="filters"></div>
+    </div>
+    <p class="cat__note">Makieta: wzory narysowane, opisy przykładowe. Docelowo każda karta dostaje zdjęcia prawdziwej ściany.</p>
+    <ul class="grid" id="grid"></ul>
+  </section>
+
+  <section class="steps" id="kolejnosc" aria-labelledby="t-steps">
+    <div class="wrap">
+      <h2 id="t-steps">Kolejność prac</h2>
+      <p class="steps__intro">Tapeta wybacza mniej niż farba. Dlatego najwięcej czasu idzie na to, czego potem nie widać.</p>
+      <ol>
+        <li><h3>Oględziny i pomiar</h3><p>Mierzę ściany, sprawdzam podłoże i wilgoć. Od tego zależy, czy tapetę można kłaść od razu, czy ściana najpierw potrzebuje pracy.</p></li>
+        <li><h3>Dobór wzoru</h3><p>Pomagam wybrać tapetę pod światło, meble i wielkość pokoju. Liczę rolki z zapasem na dopasowanie raportu wzoru.</p></li>
+        <li><h3>Przygotowanie ściany</h3><p>Zrywam stare powłoki, szpachluję, szlifuję, gruntuję. Pod gładką tapetą widać każdą nierówność.</p></li>
+        <li><h3>Klejenie i wykończenie</h3><p>Pas przy pasie, z dopasowanym wzorem. Docinam przy listwach, gniazdkach i oknach, a na koniec sprzątam.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="wrap quote" id="wycena" aria-labelledby="t-quote">
+    <div>
+      <h2 id="t-quote">Wycena</h2>
+      <p class="quote__lede">Wyślij zdjęcie ściany, przybliżone wymiary i link do wzoru, który Ci się podoba. Odpiszę z wyceną i terminem.</p>
+      <a class="cta-link" href="mailto:kontakt@example.pl">Napisz w sprawie wyceny →</a>
+    </div>
+    <dl>
+      <dt>Telefon</dt><dd><span class="tbd">numer do uzupełnienia</span></dd>
+      <dt>E-mail</dt><dd><span class="tbd">adres do uzupełnienia</span></dd>
+      <dt>Obszar</dt><dd><span class="tbd">miasto / region do potwierdzenia</span></dd>
+      <dt>Zakres</dt><dd>Tapety, fototapety, okładziny ścienne</dd>
+    </dl>
+  </section>
+</main>
+
+<footer class="wrap foot-letter">
+  <p class="foot-letter__close">Do zobaczenia przy ścianie,<br><span class="foot-letter__sign">Damian Bożyk</span></p>
+  <p class="foot-letter__ps">P.S. Masz już upatrzoną tapetę? Wyślij nazwę producenta i numer wzoru — policzę, ile rolek potrzeba.</p>
+  <p class="foot-letter__small tnum">© 2026 Damian Bożyk</p>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <div class="dlg">
+    <div class="dlg__room" id="dlg-room"></div>
+    <div class="dlg__body">
+      <p class="dlg__no" id="dlg-no"></p>
+      <h2 id="dlg-title"></h2>
+      <dl id="dlg-dl"></dl>
+      <a class="cta-link" href="#wycena" id="dlg-ask" style="margin-top:0">Chcę podobną ścianę →</a>
+      <button class="dlg__close" type="button" id="dlg-close">Zamknij</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="shared/patterns.js"></script>
+<script>
+const items = [
+  { p: "p-damask-graphite", room: "Salon", kind: "salon", type: "flizelina" },
+  { p: "p-botanic-rose", room: "Sypialnia", kind: "sypialnia", type: "papierowa" },
+  { p: "p-mural-hills", room: "Pokój dziecka", kind: "dziecko", type: "fototapeta" },
+  { p: "p-stripe-cream", room: "Przedpokój", kind: "przedpokoj", type: "winylowa" },
+  { p: "p-deco-navy", room: "Jadalnia", kind: "jadalnia", type: "flizelina" },
+  { p: "p-trellis-terra", room: "Lokal", kind: "lokal", type: "winylowa" },
+  { p: "p-damask-sage", room: "Sypialnia", kind: "sypialnia", type: "flizelina" },
+  { p: "p-dots-mint", room: "Pokój dziecka", kind: "dziecko", type: "papierowa" },
+  { p: "p-linen", room: "Salon", kind: "salon", type: "tekstylna" },
+  { p: "p-botanic-green", room: "Jadalnia", kind: "jadalnia", type: "flizelina" },
+  { p: "p-deco-navy", room: "Lokal", kind: "lokal", type: "winylowa" },
+  { p: "p-stripe-cream", room: "Sypialnia", kind: "sypialnia", type: "papierowa" }
+];
+const no = (i) => "Nr " + String(i + 1).padStart(2, "0");
+
+document.getElementById("fan").innerHTML = ["p-botanic-green", "p-trellis-terra", "p-damask-graphite", "p-stripe-cream", "p-botanic-rose"]
+  .map((p, i) => `<div class="fan__card" style="--i:${i};--a:${(i - 2) * 9}deg;z-index:${i === 2 ? 5 : 5 - Math.abs(i - 2)}">${Wall.swatch(p)}<span>${Wall.patterns[p]}</span></div>`).join("");
+const fan = document.getElementById("fan");
+fan.lastElementChild.addEventListener("animationend", () => fan.classList.add("is-open"));
+
+const grid = document.getElementById("grid");
+grid.innerHTML = items.map((it, i) => `
+  <li data-room="${it.room}">
+    <button class="card" type="button" data-i="${i}" aria-haspopup="dialog">
+      <span class="card__swatch">${Wall.swatch(it.p)}</span>
+      <span class="card__no">${no(i)}</span>
+      <span class="card__name">${Wall.patterns[it.p]}</span>
+      <span class="card__meta">${it.room} · ${it.type}</span>
+    </button>
+  </li>`).join("");
+
+const rooms = ["Wszystkie", ...new Set(items.map((it) => it.room))];
+const filters = document.getElementById("filters");
+filters.innerHTML = rooms.map((r, i) => `<button class="chip" type="button" aria-pressed="${i === 0}">${r}</button>`).join("");
+const count = document.getElementById("count");
+const setCount = (n) => { count.textContent = n + (n === 1 ? " karta" : n < 5 ? " karty" : " kart"); };
+setCount(items.length);
+filters.addEventListener("click", (e) => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  filters.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c === b));
+  let n = 0;
+  grid.querySelectorAll("li").forEach((li) => { const show = b.textContent === "Wszystkie" || li.dataset.room === b.textContent; li.hidden = !show; n += show; });
+  setCount(n);
+});
+
+const dlg = document.getElementById("dlg");
+grid.addEventListener("click", (e) => {
+  const c = e.target.closest(".card"); if (!c) return;
+  const i = +c.dataset.i, it = items[i];
+  document.getElementById("dlg-room").innerHTML = Wall.room(it.p, it.kind);
+  document.getElementById("dlg-no").textContent = no(i);
+  document.getElementById("dlg-title").textContent = Wall.patterns[it.p];
+  document.getElementById("dlg-dl").innerHTML = `
+    <dt>Pomieszczenie</dt><dd>${it.room}</dd>
+    <dt>Rodzaj</dt><dd>Tapeta ${it.type}</dd>
+    <dt>Miejsce</dt><dd>—</dd>
+    <dt>Rok</dt><dd>—</dd>`;
+  dlg.showModal();
+});
+document.getElementById("dlg-close").addEventListener("click", () => dlg.close());
+document.getElementById("dlg-ask").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+</script>
+</body>
+</html>

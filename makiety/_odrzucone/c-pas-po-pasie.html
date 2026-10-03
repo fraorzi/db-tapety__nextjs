@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damian Bożyk — Pas po pasie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Newsreader:opsz,wght@6..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/patterns.css">
+<style>
+/* Hallmark · genre: atmospheric · macrostructure: Marquee Hero · theme: Midnight (brass) · enrichment: Tier B hand-built SVG wall, strips hung on load · nav: N5 · footer: Ft5 · tone: luxury-craft · anchor hue: 80 */
+:root {
+  --color-paper:   oklch(17% 0.012 60);
+  --color-paper-2: oklch(21% 0.014 60);
+  --color-paper-3: oklch(25% 0.016 62);
+  --color-rule:    oklch(34% 0.02 70);
+  --color-neutral: oklch(64% 0.02 75);
+  --color-muted:   oklch(78% 0.015 80);
+  --color-ink:     oklch(93% 0.012 85);
+  --color-accent:  oklch(77% 0.1 80);
+  --color-focus:   oklch(82% 0.12 80);
+  --color-glass:   oklch(21% 0.014 60 / 0.72);
+  --color-fade:    oklch(17% 0.012 60 / 0);
+
+  --font-display: "Big Shoulders Display", "Big Shoulders", "Arial Narrow", sans-serif;
+  --font-body:    "Newsreader", Georgia, serif;
+
+  --text-xs: 0.8125rem; --text-sm: 0.9375rem; --text-base: 1.0625rem; --text-md: 1.3125rem; --text-lg: 1.625rem; --text-xl: 2rem;
+  --text-3xl: clamp(2.75rem, 5vw + 1rem, 5.5rem);
+  --text-marquee: clamp(3.5rem, 12vw, 9rem);
+
+  --space-3xs: 0.125rem; --space-2xs: 0.25rem; --space-xs: 0.5rem; --space-sm: 0.75rem;
+  --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2.5rem; --space-2xl: 4rem; --space-3xl: 6rem; --space-4xl: 9rem;
+
+  --page-gutter: clamp(1rem, 4vw, 2.5rem);
+  --page-max: 82rem;
+  --rule-hair: 1px;
+  --rule-thick: 3px;
+  --radius-pill: 999px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 480ms;
+  --z-raised: 10; --z-sticky: 200;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-family: var(--font-body); font-size: var(--text-base); font-weight: 380; line-height: 1.6; }
+a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+a:hover { color: var(--color-accent); }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); font-style: normal; font-weight: 800; text-transform: uppercase; margin: 0; line-height: 1.02; letter-spacing: 0.005em; overflow-wrap: anywhere; min-width: 0; }
+p { margin: 0; }
+.wrap { max-width: var(--page-max); margin-inline: auto; padding-inline: var(--page-gutter); }
+.tnum { font-variant-numeric: tabular-nums lining-nums; }
+
+.pill {
+  position: fixed; top: var(--space-md); left: 50%; transform: translateX(-50%); z-index: var(--z-sticky);
+  display: flex; align-items: center; gap: var(--space-lg);
+  padding: var(--space-2xs) var(--space-2xs) var(--space-2xs) var(--space-lg);
+  border-radius: var(--radius-pill); background: var(--color-glass); border: var(--rule-hair) solid var(--color-rule);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.pill__mark { font-family: var(--font-display); font-weight: 900; font-size: var(--text-md); text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; white-space: nowrap; }
+.pill ul { display: flex; gap: var(--space-lg); list-style: none; margin: 0; padding: 0; font-size: var(--text-sm); }
+.pill ul a { text-decoration: none; white-space: nowrap; }
+.pill__cta {
+  white-space: nowrap; text-decoration: none; font-size: var(--text-sm); font-weight: 500;
+  padding: var(--space-xs) var(--space-md); border-radius: var(--radius-pill);
+  background: var(--color-accent); color: var(--color-paper); min-height: 2.5rem; display: inline-flex; align-items: center;
+  transition: background-color var(--dur-micro) var(--ease-out);
+}
+.pill__cta:hover { background: var(--color-ink); color: var(--color-paper); }
+
+.marquee { position: relative; isolation: isolate; min-height: clamp(34rem, 94svh, 60rem); display: flex; flex-direction: column; justify-content: flex-end; }
+.marquee > .wrap { width: 100%; }
+.marquee__wall { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; display: block; }
+.marquee::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, var(--color-paper) 8%, var(--color-fade) 62%); pointer-events: none; }
+.strip { transform-box: fill-box; transform-origin: 50% 0; transform: scaleY(0); animation: hang var(--dur-long) var(--ease-out) forwards; animation-delay: calc(var(--i) * 60ms); }
+@keyframes hang { to { transform: scaleY(1); } }
+.seam { stroke: var(--color-accent); stroke-width: 1.5; opacity: 0; animation: seam 1400ms var(--ease-in-out) forwards; animation-delay: calc(560ms + var(--i) * 40ms); }
+@keyframes seam { 35% { opacity: 0.7; } to { opacity: 0; } }
+.marquee h1 { font-size: var(--text-marquee); font-weight: 900; line-height: 1; letter-spacing: -0.005em; opacity: 0; transform: translateY(14px); animation: rise var(--dur-long) var(--ease-out) 620ms forwards; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+.marquee__meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-xs) var(--space-xl); padding-block: var(--space-lg) var(--space-xl); margin-top: var(--space-md); border-top: var(--rule-hair) solid var(--color-rule); font-size: var(--text-sm); color: var(--color-muted); }
+.tbd { display: inline-block; color: var(--color-neutral); border: 1px dashed var(--color-rule); padding: 0 var(--space-xs); font-size: var(--text-xs); }
+
+.bridge { border-top: var(--rule-thick) solid var(--color-accent); }
+.intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: var(--space-2xl); padding-block: var(--space-3xl); align-items: end; }
+.intro__big { font-size: clamp(1.5rem, 1.4vw + 1rem, 2.25rem); line-height: 1.35; font-weight: 340; max-width: 30ch; }
+.intro__big a { color: var(--color-accent); }
+.intro dl { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-lg); font-size: var(--text-sm); }
+.intro dt, .intro dd { margin: 0; padding-block: var(--space-xs); border-top: var(--rule-hair) solid var(--color-rule); }
+.intro dt { color: var(--color-neutral); }
+
+.work { padding-block: var(--space-2xl) var(--space-3xl); }
+.work__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-xs) var(--space-lg); }
+.work__head h2 { font-size: var(--text-3xl); }
+.work__head p { color: var(--color-neutral); font-size: var(--text-sm); max-width: 44ch; }
+.rows { margin-top: var(--space-xl); border-bottom: var(--rule-hair) solid var(--color-rule); }
+.row { border-top: var(--rule-hair) solid var(--color-rule); }
+.row summary {
+  list-style: none; cursor: pointer;
+  display: grid; grid-template-columns: 4rem minmax(0, 1fr) minmax(0, 12rem) 2.5rem; gap: var(--space-lg); align-items: baseline;
+  padding: var(--space-lg) var(--space-xs);
+  transition: background-color var(--dur-short) var(--ease-out);
+}
+.row summary::-webkit-details-marker { display: none; }
+.row summary:hover { background: var(--color-paper-2); }
+.row__no { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); color: var(--color-accent); font-variant-numeric: tabular-nums; }
+.row__title { font-size: var(--text-lg); line-height: 1.2; }
+.row__title span { color: var(--color-neutral); }
+.row__type { font-size: var(--text-sm); color: var(--color-muted); }
+.row__icon { justify-self: end; font-family: var(--font-display); font-size: var(--text-xl); line-height: 1; transition: transform var(--dur-short) var(--ease-out); }
+.row[open] .row__icon { transform: rotate(45deg); }
+.row__panel { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: var(--space-xl); padding: var(--space-xs) var(--space-xs) var(--space-2xl) calc(4rem + var(--space-lg) + var(--space-xs)); }
+.row[open] .row__panel { animation: panel var(--dur-long) var(--ease-out); }
+@keyframes panel { from { opacity: 0; transform: translateY(-6px); } }
+.row__room { aspect-ratio: 3 / 2; overflow: hidden; }
+.row__room svg { display: block; width: 100%; height: 100%; }
+.row__text p { color: var(--color-muted); }
+.row__text dl { margin: var(--space-lg) 0 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-lg); font-size: var(--text-sm); }
+.row__text dt, .row__text dd { margin: 0; padding-block: var(--space-xs); border-top: var(--rule-hair) solid var(--color-rule); }
+.row__text dt { color: var(--color-neutral); }
+.row__text a { display: inline-block; margin-top: var(--space-lg); white-space: nowrap; color: var(--color-accent); }
+
+.craft { background: var(--color-paper-2); padding-block: var(--space-3xl); }
+.craft h2 { font-size: var(--text-3xl); max-width: 14ch; }
+.craft__grid { margin-top: var(--space-2xl); display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-xl); align-items: start; }
+.craft figure { margin: 0; }
+.craft svg { display: block; width: 100%; height: auto; background: var(--color-paper); }
+.craft figure:nth-child(2) { margin-top: var(--space-3xl); }
+.craft figure:nth-child(3) { margin-top: var(--space-xl); }
+.craft h3 { margin-top: var(--space-md); font-size: var(--text-lg); font-weight: 800; }
+.craft figcaption p { margin-top: var(--space-xs); color: var(--color-muted); max-width: 42ch; }
+.d-line { stroke: var(--color-accent); fill: none; stroke-width: 1.5; }
+.d-thin { stroke: var(--color-rule); fill: none; stroke-width: 1; }
+.d-dash { stroke: var(--color-accent); fill: none; stroke-width: 1; stroke-dasharray: 4 4; }
+.d-fill { fill: var(--color-accent); }
+.d-fill-2 { fill: var(--color-paper-3); }
+.d-text { fill: var(--color-neutral); font-family: var(--font-body); font-size: 11px; }
+
+.quote { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: var(--space-2xl); padding-block: var(--space-3xl); }
+.quote h2 { font-size: var(--text-3xl); }
+.quote__lede { margin-top: var(--space-md); color: var(--color-muted); max-width: 34ch; }
+.quote ol { list-style: none; margin: 0; padding: 0; counter-reset: q; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-lg); }
+.quote ol li { counter-increment: q; border-top: var(--rule-hair) solid var(--color-rule); padding-top: var(--space-sm); }
+.quote ol li::before { content: counter(q, decimal-leading-zero); display: block; font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); color: var(--color-accent); font-variant-numeric: tabular-nums; }
+.quote__lines { margin-top: var(--space-xl); display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-xl); font-size: var(--text-sm); color: var(--color-muted); }
+
+.foot-stmt { padding-block: var(--space-3xl) var(--space-xl); display: grid; gap: var(--space-xl); border-top: var(--rule-hair) solid var(--color-rule); }
+.foot-stmt__line { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: var(--text-marquee); line-height: 1; letter-spacing: -0.005em; }
+.foot-stmt__meta a { white-space: nowrap; color: var(--color-accent); }
+.foot-stmt__meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--space-xs) var(--space-lg); padding-top: var(--space-sm); border-top: var(--rule-hair) solid var(--color-rule); font-size: var(--text-sm); color: var(--color-muted); }
+.foot-stmt__meta b { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-ink); font-size: var(--text-md); }
+
+@media (max-width: 60rem) {
+  .intro, .quote, .row__panel { grid-template-columns: minmax(0, 1fr); }
+  .row__panel { padding-left: var(--space-xs); }
+  .row summary { grid-template-columns: 3rem minmax(0, 1fr) 2rem; }
+  .row__type { display: none; }
+  .craft__grid { grid-template-columns: minmax(0, 1fr); }
+  .craft figure:nth-child(n) { margin-top: 0; }
+}
+@media (max-width: 40rem) {
+  .pill ul { display: none; }
+  .pill { gap: var(--space-md); }
+  .quote ol { grid-template-columns: minmax(0, 1fr); }
+  .row summary { gap: var(--space-sm); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 150ms !important; animation-delay: 0ms !important; transition-duration: 150ms !important; }
+  .strip { transform: none; animation: none; }
+  .seam { display: none; }
+  .marquee h1 { transform: none; }
+}
+</style>
+</head>
+<body>
+<nav class="pill" aria-label="Główna">
+  <a class="pill__mark" href="#">Bożyk</a>
+  <ul>
+    <li><a href="#realizacje">Realizacje</a></li>
+    <li><a href="#rzemioslo">Rzemiosło</a></li>
+  </ul>
+  <a class="pill__cta" href="#wycena">Wycena</a>
+</nav>
+
+<header class="marquee">
+  <svg class="marquee__wall" id="wall" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+  <div class="wrap">
+    <h1>Pas po pasie.</h1>
+    <div class="marquee__meta">
+      <span>Damian Bożyk — tapetowanie wnętrz</span>
+      <span>Tapety · fototapety · okładziny ścienne</span>
+      <span><span class="tbd">region do potwierdzenia</span></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="bridge"></div>
+  <section class="wrap intro" aria-label="O firmie">
+    <p class="intro__big">Kładę tapety, fototapety i okładziny ścienne w mieszkaniach, domach i lokalach. Ta strona to przede wszystkim zbiór skończonych ścian. Jeśli któraś Ci się spodoba — <a href="#wycena">napisz</a>.</p>
+    <dl>
+      <dt>Zakres</dt><dd>Przygotowanie ścian, tapetowanie, fototapety</dd>
+      <dt>Obszar</dt><dd><span class="tbd">do potwierdzenia</span></dd>
+      <dt>Kontakt</dt><dd><span class="tbd">telefon do uzupełnienia</span></dd>
+    </dl>
+  </section>
+
+  <section class="wrap work" id="realizacje" aria-labelledby="t-work">
+    <div class="work__head">
+      <h2 id="t-work">Realizacje</h2>
+      <p>Makieta: ściany narysowane, opisy przykładowe. Docelowo zdjęcia z prawdziwych zleceń.</p>
+    </div>
+    <div class="rows" id="rows"></div>
+  </section>
+
+  <section class="craft" id="rzemioslo" aria-labelledby="t-craft">
+    <div class="wrap">
+      <h2 id="t-craft">Czego nie widać na zdjęciu</h2>
+      <div class="craft__grid">
+        <figure>
+          <svg viewBox="0 0 320 260" role="img" aria-label="Dwa pasy tapety z wzorem dopasowanym na łączeniu">
+            <rect x="70" y="20" width="90" height="220" class="d-fill-2"/><rect x="160" y="20" width="90" height="220" class="d-fill-2"/>
+            <rect x="70" y="20" width="180" height="220" class="d-thin"/>
+            <path d="M160 20 V240" class="d-thin"/>
+            <path d="M160 50 L184 74 L160 98 L136 74Z M160 130 L184 154 L160 178 L136 154Z M160 210 L178 228 L160 240 M160 210 L142 228 L160 240" class="d-line"/>
+            <path d="M115 50 L127 62 L115 74 L103 62Z M205 50 L217 62 L205 74 L193 62Z M115 130 L127 142 L115 154 L103 142Z M205 130 L217 142 L205 154 L193 142Z" class="d-line"/>
+            <path d="M30 74 H290 M30 154 H290" class="d-dash"/>
+            <text x="30" y="68" class="d-text">raport</text><text x="30" y="148" class="d-text">raport</text>
+            <text x="74" y="254" class="d-text">pas 1</text><text x="164" y="254" class="d-text">pas 2</text>
+          </svg>
+          <figcaption><h3>Raport wzoru</h3><p>Wzór musi przejść przez łączenie bez skoku. Każdy pas docinam od tego samego punktu raportu, a nie od sufitu.</p></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 240 200" role="img" aria-label="Zbliżenie łączenia dwóch pasów na styk">
+            <rect x="30" y="30" width="90" height="140" class="d-fill-2"/><rect x="120" y="30" width="90" height="140" class="d-fill-2"/>
+            <path d="M120 30 V170" class="d-line"/>
+            <circle cx="120" cy="100" r="34" class="d-dash"/>
+            <path d="M70 100 H104 M98 94 L104 100 L98 106 M170 100 H136 M142 94 L136 100 L142 106" class="d-line"/>
+            <text x="86" y="190" class="d-text">bez zakładki</text>
+          </svg>
+          <figcaption><h3>Na styk</h3><p>Pasy łączę na styk, bez zakładki. Łączenie dociskam wałkiem, żeby pod światło nie było go widać.</p></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 240 200" role="img" aria-label="Widok z góry na narożnik: pierwszy pas zawinięty, drugi od pionu">
+            <path d="M60 20 V160 H220" class="d-thin" stroke-width="3"/>
+            <path d="M68 30 V152 H86" class="d-line" stroke-width="3"/>
+            <path d="M80 146 H210" class="d-line"/>
+            <path d="M80 136 V156" class="d-dash"/>
+            <text x="74" y="40" class="d-text">pas A</text><text x="150" y="138" class="d-text">pas B od pionu</text>
+            <text x="64" y="180" class="d-text">widok z góry</text>
+          </svg>
+          <figcaption><h3>Narożnik</h3><p>Na narożniku nie zaginam całego pasa. Docinam go z małym zawinięciem, a kolejny zaczynam od nowego pionu — narożniki rzadko są proste.</p></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap quote" id="wycena" aria-labelledby="t-quote">
+    <div>
+      <h2 id="t-quote">Wycena</h2>
+      <p class="quote__lede">Do wyceny wystarczą trzy rzeczy. Odpiszę z kosztem i terminem.</p>
+    </div>
+    <div>
+      <ol>
+        <li>Zdjęcie ściany w dziennym świetle</li>
+        <li>Szerokość i wysokość, choćby na oko</li>
+        <li>Wybrany wzór albo link do niego</li>
+      </ol>
+      <p class="quote__lines"><span>Telefon: <span class="tbd">do uzupełnienia</span></span><span>E-mail: <span class="tbd">do uzupełnienia</span></span></p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot-stmt">
+  <p class="foot-stmt__line">Pokaż mi ścianę.</p>
+  <div class="foot-stmt__meta"><b>Bożyk</b><a href="mailto:kontakt@example.pl">Wyślij zdjęcie ściany →</a><span class="tnum">© 2026 Damian Bożyk</span></div>
+</footer>
+
+<script src="shared/patterns.js"></script>
+<script>
+const wall = document.getElementById("wall");
+wall.innerHTML = Array.from({ length: 8 }, (_, i) => `<rect class="strip" style="--i:${i}" x="${i * 180}" y="0" width="181" height="900" fill="url(#p-deco-night)"/>`).join("")
+  + Array.from({ length: 7 }, (_, i) => `<path class="seam" style="--i:${i}" d="M${(i + 1) * 180} 0 V900"/>`).join("");
+
+const work = [
+  { p: "p-damask-graphite", kind: "salon", room: "Salon", type: "flizelina", text: "Ściana za kanapą. Ciemny wzór pokazuje każdą nierówność, więc podłoże najpierw wyszlifowane na gładko." },
+  { p: "p-botanic-green", kind: "jadalnia", room: "Jadalnia", type: "flizelina", text: "Butelkowa zieleń przy stole. Dwie ściany i narożnik, liście dopasowane na każdym łączeniu." },
+  { p: "p-mural-hills", kind: "dziecko", room: "Pokój dziecka", type: "fototapeta", text: "Jedna grafika na całą ścianę, składana z paneli. Linia wzgórz ciągnie się przez wszystkie łączenia." },
+  { p: "p-stripe-cream", kind: "przedpokoj", room: "Przedpokój", type: "winylowa", text: "Wąski korytarz. Pionowe pasy optycznie podnoszą sufit, a winyl znosi otarcia od kurtek i toreb." },
+  { p: "p-trellis-terra", kind: "lokal", room: "Lokal", type: "winylowa", text: "Ściana za ladą. Zmywalna tapeta, bo tu ściana pracuje każdego dnia." },
+  { p: "p-botanic-rose", kind: "sypialnia", room: "Sypialnia", type: "papierowa", text: "Ściana akcentowa za łóżkiem. Papier wymaga szybkiej ręki — nie wybacza poprawek po namoczeniu." }
+];
+document.getElementById("rows").innerHTML = work.map((w, i) => `
+  <details class="row"${i === 0 ? " open" : ""}>
+    <summary>
+      <span class="row__no">${String(i + 1).padStart(2, "0")}</span>
+      <span class="row__title">${w.room} <span>— ${Wall.patterns[w.p]}</span></span>
+      <span class="row__type">Tapeta ${w.type}</span>
+      <span class="row__icon" aria-hidden="true">+</span>
+    </summary>
+    <div class="row__panel">
+      <div class="row__room">${Wall.room(w.p, w.kind)}</div>
+      <div class="row__text">
+        <p>${w.text}</p>
+        <dl><dt>Miejsce</dt><dd>—</dd><dt>Rok</dt><dd>—</dd></dl>
+        <a href="#wycena">Chcę podobną ścianę →</a>
+      </div>
+    </div>
+  </details>`).join("");
+</script>
+</body>
+</html>

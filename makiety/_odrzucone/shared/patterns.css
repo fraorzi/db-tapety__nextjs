@@ -1,0 +1,92 @@
+:root {
+  --pt-graphite:     oklch(30% 0.012 250);
+  --pt-gold:         oklch(72% 0.09 85);
+  --pt-sage:         oklch(80% 0.035 145);
+  --pt-sage-deep:    oklch(67% 0.045 145);
+  --pt-cream:        oklch(93% 0.025 85);
+  --pt-cream-deep:   oklch(87% 0.035 80);
+  --pt-forest:       oklch(34% 0.05 160);
+  --pt-leaf:         oklch(58% 0.08 150);
+  --pt-leaf-light:   oklch(70% 0.07 140);
+  --pt-rose:         oklch(88% 0.035 25);
+  --pt-rose-ink:     oklch(55% 0.09 20);
+  --pt-rose-stem:    oklch(70% 0.06 25);
+  --pt-navy:         oklch(27% 0.05 260);
+  --pt-brass:        oklch(74% 0.1 80);
+  --pt-sand:         oklch(90% 0.03 70);
+  --pt-terra:        oklch(58% 0.12 40);
+  --pt-linen:        oklch(88% 0.02 80);
+  --pt-linen-ink:    oklch(82% 0.022 80);
+  --pt-mint:         oklch(92% 0.03 175);
+  --pt-mint-ink:     oklch(72% 0.07 175);
+  --pt-night:        oklch(20% 0.012 60);
+  --pt-night-line:   oklch(29% 0.025 75);
+  --pt-night-brass:  oklch(50% 0.07 80);
+  --pt-sky:          oklch(91% 0.03 220);
+  --pt-sun:          oklch(86% 0.09 75);
+  --pt-hill-1:       oklch(60% 0.07 160);
+  --pt-hill-2:       oklch(72% 0.06 165);
+  --pt-hill-3:       oklch(82% 0.04 190);
+
+  --room-bare:       oklch(86% 0.006 80);
+  --room-patch:      oklch(92% 0.008 80);
+  --room-crack:      oklch(66% 0.01 70);
+  --room-furn:       oklch(52% 0.06 55);
+  --room-furn-2:     oklch(38% 0.03 50);
+  --room-linen:      oklch(94% 0.012 80);
+  --room-frame:      oklch(92% 0.012 80);
+  --room-skirt:      oklch(95% 0.008 80);
+  --room-floor:      oklch(70% 0.05 65);
+  --room-floor-line: oklch(62% 0.05 60);
+  --room-shade:      oklch(20% 0.01 60);
+  --room-plant:      oklch(52% 0.08 150);
+}
+
+.f-graphite { fill: var(--pt-graphite); }
+.f-gold { fill: var(--pt-gold); }
+.f-sage { fill: var(--pt-sage); }
+.f-sage-deep { fill: var(--pt-sage-deep); }
+.f-cream { fill: var(--pt-cream); }
+.f-cream-deep { fill: var(--pt-cream-deep); }
+.f-forest { fill: var(--pt-forest); }
+.f-leaf { fill: var(--pt-leaf); }
+.f-rose { fill: var(--pt-rose); }
+.f-rose-ink { fill: var(--pt-rose-ink); }
+.f-navy { fill: var(--pt-navy); }
+.f-brass { fill: var(--pt-brass); }
+.f-sand { fill: var(--pt-sand); }
+.f-terra { fill: var(--pt-terra); }
+.f-linen { fill: var(--pt-linen); }
+.f-mint { fill: var(--pt-mint); }
+.f-mint-ink { fill: var(--pt-mint-ink); }
+.f-night { fill: var(--pt-night); }
+.f-night-brass { fill: var(--pt-night-brass); }
+.f-sky { fill: var(--pt-sky); }
+.f-sun { fill: var(--pt-sun); }
+.f-hill-1 { fill: var(--pt-hill-1); }
+.f-hill-2 { fill: var(--pt-hill-2); }
+.f-hill-3 { fill: var(--pt-hill-3); }
+
+.s-leaf-light { stroke: var(--pt-leaf-light); fill: none; }
+.s-rose-stem { stroke: var(--pt-rose-stem); fill: none; }
+.s-brass { stroke: var(--pt-brass); fill: none; }
+.s-terra { stroke: var(--pt-terra); fill: none; }
+.s-linen-ink { stroke: var(--pt-linen-ink); fill: none; }
+.s-gold { stroke: var(--pt-gold); fill: none; }
+.s-night-line { stroke: var(--pt-night-line); fill: none; }
+.s-night-brass { stroke: var(--pt-night-brass); fill: none; }
+.s-hill-1 { stroke: var(--pt-hill-1); fill: none; }
+
+.r-bare { fill: var(--room-bare); }
+.r-patch { fill: var(--room-patch); }
+.r-crack { stroke: var(--room-crack); fill: none; }
+.r-furn { fill: var(--room-furn); }
+.r-furn-2 { fill: var(--room-furn-2); }
+.r-furn-2-s { stroke: var(--room-furn-2); fill: none; }
+.r-linen { fill: var(--room-linen); }
+.r-frame { fill: var(--room-frame); stroke: var(--room-furn-2); }
+.r-skirt { fill: var(--room-skirt); }
+.r-floor { fill: var(--room-floor); }
+.r-floor-line { stroke: var(--room-floor-line); fill: none; }
+.r-shade { fill: var(--room-shade); }
+.r-plant { fill: var(--room-plant); }
