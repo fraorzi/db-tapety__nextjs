@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP, reducedMotion } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { Squircle, SquircleLink } from "./Squircle";
 
 export type Step = {
@@ -52,12 +52,10 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
       };
       setStep(0);
 
-      const reduce = reducedMotion();
       const mm = gsap.matchMedia();
 
       if (variant === "compact") {
         mm.add("(min-width: 901px)", () => {
-          if (reduce) return;
           const pin = root.current!.querySelector<HTMLElement>(".pc__pin")!;
           ScrollTrigger.create({
             trigger: pin, start: "top top", end: () => `+=${Math.round(steps.length * 0.7 * window.innerHeight)}`, pin: true, scrub: 0.6,

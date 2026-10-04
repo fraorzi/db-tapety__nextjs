@@ -54,7 +54,7 @@ Metafora: ściana po gruntowaniu + fiolet kwiatu z wideo w hero (próbka z klate
 - Easing: `--ease: cubic-bezier(0.16, 1, 0.3, 1)`. Czas 250–900 ms.
 - Scroll: GSAP ScrollTrigger ze `scrub: 0.8`, animowane tylko `transform` i `opacity` (nigdy `clip-path` z `var()` — to powoduje skoki).
 - Jedno wejście orkiestrowane (hero). Poza tym obrazy odsłaniają się raz (`data-reveal="clip"`); tekst po prostu jest.
-- `prefers-reduced-motion`: brak pinów, brak paralaksy, przejścia ≤ 150 ms.
+- Bez `prefers-reduced-motion` — decyzja użytkownika (2026-10-04), ruch jest ten sam dla wszystkich.
 
 ## Głos CTA
 

@@ -1,5 +1,6 @@
 import { unsplash } from "./site";
 
+// TODO(media, zalecane): zdjęcia stock (Unsplash) jako ilustracja usług — docelowo zdjęcia z realizacji klienta.
 export const services = [
   { t: "Tapetowanie", d: "Flizelina, winyl, papier, tekstylia. Jedna ściana albo całe mieszkanie, z dopasowaniem wzoru na każdym łączeniu.", img: unsplash("photo-1577083165633-14ebcdb0f658", 600) },
   { t: "Przygotowanie ścian", d: "Zdejmowanie starych tapet, szpachlowanie, szlifowanie, gruntowanie. Pod tapetą widać każdą nierówność.", img: unsplash("photo-1780672823896-fc266a8d5ecb", 600) },
@@ -9,6 +10,7 @@ export const services = [
 
 export type Audience = { t: string; d: string; img: string; href: string; link: string };
 
+// TODO(media, zalecane): zdjęcia stock (Unsplash) — wnętrza nie są realizacjami klienta. Docelowo jego zdjęcia.
 export const audiences: readonly Audience[] = [
   { t: "Mieszkania", d: "Sypialnia, salon, pokój dziecka, przedpokój. Jedna ściana albo cały pokój, zwykle w jeden lub dwa dni.", img: unsplash("photo-1780672823896-fc266a8d5ecb", 1400), href: "/wycena", link: "Umów wycenę" },
   { t: "Domy", d: "Większe metraże, wysokie ściany, klatki schodowe. Planuję kolejność pomieszczeń tak, żebyś mógł normalnie mieszkać.", img: unsplash("photo-1780672823983-6ab83c017906", 1400), href: "/wycena", link: "Umów wycenę" },

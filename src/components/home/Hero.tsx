@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP, reducedMotion } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { site, videos } from "@/data/site";
 import { SquircleLink } from "@/components/Squircle";
 
@@ -14,8 +14,6 @@ export function Hero() {
   useGSAP(
     () => {
       const video = root.current?.querySelector("video");
-      if (reducedMotion()) return;
-
       gsap.timeline({ defaults: { ease: "expo.out" } })
         .from(".hero__video video", { scale: 1.1, duration: 2.4, ease: "power2.out" }, 0)
         .from(".line > span", { yPercent: 110, duration: 1.3, stagger: 0.1 }, 0.3)

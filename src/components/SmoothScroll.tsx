@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
-import { gsap, ScrollTrigger, reducedMotion } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 let lenis: Lenis | null = null;
 
@@ -16,7 +16,6 @@ export function SmoothScroll() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (reducedMotion()) return;
     lenis = new Lenis({ lerp: 0.09 });
     lenis.on("scroll", ScrollTrigger.update);
     const tick = (t: number) => lenis?.raf(t * 1000);

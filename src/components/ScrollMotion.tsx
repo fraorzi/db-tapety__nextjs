@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { gsap, useGSAP, reducedMotion } from "@/lib/gsap";
+import { gsap, useGSAP } from "@/lib/gsap";
 
 /**
  * Jedyna animacja scrollowa współdzielona przez strony: figura z `data-reveal="clip"`
@@ -13,7 +13,6 @@ export function ScrollMotion() {
 
   useGSAP(
     () => {
-      if (reducedMotion()) return;
       gsap.utils.toArray<HTMLElement>('[data-reveal="clip"]').forEach((fig) => {
         const box = fig.querySelector<HTMLElement>(".media") ?? fig;
         const img = box.querySelector("img, video");

@@ -532,10 +532,3 @@
   .pgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero { position: relative; }
-  .media img, .hero__video video { transform: none !important; }
-  .line > span { transform: none !important; }
-  .pgrid .proj { animation: none; }
-  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
-}
