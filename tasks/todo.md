@@ -12,7 +12,7 @@
 ## Ja
 - [x] Wideo w `public/video/` (branch `feat/self-hosted-video`): AV1 WebM + H.264 MP4, hero 1080p (wyższej wersji na Pexels brak), proces 1440p tam, gdzie źródło pozwala, przycięty do 12 s; poster z pierwszej klatki; cache 7 dni; `scripts/encode-video.sh`. Zweryfikowane w Chromium i WebKit.
 - [ ] Backend formularzy `/wycena` i „zostaw numer”: Server Action, walidacja na serwerze, honeypot, wysyłka na `fo.testowy@gmail.com` (env `QUOTE_TO_EMAIL`)
-- [x] Strona 404 (`feat/not-found-page`): faktura tapety z brakującym pasem, wyjścia na `/`, `/realizacje`, `/wycena`; status 404 + noindex
+- [x] Strona 404: wyśrodkowany układ — ilustracja SVG podartej tapety (wzór w pasy, poszarpana krawędź z białym włóknem, zawinięty płat z cieniem, ziarno tynku), nagłówek, akapit, CTA; status 404 + noindex. Pierwsza wersja (faktura z hero + szary pas) odrzucona.
 - [x] FAQ (`fix/faq-safari-fallback`): Safari 26 ma `::details-content`, ale nie `interpolate-size` — tam odpowiedź wjeżdża `opacity`/`transform`, w Chromium wysokość animuje się jak dotąd
 - [x] OG image + favicon — zrobione w `feat/frames-bands-top-bar` (`src/lib/share-card.tsx`)
 - [x] Przegląd dostępności (`fix/a11y-review`): axe-core na 8 stronach × 1440/375, Tab przez 4 strony. Slider „dla kogo” przebudowany z `article[role=tab]` z linkiem w środku na przyciski `aria-expanded` (strzałki przenoszą fokus). Fokus widoczny wszędzie.
