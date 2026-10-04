@@ -276,22 +276,26 @@
     text-align: left; isolation: isolate; cursor: pointer;
     transition: flex-grow 900ms var(--ease);
   }
-  .aud__panel[aria-selected="true"] { flex-grow: 4.2; cursor: default; }
+  .aud__panel.is-on { flex-grow: 4.2; cursor: default; }
   .aud__panel img { position: absolute; inset: 0; z-index: -1; transform: scale(1.06); transition: transform 1.2s var(--ease), opacity 700ms var(--ease); opacity: 0.55; }
-  .aud__panel[aria-selected="true"] img { transform: none; opacity: 1; }
+  .aud__panel.is-on img { transform: none; opacity: 1; }
   .aud__panel::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(to top, oklch(from var(--scrim) l c h / 0.78), oklch(from var(--scrim) l c h / 0.1) 60%); opacity: 0; transition: opacity 700ms var(--ease); }
-  .aud__panel[aria-selected="true"]::before { opacity: 1; }
+  .aud__panel.is-on::before { opacity: 1; }
   .aud__vt {
     position: absolute; left: 50%; bottom: 1.4rem; transform: translateX(-50%) rotate(180deg); writing-mode: vertical-rl;
     font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; white-space: nowrap; z-index: 1;
     transition: opacity 400ms var(--ease);
   }
-  .aud__panel[aria-selected="true"] .aud__vt { opacity: 0; }
+  .aud__panel.is-on .aud__vt { opacity: 0; }
   .aud__body {
-    position: absolute; inset: auto 0 0; z-index: 1; padding: clamp(1.4rem, 2.6vw, 2.4rem); display: grid; gap: 0.9rem; justify-items: start;
+    position: absolute; inset: auto 0 0; z-index: 2; padding: clamp(1.4rem, 2.6vw, 2.4rem); display: grid; gap: 0.9rem; justify-items: start;
     width: min(100%, 36rem); opacity: 0; transform: translateY(12px); transition: opacity 500ms var(--ease), transform 600ms var(--ease);
   }
-  .aud__panel[aria-selected="true"] .aud__body { opacity: 1; transform: none; transition-delay: 250ms; }
+  .aud__panel.is-on .aud__body { opacity: 1; transform: none; transition-delay: 250ms; }
+  .aud__panel:not(.is-on) .aud__body { pointer-events: none; }
+  .aud__toggle { position: absolute; inset: 0; z-index: 1; cursor: pointer; }
+  .aud__panel.is-on .aud__toggle { cursor: default; }
+  .aud__toggle:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--on-deep); }
   .aud__body h3 { font-size: clamp(1.6rem, 2.6vw, 2.6rem); white-space: nowrap; }
   .aud__body p { color: oklch(86% 0.01 300); max-width: 40ch; }
   .aud__body .ulink { margin-top: 0.4rem; }
@@ -343,6 +347,10 @@
   .faq details::details-content { block-size: 0; overflow: clip; transition: block-size 450ms var(--ease), content-visibility 450ms allow-discrete; }
   .faq details[open]::details-content { block-size: auto; }
   @supports (interpolate-size: allow-keywords) { .faq { interpolate-size: allow-keywords; } }
+  @supports not (interpolate-size: allow-keywords) {
+    .faq details[open] > div { animation: faq-in 450ms var(--ease); }
+  }
+  @keyframes faq-in { from { opacity: 0; transform: translateY(-0.5rem); } }
 
   /* cta + footer Ft1 */
   .cta { padding-block: clamp(5rem, 14vh, 9rem) clamp(3rem, 8vh, 5rem); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 2rem; align-items: end; }
@@ -363,6 +371,11 @@
   .phero__top p { grid-column: 9 / span 4; color: var(--muted); max-width: 30ch; }
   .phero__media { margin-top: clamp(2.5rem, 7vh, 4rem); aspect-ratio: 21 / 9; position: relative; }
   .phero__media .frame { position: absolute; inset: 0; }
+  .nf { min-height: 100svh; display: grid; justify-items: center; align-content: center; gap: 1.25rem; padding: clamp(7rem, 16vh, 10rem) var(--gutter) clamp(4rem, 10vh, 7rem); text-align: center; }
+  .nf__icon { width: clamp(7rem, 12vw, 9.5rem); height: auto; margin-bottom: 1.25rem; fill: var(--deep); }
+  .nf h1 { max-width: 16ch; }
+  .nf > p { color: var(--muted); max-width: 42ch; }
+  .nf__actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.75rem 1.5rem; margin-top: 0.75rem; }
 
   /* /jak-pracuje — przekrój ściany; warstwy nakładają się od lewej, każda zostawia schodek z podpisem */
   .wl { margin-top: clamp(2.5rem, 7vh, 4rem); }
@@ -579,7 +592,7 @@
 
   .aud__track { flex-direction: column; height: auto; }
   .aud__panel { flex: 0 0 4rem; transition: flex-basis 800ms var(--ease); }
-  .aud__panel[aria-selected="true"] { flex-basis: 26rem; }
+  .aud__panel.is-on { flex-basis: 26rem; }
   .aud__vt { writing-mode: horizontal-tb; transform: none; left: 1.2rem; bottom: auto; top: 50%; translate: 0 -50%; }
   .aud__body h3 { white-space: normal; }
 
