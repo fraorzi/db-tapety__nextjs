@@ -15,7 +15,8 @@
 - [x] Strona 404 (`feat/not-found-page`): faktura tapety z brakującym pasem, wyjścia na `/`, `/realizacje`, `/wycena`; status 404 + noindex
 - [x] FAQ (`fix/faq-safari-fallback`): Safari 26 ma `::details-content`, ale nie `interpolate-size` — tam odpowiedź wjeżdża `opacity`/`transform`, w Chromium wysokość animuje się jak dotąd
 - [x] OG image + favicon — zrobione w `feat/frames-bands-top-bar` (`src/lib/share-card.tsx`)
-- [ ] Przegląd dostępności (fokus, kontrast) — bez `prefers-reduced-motion`
+- [x] Przegląd dostępności (`fix/a11y-review`): axe-core na 8 stronach × 1440/375, Tab przez 4 strony. Slider „dla kogo” przebudowany z `article[role=tab]` z linkiem w środku na przyciski `aria-expanded` (strzałki przenoszą fokus). Fokus widoczny wszędzie.
+- [ ] Kontrast nieaktywnych etapów na `/jak-pracuje` (`opacity: 0.3` → 1,6–2:1) — decyzja użytkownika
 
 ## Inspiracja Tubądzin — branch `feat/frames-bands-top-bar`
 - [x] `Frame`: podwójna tonalna ramka (paper-3 → deep-2 → zdjęcie), zagnieżdżone squircle 34/26/18; `/realizacje/[slug]` (zdjęcie główne) i `/jak-pracuje` (sticky wideo)
