@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Squircle } from "@/components/Squircle";
 
 const kinds = ["Mieszkanie", "Dom", "Lokal / biuro", "Inwestycja (kilka lokali)"] as const;
 const works = ["Tapetowanie", "Przygotowanie ścian", "Fototapeta na wymiar", "Dobór i zamówienie tapety", "Zdjęcie starej tapety"] as const;
@@ -72,7 +71,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
           <label>Rodzaj miejsca</label>
           <div className="chips" role="radiogroup" aria-describedby={errors.kind ? "q-kind-err" : undefined}>
             {kinds.map((k) => (
-              <Squircle as="label" radius={10} key={k} className="chip"><input type="radio" name="kind" value={k} /><span>{k}</span></Squircle>
+              <label key={k} className="chip"><input type="radio" name="kind" value={k} /><span>{k}</span></label>
             ))}
           </div>
           {errors.kind && <p className="err" id="q-kind-err">{errors.kind}</p>}
@@ -81,7 +80,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
           <label>Zakres <small>— możesz zaznaczyć kilka</small></label>
           <div className="chips">
             {works.map((w) => (
-              <Squircle as="label" radius={10} key={w} className="chip"><input type="checkbox" name="work" value={w} /><span>{w}</span></Squircle>
+              <label key={w} className="chip"><input type="checkbox" name="work" value={w} /><span>{w}</span></label>
             ))}
           </div>
         </div>
@@ -93,7 +92,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
           <label>Termin</label>
           <div className="chips">
             {timing.map((t) => (
-              <Squircle as="label" radius={10} key={t} className="chip"><input type="radio" name="timing" value={t} /><span>{t}</span></Squircle>
+              <label key={t} className="chip"><input type="radio" name="timing" value={t} /><span>{t}</span></label>
             ))}
           </div>
         </div>
@@ -107,8 +106,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
         </div>
         <div className="field">
           <label htmlFor="q-files">Zdjęcia ściany</label>
-          <Squircle
-            radius={14}
+          <div
             className="drop"
             data-over={over}
             onDragOver={(e) => { e.preventDefault(); setOver(true); }}
@@ -119,7 +117,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
             <span className="ulink">Dodaj zdjęcia</span>
             <p>Przeciągnij tutaj albo kliknij. Najlepiej w dziennym świetle, z widoczną całą ścianą.</p>
             {files.length > 0 && <ul aria-label="Wybrane pliki">{files.map((f) => <li key={f}>{f}</li>)}</ul>}
-          </Squircle>
+          </div>
         </div>
       </fieldset>
 
@@ -132,9 +130,9 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
       </div>
 
       <div className="fsubmit">
-        <Squircle as="button" type="submit" className="btn btn--lg" disabled={status === "sending"}>
+        <button type="submit" className="btn btn--lg" disabled={status === "sending"}>
           {status === "sending" ? "Wysyłam…" : "Wyślij do wyceny"} {status !== "sending" && <span className="arr" aria-hidden="true">→</span>}
-        </Squircle>
+        </button>
         <p>Odpowiadam na każdą wiadomość, także gdy chcesz tylko zapytać.</p>
       </div>
     </form>

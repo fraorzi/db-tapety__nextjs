@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { ProjectCard } from "@/components/ProjectCard";
-import { Squircle, SquircleLink } from "@/components/Squircle";
 import { VideoSources } from "@/components/VideoSources";
 import { flow, get, need } from "@/data/b2b";
 import { projects } from "@/data/projects";
@@ -25,20 +24,20 @@ export default function DlaFirmPage() {
             <h1 className="h-display">Lokal działa rano. Ja kończę w nocy.</h1>
             <p className="lead">Tapetowanie dla firm: lokale, biura, apartamenty na wynajem, mieszkania pod klucz. Jeden wykonawca, jedna wycena, harmonogram na piśmie.</p>
             <div className="hero__actions">
-              <SquircleLink href="/wycena" className="btn">Zapytaj o wycenę <span className="arr" aria-hidden="true">→</span></SquircleLink>
+              <Link href="/wycena" className="btn">Zapytaj o wycenę <span className="arr" aria-hidden="true">→</span></Link>
               <a href={site.phoneHref} className="ulink">{site.phone}</a>
             </div>
           </div>
-          <Squircle radius={18} className="dip__media">
+          <div className="dip__media">
             <video className="media" autoPlay muted loop playsInline preload="metadata" style={{ position: "absolute", inset: 0 }} aria-hidden="true">
               <VideoSources video={videos.process[1]} />
             </video>
-          </Squircle>
+          </div>
         </section>
 
         <SegmentPicker />
 
-        <section className="deep flow wrap" aria-labelledby="flow-title">
+        <section className="deep flow wrap bands-t bands-b" aria-labelledby="flow-title">
           <div className="sec-row">
             <div className="sec-head">
               <h2 className="h2" id="flow-title">Od zapytania do faktury</h2>
@@ -93,8 +92,8 @@ export default function DlaFirmPage() {
           </div>
           <form action="/wycena" method="get">
             <div className="iform__row">
-              <Squircle as="input" radius={14} type="tel" name="tel" placeholder="Numer telefonu" aria-label="Numer telefonu" autoComplete="tel" />
-              <Squircle as="button" type="submit" className="btn">Oddzwoń <span className="arr" aria-hidden="true">→</span></Squircle>
+              <input type="tel" name="tel" placeholder="Numer telefonu" aria-label="Numer telefonu" autoComplete="tel" />
+              <button type="submit" className="btn">Oddzwoń <span className="arr" aria-hidden="true">→</span></button>
             </div>
             <small>Numer trafia do formularza wyceny, gdzie możesz dodać szczegóły. <Link href="/polityka-prywatnosci" className="ulink">Polityka prywatności</Link>.</small>
           </form>

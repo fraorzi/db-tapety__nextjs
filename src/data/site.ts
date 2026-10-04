@@ -4,7 +4,8 @@ export const site = {
   tagline: "Tapetowanie wnętrz",
   description:
     "Tapetowanie i przygotowanie ścian w mieszkaniach, domach i lokalach. Pomiar, dobór tapety, montaż bez widocznych łączeń.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://do-uzupelnienia.pl").replace(/\/$/, ""),
+  // Placeholder, dopóki nie ma domeny. Przy wdrożeniu ustaw NEXT_PUBLIC_SITE_URL.
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://do-uzupelnienia.pl").replace(/\/$/, ""),
   phone: "+48 ••• ••• •••",
   phoneHref: "tel:",
   email: "kontakt@•••••.pl",

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
@@ -22,10 +22,22 @@ const body = Instrument_Sans({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#edecf0", // --paper
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${site.name} — ${site.tagline}`, template: `%s — ${site.name}` },
   description: site.description,
+  openGraph: {
+    type: "website",
+    locale: "pl_PL",
+    siteName: site.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
-import { Squircle } from "@/components/Squircle";
 import type { Project } from "@/data/projects";
 
 const ALL = "Wszystkie";
@@ -20,10 +19,8 @@ export function WorkGrid({ projects }: { projects: readonly Project[] }) {
     <>
       <div className="tabs" role="tablist" aria-label="Filtruj po pomieszczeniu">
         {rooms.map(([r, c]) => (
-          <Squircle
-            as="button"
+          <button
             type="button"
-            radius={10}
             key={r}
             role="tab"
             className="tab"
@@ -32,7 +29,7 @@ export function WorkGrid({ projects }: { projects: readonly Project[] }) {
             onClick={() => setRoom(r)}
           >
             {r}<span>{c}</span>
-          </Squircle>
+          </button>
         ))}
       </div>
       <div className="pgrid" id="pgrid" role="tabpanel" key={room}>

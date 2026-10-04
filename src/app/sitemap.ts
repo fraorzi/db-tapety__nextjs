@@ -8,7 +8,6 @@ const paths = [
   "/dla-firm",
   "/jak-pracuje",
   "/wycena",
-  "/polityka-prywatnosci",
   ...projects.map((project) => `/realizacje/${project.slug}`),
 ];
 

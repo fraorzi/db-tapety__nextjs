@@ -17,6 +17,27 @@
 - [ ] OG image + favicon (placeholder w stylu systemu)
 - [ ] Przegląd dostępności (fokus, kontrast) — bez `prefers-reduced-motion`
 
+## Inspiracja Tubądzin — branch `feat/frames-bands-top-bar`
+- [x] `Frame`: podwójna tonalna ramka (paper-3 → deep-2 → zdjęcie), zagnieżdżone squircle 34/26/18; `/realizacje/[slug]` (zdjęcie główne) i `/jak-pracuje` (sticky wideo)
+- [x] Pasy tonalne na krawędziach sekcji (`.bands-t` / `.bands-b`, border + inset shadow, bez dodatkowych elementów): Services pod hero, proces compact, flow `/dla-firm`, stopka
+- [x] `ProjectCard`: hover wypełnia całą kartę bakłażanem (squircle tła poza układem, bez przesunięć)
+- [x] Nawigacja: zamiast docka u dołu przypięty pasek u góry o tym samym układzie co pasek startowy (marka, linki, CTA), bakłażanowy, z pasami pod spodem; na mobile „Menu” rozwija panel pod paskiem
+- [x] `design.md`, `AGENTS.md`, `.hallmark/log.json`
+- [x] lint, tsc, build, podgląd 1440/375, push
+
+### Review
+- Ramka, pasy, hover kart i nowy pasek wdrożone; `Frame.tsx` nowy, dock usunięty z `Header.tsx` i CSS.
+- Na mobile CTA z paska przeniesione do panelu menu (na 375 px marka + CTA + „Menu” się nie mieściły).
+- Zweryfikowane: lint, tsc, build; zrzuty 1440/375 (`/`, slug, `/jak-pracuje`, `/dla-firm`, menu mobilne), brak poziomego scrolla na 7 stronach, konsola czysta.
+- Podgląd na `next start -p 4311`: dev server na 4310 należy do `db-tapety__redesign` i wisiał.
+- [x] Punkt 3 we własnej wersji: `WallLayers` na `/jak-pracuje` — przekrój ściany (ściana, grunt, klej, tapeta) nakładany od lewej, schodki z podpisami.
+
+### Runda poprawek
+- [x] Usunięty hover wypełniający kartę.
+- [x] Estetyka kwadratowa: `Squircle.tsx` usunięty, wszystkie `border-radius` wycięte.
+- [x] Kolor główny = bakłażan (`--accent` = `--deep`); aktywne kropki i focus na ciemnym tle w `--on-deep`.
+- [x] Ramka 8 → 5 px, ciemna warstwa jaśniejsza (27 → 31%), jasna ciemniejsza (84 → 81%).
+
 ## Otwarte pytania
 - Resend: użytkownik zakłada konto (fo.testowy@gmail.com), klucz `RESEND_API_KEY` w `.env.local` i Vercel.
 - Zdjęcia w formularzu: kompresja w przeglądarce (limit Vercel 4,5 MB) czy Vercel Blob?

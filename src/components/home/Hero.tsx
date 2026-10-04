@@ -5,7 +5,6 @@ import { useRef } from "react";
 import { preload } from "react-dom";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { site, videos } from "@/data/site";
-import { SquircleLink } from "@/components/Squircle";
 import { VideoSources } from "@/components/VideoSources";
 
 const lines = ["Tapety kładzione", "tak, że szwu", "nie widać."];
@@ -55,7 +54,7 @@ export function Hero() {
         <div className="hero__side">
           <p>Tapetowanie i przygotowanie ścian w mieszkaniach, domach i lokalach. Od pomiaru po ostatnie docięcie przy listwie.</p>
           <div className="hero__actions">
-            <SquircleLink href="/wycena" className="btn">Bezpłatna wycena <span className="arr" aria-hidden="true">→</span></SquircleLink>
+            <Link href="/wycena" className="btn">Bezpłatna wycena <span className="arr" aria-hidden="true">→</span></Link>
             <Link href="/realizacje" className="ulink">Zobacz realizacje</Link>
           </div>
         </div>
