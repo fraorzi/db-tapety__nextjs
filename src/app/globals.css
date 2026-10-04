@@ -344,17 +344,23 @@
   .phero__media .frame { position: absolute; inset: 0; }
   .nf { min-height: 100svh; display: grid; justify-items: center; align-content: center; gap: 1.25rem; padding: clamp(7rem, 16vh, 10rem) var(--gutter) clamp(4rem, 10vh, 7rem); text-align: center; }
   .nf__icon { width: clamp(9rem, 18vw, 13rem); height: auto; margin-bottom: 1rem; }
-  .nf__wall { fill: var(--paper-3); }
+  .nf__wall { fill: oklch(from var(--paper-3) calc(l - 0.07) calc(c + 0.004) h); }
+  .nf__glue { fill: none; stroke: oklch(from var(--paper-3) calc(l - 0.07) c h); stroke-width: 7; stroke-linecap: round; opacity: 0.35; }
+  .nf__scrap { fill: oklch(from var(--paper) 97% 0.004 h); }
+  .nf__core { fill: oklch(from var(--paper) 97% 0.004 h); }
   .nf__paper { fill: var(--paper-2); }
   .nf__stripe { fill: oklch(from var(--deep) 87% 0.022 h); }
   .nf__line { fill: var(--deep); opacity: 0.28; }
   .nf__motif { fill: var(--deep); opacity: 0.16; }
   .nf__dot { fill: var(--deep); opacity: 0.3; }
-  .nf__fringe { fill: oklch(from var(--paper) 98% 0.004 h); }
-  .nf__cast { fill: var(--ink); opacity: 0.32; }
-  .nf__curl-a { stop-color: oklch(from var(--paper-3) 80% c h); }
+  .nf__cast { fill: var(--ink); opacity: 0.38; }
+  .nf__lift-a { stop-color: var(--ink); stop-opacity: 0.14; }
+  .nf__lift-b { stop-color: var(--ink); stop-opacity: 0; }
+  .nf__curl-a { stop-color: oklch(from var(--paper-3) 72% c h); }
   .nf__curl-b { stop-color: oklch(from var(--paper) 97% c h); }
-  .nf__curl-c { stop-color: var(--paper-2); }
+  .nf__curl-c { stop-color: oklch(from var(--paper) 93% c h); }
+  .nf__curl-d { stop-color: oklch(from var(--paper-3) 80% c h); }
+  .nf__crease { fill: none; stroke: var(--ink); stroke-width: 1; opacity: 0.18; }
   .nf h1 { max-width: 16ch; }
   .nf > p { color: var(--muted); max-width: 42ch; }
   .nf__actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.75rem 1.5rem; margin-top: 0.75rem; }
