@@ -22,21 +22,22 @@ export const nav = [
 export const unsplash = (id: string, w: number) =>
   `https://images.unsplash.com/${id}?w=${w}&q=75&auto=format&fit=crop`;
 
-export const pexels = (path: string) => `https://videos.pexels.com/video-files/${path}`;
+export type Video = { readonly webm: string; readonly mp4: string };
+
+const video = (name: string): Video => ({ webm: `/video/${name}.webm`, mp4: `/video/${name}.mp4` });
 
 export const videos = {
-  // TODO(media, zalecane): stock Pexels, sama tapeta bez ludzi — może zostać, docelowo ujęcie z realizacji klienta.
-  hero: pexels("36346753/15416237_1920_1080_24fps.mp4"),
-  // TODO(media, zalecane): stock Unsplash, poster hero — wymienić razem z wideo hero.
-  heroPoster: unsplash("photo-1577083165633-14ebcdb0f658", 1600),
+  // TODO(media, zalecane): stock Pexels (pexels.com/video/36346753), sama tapeta bez ludzi — może zostać, docelowo ujęcie z realizacji klienta.
+  hero: video("hero"),
+  heroPoster: "/video/hero-poster.webp",
   process: [
-    // TODO(media, wymagane): dwie rozpoznawalne osoby przy pracy, a strona mówi „pracuję” — sugeruje, że to klient i jego ekipa. Wymienić na nagranie klienta.
-    pexels("7216709/7216709-hd_720_1280_24fps.mp4"),
-    // TODO(media, zalecane): stock, dłonie nad próbkami — w sekcji „jak pracuję” docelowo nagranie klienta.
-    pexels("7490514/7490514-hd_1280_720_30fps.mp4"),
-    // TODO(media, zalecane): stock, mężczyzna tyłem przy ścianie — odbiorca weźmie go za klienta. Docelowo nagranie klienta.
-    pexels("6474074/6474074-hd_1280_720_25fps.mp4"),
-    // TODO(media, zalecane): stock, zbliżenie dłoni — docelowo nagranie klienta.
-    pexels("6474177/6474177-hd_1280_720_25fps.mp4"),
+    // TODO(media, wymagane): stock Pexels (pexels.com/video/7216709), dwie rozpoznawalne osoby przy pracy, a strona mówi „pracuję” — sugeruje, że to klient i jego ekipa. Wymienić na nagranie klienta.
+    video("process-1"),
+    // TODO(media, zalecane): stock Pexels (pexels.com/video/7490514), dłonie nad próbkami — w sekcji „jak pracuję” docelowo nagranie klienta.
+    video("process-2"),
+    // TODO(media, zalecane): stock Pexels (pexels.com/video/6474074), mężczyzna tyłem przy ścianie — odbiorca weźmie go za klienta. Docelowo nagranie klienta.
+    video("process-3"),
+    // TODO(media, zalecane): stock Pexels (pexels.com/video/6474177), zbliżenie dłoni — docelowo nagranie klienta.
+    video("process-4"),
   ],
 } as const;

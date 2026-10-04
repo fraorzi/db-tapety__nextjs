@@ -33,7 +33,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pl" className={`${display.variable} ${body.variable}`}>
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="preconnect" href="https://videos.pexels.com" />
         {process.env.NODE_ENV === "development" && (
           <Script
             src="//unpkg.com/react-scan/dist/auto.global.js"

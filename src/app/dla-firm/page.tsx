@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Squircle, SquircleLink } from "@/components/Squircle";
+import { VideoSources } from "@/components/VideoSources";
 import { flow, get, need } from "@/data/b2b";
 import { projects } from "@/data/projects";
 import { site, videos } from "@/data/site";
@@ -29,7 +30,9 @@ export default function DlaFirmPage() {
             </div>
           </div>
           <Squircle radius={18} className="dip__media">
-            <video className="media" autoPlay muted loop playsInline preload="metadata" src={videos.process[1]} style={{ position: "absolute", inset: 0 }} aria-hidden="true" />
+            <video className="media" autoPlay muted loop playsInline preload="metadata" style={{ position: "absolute", inset: 0 }} aria-hidden="true">
+              <VideoSources video={videos.process[1]} />
+            </video>
           </Squircle>
         </section>
 

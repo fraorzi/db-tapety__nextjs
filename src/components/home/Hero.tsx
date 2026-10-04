@@ -2,14 +2,17 @@
 
 import Link from "next/link";
 import { useRef } from "react";
+import { preload } from "react-dom";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { site, videos } from "@/data/site";
 import { SquircleLink } from "@/components/Squircle";
+import { VideoSources } from "@/components/VideoSources";
 
 const lines = ["Tapety kładzione", "tak, że szwu", "nie widać."];
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
+  preload(videos.heroPoster, { as: "image", fetchPriority: "high" });
 
   useGSAP(
     () => {
@@ -38,7 +41,7 @@ export function Hero() {
     <section className="hero" ref={root} aria-labelledby="hero-title">
       <div className="hero__video">
         <video autoPlay muted loop playsInline preload="auto" poster={videos.heroPoster} aria-hidden="true">
-          <source src={videos.hero} type="video/mp4" />
+          <VideoSources video={videos.hero} />
         </video>
       </div>
       <div className="hero__veil" aria-hidden="true" />

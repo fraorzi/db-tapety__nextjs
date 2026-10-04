@@ -10,7 +10,7 @@
 - [ ] SEO: `metadataBase`, `sitemap.ts`, `robots.ts`, metadane podstron, JSON-LD `LocalBusiness` z placeholderami
 
 ## Ja
-- [ ] Wideo w `public/`: hero AV1 WebM + H.264 MP4 (najwyższa dostępna rozdzielczość źródła, `faststart`), proces tak samo; usunąć preconnect do Pexels
+- [x] Wideo w `public/video/` (branch `feat/self-hosted-video`): AV1 WebM + H.264 MP4, hero 1080p (wyższej wersji na Pexels brak), proces 1440p tam, gdzie źródło pozwala, przycięty do 12 s; poster z pierwszej klatki; cache 7 dni; `scripts/encode-video.sh`. Zweryfikowane w Chromium i WebKit.
 - [ ] Backend formularzy `/wycena` i „zostaw numer”: Server Action, walidacja na serwerze, honeypot, wysyłka na `fo.testowy@gmail.com` (env `QUOTE_TO_EMAIL`)
 - [ ] Strona 404 w stylu systemu
 - [ ] FAQ: fallback dla Safari bez `interpolate-size`
