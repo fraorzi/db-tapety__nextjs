@@ -338,6 +338,9 @@
   .phero__top p { grid-column: 9 / span 4; color: var(--muted); max-width: 30ch; }
   .phero__media { margin-top: clamp(2.5rem, 7vh, 4rem); aspect-ratio: 21 / 9; position: relative; }
   .phero__media .frame { position: absolute; inset: 0; }
+  .nf__actions { margin-top: clamp(1.75rem, 4vh, 2.5rem); }
+  .nf__wall { position: relative; margin-top: clamp(3rem, 9vh, 5.5rem); aspect-ratio: 21 / 8; overflow: hidden; background: var(--paper-3); }
+  .nf__gap { position: absolute; inset: 0 auto 0 61%; width: 11%; background: var(--paper-2); box-shadow: inset 1px 0 0 var(--rule), inset -1px 0 0 var(--rule), -10px 0 24px -14px oklch(from var(--ink) l c h / 0.5), 10px 0 24px -14px oklch(from var(--ink) l c h / 0.5); }
 
   /* /jak-pracuje — przekrój ściany; warstwy nakładają się od lewej, każda zostawia schodek z podpisem */
   .wl { margin-top: clamp(2.5rem, 7vh, 4rem); }
@@ -540,6 +543,8 @@
 
   .phero__top h1, .phero__top p { grid-column: 1 / span 12; }
   .phero__media { aspect-ratio: 4 / 5; }
+  .nf__wall { aspect-ratio: 4 / 5; }
+  .nf__gap { left: 56%; width: 22%; }
   .pgrid { grid-template-columns: minmax(0, 1fr); }
   .pbody h2, .pbody .ptext { grid-column: 1 / span 12; }
   .pgal .g1, .pgal .g2, .pgal .g3 { grid-column: 1 / span 12; margin-top: 0; }
