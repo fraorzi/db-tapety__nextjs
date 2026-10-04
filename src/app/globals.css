@@ -314,6 +314,10 @@
   .faq details::details-content { block-size: 0; overflow: clip; transition: block-size 450ms var(--ease), content-visibility 450ms allow-discrete; }
   .faq details[open]::details-content { block-size: auto; }
   @supports (interpolate-size: allow-keywords) { .faq { interpolate-size: allow-keywords; } }
+  @supports not (interpolate-size: allow-keywords) {
+    .faq details[open] > div { animation: faq-in 450ms var(--ease); }
+  }
+  @keyframes faq-in { from { opacity: 0; transform: translateY(-0.5rem); } }
 
   /* cta + footer Ft1 */
   .cta { padding-block: clamp(5rem, 14vh, 9rem) clamp(3rem, 8vh, 5rem); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 2rem; align-items: end; }

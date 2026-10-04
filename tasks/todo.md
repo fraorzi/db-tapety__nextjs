@@ -13,7 +13,7 @@
 - [x] Wideo w `public/video/` (branch `feat/self-hosted-video`): AV1 WebM + H.264 MP4, hero 1080p (wyższej wersji na Pexels brak), proces 1440p tam, gdzie źródło pozwala, przycięty do 12 s; poster z pierwszej klatki; cache 7 dni; `scripts/encode-video.sh`. Zweryfikowane w Chromium i WebKit.
 - [ ] Backend formularzy `/wycena` i „zostaw numer”: Server Action, walidacja na serwerze, honeypot, wysyłka na `fo.testowy@gmail.com` (env `QUOTE_TO_EMAIL`)
 - [ ] Strona 404 w stylu systemu
-- [ ] FAQ: fallback dla Safari bez `interpolate-size`
+- [x] FAQ (`fix/faq-safari-fallback`): Safari 26 ma `::details-content`, ale nie `interpolate-size` — tam odpowiedź wjeżdża `opacity`/`transform`, w Chromium wysokość animuje się jak dotąd
 - [ ] OG image + favicon (placeholder w stylu systemu)
 - [ ] Przegląd dostępności (fokus, kontrast) — bez `prefers-reduced-motion`
 
