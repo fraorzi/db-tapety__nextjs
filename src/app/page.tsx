@@ -9,14 +9,51 @@ import { Footer } from "@/components/Footer";
 import { SquircleLink } from "@/components/Squircle";
 import { projects } from "@/data/projects";
 import { processShort } from "@/data/process";
-import { videos } from "@/data/site";
+import { site, videos } from "@/data/site";
 
 const picks = [projects[0], projects[3], projects[1], projects[4]];
 const pos = ["wp1", "wp2", "wp3", "wp4"];
 
+type BusinessLd = {
+  "@context": "https://schema.org";
+  "@type": "HomeAndConstructionBusiness";
+  name: string;
+  description: string;
+  url: string;
+  telephone?: string;
+  email?: string;
+  areaServed?: string;
+};
+
+function isKnownContact(value: string) {
+  return !value.includes("•") && !value.includes("do uzupełnienia") && !value.includes("do potwierdzenia");
+}
+
+function businessLd(): BusinessLd {
+  const data: BusinessLd = {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    name: site.name,
+    description: site.description,
+    url: site.url,
+  };
+  if (isKnownContact(site.phone)) data.telephone = site.phone;
+  if (isKnownContact(site.email)) data.email = site.email;
+  if (isKnownContact(site.region)) data.areaServed = site.region;
+  return data;
+}
+
+const jsonLd = businessLd();
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <main>
         <Hero />
         <Services />

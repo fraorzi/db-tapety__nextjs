@@ -4,7 +4,7 @@ import { site } from "@/data/site";
 import { QuoteForm } from "./QuoteForm";
 
 export const metadata: Metadata = {
-  title: "Bezpłatna wycena",
+  title: "Wycena",
   description: "Wyślij zdjęcie ściany, przybliżone wymiary i wzór, który Ci się podoba. Odpiszę z orientacyjnym kosztem i terminem.",
 };
 
