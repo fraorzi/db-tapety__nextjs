@@ -246,7 +246,8 @@
   .media { overflow: hidden; background: var(--paper-2); position: relative; }
   .media img { transform: scale(1.1); }
   .proj { display: block; }
-  .proj:hover .media img { transform: scale(1.05) !important; transition: transform 1.2s var(--ease); }
+  .proj .media__zoom { position: absolute; inset: 0; transition: transform 1.2s var(--ease); }
+  .proj:hover .media__zoom { transform: scale(1.05); }
   .work { padding-block: clamp(5rem, 14vh, 9rem); }
   /* mozaika: szew 0.5rem jak między pasami, podpis jako etykieta wcięta w róg */
   .wm { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: clamp(13rem, 20vw, 19rem); gap: 0.5rem; margin-top: clamp(2.5rem, 7vh, 4rem); }

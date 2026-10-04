@@ -18,7 +18,7 @@ export function Work() {
       <div className="wm">
         {picks.map((p, i) => (
           <Link key={p.slug} href={`/realizacje/${p.slug}`} className={`proj wm__item wm${i + 1}`} data-reveal="clip">
-            <div className="media"><Image src={p.cover} alt={p.alt} fill sizes={i === 0 ? "(max-width: 900px) 100vw, 58vw" : "(max-width: 900px) 100vw, 42vw"} /></div>
+            <div className="media"><span className="media__zoom"><Image src={p.cover} alt={p.alt} fill sizes={i === 0 ? "(max-width: 900px) 100vw, 58vw" : "(max-width: 900px) 100vw, 42vw"} /></span></div>
             <span className="wm__label"><b>{p.title}</b><span>{p.room}</span></span>
           </Link>
         ))}

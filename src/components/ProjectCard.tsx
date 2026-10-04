@@ -9,7 +9,9 @@ export function ProjectCard({ project, sizes = "(max-width: 900px) 100vw, 50vw",
     <Link href={`/realizacje/${project.slug}`} className="proj" data-reveal="clip">
       <figure>
         <div className="media">
-          <Image src={project.cover} alt={project.alt} fill sizes={sizes} priority={priority} />
+          <span className="media__zoom">
+            <Image src={project.cover} alt={project.alt} fill sizes={sizes} priority={priority} />
+          </span>
         </div>
         <figcaption>
           <span>{project.title}</span>
