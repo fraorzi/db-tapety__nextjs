@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP, reducedMotion } from "@/lib/gsap";
-import { Squircle, SquircleLink } from "./Squircle";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { Frame } from "./Frame";
 
 export type Step = {
   title: string;
@@ -52,12 +53,10 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
       };
       setStep(0);
 
-      const reduce = reducedMotion();
       const mm = gsap.matchMedia();
 
       if (variant === "compact") {
         mm.add("(min-width: 901px)", () => {
-          if (reduce) return;
           const pin = root.current!.querySelector<HTMLElement>(".pc__pin")!;
           ScrollTrigger.create({
             trigger: pin, start: "top top", end: () => `+=${Math.round(steps.length * 0.7 * window.innerHeight)}`, pin: true, scrub: 0.6,
@@ -89,17 +88,17 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
   );
 
   const media = (className: string, children?: React.ReactNode) => (
-    <Squircle radius={18} className={`${className} proc__media`} aria-hidden="true">
+    <div className={`${className} proc__media`} aria-hidden="true">
       {videos.map((src, i) => (
         <video key={i} muted loop playsInline preload={i === 0 ? "auto" : "metadata"} className={i === 0 ? "is-on" : undefined} src={src} />
       ))}
       {children}
-    </Squircle>
+    </div>
   );
 
   if (variant === "compact") {
     return (
-      <section className="surface deep pc wrap" id={id} ref={root} aria-labelledby={`${id}-title`}>
+      <section className="surface deep pc wrap bands-t bands-b" id={id} ref={root} aria-labelledby={`${id}-title`}>
         <div className="pc__pin">
           {media("pc__media")}
           <div className="pc__text">
@@ -116,9 +115,9 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
               ))}
             </ol>
             {cta && (
-              <SquircleLink href={cta.href} className="btn btn--light" style={{ justifySelf: "start" }}>
+              <Link href={cta.href} className="btn btn--light" style={{ justifySelf: "start" }}>
                 {cta.label} <span className="arr" aria-hidden="true">→</span>
-              </SquircleLink>
+              </Link>
             )}
           </div>
         </div>
@@ -149,15 +148,17 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
             </li>
           ))}
         </ol>
-        {media(
-          "pf__media",
-          <div className="pf__counter"><span className="num" data-counter>01</span><span>/ {String(steps.length).padStart(2, "0")}</span></div>,
-        )}
+        <Frame className="pf__frame">
+          {media(
+            "pf__media",
+            <div className="pf__counter"><span className="num" data-counter>01</span><span>/ {String(steps.length).padStart(2, "0")}</span></div>,
+          )}
+        </Frame>
       </div>
       {cta && (
         <div className="grid12" style={{ marginTop: "clamp(2rem, 6vh, 3.5rem)" }}>
           <div style={{ gridColumn: "1 / span 5" }}>
-            <SquircleLink href={cta.href} className="btn">{cta.label} <span className="arr" aria-hidden="true">→</span></SquircleLink>
+            <Link href={cta.href} className="btn">{cta.label} <span className="arr" aria-hidden="true">→</span></Link>
           </div>
         </div>
       )}

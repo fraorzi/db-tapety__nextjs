@@ -17,7 +17,8 @@ export type Project = {
   body: readonly string[];
 };
 
-// Zdjęcia: stock (Unsplash) jako zastępstwo. Opisy przykładowe — do zastąpienia realizacjami klienta.
+// TODO(media, wymagane): wszystkie zdjęcia i opisy w tym pliku to stock (Unsplash) i przykładowe teksty przedstawione jako realizacje klienta.
+// Przed publikacją wymienić na zdjęcia prawdziwych realizacji albo ukryć /realizacje — cudza praca pokazana jako własna wprowadza klientów w błąd.
 export const projects: readonly Project[] = [
   {
     slug: "salon-ciemna-dzungla",

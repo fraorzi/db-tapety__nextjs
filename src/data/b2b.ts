@@ -1,5 +1,6 @@
 import { unsplash } from "./site";
 
+// TODO(media, zalecane): zdjęcia stock (Unsplash) — docelowo realizacje klienta dla firm.
 export const segments = [
   { t: "Lokale usługowe", d: "Ściana ekspozycyjna, poczekalnia, wejście. Wchodzę po zamknięciu, rano lokal działa.", img: unsplash("photo-1559508551-44bff1de756b", 1400) },
   { t: "Biura", d: "Sale spotkań, recepcje, ściany z identyfikacją. Fototapeta z Waszym projektem albo dobór z katalogów.", img: unsplash("photo-1602364557801-8908351b0c7e", 1400) },

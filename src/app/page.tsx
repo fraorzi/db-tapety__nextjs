@@ -6,7 +6,6 @@ import { ProcessPinned } from "@/components/ProcessPinned";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
-import { SquircleLink } from "@/components/Squircle";
 import { projects } from "@/data/projects";
 import { processShort } from "@/data/process";
 import { site, videos } from "@/data/site";
@@ -71,7 +70,7 @@ export default function HomePage() {
               <ProjectCard key={p.slug} project={p} className={pos[i]} sizes={i === 0 ? "(max-width: 900px) 100vw, 58vw" : "(max-width: 900px) 100vw, 40vw"} />
             ))}
             <div className="work__more">
-              <SquircleLink href="/realizacje" className="btn btn--soft">Wszystkie realizacje <span className="arr" aria-hidden="true">→</span></SquircleLink>
+              <Link href="/realizacje" className="btn btn--soft">Wszystkie realizacje <span className="arr" aria-hidden="true">→</span></Link>
             </div>
           </div>
         </section>

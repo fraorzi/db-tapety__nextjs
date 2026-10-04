@@ -29,6 +29,14 @@ Runda 3 (feedback do v2, wdrożone w v3):
 - Nawigacja zwijana w pigułkę odrzucona → górny pasek odjeżdża z treścią, po scrollu dock u dołu ekranu z „Menu” i CTA; „Menu” rozwija dock w panel. Dock chowa się nad stopką.
 - Kod przeniesiony do repo `db-tapety__nextjs` (GitHub `fraorzi/db-tapety__nextjs`) jako pełna podmiana starego projektu.
 
+Runda 4 (2026-10-04, inspiracja tubadzin.pl/salonedelmobile2026):
+
+- Podwójna ramka tonalna (`Frame`), pasy tonalne na krawędziach sekcji, przekrój ściany jako wejście na `/jak-pracuje` (`WallLayers`).
+- Dock odrzucony → po scrollu przypięty bakłażanowy pasek u góry o tym samym układzie co pasek startowy.
+- Squircle odrzucone → cała strona kwadratowa, `Squircle.tsx` usunięty.
+- Fioletowy akcent odrzucony → kolor główny = bakłażan z paska nawigacji.
+- Hover karty wypełniający ją tłem odrzucony.
+
 ## Klient — co wiemy, czego nie
 
 - Damian Bożyk, tapetowanie. Użytkownik nie zna szczegółów działalności.

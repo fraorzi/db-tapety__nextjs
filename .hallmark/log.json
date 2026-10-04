@@ -16,5 +16,14 @@
     "nav": "bottom dock rozwijany w panel",
     "footer": "Ft1",
     "brief": "Damian Bożyk · tapetowanie · redesign v3"
+  },
+  {
+    "date": "2026-10-04",
+    "macrostructure": "bez zmian względem v3",
+    "theme": "bez zmian",
+    "enrichment": "podwójna ramka tonalna (Frame), pasy tonalne na krawędziach sekcji, hover karty wypełniający bakłażanem — inspiracja tubadzin.pl/salonedelmobile2026, przełożona na squircle i paletę",
+    "nav": "top bar + przypięty bakłażanowy pasek o tym samym układzie (zamiast docka)",
+    "footer": "Ft1",
+    "brief": "Damian Bożyk · tapetowanie · v3.1"
   }
 ]

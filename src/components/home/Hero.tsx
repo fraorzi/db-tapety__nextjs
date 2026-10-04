@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP, reducedMotion } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { site, videos } from "@/data/site";
-import { SquircleLink } from "@/components/Squircle";
 
 const lines = ["Tapety kładzione", "tak, że szwu", "nie widać."];
 
@@ -14,8 +13,6 @@ export function Hero() {
   useGSAP(
     () => {
       const video = root.current?.querySelector("video");
-      if (reducedMotion()) return;
-
       gsap.timeline({ defaults: { ease: "expo.out" } })
         .from(".hero__video video", { scale: 1.1, duration: 2.4, ease: "power2.out" }, 0)
         .from(".line > span", { yPercent: 110, duration: 1.3, stagger: 0.1 }, 0.3)
@@ -54,7 +51,7 @@ export function Hero() {
         <div className="hero__side">
           <p>Tapetowanie i przygotowanie ścian w mieszkaniach, domach i lokalach. Od pomiaru po ostatnie docięcie przy listwie.</p>
           <div className="hero__actions">
-            <SquircleLink href="/wycena" className="btn">Bezpłatna wycena <span className="arr" aria-hidden="true">→</span></SquircleLink>
+            <Link href="/wycena" className="btn">Bezpłatna wycena <span className="arr" aria-hidden="true">→</span></Link>
             <Link href="/realizacje" className="ulink">Zobacz realizacje</Link>
           </div>
         </div>
