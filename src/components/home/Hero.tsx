@@ -7,11 +7,31 @@ import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { videos } from "@/data/site";
 import { VideoSources } from "@/components/VideoSources";
 import { Arrow } from "@/components/Arrow";
+import { usePreview } from "@/preview/store";
 
-const lines = ["Tapety kładzione", "tak, że szwu", "nie widać."];
+const copies = {
+  a: {
+    lines: ["Tapety kładzione", "tak, że szwu", "nie widać."],
+    text: "Tapetowanie i przygotowanie ścian w mieszkaniach, domach i lokalach. Od pomiaru po ostatnie docięcie przy listwie.",
+  },
+  b: {
+    lines: ["Kładę tapety.", "Tylko tapety."],
+    text: "Mieszkania, domy i lokale. Sam mierzę, przygotowuję ścianę i sprzątam po sobie.",
+  },
+  c: {
+    lines: ["Tapeta położona", "raz, porządnie."],
+    text: "Przygotowanie ściany i montaż bez podwykonawców.",
+  },
+  d: {
+    lines: ["Przygotuję ścianę", "i położę tapetę."],
+    text: "Od pomiaru po docięcie przy listwie, zawsze ta sama osoba.",
+  },
+} as const;
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
+  const { lines, text } = copies[usePreview("copy")];
+  const cta = usePreview("cta");
   preload(videos.heroPoster, { as: "image", fetchPriority: "high" });
 
   useGSAP(
@@ -52,10 +72,19 @@ export function Hero() {
           ))}
         </h1>
         <div className="hero__side">
-          <p>Tapetowanie i przygotowanie ścian w mieszkaniach, domach i lokalach. Od pomiaru po ostatnie docięcie przy listwie.</p>
+          <p>{text}</p>
           <div className="hero__actions">
-            <Link href="/wycena" className="btn">Bezpłatna wycena <Arrow /></Link>
-            <Link href="/realizacje" className="ulink">Zobacz realizacje</Link>
+            {cta === "a" ? (
+              <>
+                <Link href="/wycena" className="btn">Bezpłatna wycena <Arrow /></Link>
+                <Link href="/realizacje" className="ulink">Zobacz realizacje</Link>
+              </>
+            ) : (
+              <>
+                <Link href="/realizacje" className="btn">Zobacz realizacje <Arrow /></Link>
+                <Link href="/dla-firm" className="ulink">Dla firm</Link>
+              </>
+            )}
           </div>
         </div>
       </div>

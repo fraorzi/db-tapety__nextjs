@@ -19,11 +19,17 @@
 - Przy okazji: strzałka „→” w `not-found.tsx` (łamała lint na `main`) zamieniona na `Arrow`.
 - lint, tsc, build OK; 1440/375 bez poziomego scrolla na 5 stronach, konsola czysta.
 
-## Propozycje (do wyboru przez użytkownika)
-- [ ] Footer
-- [ ] Hero: układ tekstu, CTA, copy
-- [ ] „Jedna osoba…”: warianty, w tym dwukolumnowy
-- [ ] „Wybrane realizacje”: wejście i hover
+## Propozycje — panel „Warianty” (lewy dolny róg, zapis w `localStorage` pod `db-preview-polish`)
+- [x] `src/preview/` odtworzony z `8096f2c` (bez znaków jako ikon), podpięty w `layout.tsx`
+- [x] Hero: układ (A–D), tekst (A–D), przyciski (A–B)
+- [x] „Jedna osoba…”: A obecny, B dwie kolumny, C siatka 2×2, D lżejsze wiersze
+- [x] „Wybrane realizacje”: wejście (A–D, `home/WorkMotion.tsx`) i hover (A–D)
+- [x] Footer: A obecny, B zostaw numer, C kontakt, D jasny ze zdjęciem
+- [ ] Decyzja użytkownika → wdrożyć wybrane, usunąć resztę wariantów i `src/preview/`
+
+Uwagi:
+- `Services` trzyma jedną stałą `<section>`, bo `Hero` wiąże ScrollTrigger z następnym elementem; wariant podmienia tylko środek.
+- Kafle w „Wybranych realizacjach” nie mają już `data-reveal`; odsłonięcie i paralaksę robi `WorkMotion` (żeby przełączanie wariantu odtwarzało animację).
 
 # Plan — etap po v3 (2026-10-04)
 
