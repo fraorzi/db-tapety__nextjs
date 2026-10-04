@@ -342,6 +342,21 @@
   .phero__media { margin-top: clamp(2.5rem, 7vh, 4rem); aspect-ratio: 21 / 9; position: relative; }
   .phero__media .frame { position: absolute; inset: 0; }
 
+  /* /jak-pracuje — przekrój ściany; warstwy nakładają się od lewej, każda zostawia schodek z podpisem */
+  .wl { margin-top: clamp(2.5rem, 7vh, 4rem); }
+  .wl__box { position: relative; container-type: inline-size; height: clamp(13rem, 34vh, 22rem); overflow: hidden; }
+  .wl__layer { position: absolute; inset: 0; transform-origin: left center; overflow: hidden; }
+  .wl__layer:nth-child(1) { background: var(--paper-3); }
+  .wl__layer:nth-child(2) { background: var(--paper-2); box-shadow: inset -1px 0 0 var(--rule); }
+  .wl__layer:nth-child(3) { background: var(--deep-2); color: var(--on-deep); }
+  .wl__layer:nth-child(4) { background: var(--deep); color: var(--on-deep); }
+  .wl__layer:nth-child(4)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to left, oklch(from var(--scrim) l c h / 0.6), transparent 34%); }
+  .wl__label {
+    position: absolute; right: 6cqw; bottom: 1.1rem; z-index: 1; translate: 50% 0;
+    writing-mode: vertical-rl; rotate: 180deg;
+    font-family: var(--font-display); font-weight: 600; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap;
+  }
+
   /* /realizacje — taby + grid */
   .tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
   .tab { padding: 0.65rem 1rem; font-size: 0.9375rem; font-weight: 500; background: var(--paper-2); color: var(--ink); transition: background-color 250ms var(--ease), color 250ms var(--ease); }

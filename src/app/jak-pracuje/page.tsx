@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { ProcessPinned } from "@/components/ProcessPinned";
 import { SquircleLink } from "@/components/Squircle";
+import { WallLayers } from "@/components/WallLayers";
 import { processSteps } from "@/data/process";
 import { videos } from "@/data/site";
 
@@ -27,6 +28,7 @@ export default function JakPracujePage() {
             <h1 className="h-display">Pięć etapów. Każdy kończy się czymś, co możesz sprawdzić.</h1>
             <p>Wycena, policzone rolki, gładka ściana, gotowy pokój, zapas tapety. Tak wygląda praca od pierwszego telefonu do odbioru.</p>
           </div>
+          <WallLayers />
         </section>
 
         <ProcessPinned

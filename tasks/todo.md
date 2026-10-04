@@ -30,7 +30,7 @@
 - Na mobile CTA z paska przeniesione do panelu menu (na 375 px marka + CTA + „Menu” się nie mieściły).
 - Zweryfikowane: lint, tsc, build; zrzuty 1440/375 (`/`, slug, `/jak-pracuje`, `/dla-firm`, menu mobilne), brak poziomego scrolla na 7 stronach, konsola czysta.
 - Podgląd na `next start -p 4311`: dev server na 4310 należy do `db-tapety__redesign` i wisiał.
-- Do decyzji: punkt 3 (intro z tonalnych prostokątów) na innej podstronie, we własnej wersji.
+- [x] Punkt 3 we własnej wersji: `WallLayers` na `/jak-pracuje` — przekrój ściany (ściana, grunt, klej, tapeta) nakładany od lewej, schodki z podpisami.
 
 ## Otwarte pytania
 - Resend: użytkownik zakłada konto (fo.testowy@gmail.com), klucz `RESEND_API_KEY` w `.env.local` i Vercel.
