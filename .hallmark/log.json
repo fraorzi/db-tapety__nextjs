@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-10-04",
+    "macrostructure": "bez zmian względem v3.1",
+    "theme": "Archivo condensed + Instrument Sans, przycisk główny z ramką --frame-out",
+    "enrichment": "usługi jako duże wiersze, mozaika realizacji, schody tonalne w /dla-firm, slider z zapowiedzią następnej, taby z jadącym podkreśleniem, etykiety na kartach, ikony tylko SVG",
+    "nav": "bez zmian",
+    "footer": "Ft1",
+    "brief": "Damian Bożyk · tapetowanie · v3.2 (wybór z podglądu wariantów)"
+  },
+  {
+    "date": "2026-10-04",
     "macrostructure": "Photographic + sticky stack (/) · Portfolio Grid (/realizacje) · Split Studio (/dla-firm) · Feature Stack (/jak-pracuje) · Long Document (/polityka-prywatnosci)",
     "theme": "custom: stone paper · tape-blue accent · Bricolage Grotesque + Instrument Sans",
     "enrichment": "Tier A stock photo/video (Unsplash, Pexels), squircle clip-path buttons",

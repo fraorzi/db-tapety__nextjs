@@ -31,7 +31,7 @@ export default async function ProjectPage({ params }: Params) {
         <article className="phero">
           <div className="grid12 phero__top">
             <h1 className="h-display">{p.title}</h1>
-            <p>{p.room} · {p.category}</p>
+            <p>{p.room}<span className="sep" aria-hidden="true" />{p.category}</p>
           </div>
           <figure className="phero__media" data-reveal="clip">
             <Frame><div className="media"><Image src={p.cover} alt={p.alt} fill priority sizes="100vw" /></div></Frame>

@@ -16,9 +16,21 @@ Worktree `../db-tapety__preview`, dev na `:4320`. Panel „Warianty” w lewym d
 - [x] „Realizacje w lokalach”: kadr z zapowiedzią następnej, rozwijana rolka, taśma do przeciągania
 - [x] lint, tsc, build; zrzuty 1440 i 375 px, poziomy scroll 0 we wszystkich wariantach
 
-## Po decyzji użytkownika
-- [ ] Przenieść wybrane warianty do właściwych komponentów i `globals.css`, usunąć `src/preview/` i pozostałe warianty
-- [ ] Zaktualizować `design.md` (fonty, przycisk, ramka), `AGENTS.md`, `.hallmark/log.json`
+## Decyzja użytkownika (runda 1) — wdrożone
+- [x] Font: Archivo wąskie (78 %) + Instrument Sans; obrazek OG na statycznym Archivo Condensed Bold (`src/fonts/`, instancja z fontTools)
+- [x] Przycisk główny: jasna ramka 3 px na zewnątrz
+- [x] Strzałka: krótsza w spoczynku, na hover wydłuża się o ok. 6 px w paddingu przycisku
+- [x] Reguła: ikony tylko jako SVG (`AGENTS.md`, `design.md`, ESLint `no-restricted-syntax`)
+- [x] „Jedna osoba”: duże wiersze · „Wybrane realizacje”: mozaika · „Dla kogo”: bez ramki · proces na `/`: akordeon
+- [x] `/realizacje`: taby z jadącym podkreśleniem, karty z etykietą
+- [x] „Od zapytania do faktury”: schody tonalne, rosną przy wejściu w widok
+- [x] „Realizacje w lokalach”: kadr z zapowiedzią następnej
+- [x] Usunięte pozostałe warianty; `src/preview/` zostaje tylko dla szewronów
+
+## Runda 2
+- [x] Szewron A (cienki, przesuwa się na hover); `src/preview/` usunięty
+- [x] Separatory `·` zamienione na kwadrat `.sep` (span) i pseudo-element w hero; reguła: proste kształty jako span/div, złożone jako SVG, nigdy znaki
+- [x] Wideo procesu na `/` w podwójnej ramce (`Frame`)
 
 ## Review
 - Na mobile warianty z pinem (proces, przejazd w poziomie) przechodzą w zwykłą listę / przewijaną taśmę, tak jak obecna wersja.

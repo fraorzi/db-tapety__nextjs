@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   description: "Tapetowanie lokali, biur, apartamentów na wynajem i mieszkań deweloperskich. Praca poza godzinami, jedna wycena na całość, faktura VAT.",
 };
 
-const picks = [projects[4], projects[0]];
 const slides = [...projects].sort((a, b) => Number(b.category === "Lokal") - Number(a.category === "Lokal"));
 
 export default function DlaFirmPage() {
@@ -61,7 +60,7 @@ export default function DlaFirmPage() {
           </div>
         </section>
 
-        <LokalSlider picks={picks} slides={slides} />
+        <LokalSlider slides={slides} />
 
         <section className="iform wrap" style={{ borderTop: "1px solid var(--rule)" }} aria-labelledby="iform-title">
           <div className="iform__text">

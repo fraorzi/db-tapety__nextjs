@@ -4,10 +4,9 @@ import Link from "next/link";
 import { useRef } from "react";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { Frame } from "./Frame";
+import { Arrow } from "./Arrow";
 import { VideoSources } from "./VideoSources";
-import { Arrow } from "@/components/Arrow";
 import type { Video } from "@/data/site";
-import { usePreview } from "@/preview/store";
 
 export type Step = {
   title: string;
@@ -38,8 +37,6 @@ type Props = {
  */
 export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces", variant }: Props) {
   const root = useRef<HTMLElement>(null);
-  const proc = usePreview("proc");
-  const look = variant === "compact" ? proc : "a";
 
   useGSAP(
     () => {
@@ -50,12 +47,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
       const setStep = (i: number) => {
         if (i === current) return;
         current = i;
-        items.forEach((s) => {
-          const j = Array.prototype.indexOf.call(s.parentElement!.children, s);
-          s.classList.toggle("is-on", j === i);
-          s.dataset.d = String(j - i);
-          s.style.setProperty("--d", String(j - i));
-        });
+        items.forEach((s, j) => s.classList.toggle("is-on", j === i));
         vids.forEach((v, j) => {
           v.classList.toggle("is-on", j === i);
           if (j === i) v.play().catch(() => {}); else v.pause();
@@ -95,7 +87,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
 
       return () => mm.revert();
     },
-    { scope: root, dependencies: [variant, steps.length, look], revertOnUpdate: true },
+    { scope: root, dependencies: [variant, steps.length] },
   );
 
   const media = (className: string, children?: React.ReactNode) => (
@@ -110,82 +102,28 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
   );
 
   if (variant === "compact") {
-    const button = cta && (
-      <Link href={cta.href} className="btn btn--light" style={{ justifySelf: "start" }}>
-        {cta.label} <Arrow />
-      </Link>
-    );
-    const head = (
-      <div className="sec-head">
-        <h2 className="h2" id={`${id}-title`}>{title}</h2>
-        {intro && <p>{intro}</p>}
-      </div>
-    );
-
-    if (look === "a") {
-      return (
-        <section className="surface deep pc wrap bands-t bands-b" id={id} ref={root} aria-labelledby={`${id}-title`}>
-          <div className="pc__pin">
-            {media("pc__media")}
-            <div className="pc__text">
-              {head}
-              <ol className="pc__list">
-                {steps.map((s) => (
-                  <li className="pc__item" data-step key={s.title}>
-                    <h3>{s.title}</h3>
-                    <div className="pc__more"><div><p>{s.text}</p></div></div>
-                  </li>
-                ))}
-              </ol>
-              {button}
-            </div>
-          </div>
-        </section>
-      );
-    }
-
     return (
-      <section className={`surface deep pc pc--${look} wrap bands-t bands-b`} id={id} ref={root} aria-labelledby={`${id}-title`}>
+      <section className="surface deep pc wrap bands-t bands-b" id={id} ref={root} aria-labelledby={`${id}-title`}>
         <div className="pc__pin">
           <Frame className="pc__frame">{media("pc__media")}</Frame>
           <div className="pc__text">
-            {head}
-            {look === "b" && (
-              <div className="pdr">
-                <ol className="pdr__titles">
-                  {steps.map((s) => <li className="pdr__t" data-step key={s.title}><h3>{s.title}</h3></li>)}
-                </ol>
-                <div className="pdr__texts">
-                  {steps.map((s) => <p className="pdr__p" data-step key={s.title}>{s.text}</p>)}
-                </div>
-              </div>
+            <div className="sec-head">
+              <h2 className="h2" id={`${id}-title`}>{title}</h2>
+              {intro && <p>{intro}</p>}
+            </div>
+            <ol className="pc__list">
+              {steps.map((s) => (
+                <li className="pc__item" data-step key={s.title}>
+                  <h3>{s.title}</h3>
+                  <div className="pc__more"><div><p>{s.text}</p></div></div>
+                </li>
+              ))}
+            </ol>
+            {cta && (
+              <Link href={cta.href} className="btn btn--light" style={{ justifySelf: "start" }}>
+                {cta.label} <Arrow />
+              </Link>
             )}
-            {look === "c" && (
-              <div className="pst">
-                <ol className="pst__stage">
-                  {steps.map((s) => (
-                    <li className="pst__item" data-step key={s.title}>
-                      <h3>{s.title}</h3>
-                      <p>{s.text}</p>
-                    </li>
-                  ))}
-                </ol>
-                <ul className="pst__index" aria-hidden="true">
-                  {steps.map((s) => <li data-step key={s.title}>{s.title}</li>)}
-                </ul>
-              </div>
-            )}
-            {look === "d" && (
-              <ol className="pdk">
-                {steps.map((s) => (
-                  <li className="pdk__card" data-step key={s.title}>
-                    <h3>{s.title}</h3>
-                    <p>{s.text}</p>
-                  </li>
-                ))}
-              </ol>
-            )}
-            {button}
           </div>
         </div>
       </section>
