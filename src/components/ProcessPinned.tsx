@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRef } from "react";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { Frame } from "./Frame";
+import { VideoSources } from "./VideoSources";
+import type { Video } from "@/data/site";
 
 export type Step = {
   title: string;
@@ -18,7 +20,7 @@ type Props = {
   title: string;
   intro?: string;
   steps: readonly Step[];
-  videos: readonly string[];
+  videos: readonly Video[];
   cta?: { href: string; label: string };
   id?: string;
   variant: "compact" | "full";
@@ -89,8 +91,10 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
 
   const media = (className: string, children?: React.ReactNode) => (
     <div className={`${className} proc__media`} aria-hidden="true">
-      {videos.map((src, i) => (
-        <video key={i} muted loop playsInline preload={i === 0 ? "auto" : "metadata"} className={i === 0 ? "is-on" : undefined} src={src} />
+      {videos.map((video, i) => (
+        <video key={i} muted loop playsInline preload={i === 0 ? "auto" : "metadata"} className={i === 0 ? "is-on" : undefined}>
+          <VideoSources video={video} />
+        </video>
       ))}
       {children}
     </div>
