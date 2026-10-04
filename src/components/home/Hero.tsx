@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { preload } from "react-dom";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
-import { site, videos } from "@/data/site";
+import { videos } from "@/data/site";
 import { VideoSources } from "@/components/VideoSources";
 import { Arrow } from "@/components/Arrow";
 
@@ -20,7 +20,7 @@ export function Hero() {
       gsap.timeline({ defaults: { ease: "expo.out" } })
         .from(".hero__video video", { scale: 1.1, duration: 2.4, ease: "power2.out" }, 0)
         .from(".line > span", { yPercent: 110, duration: 1.3, stagger: 0.1 }, 0.3)
-        .from(".hero__side > *, .hero__tag", { opacity: 0, y: 12, duration: 1, stagger: 0.08 }, 0.8);
+        .from(".hero__side > *", { opacity: 0, y: 12, duration: 1, stagger: 0.08 }, 0.8);
 
       // Następna sekcja nasuwa się na przyklejony hero; wideo cofa się i ciemnieje.
       const next = root.current?.nextElementSibling;
@@ -28,7 +28,7 @@ export function Hero() {
       const st = { trigger: next, start: "top bottom", end: "top top", scrub: 0.8 } as const;
       gsap.to(".hero__video", { scale: 0.94, yPercent: -4, ease: "none", scrollTrigger: st });
       gsap.to(".hero__veil", { opacity: 0.55, ease: "none", scrollTrigger: st });
-      gsap.to(".hero__copy, .hero__tag", { yPercent: -18, opacity: 0, ease: "none", scrollTrigger: { ...st, end: "top 45%" } });
+      gsap.to(".hero__copy", { yPercent: -18, opacity: 0, ease: "none", scrollTrigger: { ...st, end: "top 45%" } });
       ScrollTrigger.create({
         trigger: next, start: "top top",
         onEnter: () => video?.pause(), onLeaveBack: () => void video?.play().catch(() => {}),
@@ -45,7 +45,6 @@ export function Hero() {
         </video>
       </div>
       <div className="hero__veil" aria-hidden="true" />
-      <p className="hero__tag"><span>{site.tagline}</span><span>{site.region}</span></p>
       <div className="hero__copy">
         <h1 className="h-display hero__title" id="hero-title" aria-label={lines.join(" ")}>
           {lines.map((l) => (
