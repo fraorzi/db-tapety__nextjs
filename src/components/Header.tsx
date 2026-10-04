@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { nav, site } from "@/data/site";
-import { SquircleLink } from "./Squircle";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -45,7 +44,7 @@ export function Header() {
         ))}
       </nav>
       <div className="nav__right">
-        <SquircleLink href="/wycena" radius={11} className="btn nav__cta" onClick={close}>Bezpłatna wycena</SquircleLink>
+        <Link href="/wycena" className="btn nav__cta" onClick={close}>Bezpłatna wycena</Link>
         <button type="button" className="nav__burger" aria-expanded={open} aria-controls="nav-panel" onClick={() => setOpen((o) => !o)}>
           <span className="nav__icon" aria-hidden="true" />
           {open ? "Zamknij" : "Menu"}
@@ -68,7 +67,7 @@ export function Header() {
                 <Link key={n.href} href={n.href} tabIndex={open ? 0 : -1} onClick={close} aria-current={pathname.startsWith(n.href) ? "page" : undefined}>{n.label}</Link>
               ))}
             </nav>
-            <SquircleLink href="/wycena" className="btn" tabIndex={open ? 0 : -1} onClick={close}>Bezpłatna wycena <span className="arr" aria-hidden="true">→</span></SquircleLink>
+            <Link href="/wycena" className="btn" tabIndex={open ? 0 : -1} onClick={close}>Bezpłatna wycena <span className="arr" aria-hidden="true">→</span></Link>
             <div className="bar__meta">
               <a href={site.phoneHref} tabIndex={open ? 0 : -1}>{site.phone}</a>
               <a href={site.emailHref} tabIndex={open ? 0 : -1}>{site.email}</a>

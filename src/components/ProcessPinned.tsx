@@ -1,9 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { Frame } from "./Frame";
-import { Squircle, SquircleLink } from "./Squircle";
 
 export type Step = {
   title: string;
@@ -88,12 +88,12 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
   );
 
   const media = (className: string, children?: React.ReactNode) => (
-    <Squircle radius={18} className={`${className} proc__media`} aria-hidden="true">
+    <div className={`${className} proc__media`} aria-hidden="true">
       {videos.map((src, i) => (
         <video key={i} muted loop playsInline preload={i === 0 ? "auto" : "metadata"} className={i === 0 ? "is-on" : undefined} src={src} />
       ))}
       {children}
-    </Squircle>
+    </div>
   );
 
   if (variant === "compact") {
@@ -115,9 +115,9 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
               ))}
             </ol>
             {cta && (
-              <SquircleLink href={cta.href} className="btn btn--light" style={{ justifySelf: "start" }}>
+              <Link href={cta.href} className="btn btn--light" style={{ justifySelf: "start" }}>
                 {cta.label} <span className="arr" aria-hidden="true">→</span>
-              </SquircleLink>
+              </Link>
             )}
           </div>
         </div>
@@ -158,7 +158,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
       {cta && (
         <div className="grid12" style={{ marginTop: "clamp(2rem, 6vh, 3.5rem)" }}>
           <div style={{ gridColumn: "1 / span 5" }}>
-            <SquircleLink href={cta.href} className="btn">{cta.label} <span className="arr" aria-hidden="true">→</span></SquircleLink>
+            <Link href={cta.href} className="btn">{cta.label} <span className="arr" aria-hidden="true">→</span></Link>
           </div>
         </div>
       )}

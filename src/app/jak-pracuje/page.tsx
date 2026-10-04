@@ -1,7 +1,7 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { ProcessPinned } from "@/components/ProcessPinned";
-import { SquircleLink } from "@/components/Squircle";
 import { WallLayers } from "@/components/WallLayers";
 import { processSteps } from "@/data/process";
 import { videos } from "@/data/site";
@@ -58,7 +58,7 @@ export default function JakPracujePage() {
           </div>
           <div className="grid12" style={{ marginTop: "clamp(3rem, 8vh, 5rem)" }}>
             <div style={{ gridColumn: "6 / span 7" }}>
-              <SquircleLink href="/wycena" className="btn btn--lg">Bezpłatna wycena <span className="arr" aria-hidden="true">→</span></SquircleLink>
+              <Link href="/wycena" className="btn btn--lg">Bezpłatna wycena <span className="arr" aria-hidden="true">→</span></Link>
             </div>
           </div>
         </section>

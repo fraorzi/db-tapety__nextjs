@@ -32,6 +32,12 @@
 - Podgląd na `next start -p 4311`: dev server na 4310 należy do `db-tapety__redesign` i wisiał.
 - [x] Punkt 3 we własnej wersji: `WallLayers` na `/jak-pracuje` — przekrój ściany (ściana, grunt, klej, tapeta) nakładany od lewej, schodki z podpisami.
 
+### Runda poprawek
+- [x] Usunięty hover wypełniający kartę.
+- [x] Estetyka kwadratowa: `Squircle.tsx` usunięty, wszystkie `border-radius` wycięte.
+- [x] Kolor główny = bakłażan (`--accent` = `--deep`); aktywne kropki i focus na ciemnym tle w `--on-deep`.
+- [x] Ramka 8 → 5 px, ciemna warstwa jaśniejsza (27 → 31%), jasna ciemniejsza (84 → 81%).
+
 ## Otwarte pytania
 - Resend: użytkownik zakłada konto (fo.testowy@gmail.com), klucz `RESEND_API_KEY` w `.env.local` i Vercel.
 - Zdjęcia w formularzu: kompresja w przeglądarce (limit Vercel 4,5 MB) czy Vercel Blob?

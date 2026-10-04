@@ -1,6 +1,6 @@
 /* Hallmark · genre: editorial · design-system: design.md · designed-as-app
  * families: Photographic (/) · Portfolio Grid (/realizacje) · Split Studio (/dla-firm) · Feature Stack (/jak-pracuje)
- * nav: top bar + fixed aubergine bar · footer: Ft1 mast-headed · theme: custom (stone paper · wallpaper-violet accent · Bricolage Grotesque + Instrument Sans)
+ * nav: top bar + fixed aubergine bar · footer: Ft1 mast-headed · theme: custom, square (stone paper · aubergine primary · Bricolage Grotesque + Instrument Sans)
  */
 @import "tailwindcss";
 
@@ -11,8 +11,8 @@
   --ink: oklch(17% 0.014 305);
   --muted: oklch(44% 0.016 305);
   --rule: oklch(80% 0.012 300);
-  --accent: oklch(52% 0.15 322);
-  --accent-ink: oklch(42% 0.14 322);
+  --accent: oklch(21% 0.045 310);
+  --accent-ink: oklch(30% 0.055 310);
   --deep: oklch(21% 0.045 310);
   --deep-2: oklch(27% 0.05 310);
   --on-deep: oklch(94% 0.006 300);
@@ -23,10 +23,10 @@
 
   --gutter: clamp(1rem, 3.2vw, 3rem);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --r-btn: 14px;
-  --r-chip: 10px;
-  --r-card: 18px;
   --band: 0.5rem;
+  --frame: 0.3125rem;
+  --frame-out: oklch(81% 0.013 300);
+  --frame-in: oklch(31% 0.052 310);
 
   --text-display: clamp(2.6rem, 5vw + 1rem, 5.5rem);
   --text-h2: clamp(2rem, 3.6vw, 3.8rem);
@@ -73,6 +73,7 @@
   }
   button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .deep :focus-visible, .bar :focus-visible, .hero :focus-visible { outline-color: var(--on-deep); }
   summary { list-style: none; }
   summary::-webkit-details-marker { display: none; }
 }
@@ -105,7 +106,7 @@
   }
   .ulink:hover::after, .ulink:focus-visible::after, .ulink--on::after { transform: scaleX(1); transform-origin: left; }
 
-  /* squircle buttons — kształt nadaje clip-path z Squircle.tsx; border-radius to fallback */
+  /* przyciski — kwadratowe, bez zaokrągleń */
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem; white-space: nowrap;
     padding: 1rem 1.45rem; min-height: 3.25rem;
@@ -165,7 +166,7 @@
     color: var(--on-deep-muted); transition: color 250ms var(--ease);
   }
   .bar__panel nav a:hover, .bar__panel nav a[aria-current="page"] { color: var(--on-deep); }
-  .bar__panel nav a[aria-current="page"]::after { content: ""; display: inline-block; width: 0.4rem; height: 0.4rem; margin-left: 0.6rem; vertical-align: middle; background: var(--accent); border-radius: 50%; }
+  .bar__panel nav a[aria-current="page"]::after { content: ""; display: inline-block; width: 0.4rem; height: 0.4rem; margin-left: 0.6rem; vertical-align: middle; background: var(--on-deep); }
   .bar__panel .btn { margin: 1.5rem var(--gutter) 0; }
   .bar__meta { display: grid; gap: 0.2rem; margin: 1.25rem var(--gutter) 0; padding: 1rem 0 1.5rem; border-top: 1px solid var(--on-deep-rule); font-size: 0.875rem; color: var(--on-deep-muted); }
 
@@ -176,10 +177,10 @@
   .bands-b { border-bottom: var(--band) solid var(--band-out); box-shadow: inset 0 calc(-1 * var(--band)) 0 var(--band-in); }
   .bands-t.bands-b { box-shadow: inset 0 var(--band) 0 var(--band-in), inset 0 calc(-1 * var(--band)) 0 var(--band-in); }
 
-  /* podwójna ramka tonalna — dwa zagnieżdżone squircle, obraz w środku */
-  .frame { position: relative; background: var(--paper-3); }
-  .frame__in { position: absolute; inset: var(--band); background: var(--deep-2); }
-  .frame .frame__in > * { position: absolute; inset: var(--band); border-radius: var(--r-card); }
+  /* podwójna ramka tonalna — jasna, ciemna, obraz w środku */
+  .frame { position: relative; background: var(--frame-out); }
+  .frame__in { position: absolute; inset: var(--frame); background: var(--frame-in); }
+  .frame .frame__in > * { position: absolute; inset: var(--frame); }
 
   /* hero — przyklejony fold, kolejne sekcje nasuwają się jak pasy */
   .hero { position: sticky; top: 0; height: 100svh; overflow: hidden; background: var(--deep); color: var(--on-deep); z-index: 0; }
@@ -225,15 +226,7 @@
   /* realizacje — strona główna */
   .media { overflow: hidden; background: var(--paper-2); position: relative; }
   .media img { transform: scale(1.1); }
-  .proj { display: block; position: relative; isolation: isolate; align-self: start; }
-  .proj__fill { position: absolute; inset: -0.75rem; z-index: -1; background: var(--deep); opacity: 0; transition: opacity 450ms var(--ease); }
-  .proj figcaption span, .proj figcaption small { transition: color 450ms var(--ease); }
-  @media (hover: hover) {
-    .proj:hover .proj__fill { opacity: 1; }
-    .proj:hover figcaption span:first-child { color: var(--on-deep); }
-    .proj:hover figcaption span:last-child, .proj:hover figcaption small { color: var(--on-deep-muted); }
-  }
-  .proj .media { border-radius: 4px; }
+  .proj { display: block; }
   .proj:hover .media img { transform: scale(1.05) !important; transition: transform 1.2s var(--ease); }
   .proj figcaption { display: flex; justify-content: space-between; gap: 1.5rem; margin-top: 0.85rem; font-size: 0.9375rem; }
   .proj figcaption span:last-child { color: var(--muted); white-space: nowrap; }
@@ -417,8 +410,8 @@
   .flow__track { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gutter); margin-top: clamp(2.5rem, 7vh, 4rem); position: relative; }
   .flow__track::before { content: ""; position: absolute; left: 0; right: 0; top: 0.55rem; height: 1px; background: var(--on-deep-rule); }
   .flow__step { display: grid; gap: 0.9rem; align-content: start; padding-top: 1.75rem; position: relative; }
-  .flow__step::before { content: ""; position: absolute; top: 0; left: 0; width: 1.1rem; height: 1.1rem; background: var(--deep); box-shadow: inset 0 0 0 1.5px var(--on-deep-muted); border-radius: 50%; }
-  .flow__step:first-child::before { background: var(--accent); box-shadow: none; }
+  .flow__step::before { content: ""; position: absolute; top: 0; left: 0; width: 1.1rem; height: 1.1rem; background: var(--deep); box-shadow: inset 0 0 0 1.5px var(--on-deep-muted); }
+  .flow__step:first-child::before { background: var(--on-deep); box-shadow: none; }
   .flow__step h3 { font-size: 1.25rem; }
   .flow__step p { color: var(--on-deep-muted); font-size: 0.9375rem; max-width: 26ch; }
 
@@ -436,7 +429,7 @@
   .iform__text p { color: var(--muted); max-width: 36ch; }
   .iform form { grid-column: 7 / span 6; display: grid; gap: 0.75rem; }
   .iform__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.75rem; align-items: stretch; }
-  .iform input { font: inherit; color: inherit; background: var(--paper-2); border: 0; padding: 0 1.1rem; min-height: 3.25rem; width: 100%; border-radius: var(--r-btn); }
+  .iform input { font: inherit; color: inherit; background: var(--paper-2); border: 0; padding: 0 1.1rem; min-height: 3.25rem; width: 100%; }
   .iform input::placeholder { color: var(--muted); }
   .iform input:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--ink); }
   .iform small { color: var(--muted); font-size: 0.8125rem; }
@@ -464,7 +457,7 @@
   .field label { font-size: 0.9375rem; font-weight: 500; }
   .field label small { color: var(--muted); font-weight: 400; }
   .field input, .field textarea {
-    font: inherit; color: inherit; background: var(--paper-2); border: 0; padding: 0.9rem 1.05rem; width: 100%; border-radius: var(--r-btn);
+    font: inherit; color: inherit; background: var(--paper-2); border: 0; padding: 0.9rem 1.05rem; width: 100%;
     transition: background-color 250ms var(--ease);
   }
   .field input:hover, .field textarea:hover { background: var(--paper-3); }
@@ -484,7 +477,7 @@
   .drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
   .drop p { color: var(--muted); font-size: 0.9375rem; }
   .drop ul { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-  .drop li { font-size: 0.8125rem; padding: 0.3rem 0.7rem; background: var(--paper); border-radius: 6px; }
+  .drop li { font-size: 0.8125rem; padding: 0.3rem 0.7rem; background: var(--paper); }
   .consent { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.8rem; align-items: start; font-size: 0.875rem; color: var(--muted); }
   .consent input { margin: 0.25rem 0 0; accent-color: var(--accent); width: 1rem; height: 1rem; }
   .fsubmit { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }

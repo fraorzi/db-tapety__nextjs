@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { services } from "@/data/home";
 import { site } from "@/data/site";
-import { Squircle } from "@/components/Squircle";
 
 export function Services() {
   return (
@@ -15,9 +14,9 @@ export function Services() {
           <li className="spec__row" key={s.t}>
             <h3>{s.t}</h3>
             <p>{s.d}</p>
-            <Squircle radius={10} className="spec__thumb">
+            <div className="spec__thumb">
               <Image src={s.img} alt="" fill sizes="112px" />
-            </Squircle>
+            </div>
           </li>
         ))}
       </ul>
