@@ -343,20 +343,9 @@
   .phero__media { margin-top: clamp(2.5rem, 7vh, 4rem); aspect-ratio: 21 / 9; position: relative; }
   .phero__media .frame { position: absolute; inset: 0; }
   .nf { min-height: 100svh; display: grid; justify-items: center; align-content: center; gap: 1.25rem; padding: clamp(7rem, 16vh, 10rem) var(--gutter) clamp(4rem, 10vh, 7rem); text-align: center; }
-  .nf__icon { width: clamp(9rem, 18vw, 13rem); height: auto; margin-bottom: 1rem; }
-  .nf__ground { fill: oklch(from var(--deep) 93% 0.012 h); }
-  .nf__stripe { fill: oklch(from var(--deep) 86% 0.03 h); }
-  .nf__motif { fill: var(--deep); }
-  .nf__eye { fill: var(--paper); }
-  .nf__drop { fill: var(--deep); opacity: 0.1; }
-  .nf__sheet, .nf__outline, .nf__flap, .nf__end { stroke: var(--deep); stroke-width: 3; }
-  .nf__outline { fill: none; }
-  .nf__flap { fill: var(--paper); stroke-linejoin: miter; }
-  .nf__shade { fill: var(--deep); opacity: 0.22; }
-  .nf__roll-light { fill: var(--paper); opacity: 0.45; }
-  .nf__roll-dark { fill: var(--deep); opacity: 0.2; }
-  .nf__end { fill: var(--paper-3); }
-  .nf__spiral { fill: none; stroke: var(--deep); stroke-width: 1.6; stroke-linecap: round; }
+  .nf__icon { width: clamp(7rem, 12vw, 9.5rem); height: auto; margin-bottom: 1.25rem; fill: var(--deep); }
+  .nf__peel { stroke: var(--paper); stroke-width: 7; paint-order: stroke; }
+  .nf__curl { fill: none; stroke: var(--paper); stroke-width: 3; stroke-linecap: square; }
   .nf h1 { max-width: 16ch; }
   .nf > p { color: var(--muted); max-width: 42ch; }
   .nf__actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.75rem 1.5rem; margin-top: 0.75rem; }
