@@ -227,8 +227,8 @@
   .media { overflow: hidden; background: var(--paper-2); position: relative; }
   .media img { transform: scale(1.1); }
   .proj { display: block; }
-  .proj .media { transition: transform 1.2s var(--ease); }
-  .proj:hover .media { transform: scale(1.06); }
+  .proj .media__zoom { position: absolute; inset: 0; transition: transform 1.2s var(--ease); }
+  .proj:hover .media__zoom { transform: scale(1.05); }
   .proj figcaption { display: flex; justify-content: space-between; gap: 1.5rem; margin-top: 0.85rem; font-size: 0.9375rem; }
   .proj figcaption span:last-child { color: var(--muted); white-space: nowrap; }
   .work { padding-block: clamp(5rem, 14vh, 9rem); }

@@ -52,7 +52,7 @@ export default async function ProjectPage({ params }: Params) {
           <div className="grid12 pgal">
             {p.gallery.map((src, i) => (
               <figure key={src} className={`proj g${i + 1}`} data-reveal="clip">
-                <div className="media"><Image src={src} alt="" fill sizes="(max-width: 900px) 100vw, 60vw" /></div>
+                <div className="media"><span className="media__zoom"><Image src={src} alt="" fill sizes="(max-width: 900px) 100vw, 60vw" /></span></div>
               </figure>
             ))}
           </div>
