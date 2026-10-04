@@ -8,7 +8,7 @@ editorial · rzemieślnicze portfolio z celem sprzedażowym. Minimalizm + płynn
 
 ## Rodziny makrostruktur
 
-- `/` — **Photographic** (wideo wypełnia fold, tekst jako adnotacja) z sekcjami nakładającymi się jak pasy tapety (sticky stack). Poniżej: usługi jako duże wiersze, realizacje w mozaice, slider paneli „dla kogo”, przypięty proces (wariant compact), FAQ.
+- `/` — **Photographic** (wideo wypełnia fold, tekst jako adnotacja) z sekcjami nakładającymi się jak pasy tapety (sticky stack). Poniżej: usługi jako duże wiersze, realizacje w mozaice, slider paneli „dla kogo”, proces (wariant compact, etapy rozwijane kliknięciem, bez pinu), FAQ.
 - `/realizacje` — **Portfolio Grid**: taby filtrujące (tekst + jadące podkreślenie 3 px w `--accent`) + równy grid, podpis karty jako etykieta wcięta w róg zdjęcia.
 - `/realizacje/[slug]` — **Photographic**: zdjęcie, meta w spec sheet, opis, galeria.
 - `/dla-firm` — **Split Studio**: dyptyki tekst | dowód, naprzemienne; przebieg zlecenia jako schody tonalne (pięć kroków od `--deep-2` do `--paper-3`, każdy wyższy; wyrastają po kolei przy wejściu w widok); realizacje w sliderze z zapowiedzią następnej; CTA jako formularz inline.

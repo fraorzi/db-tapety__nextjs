@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
@@ -28,7 +28,7 @@ export function SmoothScroll() {
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     lenis?.scrollTo(0, { immediate: true });
     const id = window.setTimeout(() => ScrollTrigger.refresh(), 120);
     return () => window.clearTimeout(id);

@@ -144,7 +144,7 @@
   .chev path { transition: transform 450ms var(--ease); }
   button:hover > .chev path { transform: translateX(1.6px); }
   /* separator w tekście: mały kwadrat zamiast znaku · */
-  .sep { display: inline-block; width: 0.22em; height: 0.22em; margin: 0 0.5em; background: currentColor; vertical-align: 0.22em; }
+  .sep { display: inline-block; width: 0.22em; height: 0.22em; margin: 0 0.5em; background: currentColor; vertical-align: middle; }
 
   /* nav — pasek u góry odjeżdża z treścią; po scrollu ten sam układ wraca jako przypięty bakłażanowy pasek z pasami */
   .nav__row { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.2rem var(--gutter); }
@@ -303,20 +303,27 @@
   .proc__media video { position: absolute; inset: 0; opacity: 0; transition: opacity 700ms var(--ease); }
   .proc__media video.is-on { opacity: 1; }
 
-  /* proces · compact (strona główna) — pin + rozwijana lista */
+  /* proces · compact (strona główna) — wideo + lista etapów rozwijana kliknięciem */
   .pc { position: relative; }
   .pc__pin { min-height: 100svh; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-content: center; padding-block: clamp(4rem, 10vh, 6rem); }
   .pc__frame { grid-column: 1 / span 6; height: min(76vh, 46rem); }
   .pc__media { overflow: hidden; background: var(--deep-2); }
   .pc__text { grid-column: 8 / span 5; display: grid; gap: 2rem; align-content: center; }
   .pc__list { border-top: 1px solid var(--on-deep-rule); }
-  .pc__item { border-bottom: 1px solid var(--on-deep-rule); padding: 1.15rem 0; }
-  .pc__item h3 { font-size: clamp(1.2rem, 1.7vw, 1.6rem); color: var(--on-deep-muted); transition: color 400ms var(--ease); }
-  .pc__item.is-on h3 { color: var(--on-deep); }
+  .pc__item { border-bottom: 1px solid var(--on-deep-rule); }
+  .pc__item h3 { font-size: clamp(1.2rem, 1.7vw, 1.6rem); }
+  .pc__item button { position: relative; display: block; width: 100%; padding: 1.15rem 2.4rem 1.15rem 0; text-align: left; line-height: inherit; color: var(--on-deep-muted); transition: color 400ms var(--ease); }
+  .pc__item button:hover, .pc__item.is-on button { color: var(--on-deep); }
+  .pc__item.is-on button { cursor: default; }
+  .pc__item button::before, .pc__item button::after { content: ""; position: absolute; top: calc(1.15rem + 0.5lh); right: 0; background: currentColor; translate: 0 -50%; }
+  .pc__item button::after { width: 0.9rem; height: 1.5px; }
+  .pc__item button::before { right: calc(0.45rem - 0.75px); width: 1.5px; height: 0.9rem; transition: transform 400ms var(--ease); }
+  .pc__item.is-on button::before { transform: scaleY(0); }
+  .pc__item button:focus-visible { outline-color: var(--on-deep); }
   .pc__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 650ms var(--ease); }
   .pc__item.is-on .pc__more { grid-template-rows: 1fr; }
   .pc__more > div { overflow: hidden; }
-  .pc__more p { color: var(--on-deep-muted); padding-top: 0.7rem; max-width: 40ch; }
+  .pc__more p { color: var(--on-deep-muted); padding-bottom: 1.15rem; max-width: 40ch; }
 
   /* proces · full (/jak-pracuje) — tekst po lewej, wideo po prawej, jasne tło */
   .pf__body { position: relative; }
@@ -339,9 +346,11 @@
   .faq__aside { grid-column: 1 / span 4; display: grid; gap: 1.25rem; align-content: start; }
   .faq__aside p { color: var(--muted); max-width: 30ch; }
   .faq details { border-bottom: 1px solid var(--rule); }
-  .faq summary { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; padding: 1.3rem 0; cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.1rem, 1.5vw, 1.4rem); letter-spacing: -0.015em; }
-  .faq summary::after { content: ""; flex: none; width: 0.9rem; height: 0.9rem; margin-top: 0.3rem; background: linear-gradient(var(--ink), var(--ink)) center / 100% 1.5px no-repeat, linear-gradient(var(--ink), var(--ink)) center / 1.5px 100% no-repeat; transition: transform 400ms var(--ease); }
-  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq summary { position: relative; display: block; padding: 1.3rem 2.4rem 1.3rem 0; cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.1rem, 1.5vw, 1.4rem); letter-spacing: -0.015em; }
+  .faq summary::before, .faq summary::after { content: ""; position: absolute; top: calc(1.3rem + 0.5lh); right: 0; background: var(--ink); translate: 0 -50%; }
+  .faq summary::after { width: 0.9rem; height: 1.5px; }
+  .faq summary::before { right: calc(0.45rem - 0.75px); width: 1.5px; height: 0.9rem; transition: transform 400ms var(--ease); }
+  .faq details[open] summary::before { transform: scaleY(0); }
   .faq details > div { padding: 0 0 1.5rem; color: var(--muted); max-width: 56ch; }
   .faq details::details-content { block-size: 0; overflow: clip; transition: block-size 450ms var(--ease), content-visibility 450ms allow-discrete; }
   .faq details[open]::details-content { block-size: auto; }
@@ -393,7 +402,8 @@
 
   /* /realizacje — taby + grid */
   /* taby: tekst z podkreśleniem, które przejeżdża do aktywnego (pozycja liczona w WorkGrid) */
-  .tabs { position: relative; display: flex; flex-wrap: wrap; gap: 0 1.9rem; margin-top: 2rem; border-bottom: 1px solid var(--rule); }
+  .tabs { position: relative; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 1.9rem; margin-top: 2rem; border-bottom: 1px solid var(--rule); }
+  .tabs__div { width: 1px; height: 0.72em; margin-inline: -0.5rem; background: var(--muted); }
   .tab { padding: 1rem 0 0.9rem; font-weight: 500; color: var(--muted); transition: color 250ms var(--ease); }
   .tab:hover, .tab[aria-selected="true"] { color: var(--ink); }
   .tab span { font-size: 0.7em; vertical-align: super; margin-left: 0.25rem; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -401,9 +411,9 @@
   .pgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 3.5rem) var(--gutter); margin-top: clamp(2.5rem, 7vh, 4rem); padding-bottom: clamp(5rem, 14vh, 9rem); }
   .pgrid .proj .media { aspect-ratio: 4 / 3; }
   /* karta: etykieta jak na rolce, wcięta w lewy dolny róg zdjęcia */
-  .pgrid .proj figcaption { position: relative; z-index: 1; display: grid; gap: 0.2rem; width: fit-content; max-width: 88%; margin-top: -3rem; padding: 0.95rem 1.5rem 0 0; background: var(--paper); font-size: 0.9375rem; }
-  .pgrid .proj figcaption span:first-child { font-family: var(--font-display); font-weight: 600; font-stretch: 78%; font-size: 1.2rem; letter-spacing: -0.01em; }
-  .pgrid .proj figcaption span:nth-child(2), .pgrid .proj figcaption small { color: var(--muted); }
+  .pgrid .proj figcaption { position: relative; z-index: 1; display: grid; gap: 0.2rem; width: fit-content; max-width: 88%; margin: -3rem 0 0 -0.75rem; padding: 0.95rem 1.4rem 1rem; border: 1px solid var(--deep); background: var(--paper); font-size: 0.9375rem; }
+  .pgrid .proj figcaption > span:first-child { font-family: var(--font-display); font-weight: 600; font-stretch: 78%; font-size: 1.2rem; letter-spacing: -0.01em; }
+  .pgrid .proj figcaption > span:nth-child(2), .pgrid .proj figcaption small { color: var(--muted); }
   .pgrid .proj figcaption small { font-size: 0.875rem; }
   .pgrid .proj { animation: pin 600ms var(--ease) both; }
   @keyframes pin { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
