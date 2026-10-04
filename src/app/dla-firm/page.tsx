@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
-import { ProjectCard } from "@/components/ProjectCard";
 import { VideoSources } from "@/components/VideoSources";
-import { flow, get, need } from "@/data/b2b";
+import { get, need } from "@/data/b2b";
 import { projects } from "@/data/projects";
 import { site, videos } from "@/data/site";
 import { SegmentPicker } from "./SegmentPicker";
+import { Flow } from "./Flow";
+import { LokalSlider } from "./LokalSlider";
+import { Arrow } from "@/components/Arrow";
 
 export const metadata: Metadata = {
   title: "Dla firm",
@@ -14,6 +16,7 @@ export const metadata: Metadata = {
 };
 
 const picks = [projects[4], projects[0]];
+const slides = [...projects].sort((a, b) => Number(b.category === "Lokal") - Number(a.category === "Lokal"));
 
 export default function DlaFirmPage() {
   return (
@@ -24,7 +27,7 @@ export default function DlaFirmPage() {
             <h1 className="h-display">Lokal działa rano. Ja kończę w nocy.</h1>
             <p className="lead">Tapetowanie dla firm: lokale, biura, apartamenty na wynajem, mieszkania pod klucz. Jeden wykonawca, jedna wycena, harmonogram na piśmie.</p>
             <div className="hero__actions">
-              <Link href="/wycena" className="btn">Zapytaj o wycenę <span className="arr" aria-hidden="true">→</span></Link>
+              <Link href="/wycena" className="btn">Zapytaj o wycenę <Arrow /></Link>
               <a href={site.phoneHref} className="ulink">{site.phone}</a>
             </div>
           </div>
@@ -37,22 +40,7 @@ export default function DlaFirmPage() {
 
         <SegmentPicker />
 
-        <section className="deep flow wrap bands-t bands-b" aria-labelledby="flow-title">
-          <div className="sec-row">
-            <div className="sec-head">
-              <h2 className="h2" id="flow-title">Od zapytania do faktury</h2>
-              <p>Pięć kroków. Na każdym wiecie, co się dzieje i kiedy.</p>
-            </div>
-          </div>
-          <ol className="flow__track">
-            {flow.map((f) => (
-              <li className="flow__step" key={f.t}>
-                <h3>{f.t}</h3>
-                <p>{f.d}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
+        <Flow />
 
         <section className="twocol wrap" aria-label="Zasady współpracy">
           <div>
@@ -73,17 +61,7 @@ export default function DlaFirmPage() {
           </div>
         </section>
 
-        <section className="wrap" style={{ paddingBottom: "clamp(4.5rem, 12vh, 9rem)" }} aria-labelledby="b2bwork-title">
-          <div className="sec-row">
-            <div className="sec-head">
-              <h2 className="h2" id="b2bwork-title">Realizacje w lokalach</h2>
-            </div>
-            <Link href="/realizacje" className="ulink">Wszystkie realizacje</Link>
-          </div>
-          <div className="pgrid" style={{ paddingBottom: 0, gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
-            {picks.map((p) => <ProjectCard key={p.slug} project={p} detail sizes="(max-width: 900px) 100vw, 50vw" />)}
-          </div>
-        </section>
+        <LokalSlider picks={picks} slides={slides} />
 
         <section className="iform wrap" style={{ borderTop: "1px solid var(--rule)" }} aria-labelledby="iform-title">
           <div className="iform__text">
@@ -93,7 +71,7 @@ export default function DlaFirmPage() {
           <form action="/wycena" method="get">
             <div className="iform__row">
               <input type="tel" name="tel" placeholder="Numer telefonu" aria-label="Numer telefonu" autoComplete="tel" />
-              <button type="submit" className="btn">Oddzwoń <span className="arr" aria-hidden="true">→</span></button>
+              <button type="submit" className="btn">Oddzwoń <Arrow /></button>
             </div>
             <small>Numer trafia do formularza wyceny, gdzie możesz dodać szczegóły. <Link href="/polityka-prywatnosci" className="ulink">Polityka prywatności</Link>.</small>
           </form>

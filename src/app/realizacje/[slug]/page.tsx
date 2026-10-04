@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { Frame } from "@/components/Frame";
 import { getProject, projects } from "@/data/projects";
+import { Arrow } from "@/components/Arrow";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -59,7 +60,7 @@ export default async function ProjectPage({ params }: Params) {
 
           <nav className="pnext" aria-label="Kolejna realizacja">
             <span className="muted">Następna realizacja</span>
-            <Link href={`/realizacje/${next.slug}`}>{next.title} →</Link>
+            <Link href={`/realizacje/${next.slug}`}>{next.title} <Arrow /></Link>
           </nav>
         </article>
         <div style={{ height: "clamp(4rem, 10vh, 7rem)" }} />

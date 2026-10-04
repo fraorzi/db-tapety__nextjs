@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { useChoices } from "@/preview/store";
 
 /**
  * Jedyna animacja scrollowa współdzielona przez strony: figura z `data-reveal="clip"`
@@ -10,6 +11,7 @@ import { gsap, useGSAP } from "@/lib/gsap";
  */
 export function ScrollMotion() {
   const pathname = usePathname();
+  const choices = useChoices();
 
   useGSAP(
     () => {
@@ -28,7 +30,7 @@ export function ScrollMotion() {
         }
       });
     },
-    { dependencies: [pathname], revertOnUpdate: true },
+    { dependencies: [pathname, choices], revertOnUpdate: true },
   );
 
   return null;

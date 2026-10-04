@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { Arrow } from "@/components/Arrow";
 
 const kinds = ["Mieszkanie", "Dom", "Lokal / biuro", "Inwestycja (kilka lokali)"] as const;
 const works = ["Tapetowanie", "Przygotowanie ścian", "Fototapeta na wymiar", "Dobór i zamówienie tapety", "Zdjęcie starej tapety"] as const;
@@ -131,7 +132,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
 
       <div className="fsubmit">
         <button type="submit" className="btn btn--lg" disabled={status === "sending"}>
-          {status === "sending" ? "Wysyłam…" : "Wyślij do wyceny"} {status !== "sending" && <span className="arr" aria-hidden="true">→</span>}
+          {status === "sending" ? "Wysyłam…" : "Wyślij do wyceny"} {status !== "sending" && <Arrow />}
         </button>
         <p>Odpowiadam na każdą wiadomość, także gdy chcesz tylko zapytać.</p>
       </div>
