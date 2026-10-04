@@ -46,7 +46,10 @@ Metafora: ściana po gruntowaniu + fiolet kwiatu z wideo w hero (próbka z klate
 - Nagłówki sekcji: pojedyncza kolumna, bez eyebrow.
 - Bez numeracji list i bez pasków postępu. Jedyny wyjątek: licznik `02 / 05` na wideo w `/jak-pracuje` (pięć etapów po ekranie każdy, bez niego łatwo się zgubić). Kolejność pokazują układ i stan aktywny, nie cyfry.
 - Obrazy: zdjęcia realizacji w ramkach squircle 18 px na stronach, 4 px na gridzie portfolio. Hairline `--rule` tylko w spec sheet / FAQ.
-- Nav: **Dock** — u góry zwykły pasek (`position: absolute`), który odjeżdża z treścią. Po przewinięciu ~60 % ekranu u dołu, na środku, wysuwa się dock (squircle, `--deep-2`): „Menu” + „Bezpłatna wycena”. „Menu” rozwija dock w górę w panel z linkami i kontaktem. Dock chowa się nad stopką (tam jest własne CTA). Ten sam panel na desktopie i mobile; na mobile „Menu” w górnym pasku też go otwiera. Escape i klik poza zamykają.
+- Nav: **Top bar + przypięty pasek** — u góry zwykły pasek (`position: absolute`), który odjeżdża z treścią. Po przewinięciu ~60 % ekranu z góry zjeżdża przypięty pasek o tym samym układzie (marka · linki · CTA), ale bakłażanowy (`--deep`), z jasnym CTA i pasami tonalnymi pod spodem. Na mobile układ też jak u góry: marka + „Menu”; „Menu” rozwija panel pod paskiem (linki, CTA, kontakt). Escape i klik poza zamykają.
+- **Podwójna ramka tonalna** (`Frame`): `--paper-3` → `--deep-2` → obraz, po 8 px, zagnieżdżone squircle 34 / 26 / 18. Tylko jako wyróżnik: zdjęcie główne w `/realizacje/[slug]`, sticky wideo w `/jak-pracuje`. Nie na kartach w siatkach.
+- **Pasy tonalne** (`.bands-t` / `.bands-b`): dwa pasy po 8 px (6 px na mobile) na krawędzi sekcji, schodek tonów między jasnym a bakłażanem — jak brzeg kolejnego pasa tapety. Sekcja pod hero, proces na `/`, przebieg zlecenia w `/dla-firm`, stopka, spód przypiętego paska.
+- Hover karty realizacji: cała karta (zdjęcie + podpis) wypełnia się `--deep` przez squircle tła poza układem (bez przesunięć), tylko `opacity`.
 - Footer: **Ft1 Mast-headed** — duży wordmark, kontakt, 4 linki, linia prawna.
 
 ## Ruch

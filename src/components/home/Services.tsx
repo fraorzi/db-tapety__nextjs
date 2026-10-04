@@ -5,7 +5,7 @@ import { Squircle } from "@/components/Squircle";
 
 export function Services() {
   return (
-    <section className="surface spec wrap" aria-labelledby="spec-title">
+    <section className="surface spec wrap bands-t" aria-labelledby="spec-title">
       <div className="spec__head">
         <h2 className="h2" id="spec-title">Jedna osoba. Od pomiaru do ostatniego docięcia.</h2>
         <p>Nie podzlecam. Ten sam człowiek mierzy, przygotowuje ścianę, kładzie i sprząta, więc nikt nie zwala winy na „poprzednią ekipę”.</p>

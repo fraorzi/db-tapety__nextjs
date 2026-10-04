@@ -35,7 +35,7 @@ export default function DlaFirmPage() {
 
         <SegmentPicker />
 
-        <section className="deep flow wrap" aria-labelledby="flow-title">
+        <section className="deep flow wrap bands-t bands-b" aria-labelledby="flow-title">
           <div className="sec-row">
             <div className="sec-head">
               <h2 className="h2" id="flow-title">Od zapytania do faktury</h2>

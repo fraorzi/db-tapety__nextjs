@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { Frame } from "./Frame";
 import { Squircle, SquircleLink } from "./Squircle";
 
 export type Step = {
@@ -97,7 +98,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
 
   if (variant === "compact") {
     return (
-      <section className="surface deep pc wrap" id={id} ref={root} aria-labelledby={`${id}-title`}>
+      <section className="surface deep pc wrap bands-t bands-b" id={id} ref={root} aria-labelledby={`${id}-title`}>
         <div className="pc__pin">
           {media("pc__media")}
           <div className="pc__text">
@@ -147,10 +148,12 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
             </li>
           ))}
         </ol>
-        {media(
-          "pf__media",
-          <div className="pf__counter"><span className="num" data-counter>01</span><span>/ {String(steps.length).padStart(2, "0")}</span></div>,
-        )}
+        <Frame className="pf__frame">
+          {media(
+            "pf__media",
+            <div className="pf__counter"><span className="num" data-counter>01</span><span>/ {String(steps.length).padStart(2, "0")}</span></div>,
+          )}
+        </Frame>
       </div>
       {cta && (
         <div className="grid12" style={{ marginTop: "clamp(2rem, 6vh, 3.5rem)" }}>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
+import { Frame } from "@/components/Frame";
 import { getProject, projects } from "@/data/projects";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -32,7 +33,7 @@ export default async function ProjectPage({ params }: Params) {
             <p>{p.room} · {p.category}</p>
           </div>
           <figure className="phero__media" data-reveal="clip">
-            <div className="media"><Image src={p.cover} alt={p.alt} fill priority sizes="100vw" /></div>
+            <Frame><div className="media"><Image src={p.cover} alt={p.alt} fill priority sizes="100vw" /></div></Frame>
           </figure>
 
           <dl className="pmeta">

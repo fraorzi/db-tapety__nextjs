@@ -10,7 +10,7 @@ export function Footer({
   cta = { href: "/wycena", label: "Bezpłatna wycena" },
 }: Props) {
   return (
-    <footer className="deep surface" id="kontakt">
+    <footer className="deep surface bands-t" id="kontakt">
       <section className="cta wrap">
         <h2>{title}</h2>
         <div className="cta__side">
