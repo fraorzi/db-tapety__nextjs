@@ -6,7 +6,6 @@ import { site } from "@/data/site";
 const paper = "#edecf0";
 const ink = "#110e14";
 const muted = "#54505a";
-const accent = "#8f469b";
 const deep = "#1f1228";
 const deep2 = "#2e1f39";
 const onDeep = "#eceaef";
@@ -94,7 +93,7 @@ export function ShareCard() {
             {site.tagline}
           </div>
         </div>
-        <div style={{ width: 64, height: 6, display: "flex", background: accent }} />
+        <div style={{ width: 64, height: 6, display: "flex", background: deep }} />
       </div>
     </div>
   );
