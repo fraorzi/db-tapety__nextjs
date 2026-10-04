@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { Frame } from "@/components/Frame";
 import { getProject, projects } from "@/data/projects";
+import { Arrow } from "@/components/Arrow";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -30,7 +31,7 @@ export default async function ProjectPage({ params }: Params) {
         <article className="phero">
           <div className="grid12 phero__top">
             <h1 className="h-display">{p.title}</h1>
-            <p>{p.room} · {p.category}</p>
+            <p>{p.room}<span className="sep" aria-hidden="true" />{p.category}</p>
           </div>
           <figure className="phero__media" data-reveal="clip">
             <Frame><div className="media"><Image src={p.cover} alt={p.alt} fill priority sizes="100vw" /></div></Frame>
@@ -59,7 +60,7 @@ export default async function ProjectPage({ params }: Params) {
 
           <nav className="pnext" aria-label="Kolejna realizacja">
             <span className="muted">Następna realizacja</span>
-            <Link href={`/realizacje/${next.slug}`}>{next.title} →</Link>
+            <Link href={`/realizacje/${next.slug}`}>{next.title} <Arrow /></Link>
           </nav>
         </article>
         <div style={{ height: "clamp(4rem, 10vh, 7rem)" }} />

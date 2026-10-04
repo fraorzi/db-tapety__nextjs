@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { nav, site } from "@/data/site";
+import { Arrow } from "@/components/Arrow";
 
 type Props = { title?: string; text?: string; cta?: { href: string; label: string } };
 
@@ -14,7 +15,7 @@ export function Footer({
         <h2>{title}</h2>
         <div className="cta__side">
           <p>{text}</p>
-          <Link href={cta.href} className="btn btn--light btn--lg">{cta.label} <span className="arr" aria-hidden="true">→</span></Link>
+          <Link href={cta.href} className="btn btn--light btn--lg">{cta.label} <Arrow /></Link>
           <a href={site.phoneHref} className="ulink">{site.phone}</a>
         </div>
       </section>

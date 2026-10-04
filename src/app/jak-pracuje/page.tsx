@@ -5,6 +5,7 @@ import { ProcessPinned } from "@/components/ProcessPinned";
 import { WallLayers } from "@/components/WallLayers";
 import { processSteps } from "@/data/process";
 import { videos } from "@/data/site";
+import { Arrow } from "@/components/Arrow";
 
 export const metadata: Metadata = {
   title: "Jak pracuję",
@@ -58,7 +59,7 @@ export default function JakPracujePage() {
           </div>
           <div className="grid12" style={{ marginTop: "clamp(3rem, 8vh, 5rem)" }}>
             <div style={{ gridColumn: "6 / span 7" }}>
-              <Link href="/wycena" className="btn btn--lg">Bezpłatna wycena <span className="arr" aria-hidden="true">→</span></Link>
+              <Link href="/wycena" className="btn btn--lg">Bezpłatna wycena <Arrow /></Link>
             </div>
           </div>
         </section>

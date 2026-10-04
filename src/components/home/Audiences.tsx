@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useId, useState } from "react";
 import { audiences } from "@/data/home";
+import { Arrow } from "@/components/Arrow";
+import { Chevron } from "@/components/Chevron";
 
 export function Audiences() {
   const [active, setActive] = useState(0);
@@ -19,8 +21,8 @@ export function Audiences() {
           <p>Wybierz, co jest najbliżej Twojej sytuacji.</p>
         </div>
         <div className="aud__ctrl">
-          <button type="button" className="btn btn--soft btn--icon" aria-label="Poprzedni" onClick={() => go(-1)}>←</button>
-          <button type="button" className="btn btn--soft btn--icon" aria-label="Następny" onClick={() => go(1)}>→</button>
+          <button type="button" className="btn btn--soft btn--icon" aria-label="Poprzedni" onClick={() => go(-1)}><Chevron dir="left" /></button>
+          <button type="button" className="btn btn--soft btn--icon" aria-label="Następny" onClick={() => go(1)}><Chevron dir="right" /></button>
         </div>
       </div>
       <div className="aud__track" role="tablist" aria-label="Rodzaje klientów">
@@ -45,7 +47,7 @@ export function Audiences() {
               <div className="aud__body" id={`${id}-${i}`} role="tabpanel" aria-hidden={!on}>
                 <h3>{a.t}</h3>
                 <p>{a.d}</p>
-                <Link href={a.href} className="ulink" tabIndex={on ? 0 : -1}>{a.link} →</Link>
+                <Link href={a.href} className="ulink" tabIndex={on ? 0 : -1}>{a.link} <Arrow /></Link>
               </div>
             </article>
           );
