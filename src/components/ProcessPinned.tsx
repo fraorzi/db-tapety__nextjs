@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { Frame } from "./Frame";
+import { Arrow } from "./Arrow";
 import { VideoSources } from "./VideoSources";
 import type { Video } from "@/data/site";
 
@@ -104,7 +105,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
     return (
       <section className="surface deep pc wrap bands-t bands-b" id={id} ref={root} aria-labelledby={`${id}-title`}>
         <div className="pc__pin">
-          {media("pc__media")}
+          <Frame className="pc__frame">{media("pc__media")}</Frame>
           <div className="pc__text">
             <div className="sec-head">
               <h2 className="h2" id={`${id}-title`}>{title}</h2>
@@ -120,7 +121,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
             </ol>
             {cta && (
               <Link href={cta.href} className="btn btn--light" style={{ justifySelf: "start" }}>
-                {cta.label} <span className="arr" aria-hidden="true">→</span>
+                {cta.label} <Arrow />
               </Link>
             )}
           </div>
@@ -162,7 +163,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
       {cta && (
         <div className="grid12" style={{ marginTop: "clamp(2rem, 6vh, 3.5rem)" }}>
           <div style={{ gridColumn: "1 / span 5" }}>
-            <Link href={cta.href} className="btn">{cta.label} <span className="arr" aria-hidden="true">→</span></Link>
+            <Link href={cta.href} className="btn">{cta.label} <Arrow /></Link>
           </div>
         </div>
       )}

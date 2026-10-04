@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
 import type { Project } from "@/data/projects";
 
@@ -8,6 +8,8 @@ const ALL = "Wszystkie";
 
 export function WorkGrid({ projects }: { projects: readonly Project[] }) {
   const [room, setRoom] = useState<string>(ALL);
+  const tabs = useRef<HTMLDivElement>(null);
+  const bar = useRef<HTMLSpanElement>(null);
   const rooms = useMemo(() => {
     const counts = new Map<string, number>();
     for (const p of projects) counts.set(p.room, (counts.get(p.room) ?? 0) + 1);
@@ -15,9 +17,20 @@ export function WorkGrid({ projects }: { projects: readonly Project[] }) {
   }, [projects]);
   const shown = room === ALL ? projects : projects.filter((p) => p.room === room);
 
+  useLayoutEffect(() => {
+    const place = () => {
+      const on = tabs.current?.querySelector<HTMLElement>('[aria-selected="true"]');
+      if (!on || !bar.current) return;
+      bar.current.style.transform = `translate(${on.offsetLeft}px, ${on.offsetTop + on.offsetHeight}px) scaleX(${on.offsetWidth})`;
+    };
+    place();
+    window.addEventListener("resize", place);
+    return () => window.removeEventListener("resize", place);
+  }, [room]);
+
   return (
     <>
-      <div className="tabs" role="tablist" aria-label="Filtruj po pomieszczeniu">
+      <div className="tabs" role="tablist" aria-label="Filtruj po pomieszczeniu" ref={tabs}>
         {rooms.map(([r, c]) => (
           <button
             type="button"
@@ -31,10 +44,11 @@ export function WorkGrid({ projects }: { projects: readonly Project[] }) {
             {r}<span>{c}</span>
           </button>
         ))}
+        <span className="tabs__bar" ref={bar} aria-hidden="true" />
       </div>
       <div className="pgrid" id="pgrid" role="tabpanel" key={room}>
         {shown.map((p, i) => (
-          <ProjectCard key={p.slug} project={p} detail sizes="(max-width: 900px) 100vw, (max-width: 1400px) 50vw, 33vw" priority={i < 2} />
+          <ProjectCard key={p.slug} project={p} sizes="(max-width: 900px) 100vw, (max-width: 1400px) 50vw, 33vw" priority={i < 2} />
         ))}
         {shown.length === 0 && <p className="pgrid__empty">Brak realizacji w tej kategorii.</p>}
       </div>

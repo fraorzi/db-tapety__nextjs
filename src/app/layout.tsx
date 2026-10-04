@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
-import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
+import { Archivo, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScrollMotion } from "@/components/ScrollMotion";
 import { site } from "@/data/site";
 
-const display = Bricolage_Grotesque({
+const display = Archivo({
   subsets: ["latin", "latin-ext"],
-  axes: ["wdth", "opsz"],
+  axes: ["wdth"],
   variable: "--font-display",
   display: "swap",
 });

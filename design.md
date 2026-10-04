@@ -8,10 +8,10 @@ editorial · rzemieślnicze portfolio z celem sprzedażowym. Minimalizm + płynn
 
 ## Rodziny makrostruktur
 
-- `/` — **Photographic** (wideo wypełnia fold, tekst jako adnotacja) z sekcjami nakładającymi się jak pasy tapety (sticky stack). Poniżej: spec sheet usług, realizacje w nieregularnej siatce, slider paneli „dla kogo”, przypięty proces (wariant compact), FAQ.
-- `/realizacje` — **Portfolio Grid**: taby filtrujące + równy, uporządkowany grid.
+- `/` — **Photographic** (wideo wypełnia fold, tekst jako adnotacja) z sekcjami nakładającymi się jak pasy tapety (sticky stack). Poniżej: usługi jako duże wiersze, realizacje w mozaice, slider paneli „dla kogo”, przypięty proces (wariant compact), FAQ.
+- `/realizacje` — **Portfolio Grid**: taby filtrujące (tekst + jadące podkreślenie 3 px w `--accent`) + równy grid, podpis karty jako etykieta wcięta w róg zdjęcia.
 - `/realizacje/[slug]` — **Photographic**: zdjęcie, meta w spec sheet, opis, galeria.
-- `/dla-firm` — **Split Studio**: dyptyki tekst | dowód, naprzemienne; poziomy przebieg zlecenia; CTA jako formularz inline.
+- `/dla-firm` — **Split Studio**: dyptyki tekst | dowód, naprzemienne; przebieg zlecenia jako schody tonalne (pięć kroków od `--deep-2` do `--paper-3`, każdy wyższy; wyrastają po kolei przy wejściu w widok); realizacje w sliderze z zapowiedzią następnej; CTA jako formularz inline.
 - `/jak-pracuje` — **Feature Stack** (wariant full): tekst po lewej, przypięte wideo po prawej, jasne tło, licznik etapów.
 - `/wycena` — formularz dwukolumnowy ze stałym opisem po lewej.
 - `/polityka-prywatnosci` — Long Document.
@@ -35,7 +35,7 @@ Metafora: ściana po gruntowaniu + bakłażan jako kolor główny (przyciski, pa
 
 ## Typografia
 
-- Display: **Bricolage Grotesque** (Google, zmienne `wght`/`wdth`/`opsz`), nagłówki 700, numeracja 800 w zwężonej szerokości `font-stretch: 85%`. Tracking −0.03…−0.045em. Zawsze roman.
+- Display: **Archivo** (Google, zmienne `wght`/`wdth`), zwężone: nagłówki, przyciski, marka i wordmark w `font-stretch: 78%`, waga 700 (przyciski 600). Tracking −0.02em. Zawsze roman.
 - Body: **Instrument Sans** 400/500.
 - Dwie rodziny, bez outliera. Ładowane przez `next/font/google` (subset `latin-ext`).
 - Skala: body 1rem; display `clamp(2.6rem, 5vw + 1rem, 5.5rem)`; h2 `clamp(2rem, 3.6vw, 3.8rem)`.
@@ -43,12 +43,13 @@ Metafora: ściana po gruntowaniu + bakłażan jako kolor główny (przyciski, pa
 ## Kształt i komponenty
 
 - **Kwadratowo**: zero zaokrągleń na całej stronie (przyciski, pola, chipy, taby, karty, obrazy, kropki). Decyzja użytkownika 2026-10-04, zastąpiła squircle.
-- Przyciski: wypełnione (`accent` / `ink` / `paper-2`), bez obrysów. Focus: wewnętrzny ring `box-shadow: inset 0 0 0 2px`.
+- Przyciski: wypełnione (`accent` / `ink` / `paper-2`). Główny (`accent`) ma jasną ramkę 3 px w `--frame-out` na zewnątrz, jak zdjęcia w `Frame`; pozostałe bez obrysu. Focus głównego: `outline` 2 px z odstępem 6 px, reszty: wewnętrzny ring.
+- Ikony i separatory nigdy jako znaki: proste kształty jako `span`/`div` w CSS (separator w tekście: kwadrat `.sep` 0.22em), złożone jako SVG. Strzałka (`Arrow`): cienka linia z grotem; przy hoverze linku/przycisku trzonek się wydłuża, a grot jedzie za nim o ok. 6 px (zapas mieści się w paddingu, nie dotyka krawędzi). Slidery: cienkie szewrony (`Chevron`), na hover przesuwają się o ok. 2 px w swoją stronę.
 - Nagłówki sekcji: pojedyncza kolumna, bez eyebrow.
 - Bez numeracji list i bez pasków postępu. Jedyny wyjątek: licznik `02 / 05` na wideo w `/jak-pracuje` (pięć etapów po ekranie każdy, bez niego łatwo się zgubić). Kolejność pokazują układ i stan aktywny, nie cyfry.
 - Obrazy: kwadratowe krawędzie. Hairline `--rule` tylko w spec sheet / FAQ.
 - Nav: **Top bar + przypięty pasek** — u góry zwykły pasek (`position: absolute`), który odjeżdża z treścią. Po przewinięciu ~60 % ekranu z góry zjeżdża przypięty pasek o tym samym układzie (marka · linki · CTA), ale bakłażanowy (`--deep`), z jasnym CTA i pasami tonalnymi pod spodem. Na mobile układ też jak u góry: marka + „Menu”; „Menu” rozwija panel pod paskiem (linki, CTA, kontakt). Escape i klik poza zamykają.
-- **Podwójna ramka tonalna** (`Frame`): `--frame-out` → `--frame-in` → obraz, po 5 px. Tylko jako wyróżnik: zdjęcie główne w `/realizacje/[slug]`, sticky wideo w `/jak-pracuje`. Nie na kartach w siatkach.
+- **Podwójna ramka tonalna** (`Frame`): `--frame-out` → `--frame-in` → obraz, po 5 px. Tylko jako wyróżnik: zdjęcie główne w `/realizacje/[slug]`, sticky wideo w `/jak-pracuje`, wideo procesu na `/`. Nie na kartach w siatkach.
 - **Pasy tonalne** (`.bands-t` / `.bands-b`): dwa pasy po 8 px (6 px na mobile) na krawędzi sekcji, schodek tonów między jasnym a bakłażanem — jak brzeg kolejnego pasa tapety. Sekcja pod hero, proces na `/`, przebieg zlecenia w `/dla-firm`, stopka, spód przypiętego paska.
 - Hover karty realizacji: tylko lekki zoom zdjęcia. Wypełnianie całej karty tłem odrzucone.
 - Footer: **Ft1 Mast-headed** — duży wordmark, kontakt, 4 linki, linia prawna.

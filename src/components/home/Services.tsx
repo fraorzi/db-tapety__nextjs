@@ -14,8 +14,8 @@ export function Services() {
           <li className="spec__row" key={s.t}>
             <h3>{s.t}</h3>
             <p>{s.d}</p>
-            <div className="spec__thumb">
-              <Image src={s.img} alt="" fill sizes="112px" />
+            <div className="spec__img" aria-hidden="true">
+              <div><Image src={s.img} alt="" fill sizes="(max-width: 900px) 40vw, 20vw" /></div>
             </div>
           </li>
         ))}

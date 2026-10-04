@@ -19,11 +19,11 @@ function toArrayBuffer(buf: Buffer): ArrayBuffer {
 export async function shareFonts() {
   const dir = join(process.cwd(), "src/fonts");
   const [display, body] = await Promise.all([
-    readFile(join(dir, "BricolageGrotesque-Bold.ttf")),
+    readFile(join(dir, "Archivo-CondensedBold.ttf")),
     readFile(join(dir, "InstrumentSans-Regular.ttf")),
   ]);
   return [
-    { name: "Bricolage Grotesque", data: toArrayBuffer(display), style: "normal" as const, weight: 700 as const },
+    { name: "Archivo", data: toArrayBuffer(display), style: "normal" as const, weight: 700 as const },
     { name: "Instrument Sans", data: toArrayBuffer(body), style: "normal" as const, weight: 400 as const },
   ];
 }
@@ -41,7 +41,7 @@ export function TabMark({ size }: { size: number }) {
           alignItems: "center",
           justifyContent: "center",
           color: onDeep,
-          fontFamily: "Bricolage Grotesque",
+          fontFamily: "Archivo",
           fontWeight: 700,
           fontSize: Math.round(size * 0.52),
           letterSpacing: -1,
@@ -71,7 +71,7 @@ export function ShareCard() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              fontFamily: "Bricolage Grotesque",
+              fontFamily: "Archivo",
               fontWeight: 700,
               fontSize: 92,
               lineHeight: 1,

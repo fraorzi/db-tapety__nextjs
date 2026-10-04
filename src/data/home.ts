@@ -2,10 +2,10 @@ import { unsplash } from "./site";
 
 // TODO(media, zalecane): zdjęcia stock (Unsplash) jako ilustracja usług — docelowo zdjęcia z realizacji klienta.
 export const services = [
-  { t: "Tapetowanie", d: "Flizelina, winyl, papier, tekstylia. Jedna ściana albo całe mieszkanie, z dopasowaniem wzoru na każdym łączeniu.", img: unsplash("photo-1577083165633-14ebcdb0f658", 600) },
-  { t: "Przygotowanie ścian", d: "Zdejmowanie starych tapet, szpachlowanie, szlifowanie, gruntowanie. Pod tapetą widać każdą nierówność.", img: unsplash("photo-1780672823896-fc266a8d5ecb", 600) },
-  { t: "Fototapety i murale", d: "Pomiar pod druk na wymiar z zapasem na krzywizny, przygotowanie podłoża, montaż wielkoformatowy.", img: unsplash("photo-1559508551-44bff1de756b", 600) },
-  { t: "Dobór i zamówienie", d: "Pomoc w wyborze wzoru i materiału pod światło i meble, liczenie rolek z zapasem, zamówienie u dostawcy.", img: unsplash("photo-1629772702080-6729491cbad5", 600) },
+  { t: "Tapetowanie", d: "Flizelina, winyl, papier, tekstylia. Jedna ściana albo całe mieszkanie, z dopasowaniem wzoru na każdym łączeniu.", img: unsplash("photo-1577083165633-14ebcdb0f658", 1000) },
+  { t: "Przygotowanie ścian", d: "Zdejmowanie starych tapet, szpachlowanie, szlifowanie, gruntowanie. Pod tapetą widać każdą nierówność.", img: unsplash("photo-1780672823896-fc266a8d5ecb", 1000) },
+  { t: "Fototapety i murale", d: "Pomiar pod druk na wymiar z zapasem na krzywizny, przygotowanie podłoża, montaż wielkoformatowy.", img: unsplash("photo-1559508551-44bff1de756b", 1000) },
+  { t: "Dobór i zamówienie", d: "Pomoc w wyborze wzoru i materiału pod światło i meble, liczenie rolek z zapasem, zamówienie u dostawcy.", img: unsplash("photo-1629772702080-6729491cbad5", 1000) },
 ] as const;
 
 export type Audience = { t: string; d: string; img: string; href: string; link: string };
