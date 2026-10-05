@@ -14,6 +14,10 @@ Tła sekcji, pasy, hero z wideo i paski nawigacji zostają na całą szerokość
 - Bez poziomego scrolla na 8 stronach w 7 szerokościach. W konsoli tylko 404 na `/_vercel/insights/script.js`, który istnieje tylko na Vercelu (stan sprzed zmiany).
 - lint, tsc, build OK.
 
+## Poprawka: plus/minus w FAQ i w procesie na `/`
+- [x] Linie 2 px zamiast 1.5 px, wymiary w pełnych px (14 × 2), bez `translate: -50%`
+- Przyczyna (hipoteza, w headless nie da się odtworzyć migotania): `translate` robił z linii warstwę z transformacją, której przeglądarka nie dociąga do pikseli. Linia 1.5 px przesunięta o 0.75 px przy płynnym scrollu Lenisa (ułamkowe pozycje) co klatkę inaczej się wygładzała.
+
 # Plan — poprawki wizualne (2026-10-05, branch `feat/visual-polish`)
 
 ## Wdrożenie

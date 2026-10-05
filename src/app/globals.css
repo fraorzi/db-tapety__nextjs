@@ -321,9 +321,9 @@
   .pc__item button { position: relative; display: block; width: 100%; padding: 1.15rem 2.4rem 1.15rem 0; text-align: left; line-height: inherit; color: var(--on-deep-muted); transition: color 400ms var(--ease); }
   .pc__item button:hover, .pc__item.is-on button { color: var(--on-deep); }
   .pc__item.is-on button { cursor: default; }
-  .pc__item button::before, .pc__item button::after { content: ""; position: absolute; top: calc(1.15rem + 0.5lh); right: 0; background: currentColor; translate: 0 -50%; }
-  .pc__item button::after { width: 0.9rem; height: 1.5px; }
-  .pc__item button::before { right: calc(0.45rem - 0.75px); width: 1.5px; height: 0.9rem; transition: transform 400ms var(--ease); }
+  .pc__item button::before, .pc__item button::after { content: ""; position: absolute; right: 0; background: currentColor; }
+  .pc__item button::after { top: calc(1.15rem + 0.5lh - 1px); width: 14px; height: 2px; }
+  .pc__item button::before { top: calc(1.15rem + 0.5lh - 7px); right: 6px; width: 2px; height: 14px; transition: transform 400ms var(--ease); }
   .pc__item.is-on button::before { transform: scaleY(0); }
   .pc__item button:focus-visible { outline-color: var(--on-deep); }
   .pc__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 650ms var(--ease); }
@@ -353,9 +353,9 @@
   .faq__aside p { color: var(--muted); max-width: 30ch; }
   .faq details { border-bottom: 1px solid var(--rule); }
   .faq summary { position: relative; display: block; padding: 1.3rem 2.4rem 1.3rem 0; cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.1rem, 1.5vw, 1.4rem); letter-spacing: -0.015em; }
-  .faq summary::before, .faq summary::after { content: ""; position: absolute; top: calc(1.3rem + 0.5lh); right: 0; background: var(--ink); translate: 0 -50%; }
-  .faq summary::after { width: 0.9rem; height: 1.5px; }
-  .faq summary::before { right: calc(0.45rem - 0.75px); width: 1.5px; height: 0.9rem; transition: transform 400ms var(--ease); }
+  .faq summary::before, .faq summary::after { content: ""; position: absolute; right: 0; background: var(--ink); }
+  .faq summary::after { top: calc(1.3rem + 0.5lh - 1px); width: 14px; height: 2px; }
+  .faq summary::before { top: calc(1.3rem + 0.5lh - 7px); right: 6px; width: 2px; height: 14px; transition: transform 400ms var(--ease); }
   .faq details[open] summary::before { transform: scaleY(0); }
   .faq details > div { padding: 0 0 1.5rem; color: var(--muted); max-width: 56ch; }
   .faq details::details-content { block-size: 0; overflow: clip; transition: block-size 450ms var(--ease), content-visibility 450ms allow-discrete; }
