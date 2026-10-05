@@ -22,6 +22,8 @@
   --blend: oklch(100% 0 0);
 
   --gutter: clamp(1rem, 3.2vw, 3rem);
+  --container: 90rem;
+  --pad-x: max(var(--gutter), (100% - var(--container)) / 2);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --band: 0.5rem;
   --frame: 0.3125rem;
@@ -79,7 +81,7 @@
 }
 
 @layer components {
-  .wrap { padding-inline: var(--gutter); }
+  .wrap { padding-inline: var(--pad-x); }
   .grid12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
   .section { padding-block: clamp(4.5rem, 12vh, 9rem); }
   .surface { position: relative; z-index: 1; background: var(--paper); }
@@ -147,7 +149,7 @@
   .sep { display: inline-block; width: 0.22em; height: 0.22em; margin: 0 0.5em; background: currentColor; vertical-align: middle; }
 
   /* nav — pasek u góry odjeżdża z treścią; po scrollu ten sam układ wraca jako przypięty bakłażanowy pasek z pasami */
-  .nav__row { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.2rem var(--gutter); }
+  .nav__row { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.2rem var(--pad-x); }
   .nav { position: absolute; inset: 0 0 auto; z-index: 50; }
   .nav__brand { font-family: var(--font-display); font-weight: 700; font-stretch: 78%; font-size: 1.05rem; letter-spacing: -0.02em; white-space: nowrap; }
   .nav__links { display: flex; gap: 1.75rem; font-size: 0.9375rem; font-weight: 500; }
@@ -209,7 +211,7 @@
   }
   .hero__veil { position: absolute; inset: 0; background: var(--scrim); opacity: 0; pointer-events: none; }
   .hero__copy {
-    position: absolute; inset: auto 0 0; padding: 0 var(--gutter) clamp(1.75rem, 5vh, 3.5rem);
+    position: absolute; inset: auto 0 0; padding: 0 var(--pad-x) clamp(1.75rem, 5vh, 3.5rem);
     display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: end; row-gap: 1.5rem;
   }
   .hero__title { grid-column: 1 / span 8; }
@@ -380,18 +382,18 @@
   .foot__links { grid-column: 7 / span 6; display: grid; gap: 0.3rem; font-size: 0.9375rem; justify-items: start; }
   .foot__legal { grid-column: 1 / span 12; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 1.25rem; border-top: 1px solid var(--on-deep-rule); color: var(--on-deep-muted); font-size: 0.8125rem; }
   .foot__mark {
-    font-family: var(--font-display); font-weight: 800; font-stretch: 78%; font-size: 17.5vw; line-height: 0.8; letter-spacing: -0.045em;
+    font-family: var(--font-display); font-weight: 800; font-stretch: 78%; font-size: min(17.5vw, var(--container) * 0.175); line-height: 0.8; letter-spacing: -0.045em;
     white-space: nowrap; text-align: center; color: var(--deep-2); margin: 1rem 0 -0.12em; user-select: none;
   }
 
   /* podstrony — nagłówek */
-  .phero { padding: clamp(7rem, 18vh, 11rem) var(--gutter) 0; }
+  .phero { padding: clamp(7rem, 18vh, 11rem) var(--pad-x) 0; }
   .phero__top { align-items: end; row-gap: 1.5rem; }
   .phero__top h1 { grid-column: 1 / span 8; max-width: 13ch; }
   .phero__top p { grid-column: 9 / span 4; color: var(--muted); max-width: 30ch; }
   .phero__media { margin-top: clamp(2.5rem, 7vh, 4rem); aspect-ratio: 21 / 9; position: relative; }
   .phero__media .frame { position: absolute; inset: 0; }
-  .nf { min-height: 100svh; display: grid; justify-items: center; align-content: center; gap: 1.25rem; padding: clamp(7rem, 16vh, 10rem) var(--gutter) clamp(4rem, 10vh, 7rem); text-align: center; }
+  .nf { min-height: 100svh; display: grid; justify-items: center; align-content: center; gap: 1.25rem; padding: clamp(7rem, 16vh, 10rem) var(--pad-x) clamp(4rem, 10vh, 7rem); text-align: center; }
   .nf__icon { width: clamp(7rem, 12vw, 9.5rem); height: auto; margin-bottom: 1.25rem; fill: var(--deep); }
   .nf h1 { max-width: 16ch; }
   .nf > p { color: var(--muted); max-width: 42ch; }
@@ -575,7 +577,7 @@
   .fdone p { color: var(--muted); max-width: 44ch; }
 
   /* dokument prawny */
-  .doc { padding: clamp(7rem, 18vh, 11rem) var(--gutter) clamp(5rem, 14vh, 9rem); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 2rem; }
+  .doc { padding: clamp(7rem, 18vh, 11rem) var(--pad-x) clamp(5rem, 14vh, 9rem); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 2rem; }
   .doc h1 { grid-column: 1 / span 8; }
   .doc__meta { grid-column: 10 / span 3; color: var(--muted); font-size: 0.9375rem; }
   .doc__body { grid-column: 3 / span 7; display: grid; gap: 1.25rem; }
@@ -655,6 +657,10 @@
 
 @media (hover: none) {
   .spec__img > div, .spec__img img { transform: none; }
+}
+
+@media (min-width: 1800px) {
+  :root { --container: 105rem; }
 }
 
 @media (min-width: 1400px) {

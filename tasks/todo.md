@@ -1,3 +1,19 @@
+# Plan — kontener szerokości (2026-10-05, branch `feat/layout-container`)
+
+Tła sekcji, pasy, hero z wideo i paski nawigacji zostają na całą szerokość. Ograniczona jest tylko treść: boczny padding rośnie, gdy ekran jest szerszy niż kontener.
+
+## Wdrożenie
+- [x] Tokeny w `:root`: `--container: 90rem` (1440 px treści, MacBooki), w `@media (min-width: 1800px)` `--container: 105rem` (1680 px, monitory 1920+); `--pad-x: max(var(--gutter), (100% - var(--container)) / 2)`
+- [x] Boczny padding `var(--gutter)` → `var(--pad-x)` w `.wrap`, `.nav__row`, `.hero__copy`, `.phero`, `.nf`, `.doc` (odstępy kolumn zostają na `--gutter`)
+- [x] Wordmark w stopce: `font-size: min(17.5vw, var(--container) * 0.175)`, żeby nie wychodził poza kontener na 2560
+- [ ] Pominięte: `sizes` obrazków (na szerokich ekranach `vw` lekko zawyża rozmiar, bez wpływu na wygląd)
+- [x] Sprawdzić 375, 1280, 1470, 1512, 1728, 1920, 2560; lint, tsc, build
+
+### Review
+- Treść (zmierzona w `.wrap`, `.nav__row`, `.phero`, `.doc`): 1470 px: 1376 (margines 47), 1728: 1440 (144), 1920: 1680 (120), 2560: 1680 (440), 375: bez zmian (16).
+- Bez poziomego scrolla na 8 stronach w 7 szerokościach. W konsoli tylko 404 na `/_vercel/insights/script.js`, który istnieje tylko na Vercelu (stan sprzed zmiany).
+- lint, tsc, build OK.
+
 # Plan — poprawki wizualne (2026-10-05, branch `feat/visual-polish`)
 
 ## Wdrożenie
