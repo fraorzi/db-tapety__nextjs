@@ -3,13 +3,10 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { Archivo, Instrument_Sans } from "next/font/google";
 import "./globals.css";
-import "@/preview/preview.css";
 import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScrollMotion } from "@/components/ScrollMotion";
 import { site } from "@/data/site";
-import { PreviewPanel } from "@/preview/PreviewPanel";
-import { PreviewSync } from "@/preview/store";
 
 const display = Archivo({
   subsets: ["latin", "latin-ext"],
@@ -61,8 +58,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ScrollMotion />
         <Header />
         {children}
-        <PreviewSync />
-        <PreviewPanel />
         <Analytics />
       </body>
     </html>

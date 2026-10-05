@@ -20,7 +20,7 @@ export function Work() {
         {picks.map((p, i) => (
           <Link key={p.slug} href={`/realizacje/${p.slug}`} className={`proj wm__item wm${i + 1}`}>
             <div className="media"><span className="media__zoom"><Image src={p.cover} alt={p.alt} fill sizes={i === 0 ? "(max-width: 900px) 100vw, 58vw" : "(max-width: 900px) 100vw, 42vw"} /></span></div>
-            <span className="wm__label"><b>{p.title}</b><span>{p.room}</span><span className="wm__mat"><span>{p.material}</span></span></span>
+            <span className="wm__label"><b>{p.title}</b><span>{p.room}</span></span>
             <span className="wm__cover" aria-hidden="true" />
           </Link>
         ))}

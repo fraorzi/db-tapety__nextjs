@@ -25,7 +25,7 @@
 - [x] „Jedna osoba…”: A obecny, B dwie kolumny, C siatka 2×2, D lżejsze wiersze
 - [x] „Wybrane realizacje”: wejście (A–D, `home/WorkMotion.tsx`) i hover (A–D)
 - [x] Footer: A obecny, B zostaw numer, C kontakt, D jasny ze zdjęciem
-- [ ] Decyzja użytkownika → wdrożyć wybrane, usunąć resztę wariantów i `src/preview/`
+- [x] Decyzja użytkownika (2026-10-05): hero układ A, tekst A, przyciski B (Zobacz realizacje + Dla firm); „Jedna osoba” A; realizacje: wejście B+D (nakładki w bok po kolei, potem etykiety), hover B (przygaszanie pozostałych, tylko `hover: hover`); footer B. Pozostałe warianty i `src/preview/` usunięte, `design.md` i `AGENTS.md` zaktualizowane.
 
 Uwagi:
 - `Services` trzyma jedną stałą `<section>`, bo `Hero` wiąże ScrollTrigger z następnym elementem; wariant podmienia tylko środek.
