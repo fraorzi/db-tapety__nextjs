@@ -8,7 +8,7 @@ editorial · rzemieślnicze portfolio z celem sprzedażowym. Minimalizm + płynn
 
 ## Rodziny makrostruktur
 
-- `/` — **Photographic** (wideo wypełnia fold, tekst jako adnotacja) z sekcjami nakładającymi się jak pasy tapety (sticky stack). Poniżej: usługi jako duże wiersze, realizacje w mozaice, slider paneli „dla kogo”, przypięty proces (wariant compact), FAQ.
+- `/` — **Photographic** (wideo wypełnia fold, tekst jako adnotacja) z sekcjami nakładającymi się jak pasy tapety (sticky stack). Poniżej: usługi jako duże wiersze, realizacje w mozaice (wejście: jasne nakładki zjeżdżają w bok kafel po kaflu, potem wjeżdżają etykiety; hover przygasza pozostałe kafle), slider paneli „dla kogo”, proces (wariant compact, etapy rozwijane kliknięciem, bez pinu), FAQ.
 - `/realizacje` — **Portfolio Grid**: taby filtrujące (tekst + jadące podkreślenie 3 px w `--accent`) + równy grid, podpis karty jako etykieta wcięta w róg zdjęcia.
 - `/realizacje/[slug]` — **Photographic**: zdjęcie, meta w spec sheet, opis, galeria.
 - `/dla-firm` — **Split Studio**: dyptyki tekst | dowód, naprzemienne; przebieg zlecenia jako schody tonalne (pięć kroków od `--deep-2` do `--paper-3`, każdy wyższy; wyrastają po kolei przy wejściu w widok); realizacje w sliderze z zapowiedzią następnej; CTA jako formularz inline.
@@ -52,16 +52,16 @@ Metafora: ściana po gruntowaniu + bakłażan jako kolor główny (przyciski, pa
 - **Podwójna ramka tonalna** (`Frame`): `--frame-out` → `--frame-in` → obraz, po 5 px. Tylko jako wyróżnik: zdjęcie główne w `/realizacje/[slug]`, sticky wideo w `/jak-pracuje`, wideo procesu na `/`. Nie na kartach w siatkach.
 - **Pasy tonalne** (`.bands-t` / `.bands-b`): dwa pasy po 8 px (6 px na mobile) na krawędzi sekcji, schodek tonów między jasnym a bakłażanem — jak brzeg kolejnego pasa tapety. Sekcja pod hero, proces na `/`, przebieg zlecenia w `/dla-firm`, stopka, spód przypiętego paska.
 - Hover karty realizacji: tylko lekki zoom zdjęcia. Wypełnianie całej karty tłem odrzucone.
-- Footer: **Ft1 Mast-headed** — duży wordmark, kontakt, 4 linki, linia prawna.
+- Footer: **Ft1 Mast-headed** — CTA z polem „zostaw numer” (wysyła na `/wycena?tel=`), kontakt, 4 linki, linia prawna, pod spodem wordmark w `--deep-2` na całą szerokość, ucięty dolną krawędzią.
 
 ## Ruch
 
 - Easing: `--ease: cubic-bezier(0.16, 1, 0.3, 1)`. Czas 250–900 ms.
 - Scroll: GSAP ScrollTrigger ze `scrub: 0.8`, animowane tylko `transform` i `opacity` (nigdy `clip-path` z `var()` — to powoduje skoki).
-- Jedno wejście orkiestrowane na stronę: hero na `/`, przekrój ściany na `/jak-pracuje` (`WallLayers`: ściana → grunt → klej → tapeta nakładają się od lewej `scaleX`, każda zostawia schodek z podpisem; nie koncentrycznie ze środka). Poza tym obrazy odsłaniają się raz (`data-reveal="clip"`); tekst po prostu jest.
+- Jedno wejście orkiestrowane na stronę: hero na `/`, przekrój ściany na `/jak-pracuje` (`WallLayers`: ściana → grunt → klej → tapeta nakładają się od lewej `scaleX`, każda zostawia schodek z podpisem; nie koncentrycznie ze środka). Poza tym obrazy odsłaniają się raz (`data-reveal="clip"`, w mozaice na `/` własne wejście w `WorkMotion`); tekst po prostu jest.
 - Bez `prefers-reduced-motion` — decyzja użytkownika (2026-10-04), ruch jest ten sam dla wszystkich.
 
 ## Głos CTA
 
-- Główne: „Bezpłatna wycena” → `/wycena`. Drugorzędne: typograficzny link z podkreśleniem.
+- Główne: „Bezpłatna wycena” → `/wycena` (pasek nawigacji, podstrony). W hero na `/` główne „Zobacz realizacje”, drugie „Dla firm”, bo wycena jest już w pasku. Drugorzędne: typograficzny link z podkreśleniem.
 - Zero wymyślonych liczb, opinii i logotypów. Dane firmy jako widoczne placeholdery z `src/data/site.ts`.

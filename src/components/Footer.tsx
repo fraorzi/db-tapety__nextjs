@@ -10,17 +10,19 @@ export function Footer({
   cta = { href: "/wycena", label: "Bezpłatna wycena" },
 }: Props) {
   return (
-    <footer className="deep surface bands-t" id="kontakt">
+    <footer className="deep surface bands-t foot-wrap" id="kontakt">
       <section className="cta wrap">
         <h2>{title}</h2>
         <div className="cta__side">
           <p>{text}</p>
-          <Link href={cta.href} className="btn btn--light btn--lg">{cta.label} <Arrow /></Link>
-          <a href={site.phoneHref} className="ulink">{site.phone}</a>
+          <form action="/wycena" method="get" className="cta__form">
+            <input type="tel" name="tel" placeholder="Numer telefonu" aria-label="Numer telefonu" autoComplete="tel" />
+            <button type="submit" className="btn btn--light">Oddzwoń <Arrow /></button>
+          </form>
+          <Link href={cta.href} className="ulink">{cta.label}</Link>
         </div>
       </section>
       <div className="foot wrap">
-        <p className="foot__mark">{site.name}</p>
         <div className="foot__meta">
           <span>{site.tagline}</span>
           <a href={site.emailHref}>{site.email}</a>
@@ -35,6 +37,7 @@ export function Footer({
           <Link href="/polityka-prywatnosci" className="ulink">Polityka prywatności</Link>
         </div>
       </div>
+      <p className="foot__mark" aria-hidden="true">{site.name}</p>
     </footer>
   );
 }

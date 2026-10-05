@@ -29,8 +29,8 @@ type Props = {
 
 /**
  * Jeden koncept, dwa warianty:
- *  - compact (strona główna): granatowe tło, wideo po lewej, po prawej zwarta lista etapów;
- *    sekcja jest przypięta, a scroll przesuwa aktywny etap.
+ *  - compact (strona główna): ciemne tło, wideo po lewej, po prawej lista etapów;
+ *    kliknięcie etapu rozwija go i przełącza wideo.
  *  - full (/jak-pracuje): jasne tło, tekst po lewej z faktami, wideo po prawej z licznikiem etapów
  *    (jedyna numeracja w witrynie: pięć etapów po ekranie każdy, licznik mówi, gdzie jesteś);
  *    każdy etap ma własną wysokość ekranu.
@@ -47,7 +47,10 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
       const setStep = (i: number) => {
         if (i === current) return;
         current = i;
-        items.forEach((s, j) => s.classList.toggle("is-on", j === i));
+        items.forEach((s, j) => {
+          s.classList.toggle("is-on", j === i);
+          s.querySelector("button")?.setAttribute("aria-expanded", String(j === i));
+        });
         vids.forEach((v, j) => {
           v.classList.toggle("is-on", j === i);
           if (j === i) v.play().catch(() => {}); else v.pause();
@@ -56,19 +59,13 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
       };
       setStep(0);
 
-      const mm = gsap.matchMedia();
-
+      const offs: (() => void)[] = [];
       if (variant === "compact") {
-        mm.add("(min-width: 901px)", () => {
-          const pin = root.current!.querySelector<HTMLElement>(".pc__pin")!;
-          ScrollTrigger.create({
-            trigger: pin, start: "top top", end: () => `+=${Math.round(steps.length * 0.7 * window.innerHeight)}`, pin: true, scrub: 0.6,
-            onUpdate: (self) => setStep(Math.min(steps.length - 1, Math.floor(self.progress * steps.length))),
-          });
-        });
-        mm.add("(max-width: 900px)", () => {
-          items.forEach((s) => s.classList.add("is-on"));
-          vids[0]?.play().catch(() => {});
+        items.forEach((s, i) => {
+          const btn = s.querySelector("button");
+          const on = () => setStep(i);
+          btn?.addEventListener("click", on);
+          offs.push(() => btn?.removeEventListener("click", on));
         });
       } else {
         items.forEach((s, i) =>
@@ -85,7 +82,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
         },
       });
 
-      return () => mm.revert();
+      return () => offs.forEach((off) => off());
     },
     { scope: root, dependencies: [variant, steps.length] },
   );
@@ -112,10 +109,10 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
               {intro && <p>{intro}</p>}
             </div>
             <ol className="pc__list">
-              {steps.map((s) => (
+              {steps.map((s, i) => (
                 <li className="pc__item" data-step key={s.title}>
-                  <h3>{s.title}</h3>
-                  <div className="pc__more"><div><p>{s.text}</p></div></div>
+                  <h3><button type="button" aria-expanded={i === 0} aria-controls={`${id}-step-${i}`}>{s.title}</button></h3>
+                  <div className="pc__more" id={`${id}-step-${i}`}><div><p>{s.text}</p></div></div>
                 </li>
               ))}
             </ol>

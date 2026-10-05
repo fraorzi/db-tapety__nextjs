@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
 import type { Project } from "@/data/projects";
 
@@ -32,17 +32,19 @@ export function WorkGrid({ projects }: { projects: readonly Project[] }) {
     <>
       <div className="tabs" role="tablist" aria-label="Filtruj po pomieszczeniu" ref={tabs}>
         {rooms.map(([r, c]) => (
-          <button
-            type="button"
-            key={r}
-            role="tab"
-            className="tab"
-            aria-selected={room === r}
-            aria-controls="pgrid"
-            onClick={() => setRoom(r)}
-          >
-            {r}<span>{c}</span>
-          </button>
+          <Fragment key={r}>
+            <button
+              type="button"
+              role="tab"
+              className="tab"
+              aria-selected={room === r}
+              aria-controls="pgrid"
+              onClick={() => setRoom(r)}
+            >
+              {r}<span>{c}</span>
+            </button>
+            {r === ALL && <span className="tabs__div" aria-hidden="true" />}
+          </Fragment>
         ))}
         <span className="tabs__bar" ref={bar} aria-hidden="true" />
       </div>

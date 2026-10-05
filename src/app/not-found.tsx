@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
+import { Arrow } from "@/components/Arrow";
 
 export const metadata: Metadata = {
   title: "Nie ma takiej strony",
@@ -20,7 +21,7 @@ export default function NotFound() {
         <h1 className="h2">Tu jeszcze nie ma tapety.</h1>
         <p>Strona pod tym adresem nie istnieje albo zmieniła miejsce. Zacznij od strony głównej albo zobacz, jakie ściany już stoją.</p>
         <div className="nf__actions">
-          <Link href="/" className="btn">Strona główna <span className="arr" aria-hidden="true">→</span></Link>
+          <Link href="/" className="btn">Strona główna <Arrow /></Link>
           <Link href="/realizacje" className="ulink">Zobacz realizacje</Link>
         </div>
       </main>

@@ -1,3 +1,36 @@
+# Plan — poprawki wizualne (2026-10-05, branch `feat/visual-polish`)
+
+## Wdrożenie
+- [x] `/realizacje`: etykieta karty w ramce, wysunięta poza zdjęcie w odstęp siatki
+- [x] `.sep`: kwadrat wyśrodkowany względem tekstu
+- [x] Taby: kolor podkreślenia już był `--accent` = `--deep` (ten sam co pasek i stopka), bez zmian
+- [x] Taby: krótka pionowa kreska między „Wszystkie” a resztą, na wysokość liter
+- [x] Hero po powrocie z przewiniętej podstrony: reset scrolla przed utworzeniem ScrollTriggerów
+- [x] FAQ: plus → minus, pionowa kreska znika od końców do środka (transform)
+- [x] „Jak pracuję” na `/`: bez pinu, etapy przełączane kliknięciem; `/jak-pracuje` bez zmian
+
+### Review
+- Karta: etykieta w ramce 1px `--deep`, wysunięta 0.75rem w lewo i w dół, w odstęp siatki.
+- `.sep`: przyczyną był selektor `figcaption span:first-child`, który łapał też `.sep` w `<small>` (kwadrat 1.2rem zamiast 0.875rem, za wysoko). Selektory zmienione na `>`, `.sep` wyrównany `vertical-align: middle` (środek wysokości x).
+- Kreska w tabach: `.tabs__div` w `align-items: baseline`, wysokość 0.72em (wysokość wersalika Instrument Sans). Zmierzone przy zoomie ×4: kreska 96–139 px, „W” 95–140 px.
+- Hero: Hero tworzył ScrollTriggery w layout effect, zanim `SmoothScroll` (zwykły `useEffect`) zresetował scroll, więc pierwsza klatka miała stan ze scrolla poprzedniej podstrony. Reset przeniesiony do `useLayoutEffect` (rodzeństwo przed `children`, odpala się wcześniej). Odtworzone w WebKit przed poprawką (1 zła klatka), po niej 0 na 12 przebiegów.
+- FAQ: dwa pseudo-elementy, pionowy `scaleY(0)` od środka.
+- Proces na `/`: bez pinu, etapy jako przyciski `aria-expanded` z tym samym plus/minus co FAQ; kliknięcie przełącza wideo. Na mobile tak samo (wcześniej wszystkie etapy rozwinięte).
+- Przy okazji: strzałka „→” w `not-found.tsx` (łamała lint na `main`) zamieniona na `Arrow`.
+- lint, tsc, build OK; 1440/375 bez poziomego scrolla na 5 stronach, konsola czysta.
+
+## Propozycje — panel „Warianty” (lewy dolny róg, zapis w `localStorage` pod `db-preview-polish`)
+- [x] `src/preview/` odtworzony z `8096f2c` (bez znaków jako ikon), podpięty w `layout.tsx`
+- [x] Hero: układ (A–D), tekst (A–D), przyciski (A–B)
+- [x] „Jedna osoba…”: A obecny, B dwie kolumny, C siatka 2×2, D lżejsze wiersze
+- [x] „Wybrane realizacje”: wejście (A–D, `home/WorkMotion.tsx`) i hover (A–D)
+- [x] Footer: A obecny, B zostaw numer, C kontakt, D jasny ze zdjęciem
+- [x] Decyzja użytkownika (2026-10-05): hero układ A, tekst A, przyciski B (Zobacz realizacje + Dla firm); „Jedna osoba” A; realizacje: wejście B+D (nakładki w bok po kolei, potem etykiety), hover B (przygaszanie pozostałych, tylko `hover: hover`); footer B. Pozostałe warianty i `src/preview/` usunięte, `design.md` i `AGENTS.md` zaktualizowane.
+
+Uwagi:
+- `Services` trzyma jedną stałą `<section>`, bo `Hero` wiąże ScrollTrigger z następnym elementem; wariant podmienia tylko środek.
+- Kafle w „Wybranych realizacjach” nie mają już `data-reveal`; odsłonięcie i paralaksę robi `WorkMotion` (żeby przełączanie wariantu odtwarzało animację).
+
 # Plan — etap po v3 (2026-10-04)
 
 ## Zrobione

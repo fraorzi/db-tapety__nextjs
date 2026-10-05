@@ -54,8 +54,8 @@ export function Hero() {
         <div className="hero__side">
           <p>Tapetowanie i przygotowanie ścian w mieszkaniach, domach i lokalach. Od pomiaru po ostatnie docięcie przy listwie.</p>
           <div className="hero__actions">
-            <Link href="/wycena" className="btn">Bezpłatna wycena <Arrow /></Link>
-            <Link href="/realizacje" className="ulink">Zobacz realizacje</Link>
+            <Link href="/realizacje" className="btn">Zobacz realizacje <Arrow /></Link>
+            <Link href="/dla-firm" className="ulink">Dla firm</Link>
           </div>
         </div>
       </div>
