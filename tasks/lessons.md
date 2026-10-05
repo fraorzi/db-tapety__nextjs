@@ -8,3 +8,5 @@
 - Stock „podarta tapeta” na Unsplash to głównie zdarte plakaty i farba — nie pasują do palety. Przy braku dobrego zdjęcia lepsza własna ilustracja SVG w tokenach systemu.
 - Realistyczne SVG (szum, rozmycia, filtry przesunięcia) też odrzucone: użytkownik chce stylu ikony — kontur w `--deep`, płaskie wypełnienia — i przedmiotu, który bez wątpienia jest tapetą (rolka ze spiralą, wzór w pasy z raportem, zawinięty róg). Przy ilustracjach zaczynać od czytelnego symbolu, nie od efektu materiału. Ostatecznie ikona z referencji użytkownika odtworzona 1:1 (tylko kolor `--deep`).
 - Gdy użytkownik daje obrazek referencyjny: powiększyć go, zmierzyć krawędzie na pikselach i porównać render z oryginałem (różnica pikseli) przed oddaniem. „W tym stylu” z dopasowaniem z pamięci skończyło się odrzuceniem.
+
+- Przed weryfikacją w przeglądarce sprawdzić, czy serwer na porcie serwuje aktualny kod (`next start` po buildzie nie widzi późniejszych zmian; `pkill -f "next start"` nie łapie procesu `next-server`). Zabijać po PID z `lsof`.

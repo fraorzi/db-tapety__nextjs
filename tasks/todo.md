@@ -17,6 +17,10 @@ Tła sekcji, pasy, hero z wideo i paski nawigacji zostają na całą szerokość
 ## Poprawka: plus/minus w FAQ i w procesie na `/`
 - [x] Linie 2 px zamiast 1.5 px, wymiary w pełnych px (14 × 2), bez `translate: -50%`
 - Przyczyna (hipoteza, w headless nie da się odtworzyć migotania): `translate` robił z linii warstwę z transformacją, której przeglądarka nie dociąga do pikseli. Linia 1.5 px przesunięta o 0.75 px przy płynnym scrollu Lenisa (ułamkowe pozycje) co klatkę inaczej się wygładzała.
+- [x] `top` ikon przez `round(…, 1px)` (było 30.53 px z `0.5lh`)
+- [x] Burger: linie 2 px w pudełku 16 × 10 px, przesunięcie 4 px
+- [x] `.ulink`: `width: fit-content`; w gridzie bez `justify-items: start` link „Zadaj pytanie” rozciągał się na całą kolumnę. Audyt wszystkich `.ulink` na 8 stronach (1440, 375): po poprawce żaden nie jest szerszy niż tekst ze strzałką
+- Audyt elementów z transformacją na ułamkowych pozycjach: reszta to stany animacji GSAP, zdjęcia ze skalą, ukryty pasek `.bar` i obrócone etykiety `.aud__vt`, `.wl__label`. Bez poprawek
 
 # Plan — poprawki wizualne (2026-10-05, branch `feat/visual-polish`)
 
