@@ -689,8 +689,9 @@
   .dip__media, .dip__media--tall, .b2bhero .dip__media { aspect-ratio: 4 / 3; }
   .fst { grid-template-columns: minmax(0, 1fr); }
   .fst__step, .fst__step + .fst__step { min-height: 0; margin-left: calc(var(--i) * 1rem); }
-  .fst__step + .fst__step { margin-top: -0.625rem; padding-left: clamp(1.1rem, 1.8vw, 1.7rem); padding-top: calc(clamp(1.1rem, 1.8vw, 1.7rem) + 0.625rem); box-shadow: 0 -10px 18px -6px oklch(from var(--scrim) l c h / 0.5); }
-  .lkp { height: calc(26rem - 30px); }
+  .fst__step + .fst__step { margin-top: -0.25rem; padding-left: clamp(1.1rem, 1.8vw, 1.7rem); padding-top: calc(clamp(1.1rem, 1.8vw, 1.7rem) + 0.25rem); box-shadow: 0 -6px 12px -5px oklch(from var(--scrim) l c h / 0.42); }
+  /* zdjęcie 3:2 przy szerokości slajdu 84 %, plus miejsce na podpis */
+  .lkp { height: calc((100vw - 2 * var(--gutter)) * 0.84 * 2 / 3 + 5.5rem); }
   .lkp__slide { width: 84%; }
   .lkp__slide[data-d="1"] { transform: translateX(calc(100% / 0.84 * 0.88)) scale(0.62); }
   .lkp__cap { flex-direction: column; gap: 0.2rem; }
