@@ -513,13 +513,14 @@
   .seg__pic.is-on { opacity: 1; }
 
   .flow { padding-block: clamp(4.5rem, 12vh, 9rem); }
-  /* schody tonalne: każdy krok jaśniejszy i wyższy, ostatni w kolorze papieru */
-  .fst { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; gap: 3px; margin-top: clamp(2.5rem, 7vh, 4rem); }
+  /* schody tonalne: każdy krok jaśniejszy i wyższy, ostatni w kolorze papieru; nachodzą na siebie z miękkim cieniem jak położone pasy */
+  .fst { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; gap: 0; margin-top: clamp(2.5rem, 7vh, 4rem); }
   .fst__step {
     display: grid; align-content: start; gap: 0.8rem; padding: clamp(1.1rem, 1.8vw, 1.7rem);
     min-height: calc(13rem + var(--i) * 3.25rem);
     background: color-mix(in oklch, var(--deep-2), var(--paper-3) calc(var(--i) * 25%));
   }
+  .fst__step + .fst__step { margin-left: -0.625rem; padding-left: calc(clamp(1.1rem, 1.8vw, 1.7rem) + 0.625rem); box-shadow: -10px 0 18px -6px oklch(from var(--scrim) l c h / 0.5); }
   .fst__step h3 { font-size: clamp(1.15rem, 1.5vw, 1.4rem); }
   .fst__step p { font-size: 0.9375rem; color: var(--on-deep-muted); max-width: 26ch; }
   .fst__step:nth-child(3) p { color: var(--on-deep); }
@@ -528,19 +529,25 @@
 
   /* realizacje w lokalach: aktywny kadr duży, następny wystaje z prawej */
   .lk { padding-bottom: clamp(4.5rem, 12vh, 9rem); }
-  .lkp { position: relative; height: clamp(22rem, 62vh, 40rem); margin-top: clamp(2rem, 5vh, 3rem); overflow: hidden; }
+  .lkp { position: relative; height: clamp(22rem, 62vh, 40rem); margin-top: clamp(2rem, 5vh, 3rem); overflow: clip; }
   .lkp__slide {
     position: absolute; top: 0; bottom: 0; left: 0; width: 64%; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 0.9rem;
     transform-origin: 0 100%; transition: transform 1s var(--ease), opacity 700ms var(--ease);
   }
   .lkp__img { position: relative; overflow: hidden; background: var(--paper-2); }
-  .lkp__img img { transition: transform 1.2s var(--ease); }
+  .lkp__img img { transition: transform 1.2s var(--ease), filter 700ms var(--ease); }
+  .lkp__slide:not([data-d="0"]) .lkp__img img { filter: grayscale(1); }
   .lkp__slide[data-d="0"] { transform: none; z-index: 2; }
   .lkp__slide[data-d="1"] { transform: translateX(calc(100% / 0.64 * 0.68)) scale(0.62); opacity: 0.7; z-index: 1; cursor: pointer; }
   .lkp__slide[data-d="2"] { transform: translateX(calc(100% / 0.64 * 1.08)) scale(0.62); opacity: 0; }
   .lkp__slide[data-d="-1"] { transform: translateX(-30%) scale(0.92); opacity: 0; pointer-events: none; }
   .lkp__slide[data-d="1"] .lkp__cap { opacity: 0; }
   .lkp__slide[data-d="0"]:hover .lkp__img img { transform: scale(1.03); }
+  /* następna w szarości; na hover nabiera koloru i wysuwa się w stronę aktywnej */
+  @media (hover: hover) and (min-width: 901px) {
+    .lkp__slide[data-d="1"]:hover { transform: translateX(calc(100% / 0.64 * 0.66)) scale(0.64); opacity: 1; }
+    .lkp__slide[data-d="1"]:hover .lkp__img img { filter: none; }
+  }
   .lkp__cap { display: flex; justify-content: space-between; gap: 1.5rem; font-size: 0.9375rem; transition: opacity 500ms var(--ease); }
   .lkp__cap b { font-family: var(--font-display); font-weight: 600; font-stretch: 78%; font-size: 1.05rem; }
   .lkp__cap span { color: var(--muted); }
@@ -681,8 +688,9 @@
   .dip__text, .dip__media, .dip--flip .dip__text, .dip--flip .dip__media, .b2bhero .dip__text, .b2bhero .dip__media { grid-column: 1 / span 12; order: 0; }
   .dip__media, .dip__media--tall, .b2bhero .dip__media { aspect-ratio: 4 / 3; }
   .fst { grid-template-columns: minmax(0, 1fr); }
-  .fst__step { min-height: 0; margin-left: calc(var(--i) * 1rem); }
-  .lkp { height: 26rem; }
+  .fst__step, .fst__step + .fst__step { min-height: 0; margin-left: calc(var(--i) * 1rem); }
+  .fst__step + .fst__step { margin-top: -0.625rem; padding-left: clamp(1.1rem, 1.8vw, 1.7rem); padding-top: calc(clamp(1.1rem, 1.8vw, 1.7rem) + 0.625rem); box-shadow: 0 -10px 18px -6px oklch(from var(--scrim) l c h / 0.5); }
+  .lkp { height: calc(26rem - 30px); }
   .lkp__slide { width: 84%; }
   .lkp__slide[data-d="1"] { transform: translateX(calc(100% / 0.84 * 0.88)) scale(0.62); }
   .lkp__cap { flex-direction: column; gap: 0.2rem; }
