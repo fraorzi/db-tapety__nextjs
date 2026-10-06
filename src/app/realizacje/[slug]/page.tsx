@@ -65,7 +65,7 @@ export default async function ProjectPage({ params }: Params) {
         </article>
         <div style={{ height: "clamp(4rem, 10vh, 7rem)" }} />
       </main>
-      <Footer title="Chcesz podobną ścianę u siebie?" />
+      <Footer title="Chcesz podobną ścianę u siebie?" />
     </>
   );
 }

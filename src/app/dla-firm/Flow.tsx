@@ -29,7 +29,7 @@ export function Flow() {
     <section className="deep flow wrap bands-t bands-b" ref={root} aria-labelledby="flow-title">
       <div className="sec-head">
         <h2 className="h2" id="flow-title">Od zapytania do faktury</h2>
-        <p>Pięć kroków. Na każdym wiecie, co się dzieje i kiedy.</p>
+        <p>Pięć kroków. Na każdym wiecie, co się dzieje i kiedy.</p>
       </div>
       <ol className="fst">
         {flow.map((f, i) => (

@@ -8,8 +8,8 @@ editorial · rzemieślnicze portfolio z celem sprzedażowym. Minimalizm + płynn
 
 ## Rodziny makrostruktur
 
-- `/` — **Photographic** (wideo wypełnia fold, tekst jako adnotacja) z sekcjami nakładającymi się jak pasy tapety (sticky stack). Poniżej: usługi jako duże wiersze, realizacje w mozaice (wejście: jasne nakładki zjeżdżają w bok kafel po kaflu, potem wjeżdżają etykiety; hover przygasza pozostałe kafle), slider paneli „dla kogo”, proces (wariant compact, etapy rozwijane kliknięciem, bez pinu), FAQ.
-- `/realizacje` — **Portfolio Grid**: taby filtrujące (tekst + jadące podkreślenie 3 px w `--accent`) + równy grid, podpis karty jako etykieta wcięta w róg zdjęcia.
+- `/` — **Photographic** (wideo wypełnia fold, tekst jako adnotacja) z sekcjami nakładającymi się jak pasy tapety (sticky stack). Poniżej: usługi jako duże wiersze, realizacje w mozaice (wejście: jasne nakładki zjeżdżają w bok kafel po kaflu, potem wjeżdżają etykiety; hover przygasza pozostałe kafle), slider paneli „dla kogo”, proces (wariant compact, bez pinu: etapy jako tonalne pasy `--deep-2` ze szwem 6 px, aktywny jaśniejszy `--deep-3` z małym kwadratem, rozwijany kliknięciem; celowo inaczej niż FAQ z liniami i plusem), FAQ.
+- `/realizacje` — **Portfolio Grid**: taby filtrujące (tekst + jadące podkreślenie 3 px w `--accent`) + równy grid. Karta: pomieszczenie pionowo przy lewej krawędzi zdjęcia, tytuł i materiał pod zdjęciem. Wejście (`WorkGrid`, też po zmianie taba): nakładka w kolorze papieru zjeżdża w bok kolejno w rzędzie, potem podpis delikatnie się pojawia. Hover: zdjęcie lekko się przybliża, przy tytule wysuwa się strzałka; po wydłużeniu nie wychodzi poza krawędź zdjęcia.
 - `/realizacje/[slug]` — **Photographic**: zdjęcie, meta w spec sheet, opis, galeria.
 - `/dla-firm` — **Split Studio**: dyptyki tekst | dowód, naprzemienne; przebieg zlecenia jako schody tonalne (pięć kroków od `--deep-2` do `--paper-3`, każdy wyższy; wyrastają po kolei przy wejściu w widok); realizacje w sliderze z zapowiedzią następnej; CTA jako formularz inline.
 - `/jak-pracuje` — **Feature Stack** (wariant full): tekst po lewej, przypięte wideo po prawej, jasne tło, licznik etapów.
@@ -30,7 +30,8 @@ Metafora: ściana po gruntowaniu + bakłażan jako kolor główny (przyciski, pa
 - `--accent-ink` oklch(30% 0.055 310) — hover przycisku (jaśniejszy)
 - `--frame-out`  oklch(81% 0.013 300), `--frame-in` oklch(31% 0.052 310) — tylko podwójna ramka
 - `--deep`       oklch(21% 0.045 310) — bakłażanowa sekcja zamiast czerni
-- `--deep-2`     oklch(27% 0.05 310) — dock nawigacji, tło wideo na ciemnym
+- `--deep-2`     oklch(27% 0.05 310) — dock nawigacji, tło wideo na ciemnym, pasy etapów procesu na `/`
+- `--deep-3`     oklch(34% 0.055 310) — aktywny etap procesu na `/`
 - Na ciemnym tle aktywny stan i focus w `--on-deep`. Zero gradientów na tle, zero czystej czerni i bieli.
 
 ## Typografia
@@ -48,10 +49,10 @@ Metafora: ściana po gruntowaniu + bakłażan jako kolor główny (przyciski, pa
 - Nagłówki sekcji: pojedyncza kolumna, bez eyebrow.
 - Bez numeracji list i bez pasków postępu. Jedyny wyjątek: licznik `02 / 05` na wideo w `/jak-pracuje` (pięć etapów po ekranie każdy, bez niego łatwo się zgubić). Kolejność pokazują układ i stan aktywny, nie cyfry.
 - Obrazy: kwadratowe krawędzie. Hairline `--rule` tylko w spec sheet / FAQ.
-- Nav: **Top bar + przypięty pasek** — u góry zwykły pasek (`position: absolute`), który odjeżdża z treścią. Po przewinięciu ~60 % ekranu z góry zjeżdża przypięty pasek o tym samym układzie (marka · linki · CTA), ale bakłażanowy (`--deep`), z jasnym CTA i pasami tonalnymi pod spodem. Na mobile układ też jak u góry: marka + „Menu”; „Menu” rozwija panel pod paskiem (linki, CTA, kontakt). Escape i klik poza zamykają.
+- Nav: **Top bar + przypięty pasek** — u góry zwykły pasek (`position: absolute`), który odjeżdża z treścią. Po przewinięciu ~60 % ekranu z góry zjeżdża przypięty pasek o tym samym układzie (marka · linki · CTA), ale bakłażanowy (`--deep`), z jasnym CTA i pasami tonalnymi pod spodem. Na mobile układ też jak u góry: marka + „Menu” (dwie linie → krzyżyk); „Menu” otwiera jasny panel (`--paper`) na resztę ekranu pod paskiem i jego pasami: panel wjeżdża z boku, za nim kolejno linki, CTA i kontakt (bez strzałek i linii między linkami). Scroll strony zablokowany (`lockScroll`), Escape i klik poza zamykają.
 - **Podwójna ramka tonalna** (`Frame`): `--frame-out` → `--frame-in` → obraz, po 5 px. Tylko jako wyróżnik: zdjęcie główne w `/realizacje/[slug]`, sticky wideo w `/jak-pracuje`, wideo procesu na `/`. Nie na kartach w siatkach.
 - **Pasy tonalne** (`.bands-t` / `.bands-b`): dwa pasy po 8 px (6 px na mobile) na krawędzi sekcji, schodek tonów między jasnym a bakłażanem — jak brzeg kolejnego pasa tapety. Sekcja pod hero, proces na `/`, przebieg zlecenia w `/dla-firm`, stopka, spód przypiętego paska.
-- Hover karty realizacji: tylko lekki zoom zdjęcia. Wypełnianie całej karty tłem odrzucone.
+- Hover karty realizacji: lekki zoom zdjęcia i strzałka przy tytule. Wypełnianie całej karty tłem odrzucone.
 - Footer: **Ft1 Mast-headed** — CTA z polem „zostaw numer” (wysyła na `/wycena?tel=`), kontakt, 4 linki, linia prawna, pod spodem wordmark w `--deep-2` na całą szerokość, ucięty dolną krawędzią.
 
 ## Ruch

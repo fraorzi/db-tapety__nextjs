@@ -12,7 +12,7 @@ import { Arrow } from "@/components/Arrow";
 
 export const metadata: Metadata = {
   title: "Dla firm",
-  description: "Tapetowanie lokali, biur, apartamentów na wynajem i mieszkań deweloperskich. Praca poza godzinami, jedna wycena na całość, faktura VAT.",
+  description: "Tapetowanie lokali, biur, apartamentów na wynajem i mieszkań deweloperskich. Praca poza godzinami, jedna wycena na całość, faktura VAT.",
 };
 
 const slides = [...projects].sort((a, b) => Number(b.category === "Lokal") - Number(a.category === "Lokal"));
@@ -23,10 +23,10 @@ export default function DlaFirmPage() {
       <main className="surface">
         <section className="dip wrap b2bhero">
           <div className="dip__text">
-            <h1 className="h-display">Lokal działa rano. Ja kończę w nocy.</h1>
+            <h1 className="h-display">Lokal działa rano. Ja kończę w nocy.</h1>
             <p className="lead">Tapetowanie dla firm: lokale, biura, apartamenty na wynajem, mieszkania pod klucz. Jeden wykonawca, jedna wycena, harmonogram na piśmie.</p>
             <div className="hero__actions">
-              <Link href="/wycena" className="btn">Zapytaj o wycenę <Arrow /></Link>
+              <Link href="/wycena" className="btn">Zapytaj o wycenę <Arrow /></Link>
               <a href={site.phoneHref} className="ulink">{site.phone}</a>
             </div>
           </div>
@@ -65,7 +65,7 @@ export default function DlaFirmPage() {
         <section className="iform wrap" style={{ borderTop: "1px solid var(--rule)" }} aria-labelledby="iform-title">
           <div className="iform__text">
             <h2 className="h2" id="iform-title">Zostaw numer, oddzwonię</h2>
-            <p>W ciągu dnia roboczego. Albo wyślij od razu rzuty i zdjęcia przez formularz wyceny.</p>
+            <p>W ciągu dnia roboczego. Albo wyślij od razu rzuty i zdjęcia przez formularz wyceny.</p>
           </div>
           <form action="/wycena" method="get">
             <div className="iform__row">
@@ -76,7 +76,7 @@ export default function DlaFirmPage() {
           </form>
         </section>
       </main>
-      <Footer title="Macie lokal do zrobienia?" text="Wyślijcie rzuty albo zdjęcia, odpiszę z wyceną i harmonogramem." cta={{ href: "/wycena", label: "Zapytaj o wycenę" }} />
+      <Footer title="Macie lokal do zrobienia?" text="Wyślijcie rzuty albo zdjęcia, odpiszę z wyceną i harmonogramem." cta={{ href: "/wycena", label: "Zapytaj o wycenę" }} />
     </>
   );
 }

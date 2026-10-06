@@ -15,7 +15,7 @@ export function LokalSlider({ slides }: { slides: readonly Project[] }) {
     <section className="wrap lk" aria-labelledby="b2bwork-title">
       <div className="sec-row">
         <div className="sec-head">
-          <h2 className="h2" id="b2bwork-title">Realizacje w lokalach</h2>
+          <h2 className="h2" id="b2bwork-title">Realizacje w lokalach</h2>
         </div>
         <div className="aud__ctrl">
           <button type="button" className="btn btn--soft btn--icon" aria-label="Poprzednia realizacja" onClick={() => go(-1)}><Chevron dir="left" /></button>

@@ -5,7 +5,7 @@ import { WorkGrid } from "./WorkGrid";
 
 export const metadata: Metadata = {
   title: "Realizacje",
-  description: "Tapetowanie salonów, sypialni, łazienek, kuchni i lokali. Zobacz, jak wyglądają ściany po skończonej pracy.",
+  description: "Tapetowanie salonów, sypialni, łazienek, kuchni i lokali. Zobacz, jak wyglądają ściany po skończonej pracy.",
 };
 
 export default function RealizacjePage() {
@@ -15,14 +15,14 @@ export default function RealizacjePage() {
         <section className="phero">
           <div className="grid12 phero__top">
             <h1 className="h-display">Ściany, które już stoją.</h1>
-            <p>Każda realizacja z opisem materiału i zakresu prac. Zdjęcia zastępcze ze stocku, do podmiany na zdjęcia klienta.</p>
+            <p>Każda realizacja z opisem materiału i zakresu prac. Zdjęcia zastępcze ze stocku, do podmiany na zdjęcia klienta.</p>
           </div>
           <div className="wrap" style={{ paddingInline: 0 }}>
             <WorkGrid projects={projects} />
           </div>
         </section>
       </main>
-      <Footer title="Chcesz podobną ścianę?" text="Napisz, jaki wzór Ci się podoba. Policzę rolki, sprawdzę podłoże i podam termin." />
+      <Footer title="Chcesz podobną ścianę?" text="Napisz, jaki wzór Ci się podoba. Policzę rolki, sprawdzę podłoże i podam termin." />
     </>
   );
 }
