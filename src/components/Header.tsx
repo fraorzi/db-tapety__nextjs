@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { nav, site } from "@/data/site";
 import { Arrow } from "@/components/Arrow";
+import { lockScroll } from "@/components/SmoothScroll";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -30,7 +31,9 @@ export function Header() {
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("pointerdown", onDown);
+    lockScroll(true);
     return () => {
+      lockScroll(false);
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("pointerdown", onDown);
     };
@@ -60,19 +63,17 @@ export function Header() {
 
       <div ref={bar} className="bar" data-show={shown} data-open={open} inert={!shown}>
         <div className="nav__row bar__row">{row("Główna, przypięta")}</div>
-        <div className="bar__panel" id="nav-panel" aria-hidden={!open}>
-          <div>
-            <nav aria-label="Menu">
-              <Link href="/" tabIndex={open ? 0 : -1} onClick={close} aria-current={pathname === "/" ? "page" : undefined}>Start</Link>
-              {nav.map((n) => (
-                <Link key={n.href} href={n.href} tabIndex={open ? 0 : -1} onClick={close} aria-current={pathname.startsWith(n.href) ? "page" : undefined}>{n.label}</Link>
-              ))}
-            </nav>
-            <Link href="/wycena" className="btn" tabIndex={open ? 0 : -1} onClick={close}>Bezpłatna wycena <Arrow /></Link>
-            <div className="bar__meta">
-              <a href={site.phoneHref} tabIndex={open ? 0 : -1}>{site.phone}</a>
-              <a href={site.emailHref} tabIndex={open ? 0 : -1}>{site.email}</a>
-            </div>
+        <div className="bar__panel" id="nav-panel" aria-hidden={!open} data-lenis-prevent>
+          <nav aria-label="Menu">
+            <Link href="/" tabIndex={open ? 0 : -1} onClick={close} aria-current={pathname === "/" ? "page" : undefined} style={{ "--i": 0 } as React.CSSProperties}>Start</Link>
+            {nav.map((n, i) => (
+              <Link key={n.href} href={n.href} tabIndex={open ? 0 : -1} onClick={close} aria-current={pathname.startsWith(n.href) ? "page" : undefined} style={{ "--i": i + 1 } as React.CSSProperties}>{n.label}</Link>
+            ))}
+          </nav>
+          <Link href="/wycena" className="btn" tabIndex={open ? 0 : -1} onClick={close} style={{ "--i": nav.length + 1 } as React.CSSProperties}>Bezpłatna wycena <Arrow /></Link>
+          <div className="bar__meta" style={{ "--i": nav.length + 2 } as React.CSSProperties}>
+            <a href={site.phoneHref} tabIndex={open ? 0 : -1}>{site.phone}</a>
+            <a href={site.emailHref} tabIndex={open ? 0 : -1}>{site.email}</a>
           </div>
         </div>
       </div>

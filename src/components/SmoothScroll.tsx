@@ -12,6 +12,10 @@ export const scrollTo = (target: string | HTMLElement) => {
   else (typeof target === "string" ? document.querySelector(target) : target)?.scrollIntoView({ behavior: "smooth" });
 };
 
+export const lockScroll = (locked: boolean) => {
+  if (locked) lenis?.stop(); else lenis?.start();
+};
+
 export function SmoothScroll() {
   const pathname = usePathname();
 

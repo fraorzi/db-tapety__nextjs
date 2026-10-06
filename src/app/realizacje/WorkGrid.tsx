@@ -3,6 +3,7 @@
 import { Fragment, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
 import type { Project } from "@/data/projects";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 
 const ALL = "Wszystkie";
 
@@ -15,6 +16,7 @@ export function WorkGrid({ projects }: { projects: readonly Project[] }) {
     for (const p of projects) counts.set(p.room, (counts.get(p.room) ?? 0) + 1);
     return [[ALL, projects.length] as const, ...counts];
   }, [projects]);
+  const grid = useRef<HTMLDivElement>(null);
   const shown = room === ALL ? projects : projects.filter((p) => p.room === room);
 
   useLayoutEffect(() => {
@@ -27,6 +29,36 @@ export function WorkGrid({ projects }: { projects: readonly Project[] }) {
     window.addEventListener("resize", place);
     return () => window.removeEventListener("resize", place);
   }, [room]);
+
+  useGSAP(
+    () => {
+      const cards = gsap.utils.toArray<HTMLElement>(".proj");
+      cards.forEach((card) => {
+        const img = card.querySelector("img");
+        if (img) {
+          gsap.fromTo(img, { scale: 1.14, yPercent: -3 }, {
+            scale: 1.04, yPercent: 3, ease: "none",
+            scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: 0.6 },
+          });
+        }
+      });
+      ScrollTrigger.batch(cards, {
+        start: "top 88%",
+        once: true,
+        onEnter: (batch) => {
+          gsap.timeline()
+            .fromTo(batch.map((c) => c.querySelector(".pcover")), { scaleX: 1 }, { scaleX: 0, duration: 1.1, ease: "expo.inOut", stagger: 0.14 })
+            .fromTo(
+              batch.flatMap((c) => [...c.querySelectorAll("figcaption > :not(.proj__go)")]),
+              { opacity: 0, y: 8 },
+              { opacity: 1, y: 0, duration: 1, ease: "power2.out", stagger: 0.06 },
+              "-=0.5",
+            );
+        },
+      });
+    },
+    { scope: grid, dependencies: [room], revertOnUpdate: true },
+  );
 
   return (
     <>
@@ -48,11 +80,11 @@ export function WorkGrid({ projects }: { projects: readonly Project[] }) {
         ))}
         <span className="tabs__bar" ref={bar} aria-hidden="true" />
       </div>
-      <div className="pgrid" id="pgrid" role="tabpanel" key={room}>
+      <div className="pgrid" id="pgrid" role="tabpanel" key={room} ref={grid}>
         {shown.map((p, i) => (
           <ProjectCard key={p.slug} project={p} sizes="(max-width: 900px) 100vw, (max-width: 1400px) 50vw, 33vw" priority={i < 2} />
         ))}
-        {shown.length === 0 && <p className="pgrid__empty">Brak realizacji w tej kategorii.</p>}
+        {shown.length === 0 && <p className="pgrid__empty">Brak realizacji w tej kategorii.</p>}
       </div>
     </>
   );

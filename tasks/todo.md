@@ -1,3 +1,42 @@
+# Plan — runda 5 (2026-10-06, branch `feat/redesign-round-5`)
+
+## Poprawki (od razu)
+- [x] Przypięty pasek: górny odstęp minimalnie większy, dolny mniejszy (pasy pod spodem optycznie zjadają dół), desktop i mobile
+- [x] Nagłówek stopki i `h1` podstron na mobile: bez `max-width` w `ch`, żeby słowa nie lądowały po jednym w linii
+- [x] Górny padding stopki na mobile lekko mniejszy
+- [x] Overscroll pod stopką: kolor płótna (`html`) z przewinięciem, papier u góry, bakłażan u dołu
+- [x] Sierotki: twarda spacja po jednoliterowych słowach w tekstach (skrypt na AST) + reguła ESLint
+
+## Panel „Warianty” (lewy dolny róg, `localStorage` `db-preview-r5`)
+- [x] `src/preview/` odtworzony z `e2edf2e`
+- [x] `/realizacje` karta: A obecna, B–D
+- [x] `/realizacje` wejście kart (też przy zmianie taba): A obecne, B–D
+- [x] `/realizacje` hover: A obecny, B–D
+- [x] „Jak pracuję” na `/`: A obecny (jak FAQ), B–D inne niż FAQ
+- [x] Ikona menu (mobile): A obecna, B–D
+- [x] Panel menu (mobile): A obecny, B–D
+- [x] lint, tsc, build; zrzuty 1440 i 375 px, bez poziomego scrolla
+- [x] Decyzja użytkownika (2026-10-06): proces D (tonalne pasy, token `--deep-3`), ikona menu A, menu = połączenie B+C+D (jasny panel na cały ekran, panel i linki wjeżdżają z boku po kolei, bez strzałek i linii), karta C (odstęp podpisu 0.95 → 0.75rem), wejście B z delikatnym fade-in podpisu, hover C ze strzałką kończącą się na krawędzi zdjęcia. Panel i `src/preview/` usunięte.
+  - Menu w podglądzie B zostawiało tło po zamknięciu: panel miał stałą wysokość w zwijanym wierszu gridu `0fr`, więc wystawał poza wiersz. Teraz panel jest `position: absolute` pod paskiem, chowa się `transform` + `visibility` z opóźnieniem. Sprawdzone: otwarcie i zamknięcie z góry strony i po scrollu, zamknięcie po kliknięciu linku; po zamknięciu `visibility: hidden`, panel poza ekranem, scroll odblokowany.
+  - Podpis w wejściu B nie miał fade-in, bo przy karcie C `figcaption` ma `display: contents` (opacity na nim nie działa). Animowane są dzieci podpisu.
+
+## `/dla-firm` (dopisane 2026-10-06), panel „Warianty” znowu włączony (`db-preview-r5b`)
+- [x] „Realizacje w lokalach” na mobile niższe o 30 px (`.lkp` 26rem → `calc(26rem - 30px)`, zdjęcie traci po 15 px z góry i dołu względem proporcji)
+- [x] Warianty slidera: A obecny, B rozmycie następnej, C zdjęcie osiada w kadrze + podpis od dołu, D szarość + wysunięcie na hover
+- [x] Warianty „Od zapytania do faktury”: A odstęp 3 px, B–D zakładka 0.625rem z miękkim cieniem / twardym cieniem / jasną krawędzią (na mobile w pionie)
+- [x] Decyzja użytkownika (2026-10-06): slider D (szarość, hover tylko desktop), schody B (zakładka z miękkim cieniem). Panel i `src/preview/` usunięte.
+- [x] `.lkp` `overflow: hidden` → `clip`: kontener dało się przewinąć programowo (np. wyszukiwanie na stronie trafiające w podpis ukrytego slajdu przesuwało cały kadr; odtworzone, `scrollLeft` 104 → 0)
+
+### Review
+- Pasek po scrollu: `padding-block: 0.85rem 0.55rem` (było 0.7rem), na obu szerokościach.
+- Nagłówki na mobile: przyczyną był `max-width` w `ch` (12ch w stopce, 13ch w `h1` podstron). Na ≤900 px `none`. 375 px: „Chcesz podobną | ścianę?”, „Pięć etapów. Każdy | kończy się czymś, co | możesz sprawdzić.”
+- Stopka mobile: górny padding `clamp(4rem, 10vh, 5.5rem)` zamiast `clamp(5rem, 14vh, 9rem)` (na 812 px: 81 zamiast 114 px).
+- Overscroll: `html` ma tło z animacji przewijania (`animation-timeline: scroll(root)`): do połowy strony papier, dalej bakłażan; bez wsparcia bakłażan. Sprawdzone w Chromium i WebKit (góra papier, dół bakłażan na 3 stronach).
+- Sierotki: 193 twarde spacje po jednoliterowych słowach (skrypt po AST TS: tylko literały i tekst JSX). Reguła `no-restricted-syntax` w `eslint.config.mjs` łapie nowe przypadki w `.ts` i `.tsx`.
+- `/realizacje`: wejście kart liczy teraz `WorkGrid` (też po zmianie taba; wcześniej po zmianie taba karty traciły odsłonięcie i paralaksę, bo `ScrollMotion` odpala się tylko przy zmianie ścieżki). `data-reveal` zdjęte z `ProjectCard`, keyframe `pin` usunięty.
+- lint, tsc, build OK; 1440 i 375 px bez poziomego scrolla we wszystkich wariantach. W konsoli tylko błąd CORS skryptu react-scan z unpkg (dev, zastany).
+
+
 # Plan — kontener szerokości (2026-10-05, branch `feat/layout-container`)
 
 Tła sekcji, pasy, hero z wideo i paski nawigacji zostają na całą szerokość. Ograniczona jest tylko treść: boczny padding rośnie, gdy ekran jest szerszy niż kontener.

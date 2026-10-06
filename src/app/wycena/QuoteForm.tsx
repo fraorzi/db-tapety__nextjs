@@ -4,8 +4,8 @@ import { useState, type FormEvent } from "react";
 import { Arrow } from "@/components/Arrow";
 
 const kinds = ["Mieszkanie", "Dom", "Lokal / biuro", "Inwestycja (kilka lokali)"] as const;
-const works = ["Tapetowanie", "Przygotowanie ścian", "Fototapeta na wymiar", "Dobór i zamówienie tapety", "Zdjęcie starej tapety"] as const;
-const timing = ["Jak najszybciej", "W ciągu 1–3 miesięcy", "Później, orientuję się"] as const;
+const works = ["Tapetowanie", "Przygotowanie ścian", "Fototapeta na wymiar", "Dobór i zamówienie tapety", "Zdjęcie starej tapety"] as const;
+const timing = ["Jak najszybciej", "W ciągu 1–3 miesięcy", "Później, orientuję się"] as const;
 
 type Errors = Partial<Record<"name" | "contact" | "kind" | "consent", string>>;
 type Status = "idle" | "sending" | "done";
@@ -22,7 +22,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
     const next: Errors = {};
     if (!String(fd.get("name") ?? "").trim()) next.name = "Podaj imię, żebym wiedział, jak się zwracać.";
     if (!String(fd.get("contact") ?? "").trim()) next.contact = "Potrzebuję telefonu albo e-maila, żeby odpisać.";
-    if (!fd.get("kind")) next.kind = "Zaznacz, o jaki rodzaj miejsca chodzi.";
+    if (!fd.get("kind")) next.kind = "Zaznacz, o jaki rodzaj miejsca chodzi.";
     if (!fd.get("consent")) next.consent = "Bez zgody nie mogę przetworzyć wiadomości.";
     setErrors(next);
     if (Object.keys(next).length) {
@@ -38,7 +38,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
     return (
       <div className="fdone" role="status">
         <h2 className="h2">Dziękuję, mam Twoją wiadomość.</h2>
-        <p>Odpiszę z orientacyjnym kosztem i propozycją terminu oględzin. Jeśli dołączyłeś zdjęcia, obejrzę je przed kontaktem.</p>
+        <p>Odpiszę z orientacyjnym kosztem i propozycją terminu oględzin. Jeśli dołączyłeś zdjęcia, obejrzę je przed kontaktem.</p>
         <p className="small">To makieta — formularz nie został jeszcze podpięty do wysyłki.</p>
       </div>
     );
@@ -67,7 +67,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
       </fieldset>
 
       <fieldset className="fset">
-        <legend>Co i gdzie</legend>
+        <legend>Co i gdzie</legend>
         <div className="field" data-invalid={!!errors.kind}>
           <label>Rodzaj miejsca</label>
           <div className="chips" role="radiogroup" aria-describedby={errors.kind ? "q-kind-err" : undefined}>
@@ -116,7 +116,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
           >
             <input id="q-files" type="file" name="files" accept="image/*" multiple onChange={(e) => setFiles(Array.from(e.target.files ?? []).map((f) => f.name))} />
             <span className="ulink">Dodaj zdjęcia</span>
-            <p>Przeciągnij tutaj albo kliknij. Najlepiej w dziennym świetle, z widoczną całą ścianą.</p>
+            <p>Przeciągnij tutaj albo kliknij. Najlepiej w dziennym świetle, z widoczną całą ścianą.</p>
             {files.length > 0 && <ul aria-label="Wybrane pliki">{files.map((f) => <li key={f}>{f}</li>)}</ul>}
           </div>
         </div>
@@ -125,7 +125,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
       <div className="field" data-invalid={!!errors.consent}>
         <label className="consent">
           <input type="checkbox" name="consent" aria-describedby={errors.consent ? "q-consent-err" : undefined} />
-          <span>Zgadzam się na kontakt w sprawie wyceny. Dane służą tylko do odpowiedzi na tę wiadomość.</span>
+          <span>Zgadzam się na kontakt w sprawie wyceny. Dane służą tylko do odpowiedzi na tę wiadomość.</span>
         </label>
         {errors.consent && <p className="err" id="q-consent-err">{errors.consent}</p>}
       </div>

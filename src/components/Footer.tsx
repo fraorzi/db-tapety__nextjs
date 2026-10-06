@@ -6,7 +6,7 @@ type Props = { title?: string; text?: string; cta?: { href: string; label: strin
 
 export function Footer({
   title = "Masz ścianę do zrobienia?",
-  text = "Wyślij zdjęcie i wymiary, odpiszę z orientacyjnym kosztem i terminem oględzin.",
+  text = "Wyślij zdjęcie i wymiary, odpiszę z orientacyjnym kosztem i terminem oględzin.",
   cta = { href: "/wycena", label: "Bezpłatna wycena" },
 }: Props) {
   return (
