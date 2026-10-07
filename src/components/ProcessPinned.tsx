@@ -111,7 +111,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
             <ol className="pc__list">
               {steps.map((s, i) => (
                 <li className="pc__item" data-step key={s.title}>
-                  <h3><button type="button" aria-expanded={i === 0} aria-controls={`${id}-step-${i}`}>{s.title}</button></h3>
+                  <h3><button type="button" aria-expanded={i === 0} aria-controls={`${id}-step-${i}`}>{s.title}<span className="pc__icon" aria-hidden="true" /></button></h3>
                   <div className="pc__more" id={`${id}-step-${i}`}><div><p>{s.text}</p></div></div>
                 </li>
               ))}
