@@ -19,9 +19,6 @@ export function Services() {
           </li>
         ))}
       </ul>
-      <div className="spec__foot">
-        <span>Tapetę możesz kupić sam albo zamówię ją za Ciebie.</span>
-      </div>
     </section>
   );
 }

@@ -262,7 +262,6 @@
   .spec__img img { transform: translateX(101%); transition: transform 800ms var(--ease); }
   .spec__row:hover h3 { transform: translateX(0.75rem); }
   .spec__row:hover .spec__img > div, .spec__row:hover .spec__img img { transform: none; }
-  .spec__foot { display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; padding-top: 1.25rem; color: var(--muted); font-size: 0.9375rem; }
 
   /* realizacje — strona główna */
   .media { overflow: hidden; background: var(--paper-2); position: relative; }
