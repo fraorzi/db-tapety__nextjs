@@ -2,23 +2,23 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { Archivo, Instrument_Sans } from "next/font/google";
-import "./globals.css";
-import { Header } from "@/components/Header";
-import { SmoothScroll } from "@/components/SmoothScroll";
-import { ScrollMotion } from "@/components/ScrollMotion";
+import "@/styles/globals.css";
+import { Header } from "@/components/layout/Header";
+import { ScrollMotion } from "@/components/motion/ScrollMotion";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { site } from "@/data/site";
 
 const display = Archivo({
   subsets: ["latin", "latin-ext"],
   axes: ["wdth"],
-  variable: "--font-display",
+  variable: "--font-archivo",
   display: "swap",
 });
 
 const body = Instrument_Sans({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500"],
-  variable: "--font-body",
+  variable: "--font-instrument",
   display: "swap",
 });
 

@@ -1,0 +1,48 @@
+/* Style elementów HTML. Reset robi preflight Tailwinda; tu tylko to, co jest decyzją projektu. */
+@layer base {
+  html, body { overflow-x: clip; }
+
+  /* płótno pod stroną przy overscrollu: papier u góry, bakłażan u dołu */
+  html { background: var(--color-deep); }
+  @supports (animation-timeline: scroll()) {
+    html { animation: canvas linear both; animation-timeline: scroll(root); }
+  }
+  @keyframes canvas {
+    0%, 50% { background-color: var(--color-paper); }
+    50.01%, 100% { background-color: var(--color-deep); }
+  }
+
+  /* Lenis */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  html.lenis-stopped { overflow: hidden; }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img, video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  fieldset { min-width: 0; }
+  button { cursor: pointer; }
+  summary { list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 78%;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+
+  /* Kolor obrysu fokusu dziedziczy się z --focus: ciemne sekcje (tone-deep) ustawiają jasny. */
+  :focus-visible { outline: 2px solid var(--focus, var(--color-accent)); outline-offset: 3px; }
+}

@@ -1,0 +1,14 @@
+/* Hallmark · genre: editorial · design-system: design.md · designed-as-app
+ * families: Photographic (/) · Portfolio Grid (/realizacje) · Split Studio (/dla-firm) · Feature Stack (/jak-pracuje)
+ * nav: top bar + fixed aubergine bar · footer: Ft1 mast-headed (cropped wordmark) · theme: custom, square (stone paper · aubergine primary · Archivo condensed + Instrument Sans)
+ *
+ * Wejście stylów. Kolejność ma znaczenie:
+ *   theme.css      tokeny (@theme): kolory, typografia, odstępy, breakpointy, cienie
+ *   base.css       style elementów HTML (@layer base)
+ *   utilities.css  własne utility i warianty, których Tailwind nie ma (pasy, ton ciemny, strzałka…)
+ * Wszystko inne to klasy Tailwinda w komponentach.
+ */
+@import "tailwindcss";
+@import "./theme.css";
+@import "./base.css";
+@import "./utilities.css";

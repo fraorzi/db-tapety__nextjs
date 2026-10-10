@@ -1,6 +1,6 @@
 # Design — Damian Bożyk · tapetowanie
 
-Zablokowany system designu dla całej witryny. Każda zmiana strony czyta ten plik; rozszerzaj go zamiast wymyślać per strona. Źródło wartości: `src/app/globals.css` (`:root`).
+Zablokowany system designu dla całej witryny. Każda zmiana strony czyta ten plik; rozszerzaj go zamiast wymyślać per strona. Źródło wartości: `src/styles/theme.css` (`@theme`; token `--color-paper` daje klasę `bg-paper` itd., niżej skróty bez prefiksu `--color-`).
 
 ## Genre
 
@@ -45,13 +45,13 @@ Metafora: ściana po gruntowaniu + bakłażan jako kolor główny (przyciski, pa
 
 - **Kwadratowo**: zero zaokrągleń na całej stronie (przyciski, pola, chipy, taby, karty, obrazy, kropki). Decyzja użytkownika 2026-10-04, zastąpiła squircle.
 - Przyciski: wypełnione (`accent` / `ink` / `paper-2`). Główny (`accent`) ma jasną ramkę 3 px w `--frame-out` na zewnątrz, jak zdjęcia w `Frame`; pozostałe bez obrysu. Focus głównego: `outline` 2 px z odstępem 6 px, reszty: wewnętrzny ring.
-- Ikony i separatory nigdy jako znaki: proste kształty jako `span`/`div` w CSS (separator w tekście: kwadrat `.sep` 0.22em), złożone jako SVG. Strzałka (`Arrow`): cienka linia z grotem; przy hoverze linku/przycisku trzonek się wydłuża, a grot jedzie za nim o ok. 6 px (zapas mieści się w paddingu, nie dotyka krawędzi). Slidery: cienkie szewrony (`Chevron`), na hover przesuwają się o ok. 2 px w swoją stronę.
+- Ikony i separatory nigdy jako znaki: proste kształty jako `span`/`div` (separator w tekście: kwadrat `Separator` 0.22em), złożone jako SVG. Strzałka (`Arrow`): cienka linia z grotem; przy hoverze linku/przycisku trzonek się wydłuża, a grot jedzie za nim o ok. 6 px (zapas mieści się w paddingu, nie dotyka krawędzi). Slidery: cienkie szewrony (`Chevron`), na hover przesuwają się o ok. 2 px w swoją stronę.
 - Nagłówki sekcji: pojedyncza kolumna, bez eyebrow.
 - Bez numeracji list i bez pasków postępu. Jedyny wyjątek: licznik `02 / 05` na wideo w `/jak-pracuje` (pięć etapów po ekranie każdy, bez niego łatwo się zgubić). Kolejność pokazują układ i stan aktywny, nie cyfry.
 - Obrazy: kwadratowe krawędzie. Hairline `--rule` tylko w spec sheet / FAQ.
 - Nav: **Top bar + przypięty pasek** — u góry zwykły pasek (`position: absolute`), który odjeżdża z treścią. Po przewinięciu ~60 % ekranu z góry zjeżdża przypięty pasek o tym samym układzie (marka · linki · CTA), ale bakłażanowy (`--deep`), z jasnym CTA i pasami tonalnymi pod spodem. Na mobile układ też jak u góry: marka + „Menu” (dwie linie → krzyżyk); „Menu” otwiera jasny panel (`--paper`) na resztę ekranu pod paskiem i jego pasami: panel wjeżdża z boku, za nim kolejno linki, CTA i kontakt (bez strzałek i linii między linkami). Scroll strony zablokowany (`lockScroll`), Escape i klik poza zamykają.
 - **Podwójna ramka tonalna** (`Frame`): `--frame-out` → `--frame-in` → obraz, po 5 px. Tylko jako wyróżnik: zdjęcie główne w `/realizacje/[slug]`, sticky wideo w `/jak-pracuje`, wideo procesu na `/`. Nie na kartach w siatkach.
-- **Pasy tonalne** (`.bands-t` / `.bands-b`): dwa pasy po 8 px (6 px na mobile) na krawędzi sekcji, schodek tonów między jasnym a bakłażanem — jak brzeg kolejnego pasa tapety. Sekcja pod hero, proces na `/`, przebieg zlecenia w `/dla-firm`, stopka, spód przypiętego paska.
+- **Pasy tonalne** (`bands-t` / `bands-b` / `bands-y` w `utilities.css`): dwa pasy po 8 px (6 px na mobile) na krawędzi sekcji, schodek tonów między jasnym a bakłażanem — jak brzeg kolejnego pasa tapety. Sekcja pod hero, proces na `/`, przebieg zlecenia w `/dla-firm`, stopka, spód przypiętego paska.
 - Hover karty realizacji: lekki zoom zdjęcia i strzałka przy tytule. Wypełnianie całej karty tłem odrzucone.
 - Footer: **Ft1 Mast-headed** — CTA z polem „zostaw numer” (wysyła na `/wycena?tel=`), kontakt, 4 linki, linia prawna, pod spodem wordmark w `--deep-2` na całą szerokość, ucięty dolną krawędzią.
 

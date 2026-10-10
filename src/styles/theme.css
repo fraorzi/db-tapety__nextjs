@@ -1,0 +1,96 @@
+/* Tokeny systemu (opis w design.md). Każdy token daje klasy Tailwinda:
+ *   --color-paper      → bg-paper, text-paper, border-paper…
+ *   --text-h2          → text-h2 (rozmiar + interlinia + tracking)
+ *   --spacing-gutter   → px-gutter, gap-gutter, mt-gutter…
+ *   --shadow-frame     → shadow-frame
+ * Domyślne palety i skale Tailwinda są wyłączone (`initial`), żeby nie dało się sięgnąć po kolor spoza systemu.
+ */
+@theme {
+  /* kolory */
+  --color-*: initial;
+  --color-paper: oklch(94.5% 0.006 300);
+  --color-paper-2: oklch(89.5% 0.009 300);
+  --color-paper-3: oklch(84% 0.012 300);
+  --color-ink: oklch(17% 0.014 305);
+  --color-ink-2: oklch(28% 0.02 305); /* hover przycisku ink */
+  --color-muted: oklch(44% 0.016 305);
+  --color-rule: oklch(80% 0.012 300);
+  --color-accent: oklch(21% 0.045 310); /* = deep, bakłażan */
+  --color-accent-ink: oklch(30% 0.055 310); /* hover głównego przycisku */
+  --color-deep: oklch(21% 0.045 310);
+  --color-deep-2: oklch(27% 0.05 310);
+  --color-deep-3: oklch(34% 0.055 310);
+  --color-on-deep: oklch(94% 0.006 300);
+  --color-on-deep-muted: oklch(72% 0.025 305);
+  --color-on-deep-rule: oklch(34% 0.04 310);
+  --color-on-media: oklch(86% 0.01 300); /* tekst na zdjęciu/wideo */
+  --color-scrim: oklch(10% 0.02 305); /* przyciemnienie zdjęć */
+  --color-frame-out: oklch(81% 0.013 300);
+  --color-frame-in: oklch(31% 0.052 310);
+
+  /* fonty (zmienne ustawia next/font w layout.tsx) */
+  --font-display: var(--font-archivo);
+  --font-body: var(--font-instrument);
+
+  /* rozmiary tekstu; bez interlinii tam, gdzie ma zostać ta z rodzica */
+  --text-*: initial;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-md: 0.9375rem;
+  --text-base: 1rem;
+  --text-lead: clamp(1.1rem, 1.5vw, 1.35rem);
+  --text-lead--line-height: 1.4;
+  --text-h3: clamp(1.3rem, 1.8vw, 1.7rem);
+  --text-h3--line-height: 1.12;
+  --text-h3--letter-spacing: -0.02em;
+  --text-h2: clamp(2rem, 3.6vw, 3.8rem);
+  --text-h2--line-height: 1;
+  --text-h2--letter-spacing: -0.02em;
+  --text-display: clamp(2.6rem, 5vw + 1rem, 5.5rem);
+  --text-display--line-height: 0.96;
+  --text-display--letter-spacing: -0.02em;
+
+  /* breakpointy: style piszemy pod desktop, `max-md:` to mobile (do 900 px) */
+  --breakpoint-*: initial;
+  --breakpoint-md: 56.3125rem; /* 901px */
+  --breakpoint-xl: 87.5rem; /* 1400px */
+
+  /* odstępy i szerokość treści */
+  --container-page: 90rem;
+  --spacing-gutter: clamp(1rem, 3.2vw, 3rem); /* odstęp kolumn i minimalny margines boczny */
+  --spacing-page: max(var(--spacing-gutter), (100% - var(--container-page)) / 2); /* margines boczny treści: px-page */
+  --spacing-section: clamp(4.5rem, 12vh, 9rem); /* pionowy oddech sekcji */
+  --spacing-section-lg: clamp(5rem, 14vh, 9rem);
+  --spacing-page-top: clamp(7rem, 18vh, 11rem); /* góra podstrony, pod paskiem nawigacji */
+  --spacing-stack: clamp(2.5rem, 7vh, 4rem); /* nagłówek sekcji → treść */
+  --spacing-stack-lg: clamp(4rem, 10vh, 7rem);
+  --spacing-band: 0.5rem; /* pas tonalny */
+  --spacing-frame: 0.3125rem; /* pas podwójnej ramki */
+
+  /* cienie */
+  --shadow-frame: 0 0 0 3px var(--color-frame-out); /* jasna ramka głównego przycisku, jak przy zdjęciach */
+  --shadow-bands: 0 var(--spacing-band) 0 var(--color-deep-2), 0 calc(2 * var(--spacing-band)) 0 var(--color-paper-3);
+  --shadow-inset-ink: inset 0 0 0 2px var(--color-ink);
+  --shadow-inset-accent: inset 0 0 0 2px var(--color-accent);
+  --shadow-inset-on-deep: inset 0 0 0 2px var(--color-on-deep);
+  --shadow-inset-light: inset 0 0 0 2px var(--color-paper), inset 0 0 0 4px var(--color-accent-ink);
+  --shadow-inset-bar: inset 0 0 0 2px var(--color-deep), inset 0 0 0 4px var(--color-on-deep);
+
+  /* ruch: każda klasa transition-* bierze easing strony */
+  --ease-site: cubic-bezier(0.16, 1, 0.3, 1);
+  --default-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-faq-in: faq-in 450ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes faq-in {
+    from { opacity: 0; transform: translateY(-0.5rem); }
+  }
+}
+
+@layer base {
+  @media (width < 56.3125rem) {
+    :root { --spacing-band: 0.375rem; }
+  }
+  @media (width >= 112.5rem) {
+    :root { --container-page: 105rem; }
+  }
+}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/layout/Footer";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -12,11 +12,12 @@ export const metadata: Metadata = {
 export default function PolitykaPage() {
   return (
     <>
-      <main className="surface">
-        <article className="doc">
-          <h1 className="h-display">Polityka prywatności</h1>
-          <p className="doc__meta">Obowiązuje od <mark>dd.mm.rrrr</mark></p>
-          <div className="doc__body">
+      <main className="relative z-1 bg-paper">
+        {/* luki do uzupełnienia jako <mark> */}
+        <article className="grid grid-cols-12 gap-x-gutter gap-y-8 px-page pt-page-top pb-section-lg [&_mark]:bg-paper-2 [&_mark]:px-[0.3rem] [&_mark]:text-ink">
+          <h1 className="col-span-8 text-display max-md:col-span-full">Polityka prywatności</h1>
+          <p className="col-span-3 col-start-10 text-md text-muted max-md:col-span-full">Obowiązuje od <mark>dd.mm.rrrr</mark></p>
+          <div className="col-span-7 col-start-3 grid gap-5 max-md:col-span-full [&_h2]:mt-6 [&_h2]:text-[length:var(--text-h3)] [&_li]:max-w-[65ch] [&_li]:text-muted [&_p]:max-w-[65ch] [&_p]:text-muted [&_ul]:grid [&_ul]:list-disc [&_ul]:gap-[0.4rem] [&_ul]:pl-[1.2rem]">
             <h2>1. Administrator danych</h2>
             <p>Administratorem danych jest <mark>{site.name}, nazwa firmy, adres, NIP</mark>. Kontakt: <mark>{site.email}</mark>, <mark>{site.phone}</mark>.</p>
 

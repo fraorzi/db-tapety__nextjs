@@ -1,4 +1,11 @@
-import type { Step } from "@/components/ProcessPinned";
+export type Step = {
+  title: string;
+  text: string;
+  /** /jak-pracuje: co klient dostaje po etapie. */
+  outcome?: string;
+  /** /jak-pracuje: orientacyjny czas. */
+  time?: string;
+};
 
 // Czasy orientacyjne, do potwierdzenia z wykonawcą.
 export const processSteps: readonly Step[] = [
