@@ -262,7 +262,6 @@
   .spec__img img { transform: translateX(101%); transition: transform 800ms var(--ease); }
   .spec__row:hover h3 { transform: translateX(0.75rem); }
   .spec__row:hover .spec__img > div, .spec__row:hover .spec__img img { transform: none; }
-  .spec__foot { display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; padding-top: 1.25rem; color: var(--muted); font-size: 0.9375rem; }
 
   /* realizacje — strona główna */
   .media { overflow: hidden; background: var(--paper-2); position: relative; }
@@ -297,17 +296,24 @@
   .aud { padding-bottom: clamp(5rem, 14vh, 9rem); }
   .aud__top { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 1.5rem; }
   .aud__ctrl { display: flex; gap: 0.5rem; }
-  .aud__track { display: flex; gap: 0.5rem; height: clamp(24rem, 58vh, 32rem); }
+  /* panel animuje flex-grow (układ tylko w obrębie toru: stała wysokość + contain). Zdjęcie, gradient i tekst mają stały rozmiar
+     rozwiniętego panelu i są tylko przycinane, więc przy rozsuwaniu nic się nie przeskalowuje ani nie przełamuje na nowo. */
+  .aud__track {
+    --open: 4.2; --gap: 0.5rem;
+    display: flex; gap: var(--gap); height: clamp(24rem, 58vh, 32rem); container-type: inline-size; contain: strict;
+  }
   .aud__panel {
+    --open-w: calc((100cqw - (var(--n) - 1) * var(--gap)) * var(--open) / (var(--open) + var(--n) - 1));
     position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; background: var(--deep); color: var(--on-deep);
     text-align: left; isolation: isolate; cursor: pointer;
     transition: flex-grow 900ms var(--ease);
   }
-  .aud__panel.is-on { flex-grow: 4.2; cursor: default; }
-  .aud__panel img { position: absolute; inset: 0; z-index: -1; transform: scale(1.06); transition: transform 1.2s var(--ease), opacity 700ms var(--ease); opacity: 0.55; }
+  .aud__panel.is-on { flex-grow: var(--open); cursor: default; }
+  .aud__img { position: absolute; top: 0; bottom: 0; left: 50%; width: var(--open-w); translate: -50% 0; z-index: -1; }
+  .aud__panel img { transform: scale(1.06); transition: transform 1.2s var(--ease), opacity 700ms var(--ease); opacity: 0.55; }
   .aud__panel.is-on img { transform: none; opacity: 1; }
-  .aud__panel::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(to top, oklch(from var(--scrim) l c h / 0.78), oklch(from var(--scrim) l c h / 0.1) 60%); opacity: 0; transition: opacity 700ms var(--ease); }
-  .aud__panel.is-on::before { opacity: 1; }
+  .aud__img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, oklch(from var(--scrim) l c h / 0.78), oklch(from var(--scrim) l c h / 0.1) 60%); opacity: 0; transition: opacity 700ms var(--ease); }
+  .aud__panel.is-on .aud__img::after { opacity: 1; }
   .aud__vt {
     position: absolute; left: 50%; bottom: 1.4rem; transform: translateX(-50%) rotate(180deg); writing-mode: vertical-rl;
     font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; white-space: nowrap; z-index: 1;
@@ -316,7 +322,7 @@
   .aud__panel.is-on .aud__vt { opacity: 0; }
   .aud__body {
     position: absolute; inset: auto 0 0; z-index: 2; padding: clamp(1.4rem, 2.6vw, 2.4rem); display: grid; gap: 0.9rem; justify-items: start;
-    width: min(100%, 36rem); opacity: 0; transform: translateY(12px); transition: opacity 500ms var(--ease), transform 600ms var(--ease);
+    width: min(var(--open-w), 36rem); opacity: 0; transform: translateY(12px); transition: opacity 500ms var(--ease), transform 600ms var(--ease);
   }
   .aud__panel.is-on .aud__body { opacity: 1; transform: none; transition-delay: 250ms; }
   .aud__panel:not(.is-on) .aud__body { pointer-events: none; }
@@ -366,11 +372,11 @@
   .pf__counter { position: absolute; left: 1.4rem; bottom: 1.2rem; z-index: 2; color: var(--on-deep); font-size: 0.9375rem; display: flex; gap: 0.6rem; align-items: baseline; }
   .pf__counter .num { font-size: 2.4rem; line-height: 1; }
   .pf__steps { grid-column: 1 / span 5; }
-  .pf__step { min-height: 82vh; display: grid; align-content: center; gap: 1rem; opacity: 0.3; transition: opacity 500ms var(--ease); }
+  .pf__step { min-height: 70vh; display: grid; align-content: center; gap: 0.85rem; opacity: 0.3; transition: opacity 500ms var(--ease); }
   .pf__step.is-on { opacity: 1; }
   .pf__step h3 { font-size: clamp(1.6rem, 2.4vw, 2.3rem); }
   .pf__step > p { color: var(--muted); max-width: 42ch; }
-  .pf__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.9375rem; }
+  .pf__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; margin-top: 0.75rem; padding-top: 0.9rem; border-top: 1px solid var(--rule); font-size: 0.9375rem; }
   .pf__facts dt { color: var(--muted); margin-bottom: 0.2rem; }
   .pf__facts dd { max-width: 28ch; }
 
@@ -532,28 +538,35 @@
   .fst__step:nth-child(n + 4) { color: var(--ink); }
   .fst__step:nth-child(n + 4) p { color: var(--muted); }
 
-  /* realizacje w lokalach: aktywny kadr duży, następny wystaje z prawej */
+  /* realizacje w lokalach: aktywny kadr duży, następny wystaje z prawej. Slajd to samo zdjęcie, więc skalowanie od dolnej
+     krawędzi zostawia dół następnego kadru równo z dołem aktywnego. Podpisy w osobnym stosie pod spodem, strzałki w obrębie kadru. */
   .lk { padding-bottom: clamp(4.5rem, 12vh, 9rem); }
-  .lkp { position: relative; height: clamp(22rem, 62vh, 40rem); margin-top: clamp(2rem, 5vh, 3rem); overflow: clip; }
+  .lk__stage { position: relative; display: grid; grid-template-columns: 64% minmax(0, 1fr); margin-top: clamp(2rem, 5vh, 3rem); }
+  .lk__ctrl { position: absolute; top: 0; right: 0; z-index: 3; }
+  .lkp { grid-column: 1 / -1; position: relative; height: clamp(19rem, 58vh, 37rem); overflow: clip; }
   .lkp__slide {
-    position: absolute; top: 0; bottom: 0; left: 0; width: 64%; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 0.9rem;
+    position: absolute; inset: 0 auto 0 0; width: 64%;
     transform-origin: 0 100%; transition: transform 1s var(--ease), opacity 700ms var(--ease);
   }
-  .lkp__img { position: relative; overflow: hidden; background: var(--paper-2); }
+  .lkp__img { position: absolute; inset: 0; overflow: hidden; background: var(--paper-2); }
   .lkp__img img { transition: transform 1.2s var(--ease), filter 700ms var(--ease); }
   .lkp__slide:not([data-d="0"]) .lkp__img img { filter: grayscale(1); }
   .lkp__slide[data-d="0"] { transform: none; z-index: 2; }
   .lkp__slide[data-d="1"] { transform: translateX(calc(100% / 0.64 * 0.68)) scale(0.62); opacity: 0.7; z-index: 1; cursor: pointer; }
   .lkp__slide[data-d="2"] { transform: translateX(calc(100% / 0.64 * 1.08)) scale(0.62); opacity: 0; }
   .lkp__slide[data-d="-1"] { transform: translateX(-30%) scale(0.92); opacity: 0; pointer-events: none; }
-  .lkp__slide[data-d="1"] .lkp__cap { opacity: 0; }
   .lkp__slide[data-d="0"]:hover .lkp__img img { transform: scale(1.03); }
   /* następna w szarości; na hover nabiera koloru i wysuwa się w stronę aktywnej */
   @media (hover: hover) and (min-width: 901px) {
     .lkp__slide[data-d="1"]:hover { transform: translateX(calc(100% / 0.64 * 0.66)) scale(0.64); opacity: 1; }
     .lkp__slide[data-d="1"]:hover .lkp__img img { filter: none; }
   }
-  .lkp__cap { display: flex; justify-content: space-between; gap: 1.5rem; font-size: 0.9375rem; transition: opacity 500ms var(--ease); }
+  .lkp__caps { display: grid; padding-top: 0.9rem; }
+  .lkp__cap {
+    grid-area: 1 / 1; display: flex; justify-content: space-between; gap: 1.5rem; font-size: 0.9375rem;
+    opacity: 0; visibility: hidden; transition: opacity 400ms var(--ease), visibility 0s linear 400ms;
+  }
+  .lkp__cap[data-on="true"] { opacity: 1; visibility: visible; transition: opacity 600ms var(--ease) 250ms, visibility 0s; }
   .lkp__cap b { font-family: var(--font-display); font-weight: 600; font-stretch: 78%; font-size: 1.05rem; }
   .lkp__cap span { color: var(--muted); }
 
@@ -663,9 +676,11 @@
   .wm__more .arr { align-self: center; }
   .wm__label { padding: 0.55rem 0.75rem; font-size: 0.875rem; }
 
-  .aud__track { flex-direction: column; height: auto; }
-  .aud__panel { flex: 0 0 4rem; transition: flex-basis 800ms var(--ease); }
-  .aud__panel.is-on { flex-basis: 26rem; }
+  .aud__track { flex-direction: column; height: auto; container-type: normal; contain: layout paint; }
+  .aud__panel { --open-h: 26rem; flex: 0 0 4rem; transition: flex-basis 800ms var(--ease); }
+  .aud__panel.is-on { flex-basis: var(--open-h); }
+  .aud__img { top: 50%; bottom: auto; left: 0; width: 100%; height: var(--open-h); translate: 0 -50%; }
+  .aud__body { width: 100%; }
   .aud__vt { writing-mode: horizontal-tb; transform: none; left: 1.2rem; bottom: auto; top: 50%; translate: 0 -50%; }
   .aud__body h3 { white-space: normal; }
 
@@ -675,7 +690,7 @@
   .pf__body { grid-template-columns: minmax(0, 1fr); }
   .pf__frame { grid-column: 1; position: relative; top: auto; height: 42vh; order: -1; margin-bottom: 1rem; }
   .pf__steps { grid-column: 1; }
-  .pf__step { min-height: 0; padding-block: 3rem 1rem; opacity: 1; }
+  .pf__step { min-height: 0; padding-block: 2.25rem 0.75rem; opacity: 1; }
 
   .faq__aside, .faq__list { grid-column: 1 / span 12; }
   .cta { padding-top: clamp(4rem, 10vh, 5.5rem); }
@@ -695,8 +710,10 @@
   .fst { grid-template-columns: minmax(0, 1fr); }
   .fst__step, .fst__step + .fst__step { min-height: 0; margin-left: calc(var(--i) * 1rem); }
   .fst__step + .fst__step { margin-top: -0.25rem; padding-left: clamp(1.1rem, 1.8vw, 1.7rem); padding-top: calc(clamp(1.1rem, 1.8vw, 1.7rem) + 0.25rem); box-shadow: 0 -6px 12px -5px oklch(from var(--scrim) l c h / 0.42); }
-  /* zdjęcie 3:2 przy szerokości slajdu 84 %, plus miejsce na podpis */
-  .lkp { height: calc((100vw - 2 * var(--gutter)) * 0.84 * 2 / 3 + 5.5rem); }
+  /* zdjęcie 3:2 przy szerokości slajdu 84 %; strzałki obok podpisu, pod następnym kadrem */
+  .lk__stage { grid-template-columns: minmax(0, 1fr) auto; column-gap: 1rem; }
+  .lk__ctrl { position: static; margin-top: 0.9rem; }
+  .lkp { height: calc((100vw - 2 * var(--gutter)) * 0.84 * 2 / 3); }
   .lkp__slide { width: 84%; }
   .lkp__slide[data-d="1"] { transform: translateX(calc(100% / 0.84 * 0.88)) scale(0.62); }
   .lkp__cap { flex-direction: column; gap: 0.2rem; }

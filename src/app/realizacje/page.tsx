@@ -14,8 +14,8 @@ export default function RealizacjePage() {
       <main className="surface">
         <section className="phero">
           <div className="grid12 phero__top">
-            <h1 className="h-display">Ściany, które już stoją.</h1>
-            <p>Każda realizacja z opisem materiału i zakresu prac. Zdjęcia zastępcze ze stocku, do podmiany na zdjęcia klienta.</p>
+            <h1 className="h-display">Gotowe ściany.</h1>
+            <p>Mieszkania, domy i lokale. Przy każdej realizacji opis materiału i tego, co trzeba było zrobić ze ścianą.</p>
           </div>
           <div className="wrap" style={{ paddingInline: 0 }}>
             <WorkGrid projects={projects} />

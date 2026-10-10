@@ -1,4 +1,4 @@
-// Dane firmy — do uzupełnienia przez klienta. Każdy placeholder jest widoczny na stronie.
+// Dane firmy do uzupełnienia przez klienta. Telefon i e-mail są widocznymi placeholderami; region trafia tylko do JSON-LD (nie jest wyświetlany).
 export const site = {
   name: "Damian Bożyk",
   tagline: "Tapetowanie wnętrz",
@@ -11,7 +11,6 @@ export const site = {
   email: "kontakt@•••••.pl",
   emailHref: "mailto:",
   region: "Region do uzupełnienia",
-  regionNote: "Dojazd do klienta — zasięg do potwierdzenia.",
 } as const;
 
 export const nav = [

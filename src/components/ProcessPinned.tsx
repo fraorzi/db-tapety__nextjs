@@ -135,7 +135,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
           {intro && <p>{intro}</p>}
         </div>
       </div>
-      <div className="grid12 pf__body" style={{ marginTop: "clamp(2.5rem, 7vh, 4rem)" }}>
+      <div className="grid12 pf__body" style={{ marginTop: "clamp(2rem, 5vh, 3rem)" }}>
         <ol className="pf__steps">
           {steps.map((s) => (
             <li className="pf__step" data-step key={s.title}>
@@ -158,7 +158,7 @@ export function ProcessPinned({ title, intro, steps, videos, cta, id = "proces",
         </Frame>
       </div>
       {cta && (
-        <div className="grid12" style={{ marginTop: "clamp(2rem, 6vh, 3.5rem)" }}>
+        <div className="grid12" style={{ marginTop: "clamp(1.5rem, 4vh, 2.5rem)" }}>
           <div style={{ gridColumn: "1 / span 5" }}>
             <Link href={cta.href} className="btn">{cta.label} <Arrow /></Link>
           </div>

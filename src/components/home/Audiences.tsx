@@ -23,19 +23,18 @@ export function Audiences() {
       <div className="aud__top">
         <div className="sec-head">
           <h2 className="h2" id="aud-title">Dla kogo pracuję</h2>
-          <p>Wybierz, co jest najbliżej Twojej sytuacji.</p>
         </div>
         <div className="aud__ctrl">
           <button type="button" className="btn btn--soft btn--icon" aria-label="Poprzedni" onClick={() => go(-1)}><Chevron dir="left" /></button>
           <button type="button" className="btn btn--soft btn--icon" aria-label="Następny" onClick={() => go(1)}><Chevron dir="right" /></button>
         </div>
       </div>
-      <div className="aud__track">
+      <div className="aud__track" style={{ "--n": n } as React.CSSProperties}>
         {audiences.map((a, i) => {
           const on = i === active;
           return (
             <article key={a.t} className={on ? "aud__panel is-on" : "aud__panel"}>
-              <Image src={a.img} alt="" fill sizes="(max-width: 900px) 100vw, 60vw" priority={i === 0} />
+              <span className="aud__img" aria-hidden="true"><Image src={a.img} alt="" fill sizes="(max-width: 900px) 100vw, 60vw" priority={i === 0} /></span>
               <button
                 ref={(el) => { buttons.current[i] = el; }}
                 type="button"

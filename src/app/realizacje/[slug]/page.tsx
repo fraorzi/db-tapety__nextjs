@@ -41,8 +41,6 @@ export default async function ProjectPage({ params }: Params) {
             <div><dt>Zakres</dt><dd>{p.scope}</dd></div>
             <div><dt>Materiał</dt><dd>{p.material}</dd></div>
             <div><dt>Pomieszczenie</dt><dd>{p.room}</dd></div>
-            <div><dt>Miejsce</dt><dd>{p.place}</dd></div>
-            <div><dt>Czas pracy</dt><dd>Do uzupełnienia</dd></div>
           </dl>
 
           <div className="grid12 pbody">

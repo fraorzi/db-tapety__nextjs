@@ -59,7 +59,7 @@ export default function HomePage() {
         <ProcessPinned
           variant="compact"
           title="Jak pracuję"
-          intro="Cztery etapy, które decydują o tym, czy tapeta wygląda dobrze po pięciu latach."
+          intro="Najwięcej czasu idzie na przygotowanie ściany. Od niego zależy, jak tapeta będzie wyglądać za kilka lat."
           steps={processShort}
           videos={videos.process}
           cta={{ href: "/jak-pracuje", label: "Cały proces krok po kroku" }}

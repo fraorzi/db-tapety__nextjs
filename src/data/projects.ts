@@ -9,7 +9,6 @@ export type Project = {
   category: ProjectCategory;
   material: string;
   scope: string;
-  place: string;
   cover: string;
   alt: string;
   gallery: readonly [string, string, string];
@@ -17,8 +16,9 @@ export type Project = {
   body: readonly string[];
 };
 
-// TODO(media, wymagane): wszystkie zdjęcia i opisy w tym pliku to stock (Unsplash) i przykładowe teksty przedstawione jako realizacje klienta.
-// Przed publikacją wymienić na zdjęcia prawdziwych realizacji albo ukryć /realizacje — cudza praca pokazana jako własna wprowadza klientów w błąd.
+// TODO(media, wymagane): wszystkie zdjęcia i opisy w tym pliku to stock (Unsplash) i przykładowe teksty przedstawione jako realizacje klienta.
+// Przed publikacją wymienić na zdjęcia prawdziwych realizacji albo ukryć /realizacje: cudza praca pokazana jako własna wprowadza klientów w błąd.
+// Do uzupełnienia przy prawdziwych realizacjach: miejscowość i czas pracy (pola usunięte z widoku, żeby nie pokazywać placeholderów).
 export const projects: readonly Project[] = [
   {
     slug: "salon-ciemna-dzungla",
@@ -27,7 +27,6 @@ export const projects: readonly Project[] = [
     category: "Mieszkanie",
     material: "Flizelina, wzór z raportem 64 cm",
     scope: "Przygotowanie ściany, tapetowanie jednej ściany",
-    place: "Miejscowość do uzupełnienia",
     cover: unsplash("photo-1602364557801-8908351b0c7e", 1800),
     alt: "Salon z ciemną tapetą w tropikalne liście",
     gallery: [
@@ -35,7 +34,7 @@ export const projects: readonly Project[] = [
       unsplash("photo-1559508551-44bff1de756b", 1600),
       unsplash("photo-1676454894072-fcb03c419cfa", 1600),
     ],
-    statement: "Duży wzór na jednej ścianie. Liczy się, żeby liście przechodziły przez łączenia bez skoku.",
+    statement: "Duży wzór na jednej ścianie. Najważniejsze, żeby liście przechodziły przez łączenia bez przesunięcia.",
     body: [
       "Ściana za sofą, cała szerokość salonu. Stara farba trzymała się dobrze, więc wystarczyło zmyć, zagruntować i wyrównać dwa miejsca po kołkach.",
       "Przy wzorze z dużym raportem najwięcej odpadu idzie na dopasowanie. Policzyłem rolki z zapasem na jeden pełny raport na pas, resztę klient oddał do sklepu.",
@@ -48,7 +47,6 @@ export const projects: readonly Project[] = [
     category: "Mieszkanie",
     material: "Winyl na flizelinie, odporny na wilgoć",
     scope: "Gruntowanie, tapetowanie strefy nad umywalką",
-    place: "Miejscowość do uzupełnienia",
     cover: unsplash("photo-1759262151424-7b8ed20a31a6", 1200),
     alt: "Łazienka z tapetą botaniczną",
     gallery: [
@@ -56,7 +54,7 @@ export const projects: readonly Project[] = [
       unsplash("photo-1577083165633-14ebcdb0f658", 1600),
       unsplash("photo-1629772702080-6729491cbad5", 1600),
     ],
-    statement: "Tapeta w łazience działa, jeśli dobierze się materiał do wilgoci i zamknie krawędzie.",
+    statement: "Tapeta w łazience wytrzyma, jeśli materiał jest odporny na wilgoć, a krawędzie dobrze zabezpieczone.",
     body: [
       "Fragment ściany nad umywalką i lustrem, poza strefą bezpośredniego zalewania. Winyl na flizelinie, krawędzie zabezpieczone przy fugach.",
       "Pod tapetą stary tynk po płytkach: dwie warstwy szpachli, szlif, grunt. Bez tego każde wgłębienie byłoby widać pod połyskiem.",
@@ -69,7 +67,6 @@ export const projects: readonly Project[] = [
     category: "Dom",
     material: "Flizelina zmywalna",
     scope: "Tapetowanie ściany jadalnianej, docinki przy listwach",
-    place: "Miejscowość do uzupełnienia",
     cover: unsplash("photo-1676454894072-fcb03c419cfa", 1200),
     alt: "Półka na tle ciemnej tapety w kwiaty",
     gallery: [
@@ -90,7 +87,6 @@ export const projects: readonly Project[] = [
     category: "Mieszkanie",
     material: "Papier gładki, wzór pionowy",
     scope: "Przygotowanie czterech ścian, tapetowanie całego pokoju",
-    place: "Miejscowość do uzupełnienia",
     cover: unsplash("photo-1780672823896-fc266a8d5ecb", 1600),
     alt: "Sypialnia z tapetą w delikatne pionowe pasy",
     gallery: [
@@ -111,7 +107,6 @@ export const projects: readonly Project[] = [
     category: "Lokal",
     material: "Fototapeta na flizelinie, druk na wymiar",
     scope: "Pomiar pod druk, przygotowanie ściany, montaż poza godzinami otwarcia",
-    place: "Miejscowość do uzupełnienia",
     cover: unsplash("photo-1559508551-44bff1de756b", 2200),
     alt: "Zielony fotel na tle tapety z roślinami",
     gallery: [
@@ -132,7 +127,6 @@ export const projects: readonly Project[] = [
     category: "Dom",
     material: "Flizelina, wzór drobny",
     scope: "Tapetowanie górnej części ściany nad boazerią",
-    place: "Miejscowość do uzupełnienia",
     cover: unsplash("photo-1780672823983-6ab83c017906", 1200),
     alt: "Tapeta w gałązki nad białą boazerią",
     gallery: [
@@ -140,7 +134,7 @@ export const projects: readonly Project[] = [
       unsplash("photo-1780672823896-fc266a8d5ecb", 1600),
       unsplash("photo-1577083165633-14ebcdb0f658", 1600),
     ],
-    statement: "Tapeta spotyka się z listwą boazerii. Ta krawędź decyduje, czy całość wygląda na zrobioną.",
+    statement: "Tapeta styka się z listwą boazerii. Od tej krawędzi zależy, czy całość wygląda porządnie.",
     body: [
       "Górna część ściany w przedpokoju, ponad boazerią montowaną przez stolarza. Docinka na styk z listwą, bez silikonu i bez szczeliny.",
       "Drobny wzór, więc mało odpadu. Cztery ściany zrobione w jeden dzień.",

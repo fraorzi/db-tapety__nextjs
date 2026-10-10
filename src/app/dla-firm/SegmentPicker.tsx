@@ -12,7 +12,6 @@ export function SegmentPicker() {
       <div className="dip__text">
         <div className="sec-head">
           <h2 className="h2" id="seg-title">Z kim pracuję</h2>
-          <p>Wybierz, co jest Wam najbliższe.</p>
         </div>
         <div className="seg" role="tablist" aria-label="Rodzaje klientów biznesowych">
           {segments.map((s, i) => (

@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { services } from "@/data/home";
-import { site } from "@/data/site";
 
 export function Services() {
   return (
     <section className="surface spec wrap bands-t" aria-labelledby="spec-title">
       <div className="spec__head">
-        <h2 className="h2" id="spec-title">Jedna osoba. Od pomiaru do ostatniego docięcia.</h2>
-        <p>Nie podzlecam. Ten sam człowiek mierzy, przygotowuje ścianę, kładzie i sprząta, więc nikt nie zwala winy na „poprzednią ekipę”.</p>
+        <h2 className="h2" id="spec-title">Wszystko robię sam, od pomiaru do sprzątania.</h2>
+        <p>Nie podzlecam pracy innym ekipom. Ta sama osoba mierzy, przygotowuje ścianę, kładzie tapetę i sprząta, więc wiesz, kto odpowiada za efekt.</p>
       </div>
       <ul className="spec__list">
         {services.map((s) => (
@@ -20,10 +19,6 @@ export function Services() {
           </li>
         ))}
       </ul>
-      <div className="spec__foot">
-        <span>Zasięg: {site.region}. {site.regionNote}</span>
-        <span>Materiał Twój albo zamówiony przeze mnie.</span>
-      </div>
     </section>
   );
 }

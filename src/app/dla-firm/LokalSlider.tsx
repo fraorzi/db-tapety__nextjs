@@ -10,45 +10,51 @@ export function LokalSlider({ slides }: { slides: readonly Project[] }) {
   const [active, setActive] = useState(0);
   const n = slides.length;
   const go = (d: number) => setActive((x) => (x + d + n) % n);
+  const offset = (i: number) => {
+    const d = i - active;
+    return d > n / 2 ? d - n : d < -n / 2 ? d + n : d;
+  };
 
   return (
     <section className="wrap lk" aria-labelledby="b2bwork-title">
-      <div className="sec-row">
-        <div className="sec-head">
-          <h2 className="h2" id="b2bwork-title">Realizacje w lokalach</h2>
+      <div className="sec-head">
+        <h2 className="h2" id="b2bwork-title">Realizacje w lokalach</h2>
+      </div>
+      <div className="lk__stage">
+        <div className="lkp">
+          {slides.map((p, i) => {
+            const d = offset(i);
+            return (
+              <Link
+                key={p.slug}
+                href={`/realizacje/${p.slug}`}
+                className="lkp__slide"
+                data-d={Math.max(-1, Math.min(2, d))}
+                tabIndex={d === 0 ? 0 : -1}
+                aria-hidden={d !== 0}
+                onClick={(e) => {
+                  if (d === 0) return;
+                  e.preventDefault();
+                  go(d);
+                }}
+              >
+                <div className="lkp__img"><Image src={p.cover} alt={p.alt} fill sizes="(max-width: 900px) 90vw, 62vw" /></div>
+              </Link>
+            );
+          })}
         </div>
-        <div className="aud__ctrl">
+        <div className="lkp__caps" aria-live="polite">
+          {slides.map((p, i) => (
+            <p className="lkp__cap" key={p.slug} data-on={i === active} aria-hidden={i !== active}>
+              <b>{p.title}</b>
+              <span>{p.room}<span className="sep" aria-hidden="true" />{p.material}</span>
+            </p>
+          ))}
+        </div>
+        <div className="aud__ctrl lk__ctrl">
           <button type="button" className="btn btn--soft btn--icon" aria-label="Poprzednia realizacja" onClick={() => go(-1)}><Chevron dir="left" /></button>
           <button type="button" className="btn btn--soft btn--icon" aria-label="Następna realizacja" onClick={() => go(1)}><Chevron dir="right" /></button>
         </div>
-      </div>
-      <div className="lkp" aria-live="polite">
-        {slides.map((p, i) => {
-          let d = i - active;
-          if (d > n / 2) d -= n;
-          if (d < -n / 2) d += n;
-          return (
-            <Link
-              key={p.slug}
-              href={`/realizacje/${p.slug}`}
-              className="lkp__slide"
-              data-d={Math.max(-1, Math.min(2, d))}
-              tabIndex={d === 0 ? 0 : -1}
-              aria-hidden={d !== 0}
-              onClick={(e) => {
-                if (d === 0) return;
-                e.preventDefault();
-                go(d);
-              }}
-            >
-              <div className="lkp__img"><Image src={p.cover} alt={p.alt} fill sizes="(max-width: 900px) 90vw, 62vw" /></div>
-              <div className="lkp__cap">
-                <b>{p.title}</b>
-                <span>{p.room}<span className="sep" aria-hidden="true" />{p.material}</span>
-              </div>
-            </Link>
-          );
-        })}
       </div>
     </section>
   );
