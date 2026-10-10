@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { flow } from "@/data/b2b";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { cn } from "@/lib/cn";
+import { Heading } from "@/components/ui/Heading";
+import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 /**
@@ -31,7 +33,7 @@ export function Flow() {
   );
 
   return (
-    <section className="tone-deep bands-y px-page py-section" ref={root} aria-labelledby="flow-title">
+    <Section tone="deep" bands="both" ref={root} aria-labelledby="flow-title">
       <SectionHeading id="flow-title" title="Od zapytania do faktury" intro="Tak wygląda zlecenie od pierwszej wiadomości do rozliczenia." tone="deep" />
       <ol data-flow className="mt-stack grid grid-cols-5 items-end max-md:grid-cols-1">
         {flow.map((f, i) => (
@@ -49,11 +51,11 @@ export function Flow() {
             )}
             style={{ "--i": i, background: `color-mix(in oklch, var(--color-deep-2), var(--color-paper-3) ${i * 25}%)` } as React.CSSProperties}
           >
-            <h3 className="text-[clamp(1.15rem,1.5vw,1.4rem)]">{f.t}</h3>
+            <Heading level={3} className="text-[clamp(1.15rem,1.5vw,1.4rem)]">{f.t}</Heading>
             <p className={cn("max-w-[26ch] text-md", i < 2 ? "text-on-deep-muted" : i === 2 ? "text-on-deep" : "text-muted")}>{f.d}</p>
           </li>
         ))}
       </ol>
-    </section>
+    </Section>
   );
 }

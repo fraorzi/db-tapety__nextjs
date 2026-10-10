@@ -1,20 +1,25 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { Arrow } from "./Arrow";
 
 type Props = Omit<ComponentProps<"a">, "href"> & {
   /** Ścieżka w witrynie („/…”) → next/link; tel:, mailto: i inne → zwykłe `<a>`; bez href → `<span>`. */
   href?: string;
   /** Podkreślenie widoczne na stałe (bieżąca strona w nawigacji). */
   active?: boolean;
+  /** Strzałka za tekstem. */
+  arrow?: boolean;
   children: ReactNode;
 };
 
 /**
  * Drugorzędne CTA: tekst z cienkim podkreśleniem, które wjeżdża od lewej przy hoverze i fokusie.
- * Strzałka w środku dostaje odstęp sama: <TextLink href="/x">Dalej <Arrow /></TextLink>.
+ *   <TextLink href="/wycena">Zadaj pytanie</TextLink>
+ *   <TextLink href={a.href} arrow>Więcej</TextLink>
  */
-export function TextLink({ href, active, className, children, ...rest }: Props) {
+export function TextLink({ href, active, arrow, className, children: label, ...rest }: Props) {
+  const children = arrow ? <>{label} <Arrow /></> : label;
   const classes = cn(
     "relative inline-block w-fit font-medium whitespace-nowrap [&>svg]:ml-[0.35em]",
     "after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-500",

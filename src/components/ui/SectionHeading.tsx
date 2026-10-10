@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { Heading } from "./Heading";
 
 type Props = {
   id?: string;
@@ -14,7 +15,7 @@ type Props = {
 export function SectionHeading({ id, title, intro, tone = "paper", className }: Props) {
   return (
     <div className={cn("grid max-w-[40ch] gap-[0.9rem]", className)}>
-      <h2 className="text-h2" id={id}>{title}</h2>
+      <Heading level={2} id={id}>{title}</Heading>
       {intro && <p className={tone === "deep" ? "text-on-deep-muted" : "text-muted"}>{intro}</p>}
     </div>
   );

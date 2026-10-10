@@ -4,8 +4,10 @@ import { useRef } from "react";
 import { preload } from "react-dom";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { videos } from "@/data/site";
-import { Arrow } from "@/components/ui/Arrow";
 import { Button } from "@/components/ui/Button";
+import { Grid } from "@/components/ui/Grid";
+import { Heading } from "@/components/ui/Heading";
+import { Section } from "@/components/ui/Section";
 import { TextLink } from "@/components/ui/TextLink";
 import { VideoSources } from "@/components/ui/VideoSources";
 
@@ -47,19 +49,20 @@ export function Hero() {
   );
 
   return (
-    <section className="sticky top-0 z-0 h-svh overflow-hidden tone-deep" ref={root} aria-labelledby="hero-title">
+    <Section tone="deep" bleed spacing="none" className="sticky top-0 z-0 h-svh overflow-hidden" ref={root} aria-labelledby="hero-title">
       <div ref={media} className="absolute inset-0 will-change-transform after:absolute after:inset-0 after:bg-hero-scrim">
         <video autoPlay muted loop playsInline preload="auto" poster={videos.heroPoster} aria-hidden="true">
           <VideoSources video={videos.hero} />
         </video>
       </div>
       <div ref={veil} className="pointer-events-none absolute inset-0 bg-scrim opacity-0" aria-hidden="true" />
-      <div
+      <Grid
         ref={copy}
-        className="absolute inset-x-0 bottom-0 grid grid-cols-12 items-end gap-x-gutter gap-y-6 px-page pb-[clamp(1.75rem,5vh,3.5rem)] max-md:grid-cols-1 max-md:gap-y-5"
+        className="absolute inset-x-0 bottom-0 items-end gap-y-6 px-page pb-[clamp(1.75rem,5vh,3.5rem)] max-md:grid-cols-1 max-md:gap-y-5"
       >
-        <h1
-          className="col-span-8 text-display max-md:col-span-full max-md:text-[clamp(2.2rem,10.5vw,4rem)]"
+        <Heading
+          level={1}
+          className="col-span-8 max-md:col-span-full max-md:text-[clamp(2.2rem,10.5vw,4rem)]"
           id="hero-title"
           aria-label={lines.join(" ")}
         >
@@ -68,17 +71,17 @@ export function Hero() {
               <span className="block whitespace-nowrap" data-hero-line>{l}</span>
             </span>
           ))}
-        </h1>
+        </Heading>
         <div ref={side} className="col-span-4 col-start-9 grid justify-items-start gap-[1.4rem] max-md:col-span-full">
           <p className="max-w-[30ch] text-on-media">
             Tapetuję i przygotowuję ściany w mieszkaniach, domach i lokalach usługowych. Pomagam też dobrać i zamówić tapetę.
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Button href="/realizacje">Zobacz realizacje <Arrow /></Button>
+            <Button href="/realizacje" arrow>Zobacz realizacje</Button>
             <TextLink href="/dla-firm">Dla firm</TextLink>
           </div>
         </div>
-      </div>
-    </section>
+      </Grid>
+    </Section>
   );
 }

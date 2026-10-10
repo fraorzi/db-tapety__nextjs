@@ -3,9 +3,11 @@
 import { useRef } from "react";
 import type { Step } from "@/data/process";
 import type { Video } from "@/data/site";
-import { Arrow } from "@/components/ui/Arrow";
 import { Button } from "@/components/ui/Button";
 import { Frame } from "@/components/ui/Frame";
+import { Grid } from "@/components/ui/Grid";
+import { Heading } from "@/components/ui/Heading";
+import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProcessVideos } from "./ProcessVideos";
 import { useProcessSteps } from "./useProcessSteps";
@@ -28,9 +30,9 @@ export function ProcessFull({ title, intro, steps, videos, cta, id = "proces" }:
   useProcessSteps(root, "scroll", steps.length);
 
   return (
-    <section className="relative z-1 bg-paper px-page py-section" id={id} ref={root} aria-labelledby={`${id}-title`}>
+    <Section tone="paper" id={id} ref={root} aria-labelledby={`${id}-title`}>
       <SectionHeading id={`${id}-title`} title={title} intro={intro} />
-      <div className="relative mt-[clamp(2rem,5vh,3rem)] grid grid-cols-12 gap-x-gutter max-md:grid-cols-1">
+      <Grid className="relative mt-[clamp(2rem,5vh,3rem)] max-md:grid-cols-1">
         <ol className="col-span-5 max-md:col-span-full">
           {steps.map((s) => (
             <li
@@ -38,7 +40,7 @@ export function ProcessFull({ title, intro, steps, videos, cta, id = "proces" }:
               data-step
               key={s.title}
             >
-              <h3 className="text-[clamp(1.6rem,2.4vw,2.3rem)]">{s.title}</h3>
+              <Heading level={3} className="text-[clamp(1.6rem,2.4vw,2.3rem)]">{s.title}</Heading>
               <p className="max-w-[42ch] text-muted">{s.text}</p>
               {(s.outcome || s.time) && (
                 <dl className="mt-3 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-rule pt-[0.9rem] text-md">
@@ -61,14 +63,14 @@ export function ProcessFull({ title, intro, steps, videos, cta, id = "proces" }:
             </div>
           </div>
         </Frame>
-      </div>
+      </Grid>
       {cta && (
-        <div className="mt-[clamp(1.5rem,4vh,2.5rem)] grid grid-cols-12 gap-x-gutter">
+        <Grid className="mt-[clamp(1.5rem,4vh,2.5rem)]">
           <div className="col-span-5">
-            <Button href={cta.href}>{cta.label} <Arrow /></Button>
+            <Button href={cta.href} arrow>{cta.label}</Button>
           </div>
-        </div>
+        </Grid>
       )}
-    </section>
+    </Section>
   );
 }

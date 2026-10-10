@@ -41,8 +41,11 @@
   --text-lead: clamp(1.1rem, 1.5vw, 1.35rem);
   --text-lead--line-height: 1.4;
   --text-h3: clamp(1.3rem, 1.8vw, 1.7rem);
-  --text-h3--line-height: 1.12;
+  --text-h3--line-height: 1;
   --text-h3--letter-spacing: -0.02em;
+  --text-h4: 1.15rem;
+  --text-h4--line-height: 1;
+  --text-h4--letter-spacing: -0.02em;
   --text-h2: clamp(2rem, 3.6vw, 3.8rem);
   --text-h2--line-height: 1;
   --text-h2--letter-spacing: -0.02em;
@@ -84,6 +87,13 @@
   @keyframes faq-in {
     from { opacity: 0; transform: translateY(-0.5rem); }
   }
+}
+
+/* Zmienne liczone w komponencie (panele „dla kogo” w Audiences), wystawione jako klasy: w-panel-w, h-panel-h, gap-panel-gap. */
+@theme inline {
+  --spacing-panel-w: var(--panel-w);
+  --spacing-panel-h: var(--panel-h);
+  --spacing-panel-gap: var(--panel-gap);
 }
 
 @layer base {

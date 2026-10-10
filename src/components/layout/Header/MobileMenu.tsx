@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { nav, site } from "@/data/site";
-import { Arrow } from "@/components/ui/Arrow";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 
@@ -50,7 +49,7 @@ export function MobileMenu({ open, pathname, onNavigate }: Props) {
         })}
       </nav>
       <div className="menu-reveal mt-8 flex self-start" style={order(links.length)}>
-        <Button href="/wycena" tabIndex={tab} onClick={onNavigate}>Bezpłatna wycena <Arrow /></Button>
+        <Button href="/wycena" tabIndex={tab} onClick={onNavigate} arrow>Bezpłatna wycena</Button>
       </div>
       <div className="menu-reveal mt-auto grid gap-[0.2rem] border-t border-rule pt-4 text-sm text-muted" style={order(links.length + 1)}>
         <a href={site.phoneHref} tabIndex={tab} className="hover:text-ink">{site.phone}</a>

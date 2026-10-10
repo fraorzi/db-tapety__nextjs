@@ -11,6 +11,24 @@ type Props = {
   controls: string;
 };
 
+type TabProps = { label: string; count: number; selected: boolean; controls: string; onSelect: () => void };
+
+/** Tab z licznikiem w indeksie górnym. */
+function RoomTab({ label, count, selected, controls, onSelect }: TabProps) {
+  return (
+    <button
+      type="button"
+      role="tab"
+      className="pt-4 pb-[0.9rem] font-medium text-muted transition-colors duration-250 hover:text-ink aria-selected:text-ink"
+      aria-selected={selected}
+      aria-controls={controls}
+      onClick={onSelect}
+    >
+      {label}<span className="ml-1 align-super text-[0.7em] text-muted tabular-nums">{count}</span>
+    </button>
+  );
+}
+
 /** Taby filtrujące: tekst z licznikiem, podkreślenie 3 px przejeżdża do aktywnego (pozycja liczona tutaj). */
 export function RoomTabs({ rooms, value, onChange, controls }: Props) {
   const tabs = useRef<HTMLDivElement>(null);
@@ -31,16 +49,7 @@ export function RoomTabs({ rooms, value, onChange, controls }: Props) {
     <div className="relative mt-8 flex flex-wrap items-baseline gap-x-[1.9rem] border-b border-rule" role="tablist" aria-label="Filtruj po pomieszczeniu" ref={tabs}>
       {rooms.map(([r, c], i) => (
         <Fragment key={r}>
-          <button
-            type="button"
-            role="tab"
-            className="pt-4 pb-[0.9rem] font-medium text-muted transition-colors duration-250 hover:text-ink aria-selected:text-ink"
-            aria-selected={value === r}
-            aria-controls={controls}
-            onClick={() => onChange(r)}
-          >
-            {r}<span className="ml-1 align-super text-[0.7em] text-muted tabular-nums">{c}</span>
-          </button>
+          <RoomTab label={r} count={c} selected={value === r} controls={controls} onSelect={() => onChange(r)} />
           {i === 0 && <span className="-mx-2 h-[0.72em] w-px bg-muted" aria-hidden="true" />}
         </Fragment>
       ))}

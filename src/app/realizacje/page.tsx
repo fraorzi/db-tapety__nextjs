@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/layout/Footer";
 import { PageIntro } from "@/components/layout/PageIntro";
 import { WorkGrid } from "@/components/sections/projects/WorkGrid";
+import { Section } from "@/components/ui/Section";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
@@ -12,14 +13,14 @@ export const metadata: Metadata = {
 export default function RealizacjePage() {
   return (
     <>
-      <main className="relative z-1 bg-paper">
-        <section className="px-page pt-page-top">
+      <Section as="main" tone="paper" bleed spacing="none">
+        <Section spacing="top">
           <PageIntro title="Gotowe ściany.">
             Mieszkania, domy i lokale. Przy każdej realizacji opis materiału i tego, co trzeba było zrobić ze ścianą.
           </PageIntro>
           <WorkGrid projects={projects} />
-        </section>
-      </main>
+        </Section>
+      </Section>
       <Footer title="Chcesz podobną ścianę?" text="Napisz, jaki wzór Ci się podoba. Policzę rolki, sprawdzę podłoże i podam termin." />
     </>
   );

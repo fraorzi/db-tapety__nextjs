@@ -6,7 +6,10 @@ import { Footer } from "@/components/layout/Footer";
 import { PageIntro } from "@/components/layout/PageIntro";
 import { Arrow } from "@/components/ui/Arrow";
 import { Frame } from "@/components/ui/Frame";
+import { Grid } from "@/components/ui/Grid";
+import { Heading } from "@/components/ui/Heading";
 import { Media, MediaZoom } from "@/components/ui/Media";
+import { Section } from "@/components/ui/Section";
 import { Separator } from "@/components/ui/Separator";
 import { getProject, projects } from "@/data/projects";
 import { cn } from "@/lib/cn";
@@ -38,8 +41,8 @@ export default async function ProjectPage({ params }: Params) {
 
   return (
     <>
-      <main className="relative z-1 bg-paper">
-        <article className="px-page pt-page-top">
+      <Section as="main" tone="paper" bleed spacing="none">
+        <Section as="article" spacing="top">
           <PageIntro title={p.title}>
             {p.room}<Separator />{p.category}
           </PageIntro>
@@ -58,14 +61,14 @@ export default async function ProjectPage({ params }: Params) {
             ))}
           </dl>
 
-          <div className="mt-stack-lg grid grid-cols-12 gap-x-gutter gap-y-6">
-            <h2 className="col-span-7 max-w-[22ch] text-h2 max-md:col-span-full">{p.statement}</h2>
+          <Grid className="mt-stack-lg gap-y-6">
+            <Heading level={2} className="col-span-7 max-w-[22ch] max-md:col-span-full">{p.statement}</Heading>
             <div className="col-span-4 col-start-9 grid content-start gap-5 text-muted max-md:col-span-full">
               {p.body.map((t) => <p key={t}>{t}</p>)}
             </div>
-          </div>
+          </Grid>
 
-          <div className="mt-stack-lg grid grid-cols-12 gap-x-gutter gap-y-gutter">
+          <Grid className="mt-stack-lg gap-y-gutter">
             {p.gallery.map((src, i) => (
               <figure key={src} className={cn("group", gallery[i].figure, "max-md:col-span-full max-md:mt-0")} data-reveal="clip">
                 <Media className={gallery[i].media}>
@@ -73,17 +76,17 @@ export default async function ProjectPage({ params }: Params) {
                 </Media>
               </figure>
             ))}
-          </div>
+          </Grid>
 
           <nav className="mt-section-lg flex flex-wrap items-baseline justify-between gap-8 border-t border-rule pt-5" aria-label="Kolejna realizacja">
             <span className="text-muted">Następna realizacja</span>
-            <Link href={`/realizacje/${next.slug}`} className="font-display text-h2 leading-none font-bold tracking-[-0.035em]">
+            <Heading as={Link} level={2} href={`/realizacje/${next.slug}`} className="font-stretch-normal tracking-[-0.035em]">
               {next.title} <Arrow />
-            </Link>
+            </Heading>
           </nav>
-        </article>
+        </Section>
         <div className="h-[clamp(4rem,10vh,7rem)]" />
-      </main>
+      </Section>
       <Footer title="Chcesz podobną ścianę u siebie?" />
     </>
   );

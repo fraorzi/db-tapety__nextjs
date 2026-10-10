@@ -33,7 +33,8 @@
   summary { list-style: none; }
   summary::-webkit-details-marker { display: none; }
 
-  h1, h2, h3, h4 {
+  /* Nagłówki; komponent Heading z `as` na innym tagu dostaje to samo przez data-heading. */
+  h1, h2, h3, h4, [data-heading] {
     font-family: var(--font-display);
     font-weight: 700;
     font-stretch: 78%;

@@ -6,6 +6,7 @@ import { Flow } from "@/components/sections/b2b/Flow";
 import { LokalSlider } from "@/components/sections/b2b/LokalSlider";
 import { SegmentPicker } from "@/components/sections/b2b/SegmentPicker";
 import { Terms } from "@/components/sections/b2b/Terms";
+import { Section } from "@/components/ui/Section";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
@@ -18,14 +19,14 @@ const slides = [...projects].sort((a, b) => Number(b.category === "Lokal") - Num
 export default function DlaFirmPage() {
   return (
     <>
-      <main className="relative z-1 bg-paper">
+      <Section as="main" tone="paper" bleed spacing="none">
         <B2bHero />
         <SegmentPicker />
         <Flow />
         <Terms />
         <LokalSlider slides={slides} />
         <CallbackSection />
-      </main>
+      </Section>
       <Footer title="Macie lokal do zrobienia?" text="Wyślijcie rzuty albo zdjęcia, odpiszę z wyceną i harmonogramem." cta={{ href: "/wycena", label: "Zapytaj o wycenę" }} />
     </>
   );

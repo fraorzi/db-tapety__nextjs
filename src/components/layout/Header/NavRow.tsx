@@ -3,7 +3,7 @@ import { nav, site } from "@/data/site";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/Button";
 import { TextLink } from "@/components/ui/TextLink";
-import { MenuIcon } from "./MenuIcon";
+import { MenuToggle } from "./MenuToggle";
 
 type Props = {
   /** aria-label nawigacji (pasek u góry i przypięty mają różne). */
@@ -40,17 +40,7 @@ export function NavRow({ label, pathname, open, onToggle, onNavigate, pinned, as
         <Button href="/wycena" size="sm" variant={pinned ? "inverse" : "primary"} className="max-md:hidden" onClick={onNavigate}>
           Bezpłatna wycena
         </Button>
-        <button
-          type="button"
-          data-burger
-          className="hidden min-h-[2.6rem] items-center gap-[0.6rem] text-md font-medium max-md:inline-flex"
-          aria-expanded={open}
-          aria-controls="nav-panel"
-          onClick={onToggle}
-        >
-          <MenuIcon />
-          {open ? "Zamknij" : "Menu"}
-        </button>
+        <MenuToggle open={open} onToggle={onToggle} />
       </div>
     </Tag>
   );

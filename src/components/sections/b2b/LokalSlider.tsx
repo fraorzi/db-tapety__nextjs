@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Project } from "@/data/projects";
 import { cn } from "@/lib/cn";
+import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Separator } from "@/components/ui/Separator";
 import { SliderControls } from "@/components/ui/SliderControls";
@@ -36,7 +37,7 @@ export function LokalSlider({ slides }: { slides: readonly Project[] }) {
   };
 
   return (
-    <section className="px-page pb-section" aria-labelledby="b2bwork-title">
+    <Section spacing="none" className="pb-section" aria-labelledby="b2bwork-title">
       <SectionHeading id="b2bwork-title" title="Realizacje w lokalach" />
       <div className="relative mt-[clamp(2rem,5vh,3rem)] grid grid-cols-[64%_minmax(0,1fr)] max-md:grid-cols-[minmax(0,1fr)_auto] max-md:gap-x-4">
         <div className="relative col-span-full h-[clamp(19rem,58vh,37rem)] overflow-clip max-md:h-[calc((100vw-2*var(--spacing-gutter))*0.84*2/3)]">
@@ -104,6 +105,6 @@ export function LokalSlider({ slides }: { slides: readonly Project[] }) {
           onNext={() => go(1)}
         />
       </div>
-    </section>
+    </Section>
   );
 }

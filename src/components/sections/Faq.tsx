@@ -1,16 +1,16 @@
 import { faq } from "@/data/process";
+import { Grid } from "@/components/ui/Grid";
+import { Heading } from "@/components/ui/Heading";
+import { Section } from "@/components/ui/Section";
 import { TextLink } from "@/components/ui/TextLink";
 
 /** FAQ jako <details name="faq">: otwiera się jedno naraz, wysokość animowana (interpolate-size, w starszych przeglądarkach fade). */
 export function Faq() {
   return (
-    <section
-      className="relative z-1 bg-paper px-page py-section supports-[interpolate-size:allow-keywords]:[interpolate-size:allow-keywords]"
-      aria-labelledby="faq-title"
-    >
-      <div className="grid grid-cols-12 gap-x-gutter gap-y-10">
+    <Section tone="paper" className="supports-[interpolate-size:allow-keywords]:[interpolate-size:allow-keywords]" aria-labelledby="faq-title">
+      <Grid className="gap-y-10">
         <div className="col-span-4 grid content-start gap-5 max-md:col-span-full">
-          <h2 className="text-h2" id="faq-title">Zanim napiszesz</h2>
+          <Heading level={2} id="faq-title">Zanim napiszesz</Heading>
           <p className="max-w-[30ch] text-muted">Najczęstsze pytania o tapetowanie. Jeśli nie ma tu Twojego, napisz.</p>
           <TextLink href="/wycena">Zadaj pytanie</TextLink>
         </div>
@@ -34,7 +34,7 @@ export function Faq() {
             </details>
           ))}
         </div>
-      </div>
-    </section>
+      </Grid>
+    </Section>
   );
 }

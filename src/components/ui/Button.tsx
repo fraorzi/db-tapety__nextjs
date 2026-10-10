@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/cn";
+import { Arrow } from "./Arrow";
 
 const variants = {
   /** Główny: bakłażan z jasną ramką jak przy zdjęciach. */
@@ -27,33 +28,37 @@ export type ButtonVariant = keyof typeof variants;
 export type ButtonSize = keyof typeof sizes;
 
 type Style = { variant?: ButtonVariant; size?: ButtonSize; className?: string };
+/** Strzałka za tekstem (wydłuża się przy hoverze). */
+type WithArrow = { arrow?: boolean };
 
 /** Klasy przycisku, gdy trzeba je nadać innemu elementowi. */
 export function buttonClass({ variant = "primary", size = "md", className }: Style = {}) {
   return cn(
     "inline-flex items-center justify-center gap-[0.7rem] whitespace-nowrap",
+    sizes[size],
+    // po rozmiarze: rozmiar tekstu kasuje wcześniejszą interlinię
     "font-display leading-none font-semibold font-stretch-78% tracking-[-0.01em]",
     "transition-[background-color,translate,opacity] duration-250 active:translate-y-px",
     "disabled:cursor-not-allowed disabled:opacity-50",
     variants[variant],
-    sizes[size],
     className,
   );
 }
 
-type AsButton = Style & ComponentProps<"button"> & { href?: undefined };
-type AsLink = Style & ComponentProps<typeof Link>;
+type AsButton = Style & WithArrow & ComponentProps<"button"> & { href?: undefined };
+type AsLink = Style & WithArrow & ComponentProps<typeof Link>;
 
 /**
  * Kwadratowy przycisk. Z `href` renderuje link (next/link), bez niego `<button type="button">`.
  *
- *   <Button href="/wycena">Bezpłatna wycena <Arrow /></Button>
- *   <Button type="submit" variant="light">Oddzwoń <Arrow /></Button>
+ *   <Button href="/wycena" arrow>Bezpłatna wycena</Button>
+ *   <Button type="submit" variant="light" arrow>Oddzwoń</Button>
  *   <Button variant="soft" size="icon" aria-label="Następny"><Chevron dir="right" /></Button>
  */
 export function Button(props: AsButton | AsLink) {
-  const { variant, size, className, ...rest } = props;
+  const { variant, size, className, arrow, children, ...rest } = props;
   const classes = buttonClass({ variant, size, className });
-  if (rest.href !== undefined) return <Link {...(rest as ComponentProps<typeof Link>)} className={classes} />;
-  return <button type="button" {...(rest as ComponentProps<"button">)} className={classes} />;
+  const content = arrow ? <>{children} <Arrow /></> : children;
+  if (rest.href !== undefined) return <Link {...(rest as ComponentProps<typeof Link>)} className={classes}>{content}</Link>;
+  return <button type="button" {...(rest as ComponentProps<"button">)} className={classes}>{content}</button>;
 }

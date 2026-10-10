@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Arrow } from "@/components/ui/Arrow";
 import { Button } from "@/components/ui/Button";
+import { Heading } from "@/components/ui/Heading";
 import { cn } from "@/lib/cn";
 import { Chips, Field, TextArea, TextInput } from "./Field";
 import { PhotoDrop } from "./PhotoDrop";
@@ -15,7 +15,11 @@ type Errors = Partial<Record<"name" | "contact" | "kind" | "consent", string>>;
 type Status = "idle" | "sending" | "done";
 
 const fieldset = "grid gap-5";
-const legend = "mb-5 font-display text-[length:var(--text-h3)] font-bold tracking-[-0.02em]";
+
+/** Tytuł grupy pól: krój nagłówka w rozmiarze h3, ale z interlinią tekstu i bez zwężenia. */
+function Legend({ children }: { children: React.ReactNode }) {
+  return <Heading as="legend" level={3} className="mb-5 leading-[1.55] font-stretch-normal">{children}</Heading>;
+}
 
 /** Formularz wyceny (bez backendu): walidacja po stronie klienta, fokus na pierwszym błędnym polu. */
 export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
@@ -43,7 +47,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
   if (status === "done") {
     return (
       <div className="col-span-7 col-start-6 grid content-start gap-6 pt-2 max-md:col-span-full" role="status">
-        <h2 className="text-h2">Dziękuję, mam Twoją wiadomość.</h2>
+        <Heading level={2}>Dziękuję, mam Twoją wiadomość.</Heading>
         <p className="max-w-[44ch] text-muted">Odpiszę z orientacyjnym kosztem i propozycją terminu oględzin. Zdjęcia, jeśli są, obejrzę przed kontaktem.</p>
       </div>
     );
@@ -52,7 +56,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
   return (
     <form className="col-span-7 col-start-6 grid gap-11 pt-2 max-md:col-span-full" onSubmit={onSubmit} noValidate>
       <fieldset className={fieldset}>
-        <legend className={legend}>Kontakt</legend>
+        <Legend>Kontakt</Legend>
         <div className="grid grid-cols-2 gap-5 max-md:grid-cols-1">
           <Field label="Imię" htmlFor="q-name" error={errors.name} errorId="q-name-err">
             <TextInput id="q-name" name="name" autoComplete="given-name" invalid={!!errors.name} aria-describedby={errors.name ? "q-name-err" : undefined} />
@@ -74,7 +78,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
       </fieldset>
 
       <fieldset className={fieldset}>
-        <legend className={legend}>Co i gdzie</legend>
+        <Legend>Co i gdzie</Legend>
         <Field label="Rodzaj miejsca" error={errors.kind} errorId="q-kind-err">
           <Chips type="radio" name="kind" options={kinds} role="radiogroup" aria-describedby={errors.kind ? "q-kind-err" : undefined} />
         </Field>
@@ -90,7 +94,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
       </fieldset>
 
       <fieldset className={fieldset}>
-        <legend className={legend}>Szczegóły</legend>
+        <Legend>Szczegóły</Legend>
         <Field label="Wiadomość" hint="(wzór, link do tapety, stan ściany, pytania)" htmlFor="q-msg">
           <TextArea id="q-msg" name="message" rows={4} />
         </Field>
@@ -108,8 +112,8 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
       </div>
 
       <div className="flex flex-wrap items-center gap-6">
-        <Button type="submit" size="lg" disabled={status === "sending"}>
-          {status === "sending" ? "Wysyłam…" : "Wyślij do wyceny"} {status !== "sending" && <Arrow />}
+        <Button type="submit" size="lg" disabled={status === "sending"} arrow={status !== "sending"}>
+          {status === "sending" ? "Wysyłam…" : "Wyślij do wyceny"}
         </Button>
       </div>
     </form>
