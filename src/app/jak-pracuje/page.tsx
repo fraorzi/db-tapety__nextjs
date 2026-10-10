@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 };
 
 const checklist = [
-  { t: "Dostęp do ściany", d: "Odsuń meble na około metr od ściany albo daj znać, że mam to zrobić. Doliczę czas." },
-  { t: "Zdjęte obrazy, półki, karnisze", d: "Co da się zdjąć, warto zdjąć wcześniej. Gniazdka i włączniki zostawiam sobie." },
+  { t: "Dostęp do ściany", d: "Odsuń meble na około metr od ściany albo daj znać, że mam to zrobić. Wtedy doliczę ten czas." },
+  { t: "Zdjęte obrazy, półki, karnisze", d: "Co da się zdjąć, warto zdjąć wcześniej. Gniazdka i włączniki zdejmuję sam." },
   { t: "Tapeta na miejscu", d: "Jeśli kupujesz sam, sprawdź numer partii na każdej rolce. Muszą być takie same." },
   { t: "Prąd i światło dzienne", d: "Pracuję przy świetle dziennym, bo w nim widać łączenia. Potrzebuję też jednego gniazdka." },
   { t: "Temperatura w pokoju", d: "Klej schnie dobrze w temperaturze pokojowej, bez przeciągów i grzejnika na pełnej mocy." },
@@ -26,8 +26,8 @@ export default function JakPracujePage() {
       <main className="surface">
         <section className="phero" style={{ paddingBottom: "clamp(3rem, 8vh, 5rem)" }}>
           <div className="grid12 phero__top">
-            <h1 className="h-display">Pięć etapów. Każdy kończy się czymś, co możesz sprawdzić.</h1>
-            <p>Wycena, policzone rolki, gładka ściana, gotowy pokój, zapas tapety. Tak wygląda praca od pierwszego telefonu do odbioru.</p>
+            <h1 className="h-display">Od pomiaru do odbioru.</h1>
+            <p>Pięć etapów pracy, od pierwszego telefonu do sprzątania. Przy każdym piszę, co dostajesz i ile to trwa.</p>
           </div>
           <WallLayers />
         </section>
@@ -35,7 +35,7 @@ export default function JakPracujePage() {
         <ProcessPinned
           variant="full"
           title="Krok po kroku"
-          intro="Dobrze położona tapeta to w większości ściana, której nie widać. Reszta to pion, raport i cierpliwość przy docinaniu."
+          intro="Większość pracy to przygotowanie ściany. Potem liczy się pion, dopasowanie wzoru i dokładne docinanie."
           steps={processSteps}
           videos={[videos.process[0], videos.process[1], videos.process[2], videos.process[3], videos.process[0]]}
           cta={{ href: "/wycena", label: "Umów oględziny" }}
@@ -47,7 +47,7 @@ export default function JakPracujePage() {
             <h2 className="h2">Co przygotować przed moim przyjazdem</h2>
           </div>
           <div className="grid12 check">
-            <p className="check__intro">Pięć rzeczy, które skracają pracę o kilka godzin. Jeśli czegoś nie da się zrobić, po prostu daj znać.</p>
+            <p className="check__intro">Dzięki temu mogę zacząć od razu po przyjeździe. Jeśli czegoś nie da się zrobić, daj znać wcześniej.</p>
             <ul className="check__list">
               {checklist.map((c) => (
                 <li key={c.t}>

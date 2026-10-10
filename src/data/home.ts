@@ -13,9 +13,9 @@ export type Audience = { t: string; d: string; img: string; href: string; link: 
 // TODO(media, zalecane): zdjęcia stock (Unsplash) — wnętrza nie są realizacjami klienta. Docelowo jego zdjęcia.
 export const audiences: readonly Audience[] = [
   { t: "Mieszkania", d: "Sypialnia, salon, pokój dziecka, przedpokój. Jedna ściana albo cały pokój, zwykle w jeden lub dwa dni.", img: unsplash("photo-1780672823896-fc266a8d5ecb", 1400), href: "/wycena", link: "Umów wycenę" },
-  { t: "Domy", d: "Większe metraże, wysokie ściany, klatki schodowe. Planuję kolejność pomieszczeń tak, żebyś mógł normalnie mieszkać.", img: unsplash("photo-1780672823983-6ab83c017906", 1400), href: "/wycena", link: "Umów wycenę" },
-  { t: "Lokale usługowe", d: "Ściana ekspozycyjna, poczekalnia, wejście. Montaż po godzinach, rano lokal działa.", img: unsplash("photo-1559508551-44bff1de756b", 1400), href: "/dla-firm", link: "Oferta dla firm" },
+  { t: "Domy", d: "Większe metraże, wysokie ściany, klatki schodowe. Ustalam kolejność pomieszczeń tak, żeby dało się normalnie mieszkać.", img: unsplash("photo-1780672823983-6ab83c017906", 1400), href: "/wycena", link: "Umów wycenę" },
+  { t: "Lokale usługowe", d: "Ściana ekspozycyjna, poczekalnia, wejście. Pracuję po zamknięciu, rano lokal jest gotowy.", img: unsplash("photo-1559508551-44bff1de756b", 1400), href: "/dla-firm", link: "Oferta dla firm" },
   { t: "Biura", d: "Sale spotkań, recepcje, ściany z identyfikacją. Fototapety z Waszym projektem albo dobór z katalogów.", img: unsplash("photo-1602364557801-8908351b0c7e", 1400), href: "/dla-firm", link: "Oferta dla firm" },
-  { t: "Apartamenty na wynajem", d: "Powtarzalny standard w kilku lokalach, materiały zmywalne, terminy między najmami.", img: unsplash("photo-1676454894072-fcb03c419cfa", 1400), href: "/dla-firm", link: "Oferta dla firm" },
+  { t: "Apartamenty na wynajem", d: "Ten sam standard w kilku mieszkaniach, zmywalne materiały i terminy ustawione między najmami.", img: unsplash("photo-1676454894072-fcb03c419cfa", 1400), href: "/dla-firm", link: "Oferta dla firm" },
   { t: "Wykończenia pod klucz", d: "Wejście po malarzu, przed meblami. Jedna wycena na kilka mieszkań, współpraca z ekipą wykończeniową.", img: unsplash("photo-1759262151424-7b8ed20a31a6", 1400), href: "/dla-firm", link: "Oferta dla firm" },
 ];

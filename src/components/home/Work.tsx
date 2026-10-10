@@ -12,7 +12,6 @@ export function Work() {
       <div className="sec-row">
         <div className="sec-head">
           <h2 className="h2" id="work-title">Wybrane realizacje</h2>
-          <p>Zdjęcia zastępcze ze stocku. Docelowo tu trafią realizacje klienta.</p>
         </div>
         <Link href="/realizacje" className="ulink">Wszystkie realizacje</Link>
       </div>

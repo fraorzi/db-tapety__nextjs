@@ -5,7 +5,7 @@ import { Arrow } from "@/components/Arrow";
 
 const kinds = ["Mieszkanie", "Dom", "Lokal / biuro", "Inwestycja (kilka lokali)"] as const;
 const works = ["Tapetowanie", "Przygotowanie ścian", "Fototapeta na wymiar", "Dobór i zamówienie tapety", "Zdjęcie starej tapety"] as const;
-const timing = ["Jak najszybciej", "W ciągu 1–3 miesięcy", "Później, orientuję się"] as const;
+const timing = ["Jak najszybciej", "W ciągu trzech miesięcy", "Później, orientuję się"] as const;
 
 type Errors = Partial<Record<"name" | "contact" | "kind" | "consent", string>>;
 type Status = "idle" | "sending" | "done";
@@ -38,8 +38,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
     return (
       <div className="fdone" role="status">
         <h2 className="h2">Dziękuję, mam Twoją wiadomość.</h2>
-        <p>Odpiszę z orientacyjnym kosztem i propozycją terminu oględzin. Jeśli dołączyłeś zdjęcia, obejrzę je przed kontaktem.</p>
-        <p className="small">To makieta — formularz nie został jeszcze podpięty do wysyłki.</p>
+        <p>Odpiszę z orientacyjnym kosztem i propozycją terminu oględzin. Zdjęcia, jeśli są, obejrzę przed kontaktem.</p>
       </div>
     );
   }
@@ -61,7 +60,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
           </div>
         </div>
         <div className="field">
-          <label htmlFor="q-city">Miejscowość <small>— żebym sprawdził dojazd</small></label>
+          <label htmlFor="q-city">Miejscowość <small>(żeby sprawdzić dojazd)</small></label>
           <input id="q-city" name="city" autoComplete="address-level2" />
         </div>
       </fieldset>
@@ -78,7 +77,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
           {errors.kind && <p className="err" id="q-kind-err">{errors.kind}</p>}
         </div>
         <div className="field">
-          <label>Zakres <small>— możesz zaznaczyć kilka</small></label>
+          <label>Zakres <small>(można zaznaczyć kilka)</small></label>
           <div className="chips">
             {works.map((w) => (
               <label key={w} className="chip"><input type="checkbox" name="work" value={w} /><span>{w}</span></label>
@@ -86,7 +85,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
           </div>
         </div>
         <div className="field">
-          <label htmlFor="q-size">Wymiary lub metraż <small>— orientacyjnie</small></label>
+          <label htmlFor="q-size">Wymiary lub metraż <small>(orientacyjnie)</small></label>
           <input id="q-size" name="size" placeholder="np. jedna ściana 4 × 2,7 m" />
         </div>
         <div className="field">
@@ -102,7 +101,7 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
       <fieldset className="fset">
         <legend>Szczegóły</legend>
         <div className="field">
-          <label htmlFor="q-msg">Wiadomość <small>— wzór, link do tapety, stan ściany, pytania</small></label>
+          <label htmlFor="q-msg">Wiadomość <small>(wzór, link do tapety, stan ściany, pytania)</small></label>
           <textarea id="q-msg" name="message" rows={4} />
         </div>
         <div className="field">
@@ -134,7 +133,6 @@ export function QuoteForm({ defaultContact }: { defaultContact?: string }) {
         <button type="submit" className="btn btn--lg" disabled={status === "sending"}>
           {status === "sending" ? "Wysyłam…" : "Wyślij do wyceny"} {status !== "sending" && <Arrow />}
         </button>
-        <p>Odpowiadam na każdą wiadomość, także gdy chcesz tylko zapytać.</p>
       </div>
     </form>
   );
