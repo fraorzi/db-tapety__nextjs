@@ -1,0 +1,79 @@
+/* Własne utility i warianty. Używane w komponentach jak zwykłe klasy Tailwinda (działają z max-md:, hover: itd.). */
+
+/* ── warianty ─────────────────────────────────────────────────────────── */
+
+/* tylko urządzenia z prawdziwym hoverem / bez hovera (dotyk) */
+@custom-variant can-hover {
+  @media (hover: hover) { @slot; }
+}
+@custom-variant no-hover {
+  @media (hover: none) { @slot; }
+}
+
+/* Ikona w środku: hover linku/przycisku, w którym siedzi (Arrow, Chevron),
+ * albo hover dalszego rodzica z klasą `group/arrow` (karta realizacji). */
+@custom-variant icon-hover {
+  :is(a, button):hover > svg > & { @slot; }
+  .group\/arrow:hover & { @slot; }
+}
+
+/* ── ton ciemny ───────────────────────────────────────────────────────── */
+
+/* Bakłażanowa sekcja: tło, tekst, jasny fokus w środku i odwrócone pasy tonalne. */
+@utility tone-deep {
+  background-color: var(--color-deep);
+  color: var(--color-on-deep);
+  --focus: var(--color-on-deep);
+  --band-out: var(--color-paper-3);
+  --band-in: var(--color-deep-2);
+}
+
+/* ── pasy tonalne ─────────────────────────────────────────────────────── */
+
+/* Dwa pasy na krawędzi sekcji, jak brzeg kolejnego pasa tapety: border + wewnętrzny cień, bez dodatkowych elementów.
+ * bands-t: góra, bands-b: dół, bands-y: obie. Na jasnym: bakłażan → papier, w tone-deep odwrotnie. */
+@utility bands-t {
+  border-top: var(--spacing-band) solid var(--band-out, var(--color-deep-2));
+  box-shadow: inset 0 var(--spacing-band) 0 var(--band-in, var(--color-paper-3));
+}
+@utility bands-b {
+  border-bottom: var(--spacing-band) solid var(--band-out, var(--color-deep-2));
+  box-shadow: inset 0 calc(-1 * var(--spacing-band)) 0 var(--band-in, var(--color-paper-3));
+}
+@utility bands-y {
+  border-block: var(--spacing-band) solid var(--band-out, var(--color-deep-2));
+  box-shadow:
+    inset 0 var(--spacing-band) 0 var(--band-in, var(--color-paper-3)),
+    inset 0 calc(-1 * var(--spacing-band)) 0 var(--band-in, var(--color-paper-3));
+}
+
+/* ── pojedyncze efekty ────────────────────────────────────────────────── */
+
+/* przyciemnienie wideo w hero: u góry pod paskiem nawigacji i od dołu pod tekstem */
+@utility bg-hero-scrim {
+  background:
+    linear-gradient(to bottom, oklch(from var(--color-scrim) l c h / 0.5), transparent 22%),
+    linear-gradient(to top, oklch(from var(--color-scrim) l c h / 0.72) 0%, oklch(from var(--color-scrim) l c h / 0.25) 45%, transparent 70%);
+}
+
+/* Menu mobilne: element wjeżdża z boku za otwartym panelem (`data-open` na pasku), kolejno według --i. */
+@utility menu-reveal {
+  opacity: 0;
+  transform: translateX(2.5rem);
+  transition:
+    opacity 250ms var(--ease-site),
+    transform 350ms var(--ease-site),
+    color 250ms var(--ease-site),
+    background-color 250ms var(--ease-site);
+
+  [data-open] & {
+    --delay: calc(180ms + var(--i, 0) * 70ms);
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 600ms var(--ease-site) var(--delay),
+      transform 900ms var(--ease-site) var(--delay),
+      color 250ms var(--ease-site),
+      background-color 250ms var(--ease-site);
+  }
+}

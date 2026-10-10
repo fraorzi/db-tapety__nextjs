@@ -1,10 +1,10 @@
-import { Hero } from "@/components/home/Hero";
-import { Services } from "@/components/home/Services";
-import { Audiences } from "@/components/home/Audiences";
-import { ProcessPinned } from "@/components/ProcessPinned";
-import { Work } from "@/components/home/Work";
-import { Faq } from "@/components/Faq";
-import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/layout/Footer";
+import { Faq } from "@/components/sections/Faq";
+import { Audiences } from "@/components/sections/home/Audiences";
+import { Hero } from "@/components/sections/home/Hero";
+import { Services } from "@/components/sections/home/Services";
+import { Work } from "@/components/sections/home/Work";
+import { ProcessCompact } from "@/components/sections/process/ProcessCompact";
 import { processShort } from "@/data/process";
 import { site, videos } from "@/data/site";
 
@@ -56,8 +56,7 @@ export default function HomePage() {
 
         <Audiences />
 
-        <ProcessPinned
-          variant="compact"
+        <ProcessCompact
           title="Jak pracuję"
           intro="Najwięcej czasu idzie na przygotowanie ściany. Od niego zależy, jak tapeta będzie wyglądać za kilka lat."
           steps={processShort}

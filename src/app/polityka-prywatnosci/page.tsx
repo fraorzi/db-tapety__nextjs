@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/layout/Footer";
+import { Heading } from "@/components/ui/Heading";
+import { Section } from "@/components/ui/Section";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -8,31 +10,37 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
+/** Nagłówek punktu dokumentu. */
+function DocHeading({ children }: { children: React.ReactNode }) {
+  return <Heading level={3} as="h2" className="mt-6">{children}</Heading>;
+}
+
 // Szkic do uzupełnienia przez klienta (pola w <mark>). Przed publikacją warto skonsultować z prawnikiem.
 export default function PolitykaPage() {
   return (
     <>
-      <main className="surface">
-        <article className="doc">
-          <h1 className="h-display">Polityka prywatności</h1>
-          <p className="doc__meta">Obowiązuje od <mark>dd.mm.rrrr</mark></p>
-          <div className="doc__body">
-            <h2>1. Administrator danych</h2>
+      <Section as="main" tone="paper" bleed spacing="none">
+        {/* luki do uzupełnienia jako <mark> */}
+        <Section as="article" grid spacing="top" className="gap-y-8 pb-section-lg [&_mark]:bg-paper-2 [&_mark]:px-[0.3rem] [&_mark]:text-ink">
+          <Heading level={1} className="col-span-8 max-md:col-span-full">Polityka prywatności</Heading>
+          <p className="col-span-3 col-start-10 text-md text-muted max-md:col-span-full">Obowiązuje od <mark>dd.mm.rrrr</mark></p>
+          <div className="col-span-7 col-start-3 grid gap-5 max-md:col-span-full [&_li]:max-w-[65ch] [&_li]:text-muted [&_p]:max-w-[65ch] [&_p]:text-muted [&_ul]:grid [&_ul]:list-disc [&_ul]:gap-[0.4rem] [&_ul]:pl-[1.2rem]">
+            <DocHeading>1. Administrator danych</DocHeading>
             <p>Administratorem danych jest <mark>{site.name}, nazwa firmy, adres, NIP</mark>. Kontakt: <mark>{site.email}</mark>, <mark>{site.phone}</mark>.</p>
 
-            <h2>2. Jakie dane zbieram i po co</h2>
+            <DocHeading>2. Jakie dane zbieram i po co</DocHeading>
             <p>Przez formularz wyceny i kontakt telefoniczny lub mailowy otrzymuję: imię, numer telefonu lub adres e-mail, miejscowość, opis prac oraz zdjęcia ścian, jeśli je dołączysz. Używam ich wyłącznie do przygotowania wyceny i kontaktu w sprawie zlecenia (art. 6 ust. 1 lit. b RODO — działania przed zawarciem umowy) oraz, po jego realizacji, do rozliczenia i ewentualnych reklamacji (art. 6 ust. 1 lit. c i f RODO).</p>
 
-            <h2>3. Jak długo przechowuję dane</h2>
+            <DocHeading>3. Jak długo przechowuję dane</DocHeading>
             <p>Dane z zapytań, które nie zakończyły się zleceniem, usuwam po <mark>12 miesiącach</mark>. Dane dotyczące wykonanych prac przechowuję przez okres wymagany przepisami podatkowymi i okres rękojmi.</p>
 
-            <h2>4. Komu przekazuję dane</h2>
+            <DocHeading>4. Komu przekazuję dane</DocHeading>
             <p>Dostawcom usług, z których korzystam przy obsłudze strony i poczty: <mark>hosting strony, dostawca poczty e-mail, narzędzie formularza</mark>. Nie sprzedaję danych ani nie przekazuję ich do celów marketingowych.</p>
 
-            <h2>5. Pliki cookies i statystyki</h2>
+            <DocHeading>5. Pliki cookies i statystyki</DocHeading>
             <p>Strona <mark>nie używa / używa</mark> plików cookies do statystyk odwiedzin. <mark>Jeśli używa: nazwa narzędzia, zakres danych, podstawa prawna, sposób wyrażenia zgody.</mark> Treści multimedialne mogą być ładowane z serwerów zewnętrznych (zdjęcia, wideo), które widzą Twój adres IP.</p>
 
-            <h2>6. Twoje prawa</h2>
+            <DocHeading>6. Twoje prawa</DocHeading>
             <ul>
               <li>dostęp do danych i ich kopii,</li>
               <li>sprostowanie, usunięcie lub ograniczenie przetwarzania,</li>
@@ -42,11 +50,11 @@ export default function PolitykaPage() {
             </ul>
             <p>Żeby skorzystać z tych praw, napisz na <mark>{site.email}</mark>.</p>
 
-            <h2>7. Zmiany</h2>
+            <DocHeading>7. Zmiany</DocHeading>
             <p>Jeśli zmienię sposób przetwarzania danych, zaktualizuję ten dokument i datę na górze strony.</p>
           </div>
-        </article>
-      </main>
+        </Section>
+      </Section>
       <Footer />
     </>
   );

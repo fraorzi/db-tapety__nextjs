@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { site } from "@/data/site";
 
-// Hex z tokenów OKLCH w globals.css. Satori (next/og) nie bierze oklch().
+// Hex z tokenów OKLCH w src/styles/theme.css. Satori (next/og) nie bierze oklch().
 const paper = "#edecf0";
 const ink = "#110e14";
 const muted = "#54505a";
