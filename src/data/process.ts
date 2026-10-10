@@ -1,6 +1,6 @@
 import type { Step } from "@/components/ProcessPinned";
 
-// Czasy orientacyjne — do potwierdzenia z wykonawcą.
+// Czasy orientacyjne, do potwierdzenia z wykonawcą.
 export const processSteps: readonly Step[] = [
   {
     title: "Oględziny i pomiar",
@@ -10,19 +10,19 @@ export const processSteps: readonly Step[] = [
   },
   {
     title: "Dobór wzoru i liczenie rolek",
-    text: "Pomagam wybrać tapetę pod światło, meble i sposób użytkowania pokoju. Liczę rolki z zapasem na dopasowanie raportu.",
+    text: "Pomagam wybrać tapetę pod światło, meble i sposób użytkowania pokoju. Liczę rolki z zapasem na dopasowanie wzoru.",
     outcome: "Lista materiału z numerami partii.",
-    time: "Zależnie od dostawcy — do potwierdzenia.",
+    time: "Zależy od czasu dostawy tapety.",
   },
   {
     title: "Przygotowanie ściany",
-    text: "Szpachluję, szlifuję, gruntuję. Pod tapetą widać każdą nierówność, więc tu nie ma skrótów.",
-    outcome: "Gładka, zagruntowana ściana gotowa pod każdy materiał.",
+    text: "Szpachluję, szlifuję i gruntuję. Pod tapetą widać każdą nierówność, dlatego tego etapu nie skracam.",
+    outcome: "Gładka, zagruntowana ściana gotowa pod tapetę.",
     time: "Zwykle jeden dzień z wysychaniem.",
   },
   {
     title: "Montaż",
-    text: "Pas przy pasie, na styk. Docinam przy listwach, gniazdkach i oknach, pilnuję pionu i przejścia wzoru przez łączenia.",
+    text: "Kładę pas przy pasie, na styk. Docinam przy listwach, gniazdkach i oknach, pilnuję pionu i tego, żeby wzór zgadzał się na łączeniach.",
     outcome: "Ściana bez widocznych łączeń.",
     time: "Jedna ściana to zwykle jeden dzień.",
   },
@@ -30,7 +30,7 @@ export const processSteps: readonly Step[] = [
     title: "Odbiór i sprzątanie",
     text: "Oglądamy ścianę razem, w dziennym świetle. Zabieram odpady, zostawiam zapas tapety na ewentualną naprawę.",
     outcome: "Czyste pomieszczenie i zapas z tej samej partii.",
-    time: "Pół godziny.",
+    time: "Około pół godziny.",
   },
 ];
 
@@ -44,7 +44,7 @@ export const faq = [
   },
   {
     q: "Czy trzeba zrywać starą tapetę albo farbę?",
-    a: "Starą tapetę tak, zawsze. Farbę tylko wtedy, gdy się łuszczy lub jest lateksowa i śliska. Oceniam to na oględzinach i mówię wprost, co trzeba zrobić.",
+    a: "Starą tapetę tak, zawsze. Farbę tylko wtedy, gdy się łuszczy lub jest lateksowa i śliska. Oceniam to na oględzinach i mówię, co trzeba zrobić.",
   },
   {
     q: "Pomagasz wybrać i zamówić tapetę?",
@@ -60,6 +60,6 @@ export const faq = [
   },
   {
     q: "Pracujesz też w lokalach i biurach?",
-    a: "Tak, również poza godzinami otwarcia, żeby nie wstrzymywać pracy. Szczegóły na stronie Dla firm.",
+    a: "Tak, także po godzinach otwarcia, żeby lokal mógł normalnie działać. Więcej na stronie Dla firm.",
   },
 ] as const;

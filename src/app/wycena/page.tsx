@@ -29,7 +29,7 @@ export default async function WycenaPage({ searchParams }: Props) {
         </section>
         <div style={{ height: "clamp(6rem, 16vh, 10rem)" }} />
       </main>
-      <Footer title="Wolisz najpierw zobaczyć, co robię?" text="Sześć realizacji z opisem materiału i zakresu prac." cta={{ href: "/realizacje", label: "Zobacz realizacje" }} />
+      <Footer title="Wolisz najpierw zobaczyć, co robię?" text="Każda z opisem materiału i zakresu prac." cta={{ href: "/realizacje", label: "Zobacz realizacje" }} />
     </>
   );
 }

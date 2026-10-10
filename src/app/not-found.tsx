@@ -19,7 +19,7 @@ export default function NotFound() {
           <path d="M92.6 42h47.9a7.5 7.5 0 0 1 7.5 7.5v6a1.5 1.5 0 0 1-1.5 1.5H100a1.5 1.5 0 0 1-1.5-1.5v-8a10.5 10.5 0 0 0-5.9-5.5z" />
         </svg>
         <h1 className="h2">Tu jeszcze nie ma tapety.</h1>
-        <p>Strona pod tym adresem nie istnieje albo zmieniła miejsce. Zacznij od strony głównej albo zobacz, jakie ściany już stoją.</p>
+        <p>Strona pod tym adresem nie istnieje albo została przeniesiona. Wróć na stronę główną albo zobacz realizacje.</p>
         <div className="nf__actions">
           <Link href="/" className="btn">Strona główna <Arrow /></Link>
           <Link href="/realizacje" className="ulink">Zobacz realizacje</Link>

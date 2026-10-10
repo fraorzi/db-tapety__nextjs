@@ -23,8 +23,8 @@ export default function DlaFirmPage() {
       <main className="surface">
         <section className="dip wrap b2bhero">
           <div className="dip__text">
-            <h1 className="h-display">Lokal działa rano. Ja kończę w nocy.</h1>
-            <p className="lead">Tapetowanie dla firm: lokale, biura, apartamenty na wynajem, mieszkania pod klucz. Jeden wykonawca, jedna wycena, harmonogram na piśmie.</p>
+            <h1 className="h-display">Tapetowanie dla firm bez zamykania lokalu.</h1>
+            <p className="lead">Lokale usługowe, biura, apartamenty na wynajem i mieszkania pod klucz. Pracuję po godzinach, wyceniam całe zlecenie naraz, a terminy ustalamy na piśmie.</p>
             <div className="hero__actions">
               <Link href="/wycena" className="btn">Zapytaj o wycenę <Arrow /></Link>
               <a href={site.phoneHref} className="ulink">{site.phone}</a>
@@ -64,15 +64,15 @@ export default function DlaFirmPage() {
 
         <section className="iform wrap" style={{ borderTop: "1px solid var(--rule)" }} aria-labelledby="iform-title">
           <div className="iform__text">
-            <h2 className="h2" id="iform-title">Zostaw numer, oddzwonię</h2>
-            <p>W ciągu dnia roboczego. Albo wyślij od razu rzuty i zdjęcia przez formularz wyceny.</p>
+            <h2 className="h2" id="iform-title">Zostawcie numer, oddzwonię</h2>
+            <p>Oddzwonię w ciągu dnia roboczego. Rzuty i zdjęcia możecie też od razu wysłać przez formularz wyceny.</p>
           </div>
           <form action="/wycena" method="get">
             <div className="iform__row">
               <input type="tel" name="tel" placeholder="Numer telefonu" aria-label="Numer telefonu" autoComplete="tel" />
               <button type="submit" className="btn">Oddzwoń <Arrow /></button>
             </div>
-            <small>Numer trafia do formularza wyceny, gdzie możesz dodać szczegóły. <Link href="/polityka-prywatnosci" className="ulink">Polityka prywatności</Link>.</small>
+            <small>Numer przeniesie się do formularza wyceny, tam możecie dopisać szczegóły. <Link href="/polityka-prywatnosci" className="ulink">Polityka prywatności</Link>.</small>
           </form>
         </section>
       </main>

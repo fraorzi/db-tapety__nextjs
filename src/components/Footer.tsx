@@ -26,7 +26,6 @@ export function Footer({
         <div className="foot__meta">
           <span>{site.tagline}</span>
           <a href={site.emailHref}>{site.email}</a>
-          <span>{site.region}</span>
         </div>
         <nav className="foot__links" aria-label="Stopka">
           {nav.map((n) => <Link key={n.href} href={n.href} className="ulink">{n.label}</Link>)}

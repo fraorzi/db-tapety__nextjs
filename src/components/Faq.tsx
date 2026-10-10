@@ -7,7 +7,7 @@ export function Faq() {
       <div className="grid12" style={{ rowGap: "2.5rem" }}>
         <div className="faq__aside">
           <h2 className="h2" id="faq-title">Zanim napiszesz</h2>
-          <p>Odpowiedzi na pytania, które dostaję najczęściej. Nie ma Twojego? Napisz, odpowiadam na każdą wiadomość.</p>
+          <p>Najczęstsze pytania o tapetowanie. Jeśli nie ma tu Twojego, napisz.</p>
           <Link href="/wycena" className="ulink">Zadaj pytanie</Link>
         </div>
         <div className="faq__list">
