@@ -59,7 +59,7 @@ FAQ, etapy, zasady B2B i opisy realizacji są napisane z wiedzy branżowej, nie 
 
 1. Feedback użytkownika do v3.
 2. Dane firmy, zdjęcia/wideo z realizacji, opinie jeśli istnieją; uzupełnić `<mark>` w polityce prywatności i skonsultować ją z prawnikiem.
-3. Backend formularza (`/wycena` i „zostaw numer” na `/dla-firm`): wysyłka e-mail lub API, antyspam, upload zdjęć.
+3. Backend formularza (`/wycena` i „zostaw numer” w stopce): wysyłka e-mail lub API, antyspam, upload zdjęć.
 4. SEO: `metadataBase`, OG image, sitemap, favicon.
 5. Opcjonalnie: strona 404 w stylu systemu, `interpolate-size` fallback dla FAQ w Safari.
 

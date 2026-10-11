@@ -23,7 +23,7 @@ pnpm lint && pnpm exec tsc --noEmit && pnpm build
   - `home/` — `Hero` (przyklejony fold; następna sekcja nasuwa się, wideo tylko `transform/opacity`), `Services` (duże wiersze; przy hoverze zdjęcie wjeżdża jak pas), `Work` + `WorkMotion` (mozaika z etykietami, wejście i paralaksa), `Audiences` (slider z rozsuwanymi panelami).
   - `process/` — `ProcessCompact` (`/`: wideo w `Frame`, etapy jako tonalne pasy przełączane kliknięciem, inaczej niż FAQ), `ProcessFull` (`/jak-pracuje`: fakty po lewej, sticky wideo z licznikiem), wspólne `useProcessSteps` i `ProcessVideos`, `WallLayers` (wejście na `/jak-pracuje`: przekrój ściany).
   - `projects/` — `WorkGrid` (siatka + wejście i paralaksa kart, nie w `ScrollMotion`), `RoomTabs` (taby z jadącym podkreśleniem), `ProjectCard`.
-  - `b2b/` — `B2bHero`, `SegmentPicker`, `Flow` (schody tonalne), `Terms`, `LokalSlider` (kadr z zapowiedzią następnej w szarości), `CallbackSection`.
+  - `b2b/` — `B2bHero`, `SegmentPicker`, `Flow` (schody tonalne), `Terms`, `LokalSlider` (kadr z zapowiedzią następnej w szarości).
   - `quote/` — `QuoteForm` (bez backendu), `Field` (`Field`, `TextInput`, `TextArea`, `Chips`), `PhotoDrop`.
   - `Faq.tsx`.
 - `src/lib/` — `cn` (sklejanie klas przez `tailwind-merge`: późniejsza klasa wygrywa; nowy token z `theme.css` dopisać w jego konfiguracji), `gsap` (rejestracja pluginów), `share-card` (OG i ikony; kolory jako hex, bo Satori nie bierze OKLCH). Fonty OG w `src/fonts/`, w stronie przez `next/font/google` w `layout.tsx` (Archivo z osią `wdth` jako `--font-archivo`, Instrument Sans jako `--font-instrument`).
